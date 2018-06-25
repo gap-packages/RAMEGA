@@ -14,7 +14,7 @@ The features of this package include
          - finding the boolean function from the given network of threshold elements;
          
 There is a manual in the sub-directory 'doc' written using the GAP package
-gapdoc which describes the available functions in detail. The dvi, pdf, html
+gapdoc which describes the available functions in detail. The pdf and html
 versions of the manual are also available there.
 
 
