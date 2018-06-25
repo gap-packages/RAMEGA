@@ -48,10 +48,6 @@ Installation
 ------------
 
 As this package does not contain any C code, to install it just unoack the archive in the "pkg" directory of your
-GAP installation folder. Then try the following
-
-gap> LoadPackage( "thelma" ); 
-true
-gap>
+GAP installation folder. Then enter command "LoadPackage( "thelma" );".
 
 Good luck!
