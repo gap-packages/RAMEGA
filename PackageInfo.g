@@ -176,10 +176,10 @@ Status := "dev",
 ##  the updating of package information on the GAP Website, and inclusion
 ##  and updating of the package in the GAP distribution.
 #
-#README_URL :=
- # "http://www.fc.up.pt/cmup/mdelgado/automata/README",
-#PackageInfoURL :=
- # "http://www.fc.up.pt/cmup/mdelgado/automata/PackageInfo.g",
+README_URL :=
+ "https://github.com/vlaver/Thelma/blob/master/README.md",
+PackageInfoURL :=
+ "https://github.com/vlaver/Thelma/blob/master/PackageInfo.g",
 
 ##  Here you  must provide a short abstract explaining the package content
 ##  in HTML format (used on the package overview Web page) and an URL
@@ -195,7 +195,7 @@ Status := "dev",
 AbstractHTML :=
    "The <span class=\"pkgname\">Thelma</span> package is package with algorithms to deal with threshold elements.",
 
-#PackageWWWHome := "http://www.fc.up.pt/cmup/mdelgado/automata",
+PackageWWWHome := "https://github.com/vlaver/Thelma",
 
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the
