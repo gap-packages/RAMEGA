@@ -1,0 +1,67 @@
+  
+  
+  [1XReferences[101X
+  
+  [[20XABGG80[120X]  [16XAizenberg,  N.,  Bovdi,  A.,  Gergo,  E.  and Geche, F.[116X, [17XAlgebraic
+  aspects of threshold logic[117X, [18XCybernetics[118X, [19X16[119X (1980), 188-193.
+  
+  [[20XDer65[120X]  [16XDertouzos,  M.  L.[116X,  [17XThreshold  Logic: A Synthesis Approach[117X, M.I.T.
+  Press, M.I.T. Press research monographs (1965).
+  
+  [[20XEBT16[120X]  [16XHorv{\'a}th E., , Seselja B., and Tepavcevic, A.[116X, [17XA note on lattice
+  variant  of  thresholdness of Boolean functions[117X, [18XMiskolc Mathematical Notes[118X,
+  [19X17[119X (2016), 293-304.
+  
+  [[20XGec10[120X]  [16XGeche,  F.[116X,  [17XAnalysis  of  Discrete  Functions  and Logical Schemes
+  Synthesis in Neurobasis (in Ukrainian)[117X, Uzhhorod National University (2010).
+  
+  [[20XGMB17[120X]  [16XGeche, F., Mulesa, O. and Buchok, V.[116X, [17XVerification of realizability
+  of  boolean  functions  by  a  neural  element  with  a threshold activation
+  function[117X,  [18XEastern  European  Journal  of Enterprise Technologies[118X, [19X1[119X (2017),
+  30-40.
+  
+  [[20XGPR83[120X]  [16XGeche,  F. E., Polivko, V. P. and Robotishin, V. I.[116X, [17XRealization of
+  Boolean  functions  using  threshold elements[117X, [18XKibernetika (Kiev)[118X, 6 (1983),
+  62--67.
+  
+  [[20XGVKB11[120X]  [16XGowda,T.,  ,  Vrudhula,  S.,  Kulkarni,  N.  and  Berezowski,  K.[116X,
+  [17XIdentification  of  Threshold Functions and Synthesis of Threshold Networks[117X,
+  [18XIEEE  Transactions  on  Computer-Aided  Design  of  Integrated  Circuits and
+  Systems[118X, [19X30[119X, 5 (2011), 665-677.
+  
+  [[20XHor94[120X]  [16XHorv{\'a}th,  E. K.[116X, [17XInvariance groups of threshold functions[117X, [18XActa
+  Cybernetica[118X, [19X11[119X, 4 (1994), 325--332.
+  
+  [[20XJMR99[120X]  [16XAvedillo  M.  J., , Quintana J. M., and Rueda, A.[116X, [17XThreshold Logic[117X,
+  Wiley  Encyclopedia  of  Electrical  and  Electronics  Engineering, American
+  Cancer Society (1999), 178-190, Chapter Chapter .
+  
+  [[20XLit88[120X] [16XLittlestone, N.[116X, [17XLearning Quickly When Irrelevant Attributes Abound:
+  A  New Linear-Threshold Algorithm[117X, [18XMach. Learn.[118X, Kluwer Academic Publishers,
+  [19X2[119X, 4, Hingham, MA, USA (1988), 285--318.
+  
+  [[20XLLMJ06[120X]  [16XFranco L., , Subirats J. L., , Anthony M., and Jerez, J. M.[116X, [17XA New
+  Constructive  Approach  for  Creating  All  Linearly  Separable  (Threshold)
+  Functions[117X, in The 2006 IEEE International Joint Conference on Neural Network
+  Proceedings (2006), 4791-4796.
+  
+  [[20XLMF08[120X]  [16XSubirats  J. L., , Jerez J. M., and Franco, L.[116X, [17XA New Decomposition
+  Algorithm  for  Threshold Synthesis and Generalization of Boolean Functions[117X,
+  [18XIEEE  Transactions on Circuits and Systems I: Regular Papers[118X, [19X55[119X, 10 (2008),
+  3188-3196.
+  
+  [[20XMP43[120X]  [16XMcculloch, W. and Pitts, W.[116X, [17XA Logical Calculus of Ideas Immanent in
+  Nervous Activity[117X, [18XBulletin of Mathematical Biophysics[118X, [19X5[119X (1943), 127--147.
+  
+  [[20XNJSS16[120X]  [16XKulkarni  N.,  , Yang J., , Seo J. S., and Vrudhula S., [116X, [17XReducing
+  Power,  Leakage,  and  Area  of  Standard-Cell  ASICs  Using Threshold Logic
+  Flip-Flops[117X,  [18XIEEE  Transactions  on  Very  Large  Scale  Integration  (VLSI)
+  Systems[118X, [19X24[119X, 9 (2016), 2873-2886.
+  
+  [[20XRos58[120X]   [16XRosenblatt,   F.[116X,   [17XThe  Perceptron:  A  Probabilistic  Model  for
+  Information  Storage  and  Organization  in  The Brain[117X, [18XPsychological Review[118X
+  (1958), 65--386.
+  
+  
+  
+  [32X

@@ -1,0 +1,37 @@
+  
+  
+  [1XIndex[101X
+  
+  [2XBooleanFunctionByNeuralNetwork[102X 3.2-1 
+  [2XBooleanFunctionByNeuralNetworkDASG[102X 3.2-2 
+  [2XBooleanFunctionBySTE[102X 2.2-13 
+  [2XCharacteristicVectorOfFunction[102X 2.2-1 
+  [2XComparison of Threshold Elements[102X 2.1-6 
+  [2XInfluenceOfVariable[102X 2.2-5 
+  [2XIsCharacteristicVectorOfSTE[102X 2.2-2 
+  [2XIsInverseInKernel[102X 2.2-10 
+  [2XIsKernelContainingPrecedingVectors[102X 2.2-11 
+  [2XIsNeuralNetwork[102X 3.1-2 
+  [2XIsRKernelBiggerOfCombSum[102X 2.2-12 
+  [2XIsThresholdElement[102X 2.1-2 
+  [2XIsUnateBooleanFunction[102X 2.2-4 
+  [2XIsUnateInVariable[102X 2.2-3 
+  [2XKernelOfBooleanFunction[102X 2.2-8 
+  [2XNeuralNetwork[102X 3.1-1 
+  [2XOutputOfNeuralNetwork[102X 3.1-3 
+  [2XOutputOfThresholdElement[102X 2.1-3 
+  [2XPDBooleanFunctionBySTE[102X 2.2-14 
+  [2XRandomThresholdElement[102X 2.1-5 
+  [2XReducedKernelOfBooleanFunction[102X 2.2-9 
+  [2XSelfDualExtensionOfBooleanFunction[102X 2.2-6 
+  [2XSplitBooleanFunction[102X 2.2-7 
+  [2XSTESynthesis[102X 2.3-5 
+  [2XStructureOfThresholdElement[102X 2.1-4 
+  [2XThresholdElement[102X 2.1-1 
+  [2XThresholdElementBatchTraining[102X 2.3-2 
+  [2XThresholdElementTraining[102X 2.3-1 
+  [2XWinnow2Algorithm[102X 2.3-4 
+  [2XWinnowAlgorithm[102X 2.3-3 
+  
+  
+  -------------------------------------------------------

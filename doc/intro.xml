@@ -1,0 +1,93 @@
+<!--
+
+  intro.xml          thelma package documentation                 Victor Bovdi
+																  Vasyl Laver
+
+  Copyright (C) 2018  Victor Bovdi, Vasyl Laver, Department of Mathematical Sciences,
+  UAEU, Al Ain, United Arab Emirates
+  This file is free software, see license information at the end.
+
+  This chapter gives a short introduction and explains the philosophy
+  behind the package.
+
+-->
+
+<Chapter Label="intro">
+<Heading>Introduction</Heading>
+
+<Package>Thelma</Package> stands for ``THreshold ELements, Modelling and Applications".
+This package is dedicated to realization of Boolean functions by the means of the threshold elements and multilayered perceptrons.
+Threshold elements were introduced in <Cite Key="McCulloch43a"/>. A certain number of articles on threshold logic appeared in 60-s and 70-s, however this field is regaining a considerable interest
+nowadays as well (see <Cite Key="Horvath16"/>,<Cite Key="Horvath1994"/>, <Cite Key="Gowda11"/>, <Cite Key="Kulkarni16"/>, e.t.c). <P/>
+
+We mostly refer to the methods proposed in <Cite Key="GecheBovdi80"/>, <Cite Key="GecheRobotyshyn83"/>, <Cite Key="GecheMulesa2017"/>, and <Cite Key="Dertouzos65"/>.
+
+
+<Section Label="overview">
+<Heading>Overview over this manual</Heading>
+Chapter <Ref Chap="thr_elements"/> describes the functions operating with the threshold elements.
+They include the basic operations, the functions that verify the realizability of a given Boolean function by a single threshold element, and some iterative methods.
+Chapter <Ref Chap="thr_networks"/> describes the functions for neural networks, built from the threshold elements.
+</Section>
+
+<Section Label="instal">
+<Heading>Installation</Heading>
+To get the newest version of this &GAP; 4 package download one of the
+archive files
+<List>
+<Item> <F>thelma-x.x.tar.gz</F> </Item>
+<Item> <F>thelma-x.x.tar.bz2</F> </Item>
+<Item> <F>thelma-x.x.zip</F> </Item>
+</List>
+and unpack it using
+<Verb>
+gunzip thelma-x.x.tar.gz; tar xvf thelma-x.x.tar
+</Verb>
+or
+<Verb>
+bzip2 -d thelma-x.x.tar.bz2; tar xvf thelma-x.x.tar
+</Verb>
+or
+<Verb>
+unzip -x thelma-x.x.zip
+</Verb>
+respectively.
+<P/>
+
+Do this in a directory called <Q><F>pkg</F></Q>, preferably (but not
+necessarily) in the <Q><F>pkg</F></Q> subdirectory of your &GAP; 4
+installation. It creates a subdirectory called <Q><F>thelma</F></Q>.<P/>
+
+As <Package>Thelma</Package> has no additional C libraries, there is no need in any additional installation steps.<P/>
+
+</Section>
+
+
+<Section Label="feedback">
+<Heading>Feedback</Heading>
+
+For bug reports, feature requests and suggestions, please write us an e-mail.
+</Section>
+
+
+
+
+
+<!-- ############################################################ -->
+
+</Chapter>
+
+<!--
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; version 2 of the License.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->

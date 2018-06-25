@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+
+<TitlePage>
+  <Title>
+    GAP 4 Package
+	Thelma
+  </Title>
+  <Subtitle>
+    THreshold ELements, Modeling and Applications
+  </Subtitle>
+  <Version>
+    1.0.0
+  </Version>
+  <Author>
+    Victor Bovdi<Alt Only="LaTeX"><Br/></Alt>
+<Address>
+Department of Mathematical Sciences<Br/>
+UAEU<Br/>
+Al Ain, United Arab Emirates<Br/>
+</Address>
+<Email>vbovdi@gmail.com</Email>
+
+  </Author>
+  <Author>
+    Vasyl Laver<Alt Only="LaTeX"><Br/></Alt>
+<Address>
+Department of Mathematical Sciences<Br/>
+UAEU<Br/>
+Al Ain, United Arab Emirates<Br/>
+</Address>
+<Email>vasyl.laver@uzhnu.edu.ua</Email>
+
+  </Author>
+  <Date>
+   2018
+  </Date>
+  <Copyright>
+    &copyright; 2018 by the authors<P/>
+
+This package may be distributed under the terms and conditions of the
+GNU Public License Version 2 or higher.
+
+  </Copyright>
+  </TitlePage>

@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (thelma) - Chapter 2: Threshold Elements</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2.html">[MathJax off]</a></p>
+<p><a id="X83DFEF607CDA3594" name="X83DFEF607CDA3594"></a></p>
+<div class="ChapSects"><a href="chap2_mj.html#X83DFEF607CDA3594">2 <span class="Heading">Threshold Elements</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X82EB5BE77F9F686A">2.1 <span class="Heading">Basic Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X853FF8AC85E5C4CE">2.1-1 ThresholdElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7E7F95D57EB87BB4">2.1-2 IsThresholdElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7F293D2D810ADBBB">2.1-3 OutputOfThresholdElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8116985278C60D33">2.1-4 StructureOfThresholdElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X800C6898856CD0E9">2.1-5 RandomThresholdElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C9E64E17B07DF58">2.1-6 Comparison of Threshold Elements</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7DB8E3E87D8AD820">2.2 <span class="Heading">Single Threshold Element Realizability</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8351E15B7CCDEB62">2.2-1 CharacteristicVectorOfFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8502A0827ECF1FFE">2.2-2 IsCharacteristicVectorOfSTE</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8203046F7C97EAFE">2.2-3 IsUnateBooleanFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8108DE5280908841">2.2-4 KernelOfBooleanFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B1B54877B354F23">2.2-5 ReducedKernelOfBooleanFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B0855E28717AF12">2.2-6 IsInverseInKernel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83B234DB7F260879">2.2-7 IsKernelContainingPrecedingVectors</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7877118A7A9C51CB">2.2-8 IsRKernelBiggerOfCombSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B6FD63A78EDEC8F">2.2-9 IsRealizableBySTE</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83A7B7A284E14D7F">2.2-10 PDIsRealizableBySTE</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7D0584857E0D2265">2.3 <span class="Heading">Iterative Training Methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83567B7D79958EBF">2.3-1 ThresholdElementTraining</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83CD889E8125E949">2.3-2 ThresholdElementBatchTraining</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81FEA8AF80573A12">2.3-3 WinnowAlgorithm</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85162EF17EE09E50">2.3-4 Winnow2Algorithm</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Threshold Elements</span></h3>
+
+<p><a id="X82EB5BE77F9F686A" name="X82EB5BE77F9F686A"></a></p>
+
+<h4>2.1 <span class="Heading">Basic Operations</span></h4>
+
+<p>For a given vector and threshold , a threshold element is defined by following relations:</p>
+
+<p class="center">\[
+f(x_1,x_2,\dots,x_n) = 1, \quad \textrm{if} \quad \sum_{i = 1}^{n} w_i \geq T, \quad \textrm{and} \quad f(x_1,x_2,\dots,x_n) = 0 \quad \textrm{otherwise}.
+\]</p>
+
+<p>Here <span class="SimpleMath">\(f(x_1,x_2,\dots,x_n)\)</span> is the binary output of the device (0 or 1), <span class="SimpleMath">\(x_i\)</span> - i-th input to the device (0 or 1), <span class="SimpleMath">\(n\)</span> - total number of inputs.</p>
+
+<p>The vector <span class="SimpleMath">\(w\)</span> is called a weight vector, likewise the <span class="SimpleMath">\(x=(x_1, x_2, \ldots, x_n)\)</span> is called the input vector.</p>
+
+<p>The way to create a threshold element in <code class="code">GAP</code> is the following.</p>
+
+<p><a id="X853FF8AC85E5C4CE" name="X853FF8AC85E5C4CE"></a></p>
+
+<h5>2.1-1 ThresholdElement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ThresholdElement</code>( <var class="Arg">Weights</var>, <var class="Arg">Threshold</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p><code class="code">Weights</code> are presented by a list of rational numbers. The number of weights equals to the number of variables of modelled function. <code class="code">Threshold</code> is an arbitrary rational number.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=ThresholdElement([1,2],3);</span>
+&lt; threshold element with weight vector [1,2] and threshold 3 &gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(te);</span>
+Weight vector = [ 1, 2 ], Threshold = 3.
+Threshold Element realizes the function f :
+   [ 0, 0 ] || 0
+   [ 0, 1 ] || 0
+   [ 1, 0 ] || 0
+   [ 1, 1 ] || 1
+   Sum of Products:   [ 3 ]
+
+</pre></div>
+
+<p>For bigger threshold elements <span class="SimpleMath">\((n \geq 5)\)</span> the function <code class="code">Display</code> prints only the Sum of Product (or Product of Sums) representaion of Boolean function.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w:=[1,2,4,-4,6,8,10,-25,6,32];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T:=60;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=ThresholdElement(w,T);</span>
+&lt; threshold element with weight vector [ 1, 2, 4, -4, 6, 8, 10, -25,
+  6, 32 ] and threshold 60 &gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(te);</span>
+Weight vector = [ 1, 2, 4, -4, 6, 8, 10, -25, 6, 32 ], Threshold = 60.
+Threshold Element realizes the function f :
+Sum of Products:[ 59, 155, 185, 187, 251, 315, 379, 411, 427, 441, 443, 507, 571,
+667, 697, 699, 763, 827, 891, 923, 939, 953, 955, 1019 ]
+
+</pre></div>
+
+<p><a id="X7E7F95D57EB87BB4" name="X7E7F95D57EB87BB4"></a></p>
+
+<h5>2.1-2 IsThresholdElement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsThresholdElement</code>( <var class="Arg">Obj</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For a given object <code class="code">Obj</code> function <code class="code">IsThresholdElement</code> determines whether <code class="code">Obj</code> is a threshold element.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=ThresholdElement([1,2],3);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsThresholdElement(te);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=ThresholdElement([1,2]);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsThresholdElement(te);</span>
+false
+
+</pre></div>
+
+<p><a id="X7F293D2D810ADBBB" name="X7F293D2D810ADBBB"></a></p>
+
+<h5>2.1-3 OutputOfThresholdElement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OutputOfThresholdElement</code>( <var class="Arg">ThrEl</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Each threshold element realizes some Boolean function. <code class="code">OutputOfThresholdElement</code> returns a vector over <span class="SimpleMath">\(GF(2)\)</span>, which represents the Boolean function, realized by given threshold element.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=ThresholdElement([1,2],3);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=OutputOfThresholdElement(te);</span>
+[ 0*Z(2), 0*Z(2), 0*Z(2), Z(2)^0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(f,Order);</span>
+[ 0, 0, 0, 1 ]
+
+</pre></div>
+
+<p><a id="X8116985278C60D33" name="X8116985278C60D33"></a></p>
+
+<h5>2.1-4 StructureOfThresholdElement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StructureOfThresholdElement</code>( <var class="Arg">ThrEl</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For a given threshold element <code class="code">ThrElement</code> function <code class="code">StructureOfThresholdElement</code> returns structure vector [<code class="code">Weights</code>,<code class="code">Threshold</code>].</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=ThresholdElement([1,2],3);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sv:=StructureOfThresholdElement(te);</span>
+[ [ 1, 2 ], 3 ]
+
+</pre></div>
+
+<p><a id="X800C6898856CD0E9" name="X800C6898856CD0E9"></a></p>
+
+<h5>2.1-5 RandomThresholdElement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomThresholdElement</code>( <var class="Arg">NumVar</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Given the number of variables <code class="code">NumVar</code>, returns a a threshold element of <code class="code">NumVar</code> variables with pseudo random weight vector and threshold.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=RandomThresholdElement(4);</span>
+&lt; threshold element with weight vector [ 7, -8, -6, 10] and threshold 2 &gt;
+
+</pre></div>
+
+<p><a id="X7C9E64E17B07DF58" name="X7C9E64E17B07DF58"></a></p>
+
+<h5>2.1-6 Comparison of Threshold Elements</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Comparison of Threshold Elements</code>( <var class="Arg">ThrEl1</var>, <var class="Arg">ThrEl2</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>By comparison of two threshold elements we mean the comparison of vectors, representing the functions, which they realize. See the example below.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te1:=ThresholdElement([1,2],3);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(OutputOfThresholdElement(te1),Order);</span>
+[ 0, 0, 0, 1 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te2:=ThresholdElement([1,2],0);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(OutputOfThresholdElement(te2),Order);</span>
+[ 1, 1, 1, 1 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te3:=ThresholdElement([1,1],2);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(OutputOfThresholdElement(te3),Order);</span>
+[ 0, 0, 0, 1 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te1&lt;te2;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te1&gt;te2;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te1=te3;</span>
+true
+
+</pre></div>
+
+<p><a id="X7DB8E3E87D8AD820" name="X7DB8E3E87D8AD820"></a></p>
+
+<h4>2.2 <span class="Heading">Single Threshold Element Realizability</span></h4>
+
+<p>One of the most important questions is whether a Boolean function can be realized by a single threshold element (STE). If a Boolean function can be realized by a STE it is called a <code class="code">Threshold Function</code>. This section is dedicated to verification of STE-realizability.</p>
+
+<p><a id="X8351E15B7CCDEB62" name="X8351E15B7CCDEB62"></a></p>
+
+<h5>2.2-1 CharacteristicVectorOfFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CharacteristicVectorOfFunction</code>( <var class="Arg">Func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For any Boolean function there exists a vector, which is called the <code class="code">Characteristic Vector</code>. This vector allows to answer the question if the given function is realizable by a single threshold element, or not <a href="chapBib_mj.html#biBDertouzos65">[Der65]</a>.</p>
+
+<p>In <strong class="pkg">Thelma</strong> package there are three different ways to input a Boolean function:</p>
+
+<p>(i.) By a vector over <span class="SimpleMath">\(GF(2)\)</span>;</p>
+
+<p>(ii.) By a string;</p>
+
+<p>(iii.) By a polynomial over <span class="SimpleMath">\(GF(2)\)</span>.</p>
+
+<p>In the latter case we also need to enter the number of variables of <span class="SimpleMath">\(f\)</span> (as it is possible, for example, that <span class="SimpleMath">\(f(x,y)=x\)</span>; then <span class="SimpleMath">\(n=2\)</span>).</p>
+
+<p>Let us find characteristic vector for a given function.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];</span>
+[ 0*Z(2), 0*Z(2), 0*Z(2), Z(2)^0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CharacteristicVectorOfFunction(f);</span>
+[ 2, 2, 2 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:="0001";</span>
+"0001"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CharacteristicVectorOfFunction(f);</span>
+[ 2, 2, 2 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x:=Indeterminate(GF(2),"x");</span>
+x
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">y:=Indeterminate(GF(2),"y");</span>
+y
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x+y;</span>
+x+y
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CharacteristicVectorOfFunction(f);</span>
+Enter the number of variables (n&gt;=2):
+2
+[ 2, 2, 2 ]
+
+</pre></div>
+
+<p>Once the vector is obtained, one can check if it is in the tables of realizable functions. The tables are given for <span class="SimpleMath">\(n \leq 6\)</span> variables.</p>
+
+<p><a id="X8502A0827ECF1FFE" name="X8502A0827ECF1FFE"></a></p>
+
+<h5>2.2-2 IsCharacteristicVectorOfSTE</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCharacteristicVectorOfSTE</code>( <var class="Arg">ChVect</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Using the function, described in the section above, one can find the characteristic vector of a given Boolean function. However, this function is restricted to characteristic vectors of Boolean functions with not more than six variables. If <code class="code">ChVect</code> is a characteristic vector of some threshold function, <code class="code">IsCharacteristicVectorOfSTE</code> returns <code class="code">true</code>, otherwise it returns <code class="code">false</code>.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x*y;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v:=CharacteristicVectorOfFunction(f);</span>
+Enter the number of variables (n&gt;=2):
+2
+[ 2, 2, 2 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v:=IsCharacteristicVectorOfSTE(f);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x+y;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v:=CharacteristicVectorOfFunction(f);</span>
+Enter the number of variables (n&gt;=2):
+2
+[ 0, 0, 0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v:=IsCharacteristicVectorOfSTE(f);</span>
+false
+
+</pre></div>
+
+<p><a id="X8203046F7C97EAFE" name="X8203046F7C97EAFE"></a></p>
+
+<h5>2.2-3 IsUnateBooleanFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsUnateBooleanFunction</code>( <var class="Arg">Func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>A unate function is a type of Boolean function which has monotonic properties. It is known, that all threshold functions are unate. However, the opposite is not true - there are many unate functions, that can not be realized by STE <a href="chapBib_mj.html#biBAvedillo1999">[JMR99]</a>. A function <span class="SimpleMath">\(f(x_1,\ldots ,x_n)\)</span> is said to be positive unate in <span class="SimpleMath">\(x_{i}\)</span> if for all possible values of <span class="SimpleMath">\(x_{j}\)</span>, <span class="SimpleMath">\(j\neq i\)</span></p>
+
+<p class="center">\[
+f(x_{1},x_{2},\ldots ,x_{i-1},1,x_{i+1},\ldots ,x_{n})\geq f(x_{1},x_{2},\ldots ,x_{i-1},0,x_{i+1},\ldots ,x_{n}).
+\]</p>
+
+<p>Likewise, it is negative unate in <span class="SimpleMath">\(x_{i}\)</span> if</p>
+
+<p class="center">\[
+f(x_{1},x_{2},\ldots ,x_{i-1},0,x_{i+1},\ldots ,x_{n})\geq f(x_{1},x_{2},\ldots ,x_{i-1},1,x_{i+1},\ldots ,x_{n}).
+\]</p>
+
+<p>If for every <span class="SimpleMath">\(x_{i}\)</span> <span class="SimpleMath">\(f\)</span> is either positive or negative unate in the variable <span class="SimpleMath">\(x_{i}\)</span> then it is said to be unate (note that some <span class="SimpleMath">\(x_{i}\)</span> may be positive unate and some negative unate to satisfy the definition of unate function).</p>
+
+<p>A function is binate if it is not unate (i.e., is neither positive unate nor negative unate in at least one of its variables).</p>
+
+<p>Function <code class="code">IsUnateBooleanFunction</code> for a given Boolean function <code class="code">Func</code> answers the question whether <code class="code">Func</code> is unate.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=[0*Z(2),Z(2)^0,Z(2)^0,Z(2)^0];</span>
+[ 0*Z(2), Z(2)^0, Z(2)^0, Z(2)^0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsUnateBooleanFunction(f);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:="1001";</span>
+"1001"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsUnateBooleanFunction(f);</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x+y;</span>
+x+y
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsUnateBooleanFunction(f);</span>
+Enter the number of variables (n&gt;=2):
+2
+false
+
+</pre></div>
+
+<p><a id="X8108DE5280908841" name="X8108DE5280908841"></a></p>
+
+<h5>2.2-4 KernelOfBooleanFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KernelOfBooleanFunction</code>( <var class="Arg">Func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>This function realizes the concept of kernel, introduced in <a href="chapBib_mj.html#biBGecheBovdi80">[ABGG80]</a>.</p>
+
+<p>For Boolean function <span class="SimpleMath">\(f(x_1,\ldots,x_n)\)</span> we shall define sets <span class="SimpleMath">\(f^{-1}(1)\)</span> and <span class="SimpleMath">\(f^{-1}(0)\)</span>:</p>
+
+<p>If through <span class="SimpleMath">\(|f^{-1}(i)|\)</span>, <span class="SimpleMath">\(i \in \{0,1\}\)</span> we denote the number of elements in <span class="SimpleMath">\(f^{-1}(i)\)</span>, then kernel <span class="SimpleMath">\(K(f)\)</span> of Boolean function is defined as</p>
+
+<p class="center">\[
+K(f)=f^{-1}(1), \; \textrm{if} \; |f^{-1}(1)| \geq |f^{-1}(0)|; \quad K(f)=f^{-1}(0), \; \textrm{otherwise.}
+\]</p>
+
+<p>For a given Boolean function <code class="code">Func</code> the function <code class="code">KernelOfBooleanFunction</code> retuns a list. First element represents the kernel, the second element equals either <span class="SimpleMath">\(1\)</span> or <span class="SimpleMath">\(0\)</span>.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];</span>
+[ 0*Z(2), 0*Z(2), 0*Z(2), Z(2)^0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a2:=KernelOfBooleanFunction(f);</span>
+[ [ [ Z(2)^0, Z(2)^0 ] ], 1 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(k[1]);</span>
+ 1 1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:="0111";</span>
+"0111"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k:=KernelOfBooleanFunction(f);</span>
+[ [ [ 0*Z(2), 0*Z(2) ] ], 0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(k[1]);</span>
+ . .
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x*y+z;</span>
+Enter the number of variables (n&gt;=3):
+3
+x*y+z
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k:=KernelOfBooleanFunction(f);</span>
+[ [ [ 0*Z(2), 0*Z(2), Z(2)^0 ], [ 0*Z(2), Z(2)^0, Z(2)^0 ],
+[ Z(2)^0, 0*Z(2), Z(2)^0 ], [ Z(2)^0, Z(2)^0, 0*Z(2) ] ], 1 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(k[1]);</span>
+ . . 1
+ . 1 1
+ 1 . 1
+ 1 1 .
+
+</pre></div>
+
+<p><a id="X7B1B54877B354F23" name="X7B1B54877B354F23"></a></p>
+
+<h5>2.2-5 ReducedKernelOfBooleanFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReducedKernelOfBooleanFunction</code>( <var class="Arg">Func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Assume <span class="SimpleMath">\(K(f)=(a_1,a_2,\ldots,a_n)\)</span> is is the kernel of Boolean function <span class="SimpleMath">\(f(x_1,x_2,\ldots,x_n)\)</span> and</p>
+
+<p class="center">\[
+K(f)_i=\{a_i \oplus a_1, a_i \oplus a_2, \ldots, a_i \oplus a_n\}
+\]</p>
+
+<p>is the reduced kernel of function <span class="SimpleMath">\(f\)</span> relative to element <span class="SimpleMath">\(a_i \in K(f)\)</span>. We denote the set of reduced kernels of <span class="SimpleMath">\(f\)</span> as</p>
+
+<p class="center">\[
+T(f)=\{K(f)_i|i=1,2,\ldots,q.\}
+\]</p>
+
+<p>Let us find the set of reduced kernels for last function of previous example.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rk:=ReducedKernelOfBooleanFunction(k[1]);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j:=1;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for i in rk do Print(j,".\n"); Display(i); Print("\n"); j:=j+1; od;</span>
+1.
+ . . .
+ . 1 .
+ 1 . .
+ 1 1 1
+
+2.
+ . 1 .
+ . . .
+ 1 1 .
+ 1 . 1
+
+3.
+ 1 . .
+ 1 1 .
+ . . .
+ . 1 1
+
+4.
+ 1 1 1
+ 1 . 1
+ . 1 1
+ . . .
+
+</pre></div>
+
+<p><a id="X7B0855E28717AF12" name="X7B0855E28717AF12"></a></p>
+
+<h5>2.2-6 IsInverseInKernel</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsInverseInKernel</code>( <var class="Arg">Func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>If <span class="SimpleMath">\(f\)</span> is a threshold function, then its kernel does not contain inverse vectors. <code class="code">IsInverseInKernel</code> returns <code class="code">true</code> if there are inverse vectors in the kernel (this means that <span class="SimpleMath">\(f\)</span> is not STE-realizable) or <code class="code">false</code> otherwise.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x*y+z;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k:=KernelOfBooleanFunction(f);;</span>
+Enter the number of variables (n&gt;=3):
+3
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(k[1]);</span>
+ . . 1
+ . 1 1
+ 1 . 1
+ 1 1 .
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInverseInKernel(f);</span>
+ true
+
+</pre></div>
+
+<p><a id="X83B234DB7F260879" name="X83B234DB7F260879"></a></p>
+
+<h5>2.2-7 IsKernelContainingPrecedingVectors</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsKernelContainingPrecedingVectors</code>( <var class="Arg">Func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>We say that vector <span class="SimpleMath">\(a=(\alpha_1,\alpha_2,\ldots,\alpha_n) \in \mathbf{Z}_2^n\)</span> precedes vector <span class="SimpleMath">\(b=(\beta_1,\beta_2,\ldots,\beta_n) \in \mathbf{Z}_2^n\)</span> <span class="SimpleMath">\((a \prec b)\)</span> if <span class="SimpleMath">\(\alpha_i \geq \beta_i, (i=1,\ldots n)\)</span>.</p>
+
+<p>Denote through <span class="SimpleMath">\(M_a\)</span> the set of all vectors from <span class="SimpleMath">\(\mathbf{Z}_2^n\)</span>, which precede vector <span class="SimpleMath">\(a\)</span>.</p>
+
+<p>If Boolean function <span class="SimpleMath">\(f\)</span> is implemented by one threshold element, then there exists such element <span class="SimpleMath">\(K(f)_i\)</span> in the set <span class="SimpleMath">\(T(f)\)</span> of reduced kernels, that</p>
+
+<p class="center">\[
+\forall a \in K(f)_i: M_a \subset K(f)_i.
+\]</p>
+
+<p>If <code class="code">IsKernelContainingPrecedingVectors</code> returns <code class="code">false</code> for a given function <span class="SimpleMath">\(f\)</span>, then <span class="SimpleMath">\(f\)</span> can not be realized by one threshold element.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x*y+z;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsKernelContainingPrecedingVectors(f);</span>
+Enter the number of variables (n&gt;=3):
+3
+false
+ 
+</pre></div>
+
+<p><a id="X7877118A7A9C51CB" name="X7877118A7A9C51CB"></a></p>
+
+<h5>2.2-8 IsRKernelBiggerOfCombSum</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsRKernelBiggerOfCombSum</code>( <var class="Arg">RKer</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Let <span class="SimpleMath">\(k_i^* = max\{||a|| \mid a \in T(f) \}\)</span>, where <span class="SimpleMath">\(T(f)\)</span> is the set of reduced kernels of function <span class="SimpleMath">\(f(x_1,x_2,\ldots,x_n)\)</span>, <span class="SimpleMath">\(k_A^*=\min\{k_i^* \mid i=1, 2, \ldots,n\}\)</span>. If Boolean function <span class="SimpleMath">\(f\)</span> is implemented by one threshold element, then the following condition holds:</p>
+
+<p class="center">\[
+|A| \geq \sum_{i=0}^{k_A^*} {{k_A^*}\choose{i}}.
+\]</p>
+
+<p>If <code class="code">IsRKernelBiggerOfCombSum</code> returns <code class="code">false</code> for a given function <span class="SimpleMath">\(f\)</span>, then <span class="SimpleMath">\(f\)</span> can not be realized by one threshold element.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x+y;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k:=KernelOfBooleanFunction(f);;</span>
+Enter the number of variables (n&gt;=2):
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rk:=ReducedKernelOfBooleanFunction(k[1]);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRKernelBiggerOfCombSum(rk);</span>
+false
+
+</pre></div>
+
+<p><a id="X7B6FD63A78EDEC8F" name="X7B6FD63A78EDEC8F"></a></p>
+
+<h5>2.2-9 IsRealizableBySTE</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsRealizableBySTE</code>( <var class="Arg">Func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>This is the main function. For a given function <code class="code">Func</code> it determines whether this function can be realizable by a single-threshold element. If <code class="code">Func</code> is realizable, <code class="code">IsRealizableBySTE</code> returns a threshold element with integer weights and threshold. Otherwise it returns an empty list [].</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];</span>
+[ 0*Z(2), 0*Z(2), 0*Z(2), Z(2)^0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=IsRealizableBySTE(f);</span>
+&lt; threshold element with weight vector [ 1, 2 ] and threshold 3 &gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:="11001000";</span>
+"11001000"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=IsRealizableBySTE(f);</span>
+&lt; threshold element with weight vector [ -1, -4, -2 ] and threshold -2 &gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x+y;</span>
+x+y
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=IsRealizableBySTE(f);</span>
+&lt; threshold element with weight vector [ -1, -4, -2 ] and threshold -2 &gt;
+Enter the number of variables (n&gt;=2):
+2
+[  ]
+
+</pre></div>
+
+<p><a id="X83A7B7A284E14D7F" name="X83A7B7A284E14D7F"></a></p>
+
+<h5>2.2-10 PDIsRealizableBySTE</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PDIsRealizableBySTE</code>( <var class="Arg">Func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Let <span class="SimpleMath">\(f(x_1,x_2,\ldots,x_n)\)</span> be a partially defined Boolean function, <span class="SimpleMath">\(f^{-1}(1)\)</span>, <span class="SimpleMath">\(f^{-1}(0)\)</span>, <span class="SimpleMath">\(f^{-1}(x)\)</span> the sets of Boolean vectors on which the function, respectively, takes the values 1, 0, undefined. An partially defined Boolean function <span class="SimpleMath">\(f(x_1,x_2,\ldots,x_n)\)</span> is called a threshold function if there is a <span class="SimpleMath">\(n\)</span>-dimensional real vector <span class="SimpleMath">\(w=(w_1,w_2,\ldots,w_n)\)</span> and a threshold <span class="SimpleMath">\(T\)</span> such that</p>
+
+<p class="center">\[
+x \in f^{-1}(1) \quad \Longrightarrow \quad x\cdot w^T \geq T, \quad x \in f^{-1}(0)\quad \Longrightarrow \quad x\cdot w^T &lt; T,
+\]</p>
+
+<p>Function <code class="code">PDIsRealizableBySTE</code> for a given partially defined Boolean function <code class="code">Func</code> (presented as a string, where <span class="SimpleMath">\(x\)</span> presents the undefined values) tests if it can be relizaed by a single-threshold element.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:="1x001x0x";</span>
+"1x001x0x"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=PDIsRealizableBySTE(f);</span>
+&lt; threshold element with weight vector [ -1, -2, -3 ] and threshold -1 &gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(OutputOfThresholdElement(te),Order);</span>
+[ 1, 0, 0, 0, 1, 0, 0, 0 ]
+
+</pre></div>
+
+<p><a id="X7D0584857E0D2265" name="X7D0584857E0D2265"></a></p>
+
+<h4>2.3 <span class="Heading">Iterative Training Methods</span></h4>
+
+<p><strong class="pkg">Thelma</strong> also provides a few iterative methods for threshold element training. For a given function <span class="SimpleMath">\(f\)</span>, and step <span class="SimpleMath">\(s\)</span> we can find a threshold element, implementing this function (or receive an empty list if <span class="SimpleMath">\(f\)</span> is not realizable by a STE.</p>
+
+<p><a id="X83567B7D79958EBF" name="X83567B7D79958EBF"></a></p>
+
+<h5>2.3-1 ThresholdElementTraining</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ThresholdElementTraining</code>( <var class="Arg">ThrEl</var>, <var class="Arg">Step</var>, <var class="Arg">Func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>This is a basic iterative method for perceptron training <a href="chapBib_mj.html#biBRosenblatt58">[Ros58]</a>. For a given function <code class="code">Func</code> this function finds a threshold element, realizing <code class="code">Func</code> (if such threshold element exists). Here <code class="code">ThrEl</code> is some threshold element for the first iteration. <code class="code">Step</code> defines the value on which we change parameters while training threshold element.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];</span>
+[ 0*Z(2), 0*Z(2), 0*Z(2), Z(2)^0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=ThresholdElement([1,1],1);</span>
+&lt; threshold element with weight vector [ 1, 1 ] and threshold 1 &gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te2:=ThresholdElementTraining(te,1,f);</span>
+&lt; threshold element with weight vector [ 2, 1 ] and threshold 3 &gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(OutputOfThresholdElement(te2),Order);|</span>
+[ 0, 0, 0, 1 ]
+
+</pre></div>
+
+<p><a id="X83CD889E8125E949" name="X83CD889E8125E949"></a></p>
+
+<h5>2.3-2 ThresholdElementBatchTraining</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ThresholdElementBatchTraining</code>( <var class="Arg">ThrEl</var>, <var class="Arg">Step</var>, <var class="Arg">Func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For a given function <code class="code">Func</code> this function finds a threshold element, realizing <code class="code">Func</code> (if such threshold element exists) via batch training. Here <code class="code">ThrEl</code> is some threshold element for the first iteration. <code class="code">Step</code> defines the value on which we change parameters while training threshold element.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];</span>
+[ 0*Z(2), 0*Z(2), 0*Z(2), Z(2)^0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=ThresholdElement([1,1],1);</span>
+&lt; threshold element with weight vector [ 1, 1 ] and threshold 1 &gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te2:=ThresholdElementBatchTraining(te,1,f);</span>
+&lt; threshold element with weight vector [ 1, 1 ] and threshold 2 &gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(OutputOfThresholdElement(te2),Order);|</span>
+[ 0, 0, 0, 1 ]
+
+</pre></div>
+
+<p><a id="X81FEA8AF80573A12" name="X81FEA8AF80573A12"></a></p>
+
+<h5>2.3-3 WinnowAlgorithm</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WinnowAlgorithm</code>( <var class="Arg">Func</var>, <var class="Arg">Step</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>There are certain classes of functions, for which there are designed faster learning algorithms, than the abovementioned Perceptron learning algorithm. One of such classes is the class of monotone disjunctions <a href="chapBib_mj.html#biBLittlestone88">[Lit88]</a>.</p>
+
+<p>A monotone disjunction is a disjunction in which no literal appears negated, that is, a function of a form</p>
+
+<p class="center">\[
+f(x_1,x_2,\ldots,x_n)=x_{i_1} \vee \ldots \vee x_{i_k}.
+\]</p>
+
+<p>For a given function <code class="code">Func</code>, which is a monotone disjunction, <code class="code">WinnowAlgorithm</code> finds a threshold element, realizing <code class="code">Func</code>. <code class="code">Step</code> defines the value on which we change parameters while running the algorithm.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x*y+x+y;</span>
+x*y+x+y;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=WinnowAlgorithm(f,2);</span>
+Enter the number of variables (n&gt;=2):
+2
+&lt; threshold element with weight vector [ 1, 1 ] and threshold 1 &gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(OutputOfThresholdElement(te),Order);|</span>
+[ 0, 1, 1, 1 ]
+
+</pre></div>
+
+<p><a id="X85162EF17EE09E50" name="X85162EF17EE09E50"></a></p>
+
+<h5>2.3-4 Winnow2Algorithm</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Winnow2Algorithm</code>( <var class="Arg">Func</var>, <var class="Arg">Step</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p><code class="code">Winnow2Algorithm</code> is a modification of <code class="code">WinnowAlgorithm</code>, which is suitable for a larger class of functions.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x*y;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=WinnowAlgorithm(f,2);</span>
+Enter the number of variables (n&gt;=2):
+2
+[  ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=Winnow2Algorithm(f,2);</span>
+Enter the number of variables (n&gt;=2):
+2
+&lt; threshold element with weight vector [ 1/2, 1/2 ] and threshold 1 &gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(OutputOfThresholdElement(te),Order);</span>
+[ 0, 0, 0, 1 ]
+
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

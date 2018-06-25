@@ -1,0 +1,61 @@
+  
+  [1X1 [33X[0;0YIntroduction[133X[101X
+  
+  [33X[0;0Y[5XThelma[105X  stands  for  ``THreshold ELements, Modelling and Applications". This
+  package is dedicated to realization of Boolean functions by the means of the
+  threshold  elements  and  multilayered  perceptrons. Threshold elements were
+  introduced  in  [MP43].  A  certain  number  of  articles on threshold logic
+  appeared  in  60-s  and 70-s, however this field is regaining a considerable
+  interest nowadays as well (see [EBT16],[Hor94], [GVKB11], [NJSS16], e.t.c).[133X
+  
+  [33X[0;0YWe  mostly  refer to the methods proposed in [ABGG80], [GPR83], [GMB17], and
+  [Der65].[133X
+  
+  
+  [1X1.1 [33X[0;0YOverview over this manual[133X[101X
+  
+  [33X[0;0YChapter  [14X2[114X  describes  the  functions operating with the threshold elements.
+  They   include   the   basic  operations,  the  functions  that  verify  the
+  realizability of a given Boolean function by a single threshold element, and
+  some  iterative  methods.  Chapter  [14X3[114X  describes  the  functions  for neural
+  networks, built from the threshold elements.[133X
+  
+  
+  [1X1.2 [33X[0;0YInstallation[133X[101X
+  
+  [33X[0;0YTo  get the newest version of this [5XGAP[105X 4 package download one of the archive
+  files[133X
+  
+  [30X    [33X[0;6Y[11Xthelma-x.x.tar.gz[111X[133X
+  
+  [30X    [33X[0;6Y[11Xthelma-x.x.tar.bz2[111X[133X
+  
+  [30X    [33X[0;6Y[11Xthelma-x.x.zip[111X[133X
+  
+  [33X[0;0Yand unpack it using[133X
+  
+  gunzip thelma-x.x.tar.gz; tar xvf thelma-x.x.tar
+  
+  [33X[0;0Yor[133X
+  
+  bzip2 -d thelma-x.x.tar.bz2; tar xvf thelma-x.x.tar
+  
+  [33X[0;0Yor[133X
+  
+  unzip -x thelma-x.x.zip
+  
+  [33X[0;0Yrespectively.[133X
+  
+  [33X[0;0YDo  this  in a directory called [21X[11Xpkg[111X[121X, preferably (but not necessarily) in the
+  [21X[11Xpkg[111X[121X  subdirectory  of  your  [5XGAP[105X  4  installation. It creates a subdirectory
+  called [21X[11Xthelma[111X[121X.[133X
+  
+  [33X[0;0YAs  [5XThelma[105X has no additional C libraries, there is no need in any additional
+  installation steps.[133X
+  
+  
+  [1X1.3 [33X[0;0YFeedback[133X[101X
+  
+  [33X[0;0YFor  bug  reports,  feature  requests  and  suggestions,  please write us an
+  e-mail.[133X
+  

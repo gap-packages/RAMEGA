@@ -1,0 +1,1009 @@
+  
+  [1X2 [33X[0;0YThreshold Elements[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YBasic Operations[133X[101X
+  
+  [33X[0;0YFor  a  given  real  vector  and  a  threshold  , the [3Xthreshold element[103X is a
+  function [22Xf: Z_2^n -> Z_2[122X defined by the following relations:[133X
+  
+  
+  [24X[33X[0;6Yf(x_1,\dots,x_n)  = 1, \quad \textrm{if} \quad \sum_{i = 1}^{n} w_i x_i \geq
+  T, \quad \textrm{and} \quad f(x_1,\dots,x_n) = 0 \quad \textrm{otherwise},[133X
+  
+  [124X
+  
+  [33X[0;0Yin which [22Xf(x_1,dots,x_n)[122X is the binary output (valued 0 or 1), each variable
+  [22Xx_i[122X is the i-th input (valued 0 or 1), and [22Xn[122X is the number of inputs.[133X
+  
+  [33X[0;0YThe  vector  [22Xw[122X  is the [3Xweight[103X vector, and the [22Xx=(x_1, ..., x_n)[122X is the [3Xinput[103X
+  vector.  The  vector  [22X(w_1,  ...,  w_n;T)[122X is called the [3Xstructure vector[103X (or
+  simply the [3Xstructure[103X) of the threshold element.[133X
+  
+  [1X2.1-1 ThresholdElement[101X
+  
+  [33X[1;0Y[29X[2XThresholdElement[102X( [3XWeights[103X, [3XThreshold[103X ) [32X function[133X
+  
+  [33X[0;0YFor  the  list  of  rational  numbers [10XWeights[110X and the rational [10XThreshold[110X the
+  function  [10XThresholdElement[110X  returns  a  threshold element with the number of
+  inputs equal to the length of the [10XWeights[110X list.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xte:=ThresholdElement([1,2],3);[127X[104X
+    [4X[28X< threshold element with weight vector [ 1, 2 ] and threshold 3 >[128X[104X
+    [4X[25Xgap>[125X [27XDisplay(te);[127X[104X
+    [4X[28XWeight vector = [ 1, 2 ], Threshold = 3.[128X[104X
+    [4X[28XThreshold Element realizes the function f :[128X[104X
+    [4X[28X[ 0, 0 ] || 0[128X[104X
+    [4X[28X[ 0, 1 ] || 0[128X[104X
+    [4X[28X[ 1, 0 ] || 0[128X[104X
+    [4X[28X[ 1, 1 ] || 1[128X[104X
+    [4X[28XSum of Products:[ 3 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe  function  [10XDisplay[110X  outputs  the stucture of the given threshold element
+  [10XThrEl[110X  and  the  Sum  of  Products  or Product of Sums representation of the
+  function  realized  by  [10XThrEl[110X.  For threshold elements of [22Xn ≤ 4[122X variables it
+  also prints the truth table of the realized Boolean function.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xw:=[1,2,4,-4,6,8,10,-25,6,32];;[127X[104X
+    [4X[25Xgap>[125X [27XT:=60;;[127X[104X
+    [4X[25Xgap>[125X [27Xte:=ThresholdElement(w,T);[127X[104X
+    [4X[28X< threshold element with weight vector [ 1, 2, 4, -4, 6, 8, 10, -25, 6, 32[128X[104X
+    [4X[28X ] and threshold 60 >[128X[104X
+    [4X[25Xgap>[125X [27XDisplay(te);[127X[104X
+    [4X[28XWeight vector = [ 1, 2, 4, -4, 6, 8, 10, -25, 6, 32 ], Threshold = 60.[128X[104X
+    [4X[28XThreshold Element realizes the function f :[128X[104X
+    [4X[28XSum of Products:[ 59, 155, 185, 187, 251, 315, 379, 411, 427, 441, 443, 507, 5\[128X[104X
+    [4X[28X71, 667, 697, 699, 763, 827, 891, 923, 939, 953, 955, 1019 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-2 IsThresholdElement[101X
+  
+  [33X[1;0Y[29X[2XIsThresholdElement[102X( [3XObj[103X ) [32X function[133X
+  
+  [33X[0;0YFor  the object [10XObj[110X the function [10XIsThresholdElement[110X returns [10Xtrue[110X if [10XObj[110X is a
+  threshold element (see [2XThresholdElement[102X ([14X2.1-1[114X)), and [10Xfalse[110X otherwise.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xte:=ThresholdElement([1,2],3);[127X[104X
+    [4X[28X< threshold element with weight vector [ 1, 2 ] and threshold 3 >[128X[104X
+    [4X[25Xgap>[125X [27XIsThresholdElement(te);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsThresholdElement([[1,2],3]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-3 OutputOfThresholdElement[101X
+  
+  [33X[1;0Y[29X[2XOutputOfThresholdElement[102X( [3XThrEl[103X ) [32X function[133X
+  
+  [33X[0;0YLet [22Xf: Z_2^n -> Z_2[122X be a Boolean function. The vector[133X
+  
+  
+  [24X[33X[0;6YF=(\;f(0),\; f(1),\; \ldots,\; f(2^n-1)\;)^T,[133X
+  
+  [124X
+  
+  [33X[0;0Ywhere  [22Xf(i)[122X  for  each [22Xi ∈ {0,1,...,2^n-1}[122X is the value of [22Xf(x_1,...,x_n)[122X of
+  the i-th row in the truth table, is called the [3Xtruth vector[103X.[133X
+  
+  [33X[0;0YFor  the  threshold  element  [10XThrEl[110X  the  function  [10XOutputOfThresholdElement[110X
+  returns the truth vector of the Boolean function, realized by [10XThrEl[110X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xte:=ThresholdElement([1,2],3);[127X[104X
+    [4X[28X< threshold element with weight vector [ 1, 2 ] and threshold 3 >[128X[104X
+    [4X[25Xgap>[125X [27Xf:=OutputOfThresholdElement(te);[127X[104X
+    [4X[28X[ 0, 0, 0, 1 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-4 StructureOfThresholdElement[101X
+  
+  [33X[1;0Y[29X[2XStructureOfThresholdElement[102X( [3XThrEl[103X ) [32X function[133X
+  
+  [33X[0;0YFor  the  threshold  element  [10XThrEl[110X the function [10XStructureOfThresholdElement[110X
+  returns   a   structure  vector  [[10XWeights[110X,[10XThreshold[110X]  (see  [2XThresholdElement[102X
+  ([14X2.1-1[114X)).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xte:=ThresholdElement([1,2],3);[127X[104X
+    [4X[28X< threshold element with weight vector [ 1, 2 ] and threshold 3 >[128X[104X
+    [4X[25Xgap>[125X [27Xsv:=StructureOfThresholdElement(te);[127X[104X
+    [4X[28X[ [ 1, 2 ], 3 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-5 RandomThresholdElement[101X
+  
+  [33X[1;0Y[29X[2XRandomThresholdElement[102X( [3XNumVar[103X, [3XLo[103X, [3XHi[103X ) [32X function[133X
+  
+  [33X[0;0YFor  the  integers  [10XNumVar[110X,  [10XLo[110X, and [10XHi[110X, the function [10XRandomThresholdElement[110X
+  returns a threshold element of [10XNumVar[110X variables with a pseudo random integer
+  weight  vector  and  an  integer  threshold,  where both the weights and the
+  threshold are chosen from the interval [[10XLo[110X, [10XHi[110X].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xte:=RandomThresholdElement(4,-10,10);[127X[104X
+    [4X[28X< threshold element with weight vector [ 7, -8, -6, 10 ] and threshold 2 >[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-6 Comparison of Threshold Elements[101X
+  
+  [33X[1;0Y[29X[2XComparison of Threshold Elements[102X( [3XThrEl1[103X, [3XThrEl2[103X ) [32X function[133X
+  
+  [33X[0;0YLet  [10XThrEl1[110X  and  [10XThrEl2[110X  be  two  threshold  elements of the same number of
+  variables,    which   realize   the   following   Boolean   functions   (see
+  [2XThresholdElement[102X  ([14X2.1-1[114X))  [22Xf_1[122X and [22Xf_2[122X, resprectively. By comparison of two
+  threshold  elements  we  mean the comparison of the truth vectors of [22Xf_1[122X and
+  [22Xf_2[122X (see [2XOutputOfThresholdElement[102X ([14X2.1-3[114X)).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xte1:=ThresholdElement([1,2],3);;[127X[104X
+    [4X[25Xgap>[125X [27XList(OutputOfThresholdElement(te1),Order);[127X[104X
+    [4X[28X[ 0, 0, 0, 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xte2:=ThresholdElement([1,2],0);;[127X[104X
+    [4X[25Xgap>[125X [27XList(OutputOfThresholdElement(te2),Order);[127X[104X
+    [4X[28X[ 1, 1, 1, 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xte3:=ThresholdElement([1,1],2);;[127X[104X
+    [4X[25Xgap>[125X [27XList(OutputOfThresholdElement(te3),Order);[127X[104X
+    [4X[28X[ 0, 0, 0, 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xte1<te2;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xte1>te2;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xte1=te3;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.2 [33X[0;0YSingle Threshold Element Realizability[133X[101X
+  
+  [33X[0;0YOne  of  the  most  important questions is whether a Boolean function can be
+  realized  by  a  single threshold element (STE). A Boolean function which is
+  realizable  by  a  STE  is  called  a  [10XThreshold  Function[110X.  This section is
+  dedicated to verification of STE-realizability.[133X
+  
+  [33X[0;0YIn  [5XThelma[105X package the user is allowed to input the Boolean functions in the
+  following forms:[133X
+  
+  [33X[0;0Y(i) as a truth vector over [22XGF(2)[122X (see [2XOutputOfThresholdElement[102X ([14X2.1-3[114X));[133X
+  
+  [33X[0;0Y(ii)  as  a  string,  representing  the  truth  vector  of the given Boolean
+  function;[133X
+  
+  [33X[0;0Y(iii) as a polynomial over [22XGF(2)[122X.[133X
+  
+  [33X[0;0YIn  the  case  (iii) we also need to enter the number of variables of [22Xf[122X (for
+  example if [22Xf(x,y)=x[122X, then [22Xn=2[122X).[133X
+  
+  [1X2.2-1 CharacteristicVectorOfFunction[101X
+  
+  [33X[1;0Y[29X[2XCharacteristicVectorOfFunction[102X( [3XFunc[103X ) [32X function[133X
+  
+  [33X[0;0YLet  [22Xf(x_1,...,x_n)[122X be a Boolean function. We can switch from the {0,1}-base
+  to {-1,1}-base using the following transformation:[133X
+  
+  
+  [24X[33X[0;6Yy_i = 2x_i-1, \quad (i = 1,2,\ldots,n)[133X
+  
+  [124X
+  
+  
+  [24X[33X[0;6Yg(y_1,\ldots,y_n) = 2f(x_1,\ldots,x_n)-1.[133X
+  
+  [124X
+  
+  [33X[0;0YFor  each [22Xi ∈ {1,2,...,n}[122X the [22Xi[122X-th column of the truth table of the function
+  [22Xg(y_1,...,y_n)[122X  (in {-1,1}-base) we denote by [22XY_i[122X, and the truth vector of [22Xg[122X
+  we denote by [22XG[122X.[133X
+  
+  [33X[0;0YDefine the following vector:[133X
+  
+  
+  [24X[33X[0;6Yb   =   \big(\;Y_1  \cdot  G,\;  \ldots,  \;  Y_n  \cdot  G,  \;  \textstyle
+  \sum_{i=0}^{2^n-1} g(i) \; \big) \in \mathbb{R}^{n+1},[133X
+  
+  [124X
+  
+  [33X[0;0Ywhere  [22XY_k  ⋅  G[122X  is  the  classical  inner  (scalar)  product  for each [22Xk ∈
+  {1,...,n}[122X.[133X
+  
+  [33X[0;0YVector  [22Xb[122X  is  called  the  [3Xcharacteristic  vector[103X of the Boolean function [22Xf[122X
+  [Der65].  Comparing  the  characteristic  vector  of the function [22Xf[122X with the
+  lists  of  characteristic  vectors of all STE-realizable functions we obtain
+  the answer wheter [22Xf[122X is realizable by STE or not. In [5XThelma[105X package we have a
+  database of all such vectors for STE-realizable functions of [22Xn ≤ 6[122X variables
+  obtained   from   [Der65].  For  the  Boolean  function  [10XFunc[110X  the  function
+  [10XCharacteristicVectorOfFunction[110X returns a characteristic vector. There are no
+  limitations  on  the cardinality of [10XFunc[110X, but the database of STE-realizable
+  functions is given only for [22Xn ≤ 6[122X variables.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];[127X[104X
+    [4X[28X[ 0, 0, 0, 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xc:=CharacteristicVectorOfFunction(f);[127X[104X
+    [4X[28X[ 2, 2, 2 ][128X[104X
+    [4X[25Xgap>[125X [27Xf:="0001";[127X[104X
+    [4X[28X"0001"[128X[104X
+    [4X[25Xgap>[125X [27Xc:=CharacteristicVectorOfFunction(f);[127X[104X
+    [4X[28X[ 2, 2, 2 ][128X[104X
+    [4X[25Xgap>[125X [27Xx:=Indeterminate(GF(2),"x");[127X[104X
+    [4X[28Xx[128X[104X
+    [4X[25Xgap>[125X [27Xy:=Indeterminate(GF(2),"y");[127X[104X
+    [4X[28Xy[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x+y;[127X[104X
+    [4X[28Xx+y[128X[104X
+    [4X[25Xgap>[125X [27Xc:=CharacteristicVectorOfFunction(f);[127X[104X
+    [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X[ 0, 0, 0 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-2 IsCharacteristicVectorOfSTE[101X
+  
+  [33X[1;0Y[29X[2XIsCharacteristicVectorOfSTE[102X( [3XChVect[103X ) [32X function[133X
+  
+  [33X[0;0YFor  the  characteristic  vector  [10XChVect[110X (see [2XCharacteristicVectorOfFunction[102X
+  ([14X2.2-1[114X))  the function [10XIsCharacteristicVectorOfSTE[110X returns [10Xtrue[110X if [10XChVect[110X is
+  a  characteristic  vector of some STE-realizable Boolean function, and [10Xfalse[110X
+  otherwise.  Note,  that this function is implemented only for characteristic
+  vectors of length not bigger than 7.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x*y;[127X[104X
+    [4X[28Xx*y[128X[104X
+    [4X[25Xgap>[125X [27Xc:=CharacteristicVectorOfFunction(f);[127X[104X
+    [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[28X[ 2, 2, 2 ][128X[104X
+    [4X[25Xgap>[125X [27XIsCharacteristicVectorOfSTE(c);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x+y;[127X[104X
+    [4X[28Xx+y[128X[104X
+    [4X[25Xgap>[125X [27Xc:=CharacteristicVectorOfFunction(f);[127X[104X
+    [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X[ 0, 0, 0 ][128X[104X
+    [4X[25Xgap>[125X [27XIsCharacteristicVectorOfSTE(c);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-3 IsUnateInVariable[101X
+  
+  [33X[1;0Y[29X[2XIsUnateInVariable[102X( [3XFunc[103X, [3XVar[103X ) [32X function[133X
+  
+  [33X[0;0YA  Boolean  function  [22Xf(x_1,...  ,x_n)[122X  is  [3Xpositive unate[103X in [22Xx_i[122X if for all
+  possible values of [22Xx_j[122X with [22Xj≠ i[122X we have[133X
+  
+  
+  [24X[33X[0;6Yf(x_{1},\ldots    ,x_{i-1},1,x_{i+1},\ldots    ,x_{n})\geq    f(x_{1},\ldots
+  ,x_{i-1},0,x_{i+1},\ldots ,x_{n}).[133X
+  
+  [124X
+  
+  [33X[0;0YA Boolean function [22Xf(x_1,... ,x_n)[122X is [3Xnegative unate[103X in [22Xx_i[122X if[133X
+  
+  
+  [24X[33X[0;6Yf(x_{1},\ldots    ,x_{i-1},0,x_{i+1},\ldots    ,x_{n})\geq    f(x_{1},\ldots
+  ,x_{i-1},1,x_{i+1},\ldots ,x_{n}).[133X
+  
+  [124X
+  
+  [33X[0;0YFor the Boolean function [10XFunc[110X and the positive integer [10XVar[110X (which represents
+  the number of the variable) the function [10XIsUnateBooleanFunction[110X returns [10Xtrue[110X
+  if  [10XFunc[110X  is  unate (either positive or negative) in this variable and [10Xfalse[110X
+  otherwise.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=[0*Z(2),0*Z(2),0*Z(2),0*Z(2),0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];[127X[104X
+    [4X[28X[ 0, 0, 0, 0, 0, 1, 1, 0 ][128X[104X
+    [4X[25Xgap>[125X [27Xnn:=BooleanFunctionByNeuralNetwork(f);;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay(nn);[127X[104X
+    [4X[28XInner Layer:[128X[104X
+    [4X[28X[ [[ 1, -2, 3 ], 4], [[ 1, 2, -3 ], 3] ][128X[104X
+    [4X[28XOuter Layer: disjunction[128X[104X
+    [4X[28XNeural Network realizes the function f :[128X[104X
+    [4X[28X[ 0, 0, 0 ] || 0[128X[104X
+    [4X[28X[ 0, 0, 1 ] || 0[128X[104X
+    [4X[28X[ 0, 1, 0 ] || 0[128X[104X
+    [4X[28X[ 0, 1, 1 ] || 0[128X[104X
+    [4X[28X[ 1, 0, 0 ] || 0[128X[104X
+    [4X[28X[ 1, 0, 1 ] || 1[128X[104X
+    [4X[28X[ 1, 1, 0 ] || 1[128X[104X
+    [4X[28X[ 1, 1, 1 ] || 0[128X[104X
+    [4X[28XSum of Products:[ 5, 6 ][128X[104X
+    [4X[25Xgap>[125X [27XIsUnateInVariable(f,1);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xf:="00000110";[127X[104X
+    [4X[28X"00000110"[128X[104X
+    [4X[25Xgap>[125X [27XIsUnateInVariable(f,2);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x*y+x*z;[127X[104X
+    [4X[28Xx*y+x*z[128X[104X
+    [4X[25Xgap>[125X [27XIsUnateInVariable(f,3);[127X[104X
+    [4X[28XEnter the number of variables (n>=3):[128X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-4 IsUnateBooleanFunction[101X
+  
+  [33X[1;0Y[29X[2XIsUnateBooleanFunction[102X( [3XFunc[103X ) [32X function[133X
+  
+  [33X[0;0YIf  a  Boolean  function  [22Xf[122X  is  either  positive  or negative unate in each
+  variable  then  it  is  said to be [3Xunate[103X (note that some [22Xx_i[122X may be positive
+  unate  and some negative unate to satisfy the definition of unate function).
+  A Boolean function [22Xf[122X is [3Xbinate[103X if it is not unate (i.e., is neither positive
+  unate nor negative unate in at least one of its variables).[133X
+  
+  [33X[0;0YAll  threshold  functions  are  unate.  However,  the  converse is not true,
+  because  there  are certain unate functions, that can not be realized by STE
+  [JMR99].[133X
+  
+  [33X[0;0YFor  the  Boolean  function [10XFunc[110X the function [10XIsUnateBooleanFunction[110X returns
+  [10Xtrue[110X if [10XFunc[110X is unate and [10Xfalse[110X otherwise.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=[0*Z(2),Z(2)^0,Z(2)^0,Z(2)^0];[127X[104X
+    [4X[28X[ 0, 1, 1, 1 ][128X[104X
+    [4X[25Xgap>[125X [27XIsUnateBooleanFunction(f);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xf:="1001";[127X[104X
+    [4X[28X"1001"[128X[104X
+    [4X[25Xgap>[125X [27XIsUnateBooleanFunction(f);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x+y;[127X[104X
+    [4X[28Xx+y[128X[104X
+    [4X[25Xgap>[125X [27XIsUnateBooleanFunction(f);[127X[104X
+    [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-5 InfluenceOfVariable[101X
+  
+  [33X[1;0Y[29X[2XInfluenceOfVariable[102X( [3XFunc[103X, [3XVar[103X ) [32X function[133X
+  
+  [33X[0;0YThe  influence  of  a  variable [22Xx_i[122X measures how many times out of the total
+  existing  cases a change on that variable produces a change on the output of
+  the function.[133X
+  
+  [33X[0;0YFor  the  Boolean  function  [10XFunc[110X  and the positive integer [10XVar[110X the function
+  [10XInfluenceOfVariable[110X  returns  a positive integer - the weighted influence of
+  the  variable [10XVar[110X (to obtain integer values we multiply the influence of the
+  variable by [22X2^n[122X, where [22Xn[122X is the number of variables of [10XFunc[110X).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=[0*Z(2),0*Z(2),0*Z(2),0*Z(2),0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];;[127X[104X
+    [4X[25Xgap>[125X [27XInfluenceOfVariable(f,1);[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XInfluenceOfVariable(f,3);[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27Xf:="00000110";[127X[104X
+    [4X[28X"00000110"[128X[104X
+    [4X[25Xgap>[125X [27XInfluenceOfVariable(f,2);[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x*y+x*z;[127X[104X
+    [4X[28Xx*y+x*z[128X[104X
+    [4X[25Xgap>[125X [27XInfluenceOfVariable(f,3);[127X[104X
+    [4X[28XEnter the number of variables (n>=3):[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-6 SelfDualExtensionOfBooleanFunction[101X
+  
+  [33X[1;0Y[29X[2XSelfDualExtensionOfBooleanFunction[102X( [3XFunc[103X ) [32X function[133X
+  
+  [33X[0;0YThe  [3Xself-dual  extension[103X  of  a  Boolean  function  [22Xf^n:Z_2^n  ->  Z_2[122X of [22Xn[122X
+  variables  is  a  Boolean  function  [22Xf^n+1:Z_2^n+1  ->  Z_2[122X of [22Xn+1[122X variables
+  defined as[133X
+  
+  
+  [24X[33X[0;6Yf^{n+1}(x_1,\ldots,x_n,x_{n+1})=f^{n}(x_1,\ldots,x_n)    \quad   \textrm{if}
+  \quad x_{n+1}=0,[133X
+  
+  [124X
+  
+  
+  [24X[33X[0;6Yf^{n+1}(x_1,\ldots,x_n,x_{n+1})=1-f^{n}(\overline  x_1,\ldots,\overline x_n)
+  \quad \textrm{if} \quad x_{n+1}=1,[133X
+  
+  [124X
+  
+  [33X[0;0Ywhere [22Xoverline x_i = x_i ⊕ 1[122X is the negation of the [22Xi[122X-th variable.[133X
+  
+  [33X[0;0YEvery  threshold  function is unate. However, in [LLMJ06] was shown that the
+  unatness in the self-dual space of [22Xn+1[122X variables is much stronger condition.[133X
+  
+  [33X[0;0YFor       the       Boolean       function       [10XFunc[110X      the      function
+  [10XSelfDualExtensionOfBooleanFunction[110X returns the truth vector of the self-dual
+  extension of [10XFunc[110X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;[127X[104X
+    [4X[25Xgap>[125X [27Xfsd:=SelfDualExtensionOfBooleanFunction(f);;[127X[104X
+    [4X[25Xgap>[125X [27XList(fsd,Order);[127X[104X
+    [4X[28X[ 0, 0, 0, 1, 0, 1, 1, 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xf:="0001";;[127X[104X
+    [4X[25Xgap>[125X [27Xfsd:=SelfDualExtensionOfBooleanFunction(f);;[127X[104X
+    [4X[25Xgap>[125X [27XList(fsd,Order);[127X[104X
+    [4X[28X[ 0, 0, 0, 1, 0, 1, 1, 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xf:=x*y;;[127X[104X
+    [4X[25Xgap>[125X [27Xfsd:=SelfDualExtensionOfBooleanFunction(f);;[127X[104X
+    [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[25Xgap>[125X [27XList(fsd,Order);[127X[104X
+    [4X[28X[ 0, 0, 0, 1, 0, 1, 1, 1 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-7 SplitBooleanFunction[101X
+  
+  [33X[1;0Y[29X[2XSplitBooleanFunction[102X( [3XFunc[103X, [3XVar[103X, [3XBool[103X ) [32X function[133X
+  
+  [33X[0;0YThe  method of splitting a function in terms of a given variable is known as
+  Shannon decomposition and it was formally introduced in 1938 by Shannon.[133X
+  
+  [33X[0;0YLet  [22Xf(x_1,...,x_n)[122X  be  a Boolean function. Decompose [22Xf[122X as a disjunction of
+  the following two Boolean functions [22Xf_a[122X and [22Xf_b[122X defined as:[133X
+  
+  
+  [24X[33X[0;6Y\textstyle    f_a(x_1,\ldots,x_n)=f(x_1,\ldots,x_{i-1},0,x_{i+1},\ldots,x_n)
+  \quad \textrm{if} \quad x_i=0,[133X
+  
+  [124X
+  
+  
+  [24X[33X[0;6Yf_a(x_1,\ldots,x_n)=0, \quad \textrm{if} \quad x_i=1;[133X
+  
+  [124X
+  
+  [33X[0;0Yand[133X
+  
+  
+  [24X[33X[0;6Yf_b(x_1,\ldots,x_n)= 0 \quad \textrm{if} \quad x_i=0,\quad[133X
+  
+  [124X
+  
+  
+  [24X[33X[0;6Yf_b(x_1,\ldots,x_n)=f(x_1,\ldots,x_{i-1},1,x_{i+1},\ldots,x_n)         \quad
+  \textrm{if} \quad x_i=1.[133X
+  
+  [124X
+  
+  [33X[0;0YIf  are  intended to use conjunction, we can apply the same equations with 1
+  for undetermined outputs instead of 0.[133X
+  
+  [33X[0;0YFor  the  Boolean  function  [10XFunc[110X,  a  positive  integer  [10XVar[110X (the number of
+  variable),  Boolean  variable  [10XBool[110X  ([10Xtrue[110X  for  disjunction  and  [10Xfalse[110X for
+  conjunction)  the  function  [10XSplitBooleanFunction[110X  returns  a  list with two
+  entries: the truth vectors of the resulting functions.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=[0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];;[127X[104X
+    [4X[25Xgap>[125X [27Xout:=SplitBooleanFunction(f,1,false);;[127X[104X
+    [4X[25Xgap>[125X [27XList(out[1],Order);[127X[104X
+    [4X[28X[ 0, 1, 1, 1 ][128X[104X
+    [4X[25Xgap>[125X [27XList(out[2],Order);[127X[104X
+    [4X[28X[ 1, 1, 1, 0 ][128X[104X
+    [4X[25Xgap>[125X [27Xf:="0110";[127X[104X
+    [4X[28X"0110"[128X[104X
+    [4X[25Xgap>[125X [27Xout:=SplitBooleanFunction(f,1,true);;[127X[104X
+    [4X[25Xgap>[125X [27XList(out[1],Order);[127X[104X
+    [4X[28X[ 0, 1, 0, 0 ][128X[104X
+    [4X[25Xgap>[125X [27XList(out[2],Order);[127X[104X
+    [4X[28X[ 0, 0, 1, 0 ][128X[104X
+    [4X[25Xgap>[125X [27Xf:=x+y;[127X[104X
+    [4X[28Xx+y[128X[104X
+    [4X[25Xgap>[125X [27Xout:=SplitBooleanFunction(f,1,true);[127X[104X
+    [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X[ [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ] ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-8 KernelOfBooleanFunction[101X
+  
+  [33X[1;0Y[29X[2XKernelOfBooleanFunction[102X( [3XFunc[103X ) [32X function[133X
+  
+  [33X[0;0YFor  a Boolean function [22Xf(x_1,...,x_n)[122X we define the following two sets (see
+  [ABGG80]):[133X
+  
+  [33X[0;0YThe kernel [22XK(f)[122X of the Boolean function [22Xf[122X is defined as[133X
+  
+  
+  [24X[33X[0;6YK(f)=f^{-1}(1), \quad \textrm{ if } \quad |f^{-1}(1)| \geq |f^{-1}(0)|;[133X
+  
+  [124X
+  
+  
+  [24X[33X[0;6YK(f)=f^{-1}(0), \quad \textrm{otherwise,}[133X
+  
+  [124X
+  
+  [33X[0;0Ywhere [22X|f^-1(i)|[122X is the cardinality of the set [22Xf^-1(i)[122X with [22Xi ∈ {0,1}[122X.[133X
+  
+  [33X[0;0YFor the Boolean function [10XFunc[110X the function [10XKernelOfBooleanFunction[110X returns a
+  list  in  which  the first element of the output list represents the kernel,
+  and the second element equals either [22X1[122X or [22X0[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];[127X[104X
+    [4X[28X[ 0, 0, 0, 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xk:=KernelOfBooleanFunction(f);[127X[104X
+    [4X[28X[ [ [ 1, 1 ] ], 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xf:="0111";[127X[104X
+    [4X[28X"0111"[128X[104X
+    [4X[25Xgap>[125X [27Xk:=KernelOfBooleanFunction(f);[127X[104X
+    [4X[28X[ [ [ 0, 0 ] ], 0 ][128X[104X
+    [4X[25Xgap>[125X [27Xz:=Indeterminate(GF(2),"z");[127X[104X
+    [4X[28Xz[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x*y+z;[127X[104X
+    [4X[28Xx*y+z[128X[104X
+    [4X[25Xgap>[125X [27Xk:=KernelOfBooleanFunction(f);[127X[104X
+    [4X[28XEnter the number of variables n (n>=3):[128X[104X
+    [4X[28X3[128X[104X
+    [4X[28X[ [ [ 0, 0, 1 ], [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ], 1 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-9 ReducedKernelOfBooleanFunction[101X
+  
+  [33X[1;0Y[29X[2XReducedKernelOfBooleanFunction[102X( [3XKer[103X ) [32X function[133X
+  
+  [33X[0;0YLet  [22Xf(x_1,...,x_n)[122X be a Boolean function with the kernel [22XK(f)={ a_1,...,a_m
+  }[122X,  where [22Xm ≤ 2^n-1[122X. The reduced kernel [22XK(f)_i[122X of the function [22Xf[122X relative to
+  the element [22Xa_i ∈ K(f)[122X is the following set (see [ABGG80]):[133X
+  
+  
+  [24X[33X[0;6YK(f)_i=\big\{\;a_1 \oplus a_i, \; a_2 \oplus a_i,\; \ldots,\; a_m \oplus a_i
+  \; \big\},[133X
+  
+  [124X
+  
+  [33X[0;0Ywhere [22X⊕[122X is a component-wise addition of vectors from [22XK(f)[122X over [22XGF(2)[122X.[133X
+  
+  [33X[0;0YThe reduced kernel [22XT(f)[122X of [22Xf[122X is the following set:[133X
+  
+  
+  [24X[33X[0;6YT(f)=\big\{ \;K(f)_i \;\mid\; i=1,2,\ldots,m \;\big\}.[133X
+  
+  [124X
+  
+  [33X[0;0YFor  the  [22Xm  ×  n[122X  matrix  [10XKer[110X,  which represents the kernel of some Boolean
+  function  [22Xf[122X, the function [10XReducedKernelOfBooleanFunction[110X returns the reduced
+  kernel [22XT(f)[122X of [22Xf[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[28X## Continuation of Example 2.2.4[128X[104X
+    [4X[25Xgap>[125X [27Xrk:=ReducedKernelOfBooleanFunction(k[1]);;[127X[104X
+    [4X[25Xgap>[125X [27Xj:=1;;[127X[104X
+    [4X[25Xgap>[125X [27Xfor i in rk do Print(j,".\n"); Display(i); Print("\n"); j:=j+1; od;[127X[104X
+    [4X[28X1.[128X[104X
+    [4X[28X . . .[128X[104X
+    [4X[28X . 1 .[128X[104X
+    [4X[28X 1 . .[128X[104X
+    [4X[28X 1 1 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X2.[128X[104X
+    [4X[28X . 1 .[128X[104X
+    [4X[28X . . .[128X[104X
+    [4X[28X 1 1 .[128X[104X
+    [4X[28X 1 . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X3.[128X[104X
+    [4X[28X 1 . .[128X[104X
+    [4X[28X 1 1 .[128X[104X
+    [4X[28X . . .[128X[104X
+    [4X[28X . 1 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X4.[128X[104X
+    [4X[28X 1 1 1[128X[104X
+    [4X[28X 1 . 1[128X[104X
+    [4X[28X . 1 1[128X[104X
+    [4X[28X . . .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-10 IsInverseInKernel[101X
+  
+  [33X[1;0Y[29X[2XIsInverseInKernel[102X( [3XFunc[103X ) [32X function[133X
+  
+  [33X[0;0YLet  [22Xf(x_1,...,x_n)[122X be a Boolean function with the kernel [22XK(f)[122X. The function
+  [10XIsInverseInKernel[110X  returns  [10Xtrue[110X  if  there  is  a  pair of additive inverse
+  vectors  in  [22XK(f)[122X  (this means that [22Xf[122X is not STE-realizable, see [GPR83]) or
+  [10Xfalse[110X  otherwise.  Note  that  this  function also accepts the kernel of the
+  Boolean  function [10XFunc[110X as an input. A vector [22Xb ∈ Z_2^n[122X is called an additive
+  inverse to [22Xa ∈ Z_2^n[122X if [22Xa ⊕ b = 0[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x*y+z;[127X[104X
+    [4X[28Xx*y+z[128X[104X
+    [4X[25Xgap>[125X [27Xk:=KernelOfBooleanFunction(f);;[127X[104X
+    [4X[28XEnter the number of variables n (n>=3):[128X[104X
+    [4X[28X3[128X[104X
+    [4X[25Xgap>[125X [27XDisplay(k[1]);[127X[104X
+    [4X[28X . . 1[128X[104X
+    [4X[28X . 1 1[128X[104X
+    [4X[28X 1 . 1[128X[104X
+    [4X[28X 1 1 .[128X[104X
+    [4X[25Xgap>[125X [27XIsInverseInKernel(f);[127X[104X
+    [4X[28XEnter the number of variables n (n>=3):[128X[104X
+    [4X[28X3[128X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-11 IsKernelContainingPrecedingVectors[101X
+  
+  [33X[1;0Y[29X[2XIsKernelContainingPrecedingVectors[102X( [3XFunc[103X ) [32X function[133X
+  
+  [33X[0;0YA  vector  [22Xa=(α_1,...,α_n) ∈ Z_2^n[122X precedes a vector [22Xb=(β_1,...,β_n) ∈ Z_2^n[122X
+  (we denote it as [22Xa ≺ b[122X) if [22Xα_i ≤ β_i for each i=1,..., n[122X.[133X
+  
+  [33X[0;0YFor a given vector [22Xc ∈ Z_2^n[122X denote [22XM_c={ a∈ Z_2^n ∣ a ≺ c }[122X.[133X
+  
+  [33X[0;0YLet  [22Xf(x_1,...,x_n)[122X be a Boolean function with reduced kernel [22XT(f)={K(f)_j ∣
+  j=1,2,...,  m  }[122X.  If  [22Xf[122X is implemented by a single threshold element (STE),
+  then there exists [22Xj ∈ {1,..., m }[122X such that[133X
+  
+  
+  [24X[33X[0;6Y\forall a \in K(f)_j \qquad \textrm{holds} \qquad M_a \subseteq K(f)_j.[133X
+  
+  [124X
+  
+  [33X[0;0YThe  function  [10XIsKernelContainingPrecedingVectors[110X  returns [10Xfalse[110X for a given
+  function  [10XFunc[110X  if [22XFunc[122X is not realizable by a single threshold element (see
+  [GMB17]).  Note  that  this  function also accepts the kernel of the Boolean
+  function [10XFunc[110X as an input.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x*y+z;[127X[104X
+    [4X[28Xx*y+z[128X[104X
+    [4X[25Xgap>[125X [27XIsKernelContainingPrecedingVectors(f);[127X[104X
+    [4X[28XEnter the number of variables n (n>=3):[128X[104X
+    [4X[28X3[128X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-12 IsRKernelBiggerOfCombSum[101X
+  
+  [33X[1;0Y[29X[2XIsRKernelBiggerOfCombSum[102X( [3XFunc[103X ) [32X function[133X
+  
+  [33X[0;0YLet [22Xf(x_1,...,x_n)[122X be a Boolean function with reduced kernel [22XT(f)[122X. Denote[133X
+  
+  
+  [24X[33X[0;6Yk_i^*  =  \max\big\{  \;  \|a\| = \textstyle \sum_{j=1}^m a_j \; \mid \; a =
+  (a_1, \ldots, a_m) \in T(f) \; \big\}, \quad (i=1,\ldots,n)[133X
+  
+  [124X
+  
+  [33X[0;0Yand[133X
+  
+  
+  [24X[33X[0;6Yk_A^*=\min\big\{\;k_i^* \; \mid \; i=1, 2, \ldots,n \; \big\}.[133X
+  
+  [124X
+  
+  [33X[0;0YIf  [22Xf[122X is implemented by a single threshold element (STE), then the following
+  condition holds:[133X
+  
+  
+  [24X[33X[0;6Y|A| \geq \sum_{i=0}^{k_A^*} {{k_A^*}\choose{i}},[133X
+  
+  [124X
+  
+  [33X[0;0Ywhere  [22X{k_A^*choosei}[122X  is  the classical binomial coefficient and [22X|A|[122X is the
+  cardinality of [22XA[122X.[133X
+  
+  [33X[0;0YFor  a  given  Boolean  function  [10XFunc[110X the function [10XIsRKernelBiggerOfCombSum[110X
+  returns  [10Xfalse[110X  if  this  function is not STE-realizable (see [GMB17]). Note
+  that  this  function also accepts the reduced kernel of the Boolean function
+  [10XFunc[110X as an input.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x+y;[127X[104X
+    [4X[28Xx+y[128X[104X
+    [4X[25Xgap>[125X [27XIsRKernelBiggerOfCombSum(f);[127X[104X
+    [4X[28XEnter the number of variables n (n>=2):[128X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-13 BooleanFunctionBySTE[101X
+  
+  [33X[1;0Y[29X[2XBooleanFunctionBySTE[102X( [3XFunc[103X ) [32X function[133X
+  
+  [33X[0;0YFor   a  given  Boolean  function  [10XFunc[110X  the  function  [10XBooleanFunctionBySTE[110X
+  determines  whether  [10XFunc[110X is realizable by a single threshold element (STE).
+  The  function  returns  a threshold element with integer weights and integer
+  threshold.  If  [10XFunc[110X  is not realizable by STE, it returns an empty list [].
+  The realization of the function [10XBooleanFunctionBySTE[110X is based on algorithms,
+  proposed in [Gec10].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];[127X[104X
+    [4X[28X[ 0, 0, 0, 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xte:=BooleanFunctionBySTE(f);[127X[104X
+    [4X[28X< threshold element with weight vector [ 1, 2 ] and threshold 3 >[128X[104X
+    [4X[25Xgap>[125X [27Xf:="11001000";[127X[104X
+    [4X[28X"11001000"[128X[104X
+    [4X[25Xgap>[125X [27Xte:=BooleanFunctionBySTE(f);[127X[104X
+    [4X[28X< threshold element with weight vector [ -1, -4, -2 ] and threshold -2 >[128X[104X
+    [4X[25Xgap>[125X [27XDisplay(last);[127X[104X
+    [4X[28XWeight vector = [ -1, -4, -2 ], Threshold = -2.[128X[104X
+    [4X[28XThreshold Element realizes the function f :[128X[104X
+    [4X[28X[ 0, 0, 0 ] || 1[128X[104X
+    [4X[28X[ 0, 0, 1 ] || 1[128X[104X
+    [4X[28X[ 0, 1, 0 ] || 0[128X[104X
+    [4X[28X[ 0, 1, 1 ] || 0[128X[104X
+    [4X[28X[ 1, 0, 0 ] || 1[128X[104X
+    [4X[28X[ 1, 0, 1 ] || 0[128X[104X
+    [4X[28X[ 1, 1, 0 ] || 0[128X[104X
+    [4X[28X[ 1, 1, 1 ] || 0[128X[104X
+    [4X[28XSum of Products:[ 0, 1, 4 ][128X[104X
+    [4X[25Xgap>[125X [27Xf:=x+y;[127X[104X
+    [4X[28Xx+y[128X[104X
+    [4X[25Xgap>[125X [27Xte:=BooleanFunctionBySTE(f);[127X[104X
+    [4X[28XEnter the number of variables n (n>=2):[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-14 PDBooleanFunctionBySTE[101X
+  
+  [33X[1;0Y[29X[2XPDBooleanFunctionBySTE[102X( [3XFunc[103X ) [32X function[133X
+  
+  [33X[0;0YLet  [22Xf(x_1,...,x_n)[122X  be a partially defined Boolean function. We denote by [10Xx[110X
+  the positions in truth vector, where [22Xf[122X is undefined. Then [22Xf^-1[122X[10X(x)[110X is the set
+  of  Boolean  vectors  of [22Xn[122X variables on which the function is undefined. The
+  sets [22Xf^-1(0)[122X and [22Xf^-1(1)[122X are defined in [2XKernelOfBooleanFunction[102X ([14X2.2-8[114X). The
+  function  [22Xf[122X is called a [3Xthreshold function[103X if there is an [22Xn[122X-dimensional real
+  vector [22Xw=(w_1,...,w_n)[122X and a real threshold [22XT[122X such that[133X
+  
+  
+  [24X[33X[0;6Ya \in f^{-1}(1) \quad \Longrightarrow \quad a\cdot w^T \geq T,[133X
+  
+  [124X
+  
+  
+  [24X[33X[0;6Ya \in f^{-1}(0)\quad \Longrightarrow \quad a\cdot w^T < T,[133X
+  
+  [124X
+  
+  [33X[0;0Ywhere [22Xa⋅ w^T[122X is the classical inner (scalar) product.[133X
+  
+  [33X[0;0YFor  the  partially  defined  Boolean  function [10XFunc[110X (presented as a string,
+  where  [10Xx[110X  presents the undefined values) the function [10XPDBooleanFunctionBySTE[110X
+  returns  a  threshold  element if [10XFunc[110X can be realized by STE and empty list
+  otherwise.  The  realization of the function [10XPDBooleanFunctionBySTE[110X is based
+  on the algorithm, proposed in [GPR83].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:="1x001x0x";[127X[104X
+    [4X[28X"1x001x0x"[128X[104X
+    [4X[25Xgap>[125X [27Xte:=PDBooleanFunctionBySTE(f);[127X[104X
+    [4X[28X< threshold element with weight vector [ -1, -2, -3 ] and threshold -1 >[128X[104X
+    [4X[25Xgap>[125X [27XList(OutputOfThresholdElement(te),Order);[127X[104X
+    [4X[28X[ 1, 0, 0, 0, 1, 0, 0, 0 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.3 [33X[0;0YIterative Training Methods[133X[101X
+  
+  [33X[0;0Y[5XThelma[105X also provides a few iterative methods for threshold element training.[133X
+  
+  [1X2.3-1 ThresholdElementTraining[101X
+  
+  [33X[1;0Y[29X[2XThresholdElementTraining[102X( [3XThrEl[103X, [3XStep[103X, [3XFunc[103X, [3XMax_Iter[103X ) [32X function[133X
+  
+  [33X[0;0YThis  is  a  basic iterative method for the perceptron training [Ros58]. For
+  the threshold element [10XThrEl[110X (which is an arbitrary threshold element for the
+  first  iteration),  the  positive integer [10XStep[110X (the value on which we change
+  parameters  while training the threshold element), the Boolean function [10XFunc[110X
+  and  the  positive  integer [10XMax_Iter[110X - the maximal number of iterations, the
+  function  [10XThresholdElementTraining[110X  returns  a  threshold element, realizing
+  [10XFunc[110X (if such threshold element exists).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];[127X[104X
+    [4X[28X[ 0, 0, 0, 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xte1:=RandomThresholdElement(2,-2,2);[127X[104X
+    [4X[28X< threshold element with weight vector [ 0, -1 ] and threshold 0 >[128X[104X
+    [4X[25Xgap>[125X [27XOutputOfThresholdElement(te1);[127X[104X
+    [4X[28X[ 1, 0, 1, 0 ][128X[104X
+    [4X[25Xgap>[125X [27Xte2:=ThresholdElementTraining(te1,1,f,100);[127X[104X
+    [4X[28X< threshold element with weight vector [ 2, 1 ] and threshold 3 >[128X[104X
+    [4X[25Xgap>[125X [27XOutputOfThresholdElement(te2);[127X[104X
+    [4X[28X[ 0, 0, 0, 1 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-2 ThresholdElementBatchTraining[101X
+  
+  [33X[1;0Y[29X[2XThresholdElementBatchTraining[102X( [3XThrEl[103X, [3XStep[103X, [3XFunc[103X, [3XMax_Iter[103X ) [32X function[133X
+  
+  [33X[0;0YFor the threshold element [10XThrEl[110X (which is an arbitrary threshold element for
+  the  first  iteration),  the  positive  integer  [10XStep[110X (the value on which we
+  change  parameters  while  training  the  threshold  element),  the  Boolean
+  function  [10XFunc[110X,  and  the  positive integer [10XMax_Iter[110X - the maximal number of
+  iterations,   the  function  [10XThresholdElementTraining[110X  returns  a  threshold
+  element,  realizing  [10XFunc[110X  (if  such  threshold  element  exists)  via batch
+  training.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];[127X[104X
+    [4X[28X[ 0, 0, 0, 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xte1:=RandomThresholdElement(2,-2,2);[127X[104X
+    [4X[28X< threshold element with weight vector [ 0, 2 ] and threshold 2 >[128X[104X
+    [4X[25Xgap>[125X [27XOutputOfThresholdElement(te1);[127X[104X
+    [4X[28X[ 0, 1, 0, 1 ][128X[104X
+    [4X[25Xgap>[125X [27Xte2:=ThresholdElementBatchTraining(te1,1,f,100);[127X[104X
+    [4X[28X< threshold element with weight vector [ 2, 2 ] and threshold 3 >[128X[104X
+    [4X[25Xgap>[125X [27XOutputOfThresholdElement(te2);[127X[104X
+    [4X[28X[ 0, 0, 0, 1 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-3 WinnowAlgorithm[101X
+  
+  [33X[1;0Y[29X[2XWinnowAlgorithm[102X( [3XFunc[103X, [3XStep[103X, [3XMax_Iter[103X ) [32X function[133X
+  
+  [33X[0;0YA  Boolean  function  [22Xf:Z_2^n -> Z_2[122X which can be presented in the following
+  form:[133X
+  
+  
+  [24X[33X[0;6Yf(x_1,\ldots,x_n)=x_{i_1} \vee \cdots \vee x_{i_k}, \qquad (k \leq n)[133X
+  
+  [124X
+  
+  [33X[0;0Yis  called  a  [3Xmonotone  disjunction[103X,  i.e.  it is a disjunction in which no
+  variable appears negated.[133X
+  
+  [33X[0;0YIf  the  given  Boolean  function  [22Xf[122X  is  a monotone disjunction, the [3XWinnow
+  algorithm[103X is more efficient than the classical Perceptron training algorithm
+  [Lit88].[133X
+  
+  [33X[0;0YFor   the   Boolean   function   [10XFunc[110X,  which  is  a  monotone  disjunction,
+  [10XWinnowAlgorithm[110X  returns  either a threshold element realizing [10XFunc[110X or [] if
+  [10XFunc[110X  is  not trainable by [10XWinnowAlgorithm[110X. The positive ingetger [10XStep[110X which
+  is  not  equal  to  1  defines the value on which we change parameters while
+  running  the algorithm and the positive integer [10XMax_Iter[110X defines the maximal
+  number of iterations.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x*y+x+y;;[127X[104X
+    [4X[25Xgap>[125X [27Xte:=WinnowAlgorithm(f,2,100);[127X[104X
+    [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X< threshold element with weight vector [ 1, 1 ] and threshold 1 >[128X[104X
+    [4X[25Xgap>[125X [27XOutputOfThresholdElement(te);[127X[104X
+    [4X[28X[ 0, 1, 1, 1 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-4 Winnow2Algorithm[101X
+  
+  [33X[1;0Y[29X[2XWinnow2Algorithm[102X( [3XFunc[103X, [3XStep[103X, [3XMax_Iter[103X ) [32X function[133X
+  
+  [33X[0;0YFor any [22XX ⊆ Z_2^n[122X and for any [22Xδ[122X satisfying [22X0 < δ ≤ 1[122X let [22XF(X,δ)[122X be the class
+  of  functions  from  [22XX[122X  to [22XZ_2^n[122X. Assume that [22XF(X,δ)[122X satisfies the following
+  condition:[133X
+  
+  [33X[0;0Yfor  each  [22Xf  ∈  F(X,δ)[122X  there  exist  [22Xμ_1,...,μ_n  ≥  0[122X  such  that for all
+  [22X(x_1,...,x_n) ∈ X[122X[133X
+  
+  
+  [24X[33X[0;6Y\textstyle   \sum_{i=1}^n   \mu_i   x_i  \geq  1,  \quad  \textrm{if}  \quad
+  f(x_1,\ldots,x_n)=1[133X
+  
+  [124X
+  
+  [33X[0;0Yand[133X
+  
+  
+  [24X[33X[0;6Y\textstyle   \sum_{i=1}^n   \mu_i   x_i  \leq  1,  \quad  \textrm{if}  \quad
+  f(x_1,\ldots,x_n)=0.[133X
+  
+  [124X
+  
+  [33X[0;0YIn  other words, the inverse images of 0 and 1 are linearly separable with a
+  minimum  separation  that  depends  on  [22Xδ[122X. [10XWinnow2[110X algorithm is designed for
+  training this class of the Boolean functions [Lit88].[133X
+  
+  [33X[0;0YFor  the  Boolean function [10XFunc[110X from the class of Boolean functions which is
+  described  above,  the  function [10XWinnow2Algorithm[110X returns either a threshold
+  element   which   realizes   [10XFunc[110X   or  []  if  [10XFunc[110X  is  not  trainable  by
+  [10XWinnow2Algorithm[110X.  The positive integer [10XStep[110X which is not equal to 1 defines
+  the value on which we change parameters while running the algorithm.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[28X## Conjunction can not be trained by Winnow algorithm.[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x*y;;[127X[104X
+    [4X[25Xgap>[125X [27Xte:=WinnowAlgorithm(f,2,100);[127X[104X
+    [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X## But in the case of Winnow2 we can obtain the desirable result.[128X[104X
+    [4X[25Xgap>[125X [27Xte:=Winnow2Algorithm(f,2,100);[127X[104X
+    [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X< threshold element with weight vector [ 1/2, 1/2 ] and threshold 1 >[128X[104X
+    [4X[25Xgap>[125X [27XOutputOfThresholdElement(te);[127X[104X
+    [4X[28X[ 0, 0, 0, 1 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-5 STESynthesis[101X
+  
+  [33X[1;0Y[29X[2XSTESynthesis[102X( [3XFunc[103X ) [32X function[133X
+  
+  [33X[0;0YThe  function [10XSTESynthesis[110X is based on the algorithm proposed in [Der65]. In
+  each iteration we perturb an [22Xn+1[122X-dimensional weight-threshold vector in such
+  manner   that   the   distance  between  the  given  vector  and  a  desired
+  weight-threshold  vector,  if  such  vector  exists,  is  reduced. So if the
+  Boolean function [10XFunc[110X is STE-realizable, then this procedure will eventually
+  yield  an  acceptable  weight-threshold  vector. Otherwise iteration process
+  will  eventually enter a limit cycle and the execution of [10XSTE_Synthesis[110X will
+  be stopped.[133X
+  
+  [33X[0;0YFor  the Boolean function [10XFunc[110X the function [10XSTESynthesis[110X returns a threshold
+  element if [10XFunc[110X is STE-realizable or an empty list otherwise.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xf:=x*y+x+y;;[127X[104X
+    [4X[25Xgap>[125X [27Xte:=STESynthesis(f);[127X[104X
+    [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X< threshold element with weight vector [ 2, 2 ] and threshold 1 >[128X[104X
+    [4X[25Xgap>[125X [27XDisplay(last);[127X[104X
+    [4X[28XWeight vector = [ 2, 2 ], Threshold = 1.[128X[104X
+    [4X[28XThreshold Element realizes the function f :[128X[104X
+    [4X[28X[ 0, 0 ] || 0[128X[104X
+    [4X[28X[ 0, 1 ] || 1[128X[104X
+    [4X[28X[ 1, 0 ] || 1[128X[104X
+    [4X[28X[ 1, 1 ] || 1[128X[104X
+    [4X[28XProduct of Sums:[ 0 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
