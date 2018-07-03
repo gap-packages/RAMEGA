@@ -272,6 +272,7 @@
     [4X[28Xx*y[128X[104X
     [4X[25Xgap>[125X [27Xc:=CharacteristicVectorOfFunction(f);[127X[104X
     [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[28X2[128X[104X
     [4X[28X[ 2, 2, 2 ][128X[104X
     [4X[25Xgap>[125X [27XIsCharacteristicVectorOfSTE(c);[127X[104X
     [4X[28Xtrue[128X[104X
@@ -341,6 +342,7 @@
     [4X[28Xx*y+x*z[128X[104X
     [4X[25Xgap>[125X [27XIsUnateInVariable(f,3);[127X[104X
     [4X[28XEnter the number of variables (n>=3):[128X[104X
+    [4X[28X3[128X[104X
     [4X[28Xfalse[128X[104X
     [4X[28X[128X[104X
   [4X[32X[104X
@@ -409,6 +411,7 @@
     [4X[28Xx*y+x*z[128X[104X
     [4X[25Xgap>[125X [27XInfluenceOfVariable(f,3);[127X[104X
     [4X[28XEnter the number of variables (n>=3):[128X[104X
+    [4X[28X3[128X[104X
     [4X[28X2[128X[104X
     [4X[28X[128X[104X
   [4X[32X[104X
@@ -455,6 +458,7 @@
     [4X[25Xgap>[125X [27Xf:=x*y;;[127X[104X
     [4X[25Xgap>[125X [27Xfsd:=SelfDualExtensionOfBooleanFunction(f);;[127X[104X
     [4X[28XEnter the number of variables (n>=2):[128X[104X
+    [4X[28X2[128X[104X
     [4X[25Xgap>[125X [27XList(fsd,Order);[127X[104X
     [4X[28X[ 0, 0, 0, 1, 0, 1, 1, 1 ][128X[104X
     [4X[28X[128X[104X
@@ -601,7 +605,7 @@
   
   [4X[32X  Example  [32X[104X
     [4X[28X[128X[104X
-    [4X[28X## Continuation of Example 2.2.4[128X[104X
+    [4X[25Xgap>[125X [27X## Continuation of Example 2.2.4[127X[104X
     [4X[25Xgap>[125X [27Xrk:=ReducedKernelOfBooleanFunction(k[1]);;[127X[104X
     [4X[25Xgap>[125X [27Xj:=1;;[127X[104X
     [4X[25Xgap>[125X [27Xfor i in rk do Print(j,".\n"); Display(i); Print("\n"); j:=j+1; od;[127X[104X
@@ -737,6 +741,7 @@
     [4X[28Xx+y[128X[104X
     [4X[25Xgap>[125X [27XIsRKernelBiggerOfCombSum(f);[127X[104X
     [4X[28XEnter the number of variables n (n>=2):[128X[104X
+    [4X[28X2[128X[104X
     [4X[28Xfalse[128X[104X
     [4X[28X[128X[104X
   [4X[32X[104X
@@ -957,13 +962,13 @@
   
   [4X[32X  Example  [32X[104X
     [4X[28X[128X[104X
-    [4X[28X## Conjunction can not be trained by Winnow algorithm.[128X[104X
+    [4X[25Xgap>[125X [27X## Conjunction can not be trained by Winnow algorithm.[127X[104X
     [4X[25Xgap>[125X [27Xf:=x*y;;[127X[104X
     [4X[25Xgap>[125X [27Xte:=WinnowAlgorithm(f,2,100);[127X[104X
     [4X[28XEnter the number of variables (n>=2):[128X[104X
     [4X[28X2[128X[104X
     [4X[28X[  ][128X[104X
-    [4X[28X## But in the case of Winnow2 we can obtain the desirable result.[128X[104X
+    [4X[25Xgap>[125X [27X## But in the case of Winnow2 we can obtain the desirable result.[127X[104X
     [4X[25Xgap>[125X [27Xte:=Winnow2Algorithm(f,2,100);[127X[104X
     [4X[28XEnter the number of variables (n>=2):[128X[104X
     [4X[28X2[128X[104X

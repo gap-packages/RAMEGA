@@ -303,6 +303,7 @@ Enter the number of variables (n&gt;=2):
 x*y
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c:=CharacteristicVectorOfFunction(f);</span>
 Enter the number of variables (n&gt;=2):
+2
 [ 2, 2, 2 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCharacteristicVectorOfSTE(c);</span>
 true
@@ -366,6 +367,7 @@ false
 x*y+x*z
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsUnateInVariable(f,3);</span>
 Enter the number of variables (n&gt;=3):
+3
 false
 
 </pre></div>
@@ -426,6 +428,7 @@ false
 x*y+x*z
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfluenceOfVariable(f,3);</span>
 Enter the number of variables (n&gt;=3):
+3
 2
 
 </pre></div>
@@ -465,6 +468,7 @@ f^{n+1}(x_1,\ldots,x_n,x_{n+1})=1-f^{n}(\overline x_1,\ldots,\overline x_n) \qua
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x*y;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fsd:=SelfDualExtensionOfBooleanFunction(f);;</span>
 Enter the number of variables (n&gt;=2):
+2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(fsd,Order);</span>
 [ 0, 0, 0, 1, 0, 1, 1, 1 ]
 
@@ -593,7 +597,7 @@ T(f)=\big\{ \;K(f)_i \;\mid\; i=1,2,\ldots,m  \;\big\}.
 
 <div class="example"><pre>
 
-## Continuation of Example 2.2.4
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Continuation of Example 2.2.4</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rk:=ReducedKernelOfBooleanFunction(k[1]);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j:=1;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for i in rk do Print(j,".\n"); Display(i); Print("\n"); j:=j+1; od;</span>
@@ -714,6 +718,7 @@ false
 x+y
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRKernelBiggerOfCombSum(f);</span>
 Enter the number of variables n (n&gt;=2):
+2
 false
 
 </pre></div>
@@ -896,13 +901,13 @@ Enter the number of variables (n&gt;=2):
 
 <div class="example"><pre>
 
-## Conjunction can not be trained by Winnow algorithm.
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Conjunction can not be trained by Winnow algorithm.</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f:=x*y;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=WinnowAlgorithm(f,2,100);</span>
 Enter the number of variables (n&gt;=2):
 2
 [  ]
-## But in the case of Winnow2 we can obtain the desirable result.
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## But in the case of Winnow2 we can obtain the desirable result.</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">te:=Winnow2Algorithm(f,2,100);</span>
 Enter the number of variables (n&gt;=2):
 2

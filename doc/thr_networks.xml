@@ -65,7 +65,7 @@ For the object <C>Obj</C> the function <C>IsNeuralNetwork</C> returns <C>true</C
 
 <Example>
 <![CDATA[
-## Consider the neural network <C>nn</C> from the previous example.
+gap> ## Consider the neural network <C>nn</C> from the previous example.
 gap> IsNeuralNetwork(nn);
 true
 ]]>
@@ -81,7 +81,7 @@ Boolean function, realized by <C>NNetwork</C>.
 
 <Example>
 <![CDATA[
-gap> List(OutputOfNeuralNetwork(nn),Order);
+gap> OutputOfNeuralNetwork(nn);
 [ 0, 1, 1, 0 ]
 ]]>
 </Example>
@@ -107,6 +107,7 @@ gap> f:=x*y+z;
 x*y+z
 gap> nn:=BooleanFunctionByNeuralNetwork(f);
 Enter the number of variables n (n>=3):
+3
 < neural network with
 2 threshold elements on inner layer and disjunction on outer level >
 gap> Display(last);

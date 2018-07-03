@@ -90,7 +90,7 @@ Sum of Products:[ 1, 2 ]
 
 <div class="example"><pre>
 
-## Consider the neural network &lt;C&gt;nn&lt;/C&gt; from the previous example.
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Consider the neural network &lt;C&gt;nn&lt;/C&gt; from the previous example.</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsNeuralNetwork(nn);</span>
 true
 
@@ -106,7 +106,7 @@ true
 
 <div class="example"><pre>
 
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(OutputOfNeuralNetwork(nn),Order);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">OutputOfNeuralNetwork(nn);</span>
 [ 0, 1, 1, 0 ]
 
 </pre></div>
@@ -131,6 +131,7 @@ true
 x*y+z
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nn:=BooleanFunctionByNeuralNetwork(f);</span>
 Enter the number of variables n (n&gt;=3):
+3
 &lt; neural network with
 2 threshold elements on inner layer and disjunction on outer level &gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(last);</span>

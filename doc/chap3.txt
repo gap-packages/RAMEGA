@@ -56,7 +56,7 @@
   
   [4X[32X  Example  [32X[104X
     [4X[28X[128X[104X
-    [4X[28X## Consider the neural network <C>nn</C> from the previous example.[128X[104X
+    [4X[25Xgap>[125X [27X## Consider the neural network <C>nn</C> from the previous example.[127X[104X
     [4X[25Xgap>[125X [27XIsNeuralNetwork(nn);[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[28X[128X[104X
@@ -71,7 +71,7 @@
   
   [4X[32X  Example  [32X[104X
     [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XList(OutputOfNeuralNetwork(nn),Order);[127X[104X
+    [4X[25Xgap>[125X [27XOutputOfNeuralNetwork(nn);[127X[104X
     [4X[28X[ 0, 1, 1, 0 ][128X[104X
     [4X[28X[128X[104X
   [4X[32X[104X
@@ -96,6 +96,7 @@
     [4X[28Xx*y+z[128X[104X
     [4X[25Xgap>[125X [27Xnn:=BooleanFunctionByNeuralNetwork(f);[127X[104X
     [4X[28XEnter the number of variables n (n>=3):[128X[104X
+    [4X[28X3[128X[104X
     [4X[28X< neural network with[128X[104X
     [4X[28X2 threshold elements on inner layer and disjunction on outer level >[128X[104X
     [4X[25Xgap>[125X [27XDisplay(last);[127X[104X

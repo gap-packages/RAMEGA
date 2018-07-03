@@ -265,6 +265,7 @@ gap> f:=x*y;
 x*y
 gap> c:=CharacteristicVectorOfFunction(f);
 Enter the number of variables (n>=2):
+2
 [ 2, 2, 2 ]
 gap> IsCharacteristicVectorOfSTE(c);
 true
@@ -329,6 +330,7 @@ gap> f:=x*y+x*z;
 x*y+x*z
 gap> IsUnateInVariable(f,3);
 Enter the number of variables (n>=3):
+3
 false
 ]]>
 </Example>
@@ -397,6 +399,7 @@ gap> f:=x*y+x*z;
 x*y+x*z
 gap> InfluenceOfVariable(f,3);
 Enter the number of variables (n>=3):
+3
 2
 ]]>
 </Example>
@@ -435,6 +438,7 @@ gap> List(fsd,Order);
 gap> f:=x*y;;
 gap> fsd:=SelfDualExtensionOfBooleanFunction(f);;
 Enter the number of variables (n>=2):
+2
 gap> List(fsd,Order);
 [ 0, 0, 0, 1, 0, 1, 1, 1 ]
 ]]>
@@ -566,7 +570,7 @@ the function <C>ReducedKernelOfBooleanFunction</C> returns the reduced kernel <M
 
 <Example>
 <![CDATA[
-## Continuation of Example 2.2.4
+gap> ## Continuation of Example 2.2.4
 gap> rk:=ReducedKernelOfBooleanFunction(k[1]);;
 gap> j:=1;;
 gap> for i in rk do Print(j,".\n"); Display(i); Print("\n"); j:=j+1; od;
@@ -689,6 +693,7 @@ gap> f:=x+y;
 x+y
 gap> IsRKernelBiggerOfCombSum(f);
 Enter the number of variables n (n>=2):
+2
 false
 ]]>
 </Example>
@@ -896,13 +901,13 @@ defines the value on which we change parameters while running the algorithm.
 
 <Example>
 <![CDATA[
-## Conjunction can not be trained by Winnow algorithm.
+gap> ## Conjunction can not be trained by Winnow algorithm.
 gap> f:=x*y;;
 gap> te:=WinnowAlgorithm(f,2,100);
 Enter the number of variables (n>=2):
 2
 [  ]
-## But in the case of Winnow2 we can obtain the desirable result.
+gap> ## But in the case of Winnow2 we can obtain the desirable result.
 gap> te:=Winnow2Algorithm(f,2,100);
 Enter the number of variables (n>=2):
 2

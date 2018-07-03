@@ -481,6 +481,7 @@ vectors of length not bigger than 7.
   x*y
   !gapprompt@gap>| !gapinput@c:=CharacteristicVectorOfFunction(f);|
   Enter the number of variables (n>=2):
+  2
   [ 2, 2, 2 ]
   !gapprompt@gap>| !gapinput@IsCharacteristicVectorOfSTE(c);|
   true
@@ -542,6 +543,7 @@ vectors of length not bigger than 7.
   x*y+x*z
   !gapprompt@gap>A !gapinput@IsUnateInVariable(f,3);A
   Enter the number of variables (n>=3):
+  3
   false
   
 \end{Verbatim}
@@ -614,6 +616,7 @@ variable produces a change on the output of the function.
   x*y+x*z
   !gapprompt@gap>| !gapinput@InfluenceOfVariable(f,3);|
   Enter the number of variables (n>=3):
+  3
   2
   
 \end{Verbatim}
@@ -655,6 +658,7 @@ x_{n+1}=0, \]
   !gapprompt@gap>| !gapinput@f:=x*y;;|
   !gapprompt@gap>| !gapinput@fsd:=SelfDualExtensionOfBooleanFunction(f);;|
   Enter the number of variables (n>=2):
+  2
   !gapprompt@gap>| !gapinput@List(fsd,Order);|
   [ 0, 0, 0, 1, 0, 1, 1, 1 ]
   
@@ -778,7 +782,7 @@ kernel, and the second element equals either $1$ or $0$.
  For the $m \times n$ matrix \texttt{Ker}, which represents the kernel of some Boolean function $f$, the function \texttt{ReducedKernelOfBooleanFunction} returns the reduced kernel $T(f)$ of $f$. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   
-  ## Continuation of Example 2.2.4
+  !gapprompt@gap>| !gapinput@## Continuation of Example 2.2.4|
   !gapprompt@gap>| !gapinput@rk:=ReducedKernelOfBooleanFunction(k[1]);;|
   !gapprompt@gap>| !gapinput@j:=1;;|
   !gapprompt@gap>| !gapinput@for i in rk do Print(j,".\n"); Display(i); Print("\n"); j:=j+1; od;|
@@ -901,6 +905,7 @@ function \texttt{Func} as an input.
   x+y
   !gapprompt@gap>| !gapinput@IsRKernelBiggerOfCombSum(f);|
   Enter the number of variables n (n>=2):
+  2
   false
   
 \end{Verbatim}
@@ -1102,13 +1107,13 @@ minimum separation that depends on $\delta$. \texttt{Winnow2} algorithm is desig
 running the algorithm. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   
-  ## Conjunction can not be trained by Winnow algorithm.
+  !gapprompt@gap>| !gapinput@## Conjunction can not be trained by Winnow algorithm.|
   !gapprompt@gap>| !gapinput@f:=x*y;;|
   !gapprompt@gap>| !gapinput@te:=WinnowAlgorithm(f,2,100);|
   Enter the number of variables (n>=2):
   2
   [  ]
-  ## But in the case of Winnow2 we can obtain the desirable result.
+  !gapprompt@gap>| !gapinput@## But in the case of Winnow2 we can obtain the desirable result.|
   !gapprompt@gap>| !gapinput@te:=Winnow2Algorithm(f,2,100);|
   Enter the number of variables (n>=2):
   2
@@ -1226,7 +1231,7 @@ Section \ref{thr_basic}.
   For the object \texttt{Obj} the function \texttt{IsNeuralNetwork} returns \texttt{true} if \texttt{Obj} is a neural network (see \texttt{NeuralNetwork} (\ref{NeuralNetwork})), and \texttt{false} otherwise. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   
-  ## Consider the neural network <C>nn</C> from the previous example.
+  !gapprompt@gap>| !gapinput@## Consider the neural network <C>nn</C> from the previous example.|
   !gapprompt@gap>| !gapinput@IsNeuralNetwork(nn);|
   true
   
@@ -1246,7 +1251,7 @@ Section \ref{thr_basic}.
   For the neural network \texttt{NNetwork} the function \texttt{OutputOfNeuralNetwork} returns the truth vector of the Boolean function, realized by \texttt{NNetwork}. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   
-  !gapprompt@gap>| !gapinput@List(OutputOfNeuralNetwork(nn),Order);|
+  !gapprompt@gap>| !gapinput@OutputOfNeuralNetwork(nn);|
   [ 0, 1, 1, 0 ]
   
 \end{Verbatim}
@@ -1276,6 +1281,7 @@ Section \ref{thr_basic}.
   x*y+z
   !gapprompt@gap>A !gapinput@nn:=BooleanFunctionByNeuralNetwork(f);A
   Enter the number of variables n (n>=3):
+  3
   < neural network with
   2 threshold elements on inner layer and disjunction on outer level >
   !gapprompt@gap>A !gapinput@Display(last);A
