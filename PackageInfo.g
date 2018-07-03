@@ -1,7 +1,7 @@
 #############################################################################
 ##
-##  PackageInfo.g for the package `Example'                     Werner Nickel
-##                                                                Greg Gamble
+##  PackageInfo.g for the package `Thelma'                     Victor Bovdi
+##                                                             Vasyl Laver
 ##  (created from Frank L�beck's PackageInfo.g template file)
 ##
 ##  This is a GAP readable file. Of course you can change and remove all
@@ -322,7 +322,7 @@ Autoload := false,
 
 ##  *Optional*, but recommended: path relative to package root to a file which
 ##  contains as many tests of the package functionality as sensible.
-#TestFile := "tst/testall.g",
+TestFile := "tst/testall.g",
 
 ##  *Optional*: Here you can list some keyword related to the topic
 ##  of the package.
