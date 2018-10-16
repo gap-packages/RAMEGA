@@ -52,9 +52,18 @@ Date := "01/06/2018",
 ##  directory containing the package (in our "example" probably:
 ##  example/init.g, ...    or  example-1.3/init.g, ...  )
 #
-ArchiveURL :=
-			"",
-#          "",
+PackageWWWHome :=
+  Concatenation( "https://vlaver.github.io/", ~.PackageName ),
+SourceRepository := rec(
+    Type := "git",
+    URL := Concatenation( "https://github.com/vlaver/", ~.PackageName ),
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+
+ArchiveURL := Concatenation( ~.SourceRepository.URL,
+                                 "/releases/download/v", ~.Version,
+                                 "/", ~.PackageName, "-", ~.Version ),
+ArchiveFormats := ".tar.gz",
 
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
@@ -70,7 +79,6 @@ ArchiveURL :=
 ##  a convenient installation and upgrading on Linux systems.
 ##
 # ArchiveFormats := ".zoo", # the others are generated automatically
-ArchiveFormats := ".tar.gz",
 
 ##  If not all of the archive formats mentioned above are provided, these
 ##  can be produced at the GAP side. Therefore it is necessary to know which
@@ -132,6 +140,7 @@ Persons := [
     LastName      := "Bovdi",
     FirstNames    := "Victor",
     IsAuthor      := true,
+    IsMaintainer  := false,
     Email         := "vbovdi@gmail.com",
    	Place         := "Al Ain",
     Institution   := "UAE University"
@@ -176,10 +185,10 @@ Status := "dev",
 ##  the updating of package information on the GAP Website, and inclusion
 ##  and updating of the package in the GAP distribution.
 #
-README_URL :=
- "https://github.com/vlaver/Thelma/blob/master/README.md",
-PackageInfoURL :=
- "https://github.com/vlaver/Thelma/blob/master/PackageInfo.g",
+README_URL := 
+  Concatenation( ~.PackageWWWHome, "/README.md" ),
+PackageInfoURL := 
+  Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 
 ##  Here you  must provide a short abstract explaining the package content
 ##  in HTML format (used on the package overview Web page) and an URL
@@ -195,7 +204,6 @@ PackageInfoURL :=
 AbstractHTML :=
    "The <span class=\"pkgname\">Thelma</span> package is package with algorithms to deal with threshold elements.",
 
-PackageWWWHome := "https://github.com/vlaver/Thelma",
 
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the
@@ -224,25 +232,18 @@ PackageWWWHome := "https://github.com/vlaver/Thelma",
 ##  position of the files as in a standard GAP installation.
 ##
 # in case of several help books give a list of such records here:
+
 PackageDoc := rec(
-  # use same as in GAP
-  BookName  := "Thelma",
-  # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
- # Archive := "http://www.fc.up.pt/cmup/mdelgado/automata/doc/doc",
- # ArchiveURLSubset := ["doc"],
+  BookName  := ~.PackageName,
+  ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   # the path to the .six file used by GAP's help system
   SixFile   := "doc/manual.six",
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
-  LongTitle := "Threshold Elements, Modelling and Applications",
-#  LongTitle := "",
-  # Should this help book be autoloaded when GAP starts up? This should
-  # usually be 'true', otherwise say 'false'.
- # Autoload  := true
+  LongTitle := ~.Subtitle,
 ),
-
 
 ##  Are there restrictions on the operating system for this package? Or does
 ##  the package need other packages to be available?
