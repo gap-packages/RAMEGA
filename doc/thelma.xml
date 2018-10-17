@@ -27,7 +27,7 @@
 <#Include SYSTEM "thr_networks.xml">
 </Body>
 
-<Bibliography Databases="thelma"/>
+<Bibliography Databases="thelmabib.xml"/>
 
 <!--  And finally an index as well   -->
 <TheIndex/>

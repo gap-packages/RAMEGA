@@ -112,7 +112,7 @@ Boolean function, realized by <C>ThrEl</C>.
 gap> te:=ThresholdElement([1,2],3);
 < threshold element with weight vector [ 1, 2 ] and threshold 3 >
 gap> f:=OutputOfThresholdElement(te);
-[ 0, 0, 0, 1 ]
+[ 0*Z(2), 0*Z(2), 0*Z(2), Z(2)^0 ]
 ]]>
 </Example>
 </Description> </ManSection>
@@ -227,20 +227,15 @@ There are no limitations on the cardinality of <C>Func</C>, but the database of 
 
 <Example>
 <![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];
-[ 0, 0, 0, 1 ]
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
 gap> c:=CharacteristicVectorOfFunction(f);
 [ 2, 2, 2 ]
-gap> f:="0001";
-"0001"
+gap> f:="0001";;
 gap> c:=CharacteristicVectorOfFunction(f);
 [ 2, 2, 2 ]
-gap> x:=Indeterminate(GF(2),"x");
-x
-gap> y:=Indeterminate(GF(2),"y");
-y
-gap> f:=x+y;
-x+y
+gap> x:=Indeterminate(GF(2),"x");;
+gap> y:=Indeterminate(GF(2),"y");;
+gap> f:=x+y;;
 gap> c:=CharacteristicVectorOfFunction(f);
 Enter the number of variables (n>=2):
 2
@@ -261,16 +256,14 @@ Note, that this function is implemented only for characteristic vectors of lengt
 
 <Example>
 <![CDATA[
-gap> f:=x*y;
-x*y
+gap> f:=x*y;;
 gap> c:=CharacteristicVectorOfFunction(f);
 Enter the number of variables (n>=2):
 2
 [ 2, 2, 2 ]
 gap> IsCharacteristicVectorOfSTE(c);
 true
-gap> f:=x+y;
-x+y
+gap> f:=x+y;;
 gap> c:=CharacteristicVectorOfFunction(f);
 Enter the number of variables (n>=2):
 2
@@ -303,8 +296,7 @@ For the Boolean function <C>Func</C> and the positive integer <C>Var</C> (which 
 
 <Example>
 <![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),0*Z(2),0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];
-[ 0, 0, 0, 0, 0, 1, 1, 0 ]
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),0*Z(2),0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];;
 gap> nn:=BooleanFunctionByNeuralNetwork(f);;
 gap> Display(nn);
 Inner Layer:
@@ -322,12 +314,10 @@ Neural Network realizes the function f :
 Sum of Products:[ 5, 6 ]
 gap> IsUnateInVariable(f,1);
 true
-gap> f:="00000110";
-"00000110"
+gap> f:="00000110";;
 gap> IsUnateInVariable(f,2);
 false
-gap> f:=x*y+x*z;
-x*y+x*z
+gap> f:=x*y+x*z;;
 gap> IsUnateInVariable(f,3);
 Enter the number of variables (n>=3):
 3
@@ -354,16 +344,13 @@ For the Boolean function <C>Func</C> the function <C>IsUnateBooleanFunction</C> 
 
 <Example>
 <![CDATA[
-gap> f:=[0*Z(2),Z(2)^0,Z(2)^0,Z(2)^0];
-[ 0, 1, 1, 1 ]
+gap> f:=[0*Z(2),Z(2)^0,Z(2)^0,Z(2)^0];;
 gap> IsUnateBooleanFunction(f);
 true
-gap> f:="1001";
-"1001"
+gap> f:="1001";;
 gap> IsUnateBooleanFunction(f);
 false
-gap> f:=x+y;
-x+y
+gap> f:=x+y;;
 gap> IsUnateBooleanFunction(f);
 Enter the number of variables (n>=2):
 2
@@ -391,12 +378,10 @@ gap> InfluenceOfVariable(f,1);
 2
 gap> InfluenceOfVariable(f,3);
 2
-gap> f:="00000110";
-"00000110"
+gap> f:="00000110";;
 gap> InfluenceOfVariable(f,2);
 2
-gap> f:=x*y+x*z;
-x*y+x*z
+gap> f:=x*y+x*z;;
 gap> InfluenceOfVariable(f,3);
 Enter the number of variables (n>=3):
 3
@@ -482,19 +467,17 @@ gap> List(out[1],Order);
 [ 0, 1, 1, 1 ]
 gap> List(out[2],Order);
 [ 1, 1, 1, 0 ]
-gap> f:="0110";
-"0110"
+gap> f:="0110";;
 gap> out:=SplitBooleanFunction(f,1,true);;
 gap> List(out[1],Order);
 [ 0, 1, 0, 0 ]
 gap> List(out[2],Order);
 [ 0, 0, 1, 0 ]
-gap> f:=x+y;
-x+y
+gap> f:=x+y;;
 gap> out:=SplitBooleanFunction(f,1,true);
 Enter the number of variables (n>=2):
 2
-[ [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ] ]
+[ [ 0*Z(2), Z(2)^0, 0*Z(2), 0*Z(2) ], [ 0*Z(2), 0*Z(2), Z(2)^0, 0*Z(2) ] ]
 ]]>
 </Example>
 </Description> </ManSection>
@@ -528,22 +511,26 @@ For the Boolean function <C>Func</C> the function <C>KernelOfBooleanFunction</C>
 
 <Example>
 <![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];
-[ 0, 0, 0, 1 ]
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
 gap> k:=KernelOfBooleanFunction(f);
-[ [ [ 1, 1 ] ], 1 ]
-gap> f:="0111";
-"0111"
+[ [ [ Z(2)^0, Z(2)^0 ] ], 1 ]
+gap> f:="0111";;
 gap> k:=KernelOfBooleanFunction(f);
-[ [ [ 0, 0 ] ], 0 ]
+[ [ [ 0*Z(2), 0*Z(2) ] ], 0 ]
 gap> z:=Indeterminate(GF(2),"z");
 z
-gap> f:=x*y+z;
-x*y+z
+gap> f:=x*y+z;;
 gap> k:=KernelOfBooleanFunction(f);
 Enter the number of variables n (n>=3):
 3
-[ [ [ 0, 0, 1 ], [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ], 1 ]
+gap> k:=KernelOfBooleanFunction(f);
+[ [ [ 0*Z(2), 0*Z(2), Z(2)^0 ], [ 0*Z(2), Z(2)^0, Z(2)^0 ],
+      [ Z(2)^0, 0*Z(2), Z(2)^0 ], [ Z(2)^0, Z(2)^0, 0*Z(2) ] ], 1 ]
+gap> Display(k[1]);
+ . . 1
+ . 1 1
+ 1 . 1
+ 1 1 .
 ]]>
 </Example>
 </Description> </ManSection>
@@ -615,8 +602,7 @@ A vector <M>b \in \mathbb{Z}_2^n</M> is called an additive inverse to <M>a \in \
 
 <Example>
 <![CDATA[
-gap> f:=x*y+z;
-x*y+z
+gap> f:=x*y+z;;
 gap> k:=KernelOfBooleanFunction(f);;
 Enter the number of variables n (n>=3):
 3
@@ -650,8 +636,7 @@ Note that this function also accepts the kernel of the Boolean function <C>Func<
 
 <Example>
 <![CDATA[
-gap> f:=x*y+z;
-x*y+z
+gap> f:=x*y+z;;
 gap> IsKernelContainingPrecedingVectors(f);
 Enter the number of variables n (n>=3):
 3
@@ -689,8 +674,7 @@ the reduced kernel of the Boolean function <C>Func</C> as an input.
 
 <Example>
 <![CDATA[
-gap> f:=x+y;
-x+y
+gap> f:=x+y;;
 gap> IsRKernelBiggerOfCombSum(f);
 Enter the number of variables n (n>=2):
 2
@@ -712,12 +696,10 @@ The realization of the function <C>BooleanFunctionBySTE</C> is based on algorith
 
 <Example>
 <![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];
-[ 0, 0, 0, 1 ]
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
 gap> te:=BooleanFunctionBySTE(f);
 < threshold element with weight vector [ 1, 2 ] and threshold 3 >
-gap> f:="11001000";
-"11001000"
+gap> f:="11001000";;
 gap> te:=BooleanFunctionBySTE(f);
 < threshold element with weight vector [ -1, -4, -2 ] and threshold -2 >
 gap> Display(last);
@@ -732,8 +714,7 @@ Threshold Element realizes the function f :
 [ 1, 1, 0 ] || 0
 [ 1, 1, 1 ] || 0
 Sum of Products:[ 0, 1, 4 ]
-gap> f:=x+y;
-x+y
+gap> f:=x+y;;
 gap> te:=BooleanFunctionBySTE(f);
 Enter the number of variables n (n>=2):
 2
@@ -800,15 +781,14 @@ the maximal number of iterations, the function <C>ThresholdElementTraining</C> r
 
 <Example>
 <![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];
-[ 0, 0, 0, 1 ]
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
 gap> te1:=RandomThresholdElement(2,-2,2);
 < threshold element with weight vector [ 0, -1 ] and threshold 0 >
-gap> OutputOfThresholdElement(te1);
+gap> List(OutputOfThresholdElement(te1),Order);
 [ 1, 0, 1, 0 ]
 gap> te2:=ThresholdElementTraining(te1,1,f,100);
 < threshold element with weight vector [ 2, 1 ] and threshold 3 >
-gap> OutputOfThresholdElement(te2);
+gap> List(OutputOfThresholdElement(te2),Order);
 [ 0, 0, 0, 1 ]
 ]]>
 </Example>
@@ -827,15 +807,14 @@ the function <C>ThresholdElementTraining</C> returns a threshold element, realiz
 
 <Example>
 <![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];
-[ 0, 0, 0, 1 ]
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
 gap> te1:=RandomThresholdElement(2,-2,2);
 < threshold element with weight vector [ 0, 2 ] and threshold 2 >
-gap> OutputOfThresholdElement(te1);
+gap> List(OutputOfThresholdElement(te1),Order);
 [ 0, 1, 0, 1 ]
 gap> te2:=ThresholdElementBatchTraining(te1,1,f,100);
 < threshold element with weight vector [ 2, 2 ] and threshold 3 >
-gap> OutputOfThresholdElement(te2);
+gap> List(OutputOfThresholdElement(te2));
 [ 0, 0, 0, 1 ]
 ]]>
 </Example>
@@ -866,7 +845,7 @@ gap> te:=WinnowAlgorithm(f,2,100);
 Enter the number of variables (n>=2):
 2
 < threshold element with weight vector [ 1, 1 ] and threshold 1 >
-gap> OutputOfThresholdElement(te);
+gap> List(OutputOfThresholdElement(te),Order);
 [ 0, 1, 1, 1 ]
 ]]>
 </Example>
@@ -912,7 +891,7 @@ gap> te:=Winnow2Algorithm(f,2,100);
 Enter the number of variables (n>=2):
 2
 < threshold element with weight vector [ 1/2, 1/2 ] and threshold 1 >
-gap> OutputOfThresholdElement(te);
+gap> List(OutputOfThresholdElement(te),Order);
 [ 0, 0, 0, 1 ]
 ]]>
 </Example>

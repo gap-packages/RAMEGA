@@ -39,7 +39,7 @@ false
 gap> te:=ThresholdElement([1,2],3);
 < threshold element with weight vector [ 1, 2 ] and threshold 3 >
 gap> f:=OutputOfThresholdElement(te);
-[ 0, 0, 0, 1 ]
+[ 0*Z(2), 0*Z(2), 0*Z(2), Z(2)^0 ]
 
 ## Example 2.1.4
 
@@ -48,24 +48,16 @@ gap> te:=ThresholdElement([1,2],3);
 gap> sv:=StructureOfThresholdElement(te);
 [ [ 1, 2 ], 3 ]
 
-## Example 2.1.5
-
-gap> te:=RandomThresholdElement(4,-10,10);
-< threshold element with weight vector [ -1, -3, -7, 0 ] and threshold 9 >
-
 ## Example 2.1.6
 
-gap> te1:=ThresholdElement([1,2],3);
-< threshold element with weight vector [ 1, 2 ] and threshold 3 >
-gap> OutputOfThresholdElement(te1);
+gap> te1:=ThresholdElement([1,2],3);;
+gap> List(OutputOfThresholdElement(te1),Order);
 [ 0, 0, 0, 1 ]
-gap> te2:=ThresholdElement([1,2],0);
-< threshold element with weight vector [ 1, 2 ] and threshold 0 >
-gap> OutputOfThresholdElement(te2);
+gap> te2:=ThresholdElement([1,2],0);;
+gap> List(OutputOfThresholdElement(te2),Order);
 [ 1, 1, 1, 1 ]
-gap> te3:=ThresholdElement([1,1],2);
-< threshold element with weight vector [ 1, 1 ] and threshold 2 >
-gap> OutputOfThresholdElement(te3);
+gap> te3:=ThresholdElement([1,1],2);;
+gap> List(OutputOfThresholdElement(te3),Order);
 [ 0, 0, 0, 1 ]
 gap> te1<te2;
 true
@@ -77,12 +69,10 @@ true
 ## Example 2.2.1
 ## In all further examples we omit the case of polynomials, as it requires input from user.
 
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];
-[ 0, 0, 0, 1 ]
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
 gap> c:=CharacteristicVectorOfFunction(f);
 [ 2, 2, 2 ]
-gap> f:="0001";
-"0001"
+gap> f:="0001";;
 gap> c:=CharacteristicVectorOfFunction(f);
 [ 2, 2, 2 ]
 
@@ -102,8 +92,7 @@ false
 
 ## Example 2.2.3
 
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),0*Z(2),0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];
-[ 0, 0, 0, 0, 0, 1, 1, 0 ]
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),0*Z(2),0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];;
 gap> nn:=BooleanFunctionByNeuralNetwork(f);;
 gap> Display(nn);
 Inner Layer:
@@ -130,19 +119,16 @@ false
 
 ## Example 2.2.4
 
-gap> f:=[0*Z(2),Z(2)^0,Z(2)^0,Z(2)^0];
-[ 0, 1, 1, 1 ]
+gap> f:=[0*Z(2),Z(2)^0,Z(2)^0,Z(2)^0];;
 gap> IsUnateBooleanFunction(f);
 true
-gap> f:="1001";
-"1001"
+gap> f:="1001";;
 gap> IsUnateBooleanFunction(f);
 false
 
 ## Example 2.2.5
 
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),0*Z(2),0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];
-[ 0, 0, 0, 0, 0, 1, 1, 0 ]
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),0*Z(2),0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];;
 gap> InfluenceOfVariable(f,1);
 2
 gap> InfluenceOfVariable(f,3);
@@ -158,41 +144,46 @@ gap> InfluenceOfVariable(f,3);
 
 gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
 gap> fsd:=SelfDualExtensionOfBooleanFunction(f);;
-gap> fsd;
+gap> List(fsd,Order);
 [ 0, 0, 0, 1, 0, 1, 1, 1 ]
 gap> f:="0001";;
-gap> fsd:=SelfDualExtensionOfBooleanFunction(f);
+gap> fsd:=SelfDualExtensionOfBooleanFunction(f);;
+gap> List(fsd,Order);
 [ 0, 0, 0, 1, 0, 1, 1, 1 ]
 
 ## Example 2.2.7
 
 gap> f:=[0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];;
 gap> out:=SplitBooleanFunction(f,1,false);;
-gap> out[1];
+gap> List(out[1],Order);
 [ 0, 1, 1, 1 ]
-gap> out[2];
+gap> List(out[2],Order);
 [ 1, 1, 1, 0 ]
 gap> f:="0110";
 "0110"
 gap> out:=SplitBooleanFunction(f,1,true);;
-gap> out[1];
+gap> List(out[1],Order);
 [ 0, 1, 0, 0 ]
-gap> out[2];
+gap> List(out[2],Order);
 [ 0, 0, 1, 0 ]
 
 ## Example 2.2.8
 
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];
-[ 0, 0, 0, 1 ]
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
 gap> k:=KernelOfBooleanFunction(f);
-[ [ [ 1, 1 ] ], 1 ]
-gap> f:="0111";
-"0111"
+[ [ [ Z(2)^0, Z(2)^0 ] ], 1 ]
+gap> f:="0111";;
 gap> k:=KernelOfBooleanFunction(f);
-[ [ [ 0, 0 ] ], 0 ]
+[ [ [ 0*Z(2), 0*Z(2) ] ], 0 ]
 gap> f:="01010110";;
 gap> k:=KernelOfBooleanFunction(f);
-[ [ [ 0, 0, 1 ], [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ], 1 ]
+[ [ [ 0*Z(2), 0*Z(2), Z(2)^0 ], [ 0*Z(2), Z(2)^0, Z(2)^0 ], 
+      [ Z(2)^0, 0*Z(2), Z(2)^0 ], [ Z(2)^0, Z(2)^0, 0*Z(2) ] ], 1 ]
+gap> Display(k[1]);
+ . . 1
+ . 1 1
+ 1 . 1
+ 1 1 .
 
 ## Example 2.2.9
 
@@ -251,12 +242,10 @@ false
 
 ## Example 2.2.13
 
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];
-[ 0, 0, 0, 1 ]
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
 gap> te:=BooleanFunctionBySTE(f);
 < threshold element with weight vector [ 1, 2 ] and threshold 3 >
-gap> f:="11001000";
-"11001000"
+gap> f:="11001000";;
 gap> te:=BooleanFunctionBySTE(f);
 < threshold element with weight vector [ -1, -4, -2 ] and threshold -2 >
 gap> Display(last);
@@ -278,33 +267,31 @@ gap> f:="1x001x0x";
 "1x001x0x"
 gap> te:=PDBooleanFunctionBySTE(f);
 < threshold element with weight vector [ -1, -2, -3 ] and threshold -1 >
-gap> OutputOfThresholdElement(te);
+gap> List(OutputOfThresholdElement(te),Order);
 [ 1, 0, 0, 0, 1, 0, 0, 0 ]
 
 ## Example 2.3.1
 
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];
-[ 0, 0, 0, 1 ]
-gap> te1:=RandomThresholdElement(2,-2,2);
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
+gap> te1:=ThresholdElement([2,0],0);
 < threshold element with weight vector [ 2, 0 ] and threshold 0 >
-gap> OutputOfThresholdElement(te1);
+gap> List(OutputOfThresholdElement(te1),Order);
 [ 1, 1, 1, 1 ]
 gap> te2:=ThresholdElementTraining(te1,1,f,100);
 < threshold element with weight vector [ 2, 1 ] and threshold 3 >
-gap> OutputOfThresholdElement(te2);
+gap> List(OutputOfThresholdElement(te2),Order);
 [ 0, 0, 0, 1 ]
 
 ## Example 2.3.2
 
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];
-[ 0, 0, 0, 1 ]
-gap> te1:=RandomThresholdElement(2,-2,2);
+gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
+gap> te1:=ThresholdElement([-1,0],0);
 < threshold element with weight vector [ -1, 0 ] and threshold 0 >
-gap> OutputOfThresholdElement(te1);
+gap> List(OutputOfThresholdElement(te1),Order);
 [ 1, 1, 0, 0 ]
 gap> te2:=ThresholdElementBatchTraining(te1,1,f,100);
 < threshold element with weight vector [ 1, 1 ] and threshold 2 >
-gap> OutputOfThresholdElement(te2);
+gap> List(OutputOfThresholdElement(te2),Order);
 [ 0, 0, 0, 1 ]
 
 ## Example 2.3.3
@@ -312,7 +299,7 @@ gap> OutputOfThresholdElement(te2);
 gap> f:="0111";;
 gap> te:=WinnowAlgorithm(f,2,100);
 < threshold element with weight vector [ 1, 1 ] and threshold 1 >
-gap> OutputOfThresholdElement(te);
+gap> List(OutputOfThresholdElement(te),Order);
 [ 0, 1, 1, 1 ]
 
 ## Example 2.3.4
@@ -324,7 +311,7 @@ gap> te:=WinnowAlgorithm(f,2,100);
 gap> ## But in the case of Winnow2 we can obtain the desirable result.
 gap> te:=Winnow2Algorithm(f,2,100);
 < threshold element with weight vector [ 1/2, 1/2 ] and threshold 1 >
-gap> OutputOfThresholdElement(te);
+gap> List(OutputOfThresholdElement(te),Order);
 [ 0, 0, 0, 1 ]
 
 ## Example 2.3.5
@@ -372,7 +359,7 @@ true
 
 ## Example 3.1.3
 
-gap> OutputOfNeuralNetwork(nn);
+gap> List(OutputOfNeuralNetwork(nn),Order);
 [ 0, 1, 1, 0 ]
 
 ## Example 3.2.1
@@ -398,8 +385,7 @@ Sum of Products:[ 1, 3, 5, 6 ]
 
 ## Example 3.2.2
 
-gap> f:="00000110";
-"00000110"
+gap> f:="00000110";;
 gap> nn:=BooleanFunctionByNeuralNetworkDASG(f);
 < neural network with
 2 threshold elements on inner layer and conjunction on outer level >

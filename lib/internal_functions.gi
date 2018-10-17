@@ -1,5 +1,3 @@
-SetNameObject(0*Z(2),"0");
-SetNameObject(Z(2)^0,"1");
 ##############################################################
 BindGlobal("THELMA_INTERNAL_BuildToleranceMatrix",function(n)
 # Arguments: n - number of variables, for which we build the matrix;

@@ -81,7 +81,7 @@ Boolean function, realized by <C>NNetwork</C>.
 
 <Example>
 <![CDATA[
-gap> OutputOfNeuralNetwork(nn);
+gap> List(OutputOfNeuralNetwork(nn),Order);
 [ 0, 1, 1, 0 ]
 ]]>
 </Example>
@@ -103,8 +103,7 @@ The realization of this function is based on the algorithm proposed in <Cite Key
 
 <Example>
 <![CDATA[
-gap> f:=x*y+z;
-x*y+z
+gap> f:=x*y+z;;
 gap> nn:=BooleanFunctionByNeuralNetwork(f);
 Enter the number of variables n (n>=3):
 3
@@ -143,8 +142,7 @@ however we use a slightly modified version of this algorithm.
 
 <Example>
 <![CDATA[
-gap> f:="00000110";
-"00000110"
+gap> f:="00000110";;
 gap> nn:=BooleanFunctionByNeuralNetworkDASG(f);;
 < neural network with
   2 threshold elements on inner layer and conjunction on outer level >
