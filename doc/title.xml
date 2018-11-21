@@ -11,7 +11,7 @@
     THreshold ELements, Modeling and Applications
   </Subtitle>
   <Version>
-    1.0.0
+    1.0.1
   </Version>
   <Author>
     Victor Bovdi<Alt Only="LaTeX"><Br/></Alt>
@@ -43,6 +43,3 @@ This package may be distributed under the terms and conditions of the <URL Text=
 
   </Copyright>
   </TitlePage>
-
-
-

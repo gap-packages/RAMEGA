@@ -53,9 +53,9 @@ Status := "dev",
 # AcceptDate := "08/1999",
 #AcceptDate := "09/2004",
 
-README_URL := 
+README_URL :=
   Concatenation( ~.PackageWWWHome, "/README.md" ),
-PackageInfoURL := 
+PackageInfoURL :=
   Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 
 AbstractHTML :=

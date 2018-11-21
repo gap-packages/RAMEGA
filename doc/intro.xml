@@ -32,29 +32,8 @@ Chapter <Ref Chap="thr_networks"/> describes the functions for neural networks, 
 
 <Section Label="instal">
 <Heading>Installation</Heading>
-To get the newest version of this &GAP; 4 package download one of the
-archive files
-<List>
-<Item> <F>thelma-x.x.tar.gz</F> </Item>
-<Item> <F>thelma-x.x.tar.bz2</F> </Item>
-<Item> <F>thelma-x.x.zip</F> </Item>
-</List>
-and unpack it using
-<Verb>
-gunzip thelma-x.x.tar.gz; tar xvf thelma-x.x.tar
-</Verb>
-or
-<Verb>
-bzip2 -d thelma-x.x.tar.bz2; tar xvf thelma-x.x.tar
-</Verb>
-or
-<Verb>
-unzip -x thelma-x.x.zip
-</Verb>
-respectively.
-<P/>
-
-Do this in a directory called <Q><F>pkg</F></Q>, preferably (but not
+To get the newest version of this &GAP; 4 package download the
+archive file <F>thelma-x.x.tar.gz</F> and unpack it in a directory called <Q><F>pkg</F></Q>, preferably (but not
 necessarily) in the <Q><F>pkg</F></Q> subdirectory of your &GAP; 4
 installation. It creates a subdirectory called <Q><F>thelma</F></Q>.<P/>
 
@@ -66,7 +45,7 @@ As <Package>Thelma</Package> has no additional C libraries, there is no need in 
 <Section Label="feedback">
 <Heading>Feedback</Heading>
 
-For bug reports, feature requests and suggestions, please use the github issue tracker at <URL>https://github.com/vlaver/Thelma/issues</URL>.
+For bug reports, feature requests and suggestions, please use the github issue tracker at <URL>https://github.com/gap-packages/Thelma/issues</URL>.
 </Section>
 
 
