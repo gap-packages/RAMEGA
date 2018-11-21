@@ -8,12 +8,12 @@
 SetPackageInfo( rec(
 PackageName := "Thelma",
 Subtitle := "A package on threshold elements",
-Version := "1.00",
-Date := "18/10/2018",
-PackageWWWHome := Concatenation( "https://vlaver.github.io/", ~.PackageName ),
+Version := "1.01",
+Date := "21/11/2018",
+PackageWWWHome := Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
     SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/vlaver/", ~.PackageName ),
+    URL := Concatenation( "https://github.com/gap-packages/", ~.PackageName ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 ArchiveURL := Concatenation( ~.SourceRepository.URL,
