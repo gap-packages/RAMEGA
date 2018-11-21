@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gap-packages/Thelma.svg?branch=master)](https://travis-ci.org/gap-packages/Thelma)
+[![Code Coverage](https://codecov.io/github/gap-packages/Thelma/coverage.svg?branch=master&token=)](https://codecov.io/gh/gap-packages/Thelma)
 
 The GAP 4 package `thelma'
 ==================================
