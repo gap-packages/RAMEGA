@@ -4,7 +4,7 @@
 #W                                       Vasyl Laver  <vasyllaver@uzhnu.edu.ua>
 ##
 ##
-#H  @(#)$Id: ste_realizability.gi,v 1.00 $
+#H  @(#)$Id: ste_realizability.gi,v 1.02 $
 ##
 #Y  Copyright (C)  2018,  UAE University, UAE
 ##
@@ -292,10 +292,9 @@ BindGlobal("THELMA_INTERNAL_ThresholdOperator3G",function(ker, rker, onezero, nl
 # Output: a threshold element if function is realizable, [] otherwise.
 # We call this method when other cases fail
 	local templist,ihi , w,zt,az,thr,w1,fmat, tmp, wght, r, n,
-	kkk, mat, j0, t0, pcols, prows, zlist, a, s, i, j, sum, n0, uset,u, bool;
+	kkk, mat, j0, t0, pcols, prows, zlist, a, s, i, j, sum, n0, uset,u, bool, r0, rr, stop;
 
 	n:=Size(ker[1]);
-
 	mat:=rker[nlist[2]];
 
 	pcols:=THELMA_INTERNAL_SortCols(mat);
@@ -327,41 +326,38 @@ BindGlobal("THELMA_INTERNAL_ThresholdOperator3G",function(ker, rker, onezero, nl
 		fi;
 	od;
 
+	r:=THELMA_INTERNAL_FormVectR(n,j0);
 	bool:=false;
+	stop:=false;
 	for u in uset do
-		r:=[];
-		wght:=[];
-		for i in [1..u[1]] do Add(wght,1); od;
+		for r0 in r do
+			wght:=THELMA_INTERNAL_MappingBoolToInt(ListWithIdenticalEntries(n,One(GF(2))),r0,j0,u);
+			s:=Size(r0)-1;
 
-		n0:=2;
-		while n0<=Size(u) do
-			Add(wght,2^(n0-1));
-			n0:=n0+1;
+			fmat:=THELMA_INTERNAL_BuildFMatU(j0, s,wght,u);
+			if mat=fmat then
+				bool:=true;
+				sum:=0;
+
+				for i in [1..Size(u)] do
+					sum:=sum+u[i]*2^(i-1);
+				od;
+				rr:=r0;
+				stop:=true;
+				break;
+			fi;
+			if mat<=fmat or fmat<=mat then
+				sum:=0;
+
+				for i in [1..Size(u)] do
+					sum:=sum+u[i]*2^(i-1);
+				od;
+				rr:=r0;
+			fi;
+
 		od;
-
-		sum:=0;
-
-		for i in [1..Size(u)] do
-			sum:=sum+u[i]*2^(i-1);
-		od;
-
-		for j in [j0..j0+s] do
-			tmp:=zlist[j-j0+1];
-			Add(r,List(tmp{[1..j-1]},Order)*wght+1);
-			Add(wght,sum-r[Size(r)]+1);
-		od;
-
-		for i in [Size(wght)+1..n] do Add(wght,sum+1); od;
-
-		fmat:=THELMA_INTERNAL_BuildFMatU(j0, s,wght,u);
-
-		if mat<=fmat or fmat<=mat then
-			bool:=true;
-			break;
-		fi;
+		if bool=true then break; fi;
 	od;
-
-	if bool=false then return []; fi;
 
 	w:=[];
 	kkk:=1;
@@ -378,7 +374,8 @@ BindGlobal("THELMA_INTERNAL_ThresholdOperator3G",function(ker, rker, onezero, nl
 		i:=i+1;
 	od;
 
-	for i in [j0..j0+s] do Add(w,r[i-j0+1]-(sum+1)); od;
+	for i in [j0..j0+s] do Add(w,rr[i-j0+1]-(sum+1)); od;
+
 	while Size(w)<n do Add(w,-sum-1); od;
 
 	w:=THELMA_INTERNAL_ActionOnVector(a,Permuted(w,pcols^(-1)));
@@ -386,8 +383,7 @@ BindGlobal("THELMA_INTERNAL_ThresholdOperator3G",function(ker, rker, onezero, nl
 	zt:=Permuted(zlist[1],pcols^(-1));
 	az:=a+zt;
 	thr:=w*List(az,Order);
-
-	if mat=fmat then
+	if bool=true then
 		if onezero=1 then return ThresholdElement(w,thr); else return ThresholdElement(-w,-thr+1); fi;
 	else
 		if onezero=1 then
@@ -882,7 +878,37 @@ local temp,k,onezero,t,nlist,to2,to4,to41;
 	return THELMA_INTERNAL_ThresholdOperator3G(k, t, onezero,nlist);
 end);
 
-InstallMethod(BooleanFunctionBySTE, "f", true, [IsFFECollection], 1,
+InstallMethod(BooleanFunctionBySTE, "f", true, [IsObject], 1,
+function(f)
+	local n, k, i, t, w, res, j, bool, onezero, temp, struct, to2, to4, to41, nlist;
+	w:=[];
+
+	if (IsLogicFunction(f)=false) then
+		Error("f has to be a logic function.");
+	fi;
+
+	n:=f!.numvars;
+
+	if (f!.dimension<>2) then
+		Error("f has to be a Boolean function.");
+	fi;
+
+	f:=THELMA_INTERNAL_BFtoGF(f);
+
+	if Position(f,Z(2)^0) = fail then
+		for i in [1..LogInt(Size(f),2)] do Add(w,i); od;
+		return ThresholdElement(w,Sum(w)+1);
+	fi;
+	if Position(f,0*Z(2)) = fail then
+		for i in [1..LogInt(Size(f),2)] do Add(w,i); od;
+		return ThresholdElement(w,0);
+	fi;
+
+	return THELMA_INTERNAL_IsRlzbl(f);
+end);
+
+
+InstallOtherMethod(BooleanFunctionBySTE, "f", true, [IsFFECollection], 1,
 function(f)
 	local n, k, i, t, w, res, j, bool, onezero, temp, struct, to2, to4, to41, nlist;
 	w:=[];

@@ -4,7 +4,7 @@
 #W                                       Vasyl Laver  <vasyllaver@uzhnu.edu.ua>
 ##
 ##
-#H  @(#)$Id: iterative_methods.gi,v 1.00 $
+#H  @(#)$Id: iterative_methods.gi,v 1.02 $
 ##
 #Y  Copyright (C)  2018,  UAE University, UAE
 ##
@@ -23,7 +23,49 @@
 ##  or [] if the function is not realizable.
 ##
 
-InstallMethod(ThresholdElementTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsInt, IsFFECollection, IsInt], 4,
+InstallMethod(ThresholdElementTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsPosInt, IsObject, IsPosInt], 4,
+function(te,step,f,maxit)
+local t, l, i,y,err,j,tup,w,T,st, niter, n;
+
+	if (IsLogicFunction(f)=false) then
+		Error("f has to be a logic function.");
+	fi;
+
+	n:=f!.numvars;
+
+	if (f!.dimension<>2) then
+		Error("f has to be a Boolean function.");
+	fi;
+
+	f:=f!.output;
+
+	if step<1 then
+		Error("Step has to be a positive integer!\n");
+		return [];
+	fi;
+
+	if maxit<1 then
+		Error("Maximal number of iterations has to be a positive integer!\n");
+		return [];
+	fi;
+
+	st:=StructureOfThresholdElement(te);
+	w:=st[1]; T:=st[2];
+
+	if (Size(w)<>n) then
+		Error("Theshold element and f should be of one dimension!\n");
+	fi;
+
+	if w=[] then
+		for i in [1..LogInt(Size(f),2)+1] do Add(w,1); od;
+	fi;
+	l:=ShallowCopy(w);
+	niter:=maxit;
+	return THELMA_INTERNAL_ThrTr(l,T,step,f,niter);
+end);
+
+
+InstallOtherMethod(ThresholdElementTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsPosInt, IsFFECollection, IsPosInt], 4,
 function(te,step,f,maxit)
 local t, l, i,y,err,j,tup,w,T,st, niter, n;
 
@@ -61,7 +103,7 @@ local t, l, i,y,err,j,tup,w,T,st, niter, n;
 end);
 
 #f - is a polynomial over GF(2)
-InstallOtherMethod(ThresholdElementTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsInt, IsPolynomial, IsInt], 4,
+InstallOtherMethod(ThresholdElementTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsPosInt, IsPolynomial, IsPosInt], 4,
 function(te,step,f1,maxit)
 local t, l, i,y,err,j,tup,w,T,st, niter,f, var, n;
 	st:=StructureOfThresholdElement(te);
@@ -96,7 +138,7 @@ local t, l, i,y,err,j,tup,w,T,st, niter,f, var, n;
 end);
 
 #f - string
-InstallOtherMethod(ThresholdElementTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsInt, IsString, IsInt], 4,
+InstallOtherMethod(ThresholdElementTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsPosInt, IsString, IsPosInt], 4,
 function(te,step,f1,maxit)
 local t, l, i,y,err,j,tup,w,T,st, niter,f, n;
 	st:=StructureOfThresholdElement(te);
@@ -151,7 +193,51 @@ end);
 ##
 
 #f - vector over GF(2)
-InstallMethod(ThresholdElementBatchTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsInt, IsFFECollection, IsInt], 4,
+InstallMethod(ThresholdElementBatchTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsPosInt, IsObject, IsPosInt], 4,
+function(te,step,f, maxit)
+local t, l, i, y,err,j,Tc,wc,tup,st,w,T,niter,n;
+
+	st:=StructureOfThresholdElement(te);
+	w:=st[1];
+	T:=st[2];
+
+	if (IsLogicFunction(f)=false) then
+		Error("f has to be a logic function.");
+	fi;
+
+	n:=f!.numvars;
+
+	if (f!.dimension<>2) then
+		Error("f has to be a Boolean function.");
+	fi;
+
+	f:=f!.output;
+
+	if step<1 then
+		Error("Step has to be a positive integer!\n");
+		return [];
+	fi;
+
+	if maxit<1 then
+		Error("Maximal number of iterations has to be a positive integer!\n");
+		return [];
+	fi;
+
+	if w=[] then
+		for i in [1..LogInt(Size(f),2)+1] do Add(w,1); od;
+	fi;
+	l:=ShallowCopy(w);
+
+	if (Size(w)<>n) then
+		Error("Theshold element and f should be of one dimension!\n");
+	fi;
+
+	niter:=maxit;
+	return THELMA_INTERNAL_ThrBatchTr(l,T,step,f,niter);
+end);
+
+
+InstallOtherMethod(ThresholdElementBatchTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsPosInt, IsFFECollection, IsPosInt], 4,
 function(te,step,f, maxit)
 local t, l, i, y,err,j,Tc,wc,tup,st,w,T,niter,n;
 
@@ -185,7 +271,7 @@ local t, l, i, y,err,j,Tc,wc,tup,st,w,T,niter,n;
 end);
 
 # f is a polynomial
-InstallOtherMethod(ThresholdElementBatchTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsInt, IsPolynomial, IsInt], 4,
+InstallOtherMethod(ThresholdElementBatchTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsPosInt, IsPolynomial, IsPosInt], 4,
 function(te,step,f1,maxit)
 local t, l, i, y,err,j,Tc,wc,tup,st,w,T,niter, var, n, f;
 
@@ -222,7 +308,7 @@ local t, l, i, y,err,j,Tc,wc,tup,st,w,T,niter, var, n, f;
 end);
 
 #f is a string
-InstallOtherMethod(ThresholdElementBatchTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsInt, IsString, IsInt], 4,
+InstallOtherMethod(ThresholdElementBatchTraining, "threshold element, step, function, max_iter", true, [IsThresholdElementObj, IsPosInt, IsString, IsPosInt], 4,
 function(te,step,f1, maxit)
 local t, l, i, y,err,j,Tc,wc,tup,st,w,T,niter,f,n;
 
@@ -277,7 +363,40 @@ end);
 ##
 
 #f - vector over GF(2)
-InstallMethod(WinnowAlgorithm, "function, step, maxiter", true, [IsFFECollection, IsInt, IsInt], 3,
+InstallMethod(WinnowAlgorithm, "function, step, maxiter", true, [IsObject, IsPosInt, IsPosInt], 3,
+function(f,step,maxit)
+local f1,niter;
+
+	if step=1 then
+		Error("Step must be integer > 1. \n");
+	fi;
+
+	if step<1 then
+		Error("Step has to be a positive integer!\n");
+		return [];
+	fi;
+
+	if maxit<1 then
+		Error("Maximal number of iterations has to be a positive integer!\n");
+		return [];
+	fi;
+
+	if (IsLogicFunction(f)=false) then
+		Error("f has to be a logic function.");
+	fi;
+
+	if (f!.dimension<>2) then
+		Error("f has to be a Boolean function.");
+	fi;
+
+	f1:=f!.output;
+
+	niter:=maxit;
+	return THELMA_INTERNAL_Winnow(f1,step,niter);
+end);
+
+
+InstallOtherMethod(WinnowAlgorithm, "function, step, maxiter", true, [IsFFECollection, IsPosInt, IsPosInt], 3,
 function(f,step,maxit)
 local f1,niter;
 
@@ -301,7 +420,7 @@ local f1,niter;
 end);
 
 #f - string
-InstallOtherMethod(WinnowAlgorithm, "function, step, maxiter", true, [IsString, IsInt, IsInt], 3,
+InstallOtherMethod(WinnowAlgorithm, "function, step, maxiter", true, [IsString, IsPosInt, IsPosInt], 3,
 function(f,step, maxit)
 local f1,niter,n,i;
 
@@ -344,7 +463,7 @@ local f1,niter,n,i;
 end);
 
 #f - polynomial
-InstallOtherMethod(WinnowAlgorithm, "function, step, maxiter", true, [IsPolynomial, IsInt, IsInt], 3,
+InstallOtherMethod(WinnowAlgorithm, "function, step, maxiter", true, [IsPolynomial, IsPosInt, IsPosInt], 3,
 function(f,step,maxit)
 local f1,niter,var,n;
 
@@ -378,7 +497,39 @@ end);
 ##
 
 #f - vector over GF(2)
-InstallMethod(Winnow2Algorithm, "function, step, maxiter", true, [IsFFECollection, IsInt, IsInt], 3,
+InstallMethod(Winnow2Algorithm, "function, step, maxiter", true, [IsObject, IsPosInt, IsPosInt], 3,
+function(f,step,maxit)
+local f1,niter;
+
+	if step=1 then
+		Error("Step must be integer > 1. \n");
+	fi;
+
+	if step<1 then
+		Error("Step has to be a positive integer!\n");
+		return [];
+	fi;
+
+	if maxit<1 then
+		Error("Maximal number of iterations has to be a positive integer!\n");
+		return [];
+	fi;
+
+	if (IsLogicFunction(f)=false) then
+		Error("f has to be a logic function.");
+	fi;
+
+	if (f!.dimension<>2) then
+		Error("f has to be a Boolean function.");
+	fi;
+
+	f1:=f!.output;
+
+	niter:=maxit;
+	return THELMA_INTERNAL_Winnow2(f1,step,niter);
+end);
+
+InstallOtherMethod(Winnow2Algorithm, "function, step, maxiter", true, [IsFFECollection, IsPosInt, IsPosInt], 3,
 function(f,step,maxit)
 local f1,niter;
 
@@ -402,7 +553,7 @@ local f1,niter;
 end);
 
 #f - string
-InstallOtherMethod(Winnow2Algorithm, "function, step, maxiter", true, [IsString, IsInt, IsInt], 3,
+InstallOtherMethod(Winnow2Algorithm, "function, step, maxiter", true, [IsString, IsPosInt, IsPosInt], 3,
 function(f,step,maxit)
 local f1,niter,n,i;
 
@@ -444,7 +595,7 @@ local f1,niter,n,i;
 end);
 
 #f - polynomial
-InstallOtherMethod(Winnow2Algorithm, "function, step, max_iter", true, [IsPolynomial, IsInt, IsInt], 3,
+InstallOtherMethod(Winnow2Algorithm, "function, step, max_iter", true, [IsPolynomial, IsPosInt, IsPosInt], 3,
 function(f,step,maxit)
 local f1,niter,var,n;
 
@@ -482,7 +633,24 @@ end);
 
 
 #f - vector over GF(2)
-InstallMethod(STESynthesis, "function", true, [IsFFECollection], 1,
+InstallMethod(STESynthesis, "function", true, [IsObject], 1,
+function(f)
+	local n,i;
+
+	if (IsLogicFunction(f)=false) then
+		Error("f has to be a logic function.");
+	fi;
+
+	if (f!.dimension<>2) then
+		Error("f has to be a Boolean function.");
+	fi;
+
+	f:=List(f!.output,i->Elements(GF(2))[i+1]);
+
+	return THELMA_INTERNAL_STESynthesis(f);
+end);
+
+InstallOtherMethod(STESynthesis, "function", true, [IsFFECollection], 1,
 function(f)
 	local n;
 	n:=LogInt(Size(f),2);

@@ -4,7 +4,7 @@
 #W                                       Vasyl Laver  <vasyllaver@uzhnu.edu.ua>
 ##
 ##
-#H  @(#)$Id: neural_network.gi,v 1.00 $
+#H  @(#)$Id: neural_network.gi,v 1.02 $
 ##
 #Y  Copyright (C)  2018,  UAE University, UAE
 ##
@@ -55,13 +55,10 @@ InstallGlobalFunction( NeuralNetwork, function(InnerLayer, OuterLayer)
   F:= NewFamily( "Neural Networks" , IsNeuralNetworkObj );
 
 
-	l:=[];
-	for i in InnerLayer do Add(l,OutputOfThresholdElement(i)); od;
 
 	if Size(InnerLayer)=1 and OuterLayer=fail then
 		tel := rec(innerlayer := InnerLayer,
 				outerlayer := OuterLayer,
-				func := l[1],
 				);
 
 		TE := Objectify( NewType( F, IsNeuralNetworkObj and IsNeuralNetworkRep and IsAttributeStoringRep ),
@@ -70,24 +67,9 @@ InstallGlobalFunction( NeuralNetwork, function(InnerLayer, OuterLayer)
 		return TE;
 	fi;
 
-    alph:=l[1];
-
-	if OuterLayer=true then
-		for i in [2..Size(l)] do
-			alph:=THELMA_INTERNAL_Disjunction(alph,l[i]);
-		od;
-	elif OuterLayer=false then
-
-		for i in [2..Size(l)] do
-			alph:=THELMA_INTERNAL_Conjunction(alph,l[i]);
-		od;
-	fi;
-
-	Func:=alph;
 
     tel := rec(innerlayer := InnerLayer,
                outerlayer := OuterLayer,
-               func := Func,
                );
 
     TE := Objectify( NewType( F, IsNeuralNetworkObj and IsNeuralNetworkRep and IsAttributeStoringRep ),
@@ -102,10 +84,34 @@ end);
 #F  OutputOfNeuralNetwork(NN)
 ##
 InstallGlobalFunction( OutputOfNeuralNetwork, function(NN)
-	if not IsNeuralNetworkObj(NN) then
+local l,i,aplh,InnerLayer,OuterLayer,alph;
+    InnerLayer:=NN!.innerlayer;
+    OuterLayer:=NN!.outerlayer;
+
+	  if not IsNeuralNetworkObj(NN) then
         Error("The argument to OutputOfNeuralNetwork must be a neural network");
     fi;
-    return(NN!.func);
+
+    l:=[];
+  	for i in InnerLayer do Add(l,OutputOfThresholdElement(i)); od;
+
+    if Size(InnerLayer)=1 and OuterLayer=fail then
+    	return l[1];
+    fi;
+
+    alph:=THELMA_INTERNAL_BFtoGF(l[1]);
+
+  	if OuterLayer=true then
+  		  for i in [2..Size(l)] do
+  			     alph:=THELMA_INTERNAL_Disjunction(alph,THELMA_INTERNAL_BFtoGF(l[i]));
+  		  od;
+  	elif OuterLayer=false then
+    		for i in [2..Size(l)] do
+  			     alph:=THELMA_INTERNAL_Conjunction(alph,THELMA_INTERNAL_BFtoGF(l[i]));
+  		  od;
+  	fi;
+
+    return LogicFunction(LogInt(Size(alph),2),2,List(alph,Order));
 end);
 
 #############################################################################
@@ -170,18 +176,14 @@ InstallMethod( Display,
 
 		Print("Neural Network realizes the function f : \n");
 
-		ff:=A!.func;
+    ff:=OutputOfNeuralNetwork(A);
 
-		k:=1;
-			if LogInt(Size(A!.func),2)<=4 then
-				t:=IteratorOfTuples([0,1],LogInt(Size(A!.func),2));
-				for i in t do
-					Print(i," || ",Order(ff[k]),"\n");
-					k:=k+1;
-				od;
-			fi;
+    k:=1;
+    if ff!.numvars<=4 then
+      Display(ff);
+    fi;
 
-		Print(THELMA_INTERNAL_VectorToFormula(ff),"\n");
+    Print(THELMA_INTERNAL_VectorToFormula(THELMA_INTERNAL_BFtoGF(ff)),"\n");
 end);
 
 #############################################################################
@@ -332,7 +334,66 @@ end);
 ##
 ##
 
-InstallMethod(BooleanFunctionByNeuralNetwork, "f", true, [IsFFECollection], 1,
+InstallMethod(BooleanFunctionByNeuralNetwork, "f", true, [IsObject], 1,
+function(f)
+	local irste, bool,kkk,rker,ker,k, onezero, i, m, kdif,nl, output, temp, reverz ;
+
+  if (IsLogicFunction(f)=false) then
+    Error("f has to be a logic function.");
+  fi;
+
+  if (f!.dimension<>2) then
+    Error("f has to be a Boolean function.");
+  fi;
+
+	irste:=BooleanFunctionBySTE(f);
+	if irste<>[] then
+		return NeuralNetwork([irste],fail);
+	fi;
+
+	m:=[];
+	k:=KernelOfBooleanFunction(f);
+
+	ker:=k[1];
+	onezero:=k[2];
+	rker:=ReducedKernelOfBooleanFunction(ker);
+	nl:=THELMA_INTERNAL_FormNList(ker,rker);
+
+	Add(m,THELMA_INTERNAL_FindFunctionFromKernel(nl,1));
+	kdif:=Difference(ker,nl);
+
+	bool:=false;
+
+
+	while kdif<>[] do
+		rker:=ReducedKernelOfBooleanFunction(kdif);
+
+		nl:=THELMA_INTERNAL_FormNList(kdif,rker);
+
+		if Intersection(kdif,nl)<>[] then Add(m,THELMA_INTERNAL_FindFunctionFromKernel(nl,1)); fi;
+		kdif:=Difference(kdif,nl);
+	od;
+
+	output:=[];
+
+ for i in m do
+  if onezero=1 then
+    temp:=BooleanFunctionBySTE(i);
+  else
+    temp:=BooleanFunctionBySTE(List(i,j->j+One(GF(2))));
+  fi;
+  Add(output,temp);
+  od;
+
+	if onezero=1 then
+		return NeuralNetwork(output,true);
+	else
+		return NeuralNetwork(output,false);
+	fi;
+
+end);
+
+InstallOtherMethod(BooleanFunctionByNeuralNetwork, "f", true, [IsFFECollection], 1,
 function(f)
 	local irste, bool,kkk,rker,ker,k, onezero, i, m, kdif,nl, output, temp, reverz ;
 
@@ -535,7 +596,21 @@ end );
 #F  BooleanFunctionByNeuralNetworkDASG(f)
 ##
 ## f - vector over GF(2)
-InstallMethod(BooleanFunctionByNeuralNetworkDASG, "function", true, [IsFFECollection], 1,
+InstallMethod(BooleanFunctionByNeuralNetworkDASG, "function", true, [IsObject], 1,
+function(f)
+	local n;
+  if (IsLogicFunction(f)=false) then
+    Error("f has to be a logic function.");
+  fi;
+
+  if (f!.dimension<>2) then
+    Error("f has to be a Boolean function.");
+  fi;
+
+	return THELMA_INTERNAL_BooleanFunctionByNeuralNetworkDASG(THELMA_INTERNAL_BFtoGF(f));
+end);
+
+InstallOtherMethod(BooleanFunctionByNeuralNetworkDASG, "function", true, [IsFFECollection], 1,
 function(f)
 	local n;
 	n:=LogInt(Size(f),2);

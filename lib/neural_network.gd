@@ -4,7 +4,7 @@
 #W                                       Vasyl Laver  <vasyllaver@uzhnu.edu.ua>
 ##
 ##
-#H  @(#)$Id: neural_network.gd,v 1.00 $
+#H  @(#)$Id: neural_network.gd,v 1.02 $
 ##
 #Y  Copyright (C)  2018,  UAE University, UAE
 ##
@@ -18,8 +18,8 @@ DeclareCategoryCollections( "IsNeuralNetworkObj" );
 DeclareGlobalFunction( "NeuralNetwork" );
 DeclareGlobalFunction( "OutputOfNeuralNetwork" );
 DeclareGlobalFunction( "IsNeuralNetwork" );
-DeclareOperation("BooleanFunctionByNeuralNetwork", [IsFFECollection]);
-DeclareOperation("BooleanFunctionByNeuralNetworkDASG", [IsFFECollection]);
+DeclareOperation("BooleanFunctionByNeuralNetwork", [IsObject]);
+DeclareOperation("BooleanFunctionByNeuralNetworkDASG", [IsObject]);
 
 
 #E

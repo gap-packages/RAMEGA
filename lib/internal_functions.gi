@@ -1,3 +1,17 @@
+LoadPackage("Gauss");
+
+##############################################################
+BindGlobal("THELMA_INTERNAL_BFtoGF",function(lf)
+# Arguments: lf - boolean function;
+# Output: truth vector over GF(2).
+	local i;
+	if (lf!.dimension <> 2) then
+		Error("Logic function has to be a Boolean Function.");
+	else
+		return List(lf!.output,i->Elements(GF(2))[i+1]);
+	fi;
+end);
+
 ##############################################################
 BindGlobal("THELMA_INTERNAL_BuildToleranceMatrix",function(n)
 # Arguments: n - number of variables, for which we build the matrix;
@@ -343,6 +357,52 @@ BindGlobal("THELMA_INTERNAL_PIndex",function(mat)
 	return Difference(ind1,ind2);
 end);
 
+
+
+BindGlobal("THELMA_INTERNAL_QMat",function(n)
+    local mat, i, k;
+
+    mat:=[];
+
+    for i in [1..2^n] do
+      Add(mat,ListWithIdenticalEntries(2^n,0));
+    od;
+
+#    Display(mat);
+
+    k:=1;
+    i:=1;
+
+    for k in Filtered([1..2^n], j-> (j mod 2 = 1) ) do
+      mat[i][k]:=1; mat[i][k+1]:=1;
+#      Print(i, "  ", k, "\n");
+      i:=i+1;
+    od;
+
+    for k in Filtered([1..2^n], j-> (j mod 2 = 1) ) do
+      mat[i][k]:=1; mat[i][k+1]:=-1;
+#      Print(i, "  ", k, "\n");
+      i:=i+1;
+    od;
+    return mat;
+end);
+
+BindGlobal("THELMA_INTERNAL_CharG",function(g,l)
+  return (-1)^(g*l);
+end);
+
+BindGlobal("THELMA_INTERNAL_DecToBin",function(m,n)
+  local i, l, k;
+  l:=ListWithIdenticalEntries(n,0);
+  k:=1;
+  while m<>0 do
+     l[k]:=m mod 2;
+     m:=Int(m/2);
+     k:=k+1;
+  od;
+  return Reversed(l);
+end);
+
 ##############################################################
 BindGlobal("THELMA_INTERNAL_ConvertDecToBin",function(dec,n)
 # Arguments: dec - a positive integer decimal number; n - length of the output vector;
@@ -600,6 +660,7 @@ BindGlobal("THELMA_INTERNAL_BooleanFunctionByNeuralNetworkDASG", function(f)
   else
     outer:=false;
   fi;
+
   inner:=[];
   workset:=[f];
   iter:=1;
@@ -628,11 +689,12 @@ BindGlobal("THELMA_INTERNAL_BooleanFunctionByNeuralNetworkDASG", function(f)
 			fi;
 
       fout:=SplitBooleanFunction(temp, idec, outer);
-			threl:=BooleanFunctionBySTE(temp);
-      if threl<>[] then Add(inner,threl); else Add(workset,fout[1]); fi;
 
-			threl:=BooleanFunctionBySTE(temp);
-      if threl<>[] then Add(inner,threl); else Add(workset,fout[2]); fi;
+			threl:=BooleanFunctionBySTE(fout[1]);
+      if threl<>[] then Add(inner,threl); else Add(workset,THELMA_INTERNAL_BFtoGF(fout[1])); fi;
+
+			threl:=BooleanFunctionBySTE(fout[2]);
+      if threl<>[] then Add(inner,threl); else Add(workset,THELMA_INTERNAL_BFtoGF(fout[2])); fi;
     fi;
   od;
 
@@ -790,6 +852,187 @@ BindGlobal("THELMA_INTERNAL_STESynthesis",function(g)
 	return ThresholdElement(w,thr);
 end);
 
+##############################################################
+BindGlobal("THELMA_INTERNAL_FSign",function(F,eps,st,q,psi)
+# Arguments: F - GF(p^k); eps - PrimitiveElement of F; st - structure vector of
+# Arguments: multi-valued neuron; q - order of cyclic group from which neuron takes its output;
+# Arguments: psi - input value, some element of F.
+# Output: some element of cyclic group of order q.
+    local j,deg,u;
+    deg:=LogFFE(psi,eps); u:=Size(F)-1;
+    for j in [0..q-1] do
+      if (deg>=(j*u)/q) and (deg<((j+1)*u)/q) then break; fi;
+    od;
+    return eps^(u*j/q);
+end);
 
+##############################################################
+BindGlobal("THELMA_INTERNAL_CharacterOfGroup",function(g,r,F)
+# Arguments: g - element of direct product of cyclic groups; r - a list of dimensions; F - GF(p^k);
+# Output: character of element g over field F.
+  local out,t, pel, g1, sum, ii, i;
+  pel:=PrimitiveElement(F);
+  g1:=List(g,ii->LogFFE(ii,pel));
+  sum:=0;
+
+  for i in [1..Size(r)] do
+    sum:=sum+g1[i]*r[i];
+  od;
+
+  return pel^sum;
+end);
+
+##############################################################
+BindGlobal("THELMA_INTERNAL_CharTable",function(g,r,F)
+# Arguments: g - elements of direct product of cyclic groups; r - dimension vector; F - GF(p^k);
+# Output: character table of elements of g over field F.
+  local out1,out2,gi,ri,temp,tup, ind, p;
+
+  out1:=[]; out2:=[];
+  ind:=[];
+  for ri in r do
+    temp:=[];
+    for gi in g do
+     Add(temp,THELMA_INTERNAL_CharacterOfGroup(gi,ri,F));
+    od;
+    if Sum(ri)<=1 then
+      Add(out1,temp);
+      if Position(ri,1)<>fail then Add(ind,Position(ri,1)); else Add(ind,0); fi;
+    else Add(out2,temp);
+    fi;
+  od;
+  p:=Sortex(ind);
+
+  return [Permuted(out1,p),out2];
+end);
+
+BindGlobal("THELMA_INTERNAL_FindSolMat",function(l,tup,mode) #true - 1 sol; false - multiple
+# Arguments: l - ff matrix, tup - possible values for solutions, mode - 1 or multiple Solutions
+# Output: a solution to the system
+local mat,rnk,n,tt,t,temp,k,var,j,sol;
+l:=EchelonMat(l);
+mat:=l.vectors;
+rnk:=RankMat(mat);
+
+if rnk<Size(mat) then return []; fi;
+
+n:=Size(mat[1]);
+
+t:=Tuples(tup,n-rnk);
+var:=Positions(l.heads, 0);
+sol:=[];
+
+for tt in t do
+  temp:=ListWithIdenticalEntries(n,Zero(mat[1][1]));
+  k:=1;
+  for j in var do temp[j]:=tt[k]; k:=k+1; od;
+
+  k:=1;
+  for j in Difference([1..n],var) do temp[j]:=-(mat[k]{var}*temp{var}); k:=k+1; od;
+
+	if Filtered(temp, j -> not(j in tup) )=[] then ##we check if the solution is correct
+		if mode = true then
+			return temp;
+
+		fi;
+		Add(sol,temp);
+	fi;
+od;
+
+return sol;
+end);
+
+##############################################################
+BindGlobal("THELMA_INTERNAL_FindWeights",function(mat,f,q,F)
+# Arguments: mat - character table; f - vector of function; q - dimension of cyclic group of f; F - GF(p^k);
+# Output: structure vector of a multi-valued threshold element (if exists).
+  local inp,n,i,elm,r,mm,j, sol,w,solved, temp, slist, ss, struct,s,mv,bool,st,lg,groups,tup;
+  inp:=[];
+  elm:=Elements(Units(F));
+
+  for i in [1..(Size(F)-1)/q[Size(q)]] do Add(inp,elm[i]); od;
+
+  mm:=[];
+  for i in mat[2] do
+    temp:=[];
+    for j in [1..Size(i)] do Add(temp,Inverse(i[j])*f[j]); od;
+    Add(mm,temp);
+  od;
+
+	sol:=THELMA_INTERNAL_FindSolMat(mm,inp,true);
+
+	if sol = [] then return []; fi;
+
+
+
+
+		groups:=[];
+	  for i in q do Add(groups,Group((PrimitiveElement(F))^((Size(F)-1)/i))); od;
+	  lg:=List(groups, i->Elements(i));
+	  tup:=Elements(DirectProductOp(groups{[1..Size(groups)-1]},groups[1]));
+
+
+
+	struct:=[];
+
+	s:=sol;
+		w:=[]; temp:=[];
+
+		for j in [1..Size(f)] do Add(temp,s[j]*f[j]); od;
+  	for i in mat[1] do Add(w,temp*List(i,Inverse)); od;
+
+  	w:=w/Size(f);
+		st:=[w{[2..Size(w)]},w[1]];
+	 return st;
+
+end);
+
+##############################################################
+BindGlobal("THELMA_INTERNAL_FormVectR",function(n,j)
+# Arguments: n - number of variables; j - index of the first tolerance matrix;
+# Output: a set of list of non-negative integers of length n-j.
+	local tup, i, r, temp, s;
+
+	r:=[];
+
+		s:=n-j;
+		tup:=IteratorOfTuples([0..j-1],s+1);
+		for i in tup do
+			temp:=ShallowCopy(i);
+			Sort(temp);
+			if Reversed(temp)=i then Add(r,i); fi;
+		od;
+
+	return r;
+end);
+
+##############################################################
+BindGlobal("THELMA_INTERNAL_MappingBoolToInt",function(a,r,j,u)
+# Arguments: a - vector over GF(2); r - list of non-negative integers;
+# Arguments: j - index of the first tolerance matrix; u - list of non-negative integers;
+# Output: epsilon vector - list of non-negative integers.
+	local i, s, output, k, n0, sum;
+	output:=[];
+	for i in [1..u[1]] do Add(output,Order(a[i])); od;
+
+	n0:=2;
+	while n0<=Size(u) do
+		Add(output,2^(n0-1)*Order(a[i]));
+		n0:=n0+1;
+	od;
+
+	sum:=0;
+
+	for i in [1..Size(u)] do
+		sum:=sum+u[i]*2^(i-1);
+	od;
+
+	k:=j;
+	for i in r do Add(output,Order(a[k])*(sum-i+1)); k:=k+1; od;
+
+	while Size(output)<Size(a) do Add(output,Order(a[i])*(sum+1)); od;
+
+	return output;
+end);
 #E
 ##

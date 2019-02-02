@@ -14,11 +14,11 @@
 ##
 #############################################################################
 
-DeclareOperation("ThresholdElementTraining",[IsThresholdElementObj, IsInt, IsFFECollection, IsInt]);
-DeclareOperation("ThresholdElementBatchTraining",[IsThresholdElementObj, IsInt, IsFFECollection, IsInt]);
-DeclareOperation("WinnowAlgorithm",[IsFFECollection, IsInt, IsInt]);
-DeclareOperation("Winnow2Algorithm",[IsFFECollection, IsInt, IsInt]);
-DeclareOperation("STESynthesis",[IsFFECollection]);
+DeclareOperation("ThresholdElementTraining",[IsThresholdElementObj, IsPosInt, IsObject, IsPosInt]);
+DeclareOperation("ThresholdElementBatchTraining",[IsThresholdElementObj, IsPosInt, IsObject, IsPosInt]);
+DeclareOperation("WinnowAlgorithm",[IsObject, IsPosInt, IsPosInt]);
+DeclareOperation("Winnow2Algorithm",[IsObject, IsPosInt, IsPosInt]);
+DeclareOperation("STESynthesis",[IsObject]);
 
 
 #E

@@ -4,7 +4,7 @@
 #W                                       Vasyl Laver  <vasyllaver@uzhnu.edu.ua>
 ##
 ##
-#H  @(#)$Id: threl_def.gi,v 1.00 $
+#H  @(#)$Id: threl_def.gi,v 1.02 $
 ##
 #Y  Copyright (C)  2018,  UAE University, UAE
 ##
@@ -55,19 +55,8 @@ InstallGlobalFunction( ThresholdElement, function(Weights, Threshold)
     # Construct the family of all threshold elements.
     F:= NewFamily( "Threshold Elements" , IsThresholdElementObj );
 
-	Func:=[];
-	t:=Tuples([0,1], Size(Weights));
-	for i in t do
-		if i*Weights<Threshold then Add(Func,0*Z(2));
-		else
-			Add(Func,Z(2)^0);
-		fi;
-	od;
-
-
     tel := rec(weights := Weights,
                threshold := Threshold,
-               func := Func,
                );
 
     TE := Objectify( NewType( F, IsThresholdElementObj and IsThresholdElementRep and IsAttributeStoringRep ),
@@ -82,13 +71,25 @@ end);
 #F  OutputOfThresholdElement(TE)
 ##
 InstallGlobalFunction( OutputOfThresholdElement, function(TE)
+  local Func,t,i;
 	if not IsThresholdElementObj(TE) then
         Error("The argument to OutputOfThresholdElement must be a threshold element");
     fi;
+
     if TE!.weights = [] then
         Error("There must be an assigned weights vector to a threshold element");
     fi;
-    return(TE!.func);
+
+    Func:=[];
+  	t:=IteratorOfTuples([0,1], Size(TE!.weights));
+  	for i in t do
+  		if i*TE!.weights<TE!.threshold then Add(Func,0);
+  		else
+  			Add(Func,1);
+  		fi;
+  	od;
+
+    return(LogicFunction(Size(TE!.weights),2,Func));
 end);
 
 ######################################################################
@@ -97,7 +98,7 @@ end);
 ##
 InstallGlobalFunction( StructureOfThresholdElement, function(TE)
 	if not IsThresholdElementObj(TE) then
-        Error("The argument to OutputOfThresholdElement must be a threshold element");
+        Error("The argument of StructureOfThresholdElement must be a threshold element");
     fi;
     if TE!.weights = [] then
         Error("There must be an assigned weights vector to a threshold element");
@@ -147,18 +148,14 @@ InstallMethod( Display,
 			Print("Weight vector = ",A!.weights,", Threshold = ",A!.threshold,".\n");
 			Print("Threshold Element realizes the function f : \n");
 
-			ff:=A!.func;
+			ff:=OutputOfThresholdElement(A);
 
 			k:=1;
 			if Size(A!.weights)<=4 then
-				t:=IteratorOfTuples([0,1],Size(A!.weights));
-				for i in t do
-					Print(i," || ",Order(ff[k]),"\n");
-					k:=k+1;
-				od;
+        Display(ff);
 			fi;
 
-			Print(THELMA_INTERNAL_VectorToFormula(ff),"\n");
+			Print(THELMA_INTERNAL_VectorToFormula(THELMA_INTERNAL_BFtoGF(ff)),"\n");
     fi;
 end);
 
@@ -207,7 +204,7 @@ InstallMethod( \=,
           IsThresholdElementObj and IsThresholdElementRep,  ],
         0,
         function( x, y )
-    return(x!.func = y!.func);
+    return(OutputOfThresholdElement(x) = OutputOfThresholdElement(y));
 
 end );
 
@@ -218,7 +215,7 @@ InstallMethod( \<,
           IsThresholdElementObj and IsThresholdElementRep,  ],
         0,
         function( x, y )
-    return(x!.func < y!.func);
+    return(OutputOfThresholdElement(x) < OutputOfThresholdElement(y));
 end );
 
 
