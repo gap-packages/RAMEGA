@@ -4,23 +4,28 @@
 #W                                       Vasyl Laver  <vasyllaver@uzhnu.edu.ua>
 ##
 ##
-#H  @(#)$Id: boolfunc_def.gd,v 1.00 $
+#H  @(#)$Id: boolfunc_def.gd,v 1.02 $
 ##
 #Y  Copyright (C)  2018,  UAE University, UAE
 ##
 
-DeclareOperation( "CharacteristicVectorOfFunction", [IsFFECollection]);
+DeclareCategory( "IsLogicFunctionObj", IsObject );
+DeclareCategoryCollections( "IsLogicFunctionObj" );
+DeclareOperation( "LogicFunction",  [IsPosInt,IsDenseList,IsDenseList]);
+DeclareGlobalFunction( "IsLogicFunction" );
+DeclareGlobalFunction("PolynomialToBooleanFunction");
+DeclareOperation( "CharacteristicVectorOfFunction", [IsObject]);
 DeclareOperation( "IsCharacteristicVectorOfSTE", [IsVector]);
-DeclareOperation("KernelOfBooleanFunction", [IsFFECollection]);
+DeclareOperation("KernelOfBooleanFunction", [IsObject]);
 DeclareGlobalFunction( "ReducedKernelOfBooleanFunction" );
-DeclareOperation( "IsInverseInKernel", [IsFFECollection] );
-DeclareOperation( "IsKernelContainingPrecedingVectors",[IsFFECollection] );
-DeclareOperation("IsRKernelBiggerOfCombSum", [IsFFECollection]);
-DeclareOperation("IsUnateInVariable",[IsFFECollection,IsInt]);
-DeclareOperation("IsUnateBooleanFunction",[IsFFECollection]);
-DeclareOperation("SelfDualExtensionOfBooleanFunction",[IsFFECollection]);
-DeclareOperation("InfluenceOfVariable",[IsFFECollection,IsInt]);
-DeclareOperation("SplitBooleanFunction",[IsFFECollection,IsInt,IsBool]);
+DeclareOperation( "IsInverseInKernel", [IsObject] );
+DeclareOperation( "IsKernelContainingPrecedingVectors",[IsObject] );
+DeclareOperation("IsRKernelBiggerOfCombSum", [IsObject]);
+DeclareOperation("IsUnateInVariable",[IsObject,IsPosInt]);
+DeclareOperation("IsUnateBooleanFunction",[IsObject]);
+DeclareOperation("SelfDualExtensionOfBooleanFunction",[IsObject]);
+DeclareOperation("InfluenceOfVariable",[IsObject,IsPosInt]);
+DeclareOperation("SplitBooleanFunction",[IsObject,IsPosInt,IsBool]);
 
 
 #E
