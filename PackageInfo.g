@@ -8,8 +8,8 @@
 SetPackageInfo( rec(
 PackageName := "Thelma",
 Subtitle := "A package on threshold elements",
-Version := "1.01",
-Date := "21/11/2018",
+Version := "1.02",
+Date := "02/02/2019",
 PackageWWWHome := Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
     SourceRepository := rec(
     Type := "git",
@@ -76,7 +76,7 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.4",
-  NeededOtherPackages := [["GAPDoc", "1.5"]],
+  NeededOtherPackages := [["GAPDoc", "1.5"],["Gauss","2018.09.08"]],
   SuggestedOtherPackages := [],
   ExternalConditions := []
 ),
