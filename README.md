@@ -21,10 +21,12 @@ versions of the manual are also available there.
 
 If you have used this package, please let us know by sending
 us an email.  If you  have found important features missing or if there is a
-bug, we would appreciate it very much if you send us an email.
+bug, we would appreciate it very much if you send us an email 
 
 Victor Bovdi   <vbovdi@gmail.com>
 Vasyl Laver     <vasyl.laver@uzhnu.edu.ua>
+
+or use the issue tracker: https://github.com/gap-packages/Thelma/issues
 
 Contents
 --------
@@ -43,12 +45,12 @@ directories:
 
 	PackageInfo.g	information file for automatic processing
 
-	version		the version number   
+	version		the version number 1.02
 
 Installation
 ------------
 
-As this package does not contain any C code, to install it just unoack the archive in the "pkg" directory of your
+As this package does not contain any C code, to install it just unpack the archive in the "pkg" directory of your
 GAP installation folder. Then enter command "LoadPackage( "thelma" );".
 
 Good luck!
