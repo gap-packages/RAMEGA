@@ -43,6 +43,7 @@ gap> te:=ThresholdElement([1,2],3);
 gap> Display(te);
 Weight vector = [ 1, 2 ], Threshold = 3.
 Threshold Element realizes the function f :
+Boolean function of 2 variables.
 [ 0, 0 ] || 0
 [ 0, 1 ] || 0
 [ 1, 0 ] || 0
@@ -96,15 +97,7 @@ false
 <Func Name="OutputOfThresholdElement" Arg="ThrEl"/>
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
-Let <M>f: \mathbb{Z}_2^n \to \mathbb{Z}_2</M> be a Boolean function.
-The vector
-<Display>
-  F=(\;f(0),\; f(1),\; \ldots,\; f(2^n-1)\;)^T,
-</Display>
-where <M>f(i)</M> for each <M>i \in \{0,1,\ldots,2^n-1\}</M>
-is the value of <M>f(x_1,\ldots,x_n)</M> of the i-th row in the truth table, is called the <A>truth vector</A>.<P/>
-
-For the threshold element <C>ThrEl</C> the function <C>OutputOfThresholdElement</C> returns the truth vector of the
+For the threshold element <C>ThrEl</C> the function <C>OutputOfThresholdElement</C> returns the
 Boolean function, realized by <C>ThrEl</C>.
 
 <Example>
@@ -112,7 +105,13 @@ Boolean function, realized by <C>ThrEl</C>.
 gap> te:=ThresholdElement([1,2],3);
 < threshold element with weight vector [ 1, 2 ] and threshold 3 >
 gap> f:=OutputOfThresholdElement(te);
-[ 0*Z(2), 0*Z(2), 0*Z(2), Z(2)^0 ]
+< Boolean function of 2 variables >
+gap> Display(f);
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 0
+[ 1, 0 ] || 0
+[ 1, 1 ] || 1
 ]]>
 </Example>
 </Description> </ManSection>
@@ -122,7 +121,7 @@ gap> f:=OutputOfThresholdElement(te);
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
 
-For the threshold element <C>ThrEl</C> the function <C>StructureOfThresholdElement</C> returns a
+For the threshold element <C>ThrEl</C> the function <C>StructureOfThresholdElement</C> returns the
 structure vector [<C>Weights</C>,<C>Threshold</C>] (see <Ref Func="ThresholdElement" />).
 
 <Example>
@@ -166,14 +165,14 @@ By comparison of two threshold elements we mean the comparison of the truth vect
 <Example>
 <![CDATA[
 gap> te1:=ThresholdElement([1,2],3);;
-gap> List(OutputOfThresholdElement(te1),Order);
-[ 0, 0, 0, 1 ]
+gap> Print(OutputOfThresholdElement(te1),"\n");
+[2, 2,[ 0, 0, 0, 1 ]]
 gap> te2:=ThresholdElement([1,2],0);;
-gap> List(OutputOfThresholdElement(te2),Order);
-[ 1, 1, 1, 1 ]
+gap> Print(OutputOfThresholdElement(te2),"\n");
+[2, 2,[ 1, 1, 1, 1 ]]
 gap> te3:=ThresholdElement([1,1],2);;
-gap> List(OutputOfThresholdElement(te3),Order);
-[ 0, 0, 0, 1 ]
+gap> Print(OutputOfThresholdElement(te3),"\n");
+[2, 2,[ 0, 0, 0, 1 ]]
 gap> te1<te2;
 true
 gap> te1>te2;
@@ -189,14 +188,6 @@ true
 <Heading>Single Threshold Element Realizability</Heading>
 
 One of the most important questions is whether a Boolean function can be realized by a single threshold element (STE). A Boolean function which is realizable by a STE is called a <C>Threshold Function</C>. This section is dedicated to verification of STE-realizability.<P/>
-
-In <Package>Thelma</Package> package the user is allowed to input the Boolean functions in the following forms: <P/>
-
-(i) as a truth vector over <M>GF(2)</M> (see <Ref Func="OutputOfThresholdElement"/>); <P/>
-(ii) as a string, representing the truth vector of the given Boolean function; <P/>
-(iii) as a polynomial over <M>GF(2)</M>. <P/>
-
-In the case (iii) we also need to enter the number of variables of <M>f</M> (for example if <M>f(x,y)=x</M>, then <M>n=2</M>). <P/>
 
 <ManSection>
 <Func Name="CharacteristicVectorOfFunction" Arg="Func"/>
@@ -227,19 +218,10 @@ There are no limitations on the cardinality of <C>Func</C>, but the database of 
 
 <Example>
 <![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
-gap> c:=CharacteristicVectorOfFunction(f);
+gap> f:=LogicFunction(2,2,[0,0,0,1]);
+< Boolean function of 2 variables >
+gap> CharacteristicVectorOfFunction(f);
 [ 2, 2, 2 ]
-gap> f:="0001";;
-gap> c:=CharacteristicVectorOfFunction(f);
-[ 2, 2, 2 ]
-gap> x:=Indeterminate(GF(2),"x");;
-gap> y:=Indeterminate(GF(2),"y");;
-gap> f:=x+y;;
-gap> c:=CharacteristicVectorOfFunction(f);
-Enter the number of variables (n>=2):
-2
-[ 0, 0, 0 ]
 ]]>
 </Example>
 
@@ -256,335 +238,12 @@ Note, that this function is implemented only for characteristic vectors of lengt
 
 <Example>
 <![CDATA[
-gap> f:=x*y;;
+gap> f:=LogicFunction(2,2,[0,0,0,1]);
+< Boolean function of 2 variables >
 gap> c:=CharacteristicVectorOfFunction(f);
-Enter the number of variables (n>=2):
-2
 [ 2, 2, 2 ]
 gap> IsCharacteristicVectorOfSTE(c);
 true
-gap> f:=x+y;;
-gap> c:=CharacteristicVectorOfFunction(f);
-Enter the number of variables (n>=2):
-2
-[ 0, 0, 0 ]
-gap> IsCharacteristicVectorOfSTE(c);
-false
-]]>
-</Example>
-</Description> </ManSection>
-
-<ManSection>
-<Func Name="IsUnateInVariable" Arg="Func, Var"/>
-<Description>
-<!-- The names chosen for the arguments describe their meaning.-->
-A Boolean function <M>f(x_1,\ldots ,x_n)</M> is <A>positive unate</A> in <M>x_{i}</M> if for all possible values of
-<M>x_{j}</M> with <M>j\neq i</M> we have
-
-<Display>
-f(x_{1},\ldots ,x_{i-1},1,x_{i+1},\ldots ,x_{n})\geq f(x_{1},\ldots ,x_{i-1},0,x_{i+1},\ldots ,x_{n}).
-</Display>
-
-A Boolean function <M>f(x_1,\ldots ,x_n)</M> is <A>negative unate</A> in <M>x_{i}</M> if
-<Display>
-f(x_{1},\ldots ,x_{i-1},0,x_{i+1},\ldots ,x_{n})\geq f(x_{1},\ldots ,x_{i-1},1,x_{i+1},\ldots ,x_{n}).
-</Display>
-
-For the Boolean function <C>Func</C> and the positive integer <C>Var</C> (which represents the number of the variable)
- the function <C>IsUnateBooleanFunction</C>  returns <C>true</C> if <C>Func</C> is unate (either positive or negative)
- in this variable and <C>false</C> otherwise.
-
-<Example>
-<![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),0*Z(2),0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];;
-gap> nn:=BooleanFunctionByNeuralNetwork(f);;
-gap> Display(nn);
-Inner Layer:
-[ [[ 1, -2, 3 ], 4], [[ 1, 2, -3 ], 3] ]
-Outer Layer: disjunction
-Neural Network realizes the function f :
-[ 0, 0, 0 ] || 0
-[ 0, 0, 1 ] || 0
-[ 0, 1, 0 ] || 0
-[ 0, 1, 1 ] || 0
-[ 1, 0, 0 ] || 0
-[ 1, 0, 1 ] || 1
-[ 1, 1, 0 ] || 1
-[ 1, 1, 1 ] || 0
-Sum of Products:[ 5, 6 ]
-gap> IsUnateInVariable(f,1);
-true
-gap> f:="00000110";;
-gap> IsUnateInVariable(f,2);
-false
-gap> f:=x*y+x*z;;
-gap> IsUnateInVariable(f,3);
-Enter the number of variables (n>=3):
-3
-false
-]]>
-</Example>
-</Description> </ManSection>
-
-
-
-<ManSection>
-<Func Name="IsUnateBooleanFunction" Arg="Func"/>
-<Description>
-<!-- The names chosen for the arguments describe their meaning.-->
-If a Boolean function <M>f</M> is either positive or negative unate in each variable then it is said to be
-<A>unate</A> (note that some <M>x_{i}</M> may be positive unate and some negative unate to satisfy the definition of
-unate function). A Boolean function <M>f</M> is <A>binate</A> if it is not unate (i.e., is neither positive unate nor negative unate in at least one of its variables).<P/>
-
-All threshold functions are unate. However, the converse is not true, because there are certain unate
-functions, that can not be realized by STE <Cite Key="Avedillo1999"/>. <P/>
-
-For the Boolean function <C>Func</C> the function <C>IsUnateBooleanFunction</C>  returns <C>true</C> if <C>Func</C> is unate and <C>false</C> otherwise.
-
-
-<Example>
-<![CDATA[
-gap> f:=[0*Z(2),Z(2)^0,Z(2)^0,Z(2)^0];;
-gap> IsUnateBooleanFunction(f);
-true
-gap> f:="1001";;
-gap> IsUnateBooleanFunction(f);
-false
-gap> f:=x+y;;
-gap> IsUnateBooleanFunction(f);
-Enter the number of variables (n>=2):
-2
-false
-]]>
-</Example>
-</Description> </ManSection>
-
-<ManSection>
-<Func Name="InfluenceOfVariable" Arg="Func, Var"/>
-<Description>
-<!-- The names chosen for the arguments describe their meaning.-->
-The influence of a variable <M>x_i</M> measures how many times out of the total existing cases
-a change on that variable produces a change on the output of the function.<P/>
-
-For the Boolean function <C>Func</C> and the positive integer <C>Var</C>
-the function <C>InfluenceOfVariable</C>  returns a positive integer -
-the weighted influence of the variable <C>Var</C> (to obtain integer values we multiply the influence
-of the variable by <M>2^n</M>, where <M>n</M> is the number of variables of <C>Func</C>).
-
-<Example>
-<![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),0*Z(2),0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];;
-gap> InfluenceOfVariable(f,1);
-2
-gap> InfluenceOfVariable(f,3);
-2
-gap> f:="00000110";;
-gap> InfluenceOfVariable(f,2);
-2
-gap> f:=x*y+x*z;;
-gap> InfluenceOfVariable(f,3);
-Enter the number of variables (n>=3):
-3
-2
-]]>
-</Example>
-</Description> </ManSection>
-
-<ManSection>
-<Func Name="SelfDualExtensionOfBooleanFunction" Arg="Func"/>
-<Description>
-<!-- The names chosen for the arguments describe their meaning.-->
-The <A>self-dual extension</A> of a Boolean function <M>f^{n}:\mathbb{Z}_2^n \to \mathbb{Z}_2</M>
-of <M>n</M> variables is a Boolean function <M>f^{n+1}:\mathbb{Z}_2^{n+1} \to \mathbb{Z}_2</M>
-of <M>n+1</M> variables defined as
-<Display>
-f^{n+1}(x_1,\ldots,x_n,x_{n+1})=f^{n}(x_1,\ldots,x_n) \quad \textrm{if} \quad x_{n+1}=0,
-</Display>
-
-<Display>
-f^{n+1}(x_1,\ldots,x_n,x_{n+1})=1-f^{n}(\overline x_1,\ldots,\overline x_n) \quad \textrm{if} \quad x_{n+1}=1,
-</Display>
-where <M>\overline x_i = x_i \oplus 1</M> is the negation of the <M>i</M>-th variable. <P/>
-Every threshold function is unate. However, in <Cite Key="Franco2006" /> was shown that the unatness in the
-self-dual space of <M>n+1</M> variables is much stronger condition.<P/>
-For the Boolean function <C>Func</C> the function <C>SelfDualExtensionOfBooleanFunction</C>  returns
-the truth vector of the self-dual extension of <C>Func</C>.<P/>
-
-<Example>
-<![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
-gap> fsd:=SelfDualExtensionOfBooleanFunction(f);;
-gap> List(fsd,Order);
-[ 0, 0, 0, 1, 0, 1, 1, 1 ]
-gap> f:="0001";;
-gap> fsd:=SelfDualExtensionOfBooleanFunction(f);;
-gap> List(fsd,Order);
-[ 0, 0, 0, 1, 0, 1, 1, 1 ]
-gap> f:=x*y;;
-gap> fsd:=SelfDualExtensionOfBooleanFunction(f);;
-Enter the number of variables (n>=2):
-2
-gap> List(fsd,Order);
-[ 0, 0, 0, 1, 0, 1, 1, 1 ]
-]]>
-</Example>
-</Description> </ManSection>
-
-
-<ManSection>
-<Func Name="SplitBooleanFunction" Arg="Func, Var, Bool"/>
-<Description>
-<!-- The names chosen for the arguments describe their meaning.-->
-The method of splitting a function in terms of a given variable is known as Shannon decomposition
-and it was formally introduced in 1938 by Shannon.<P/>
-Let <M>f(x_1,\ldots,x_n)</M> be a Boolean function. Decompose <M>f</M> as a disjunction of the following two Boolean
-functions <M>f_a</M> and <M>f_b</M> defined as:
-<Display>
-\textstyle f_a(x_1,\ldots,x_n)=f(x_1,\ldots,x_{i-1},0,x_{i+1},\ldots,x_n) \quad \textrm{if} \quad x_i=0,
-</Display>
-<Display>
-f_a(x_1,\ldots,x_n)=0, \quad \textrm{if} \quad x_i=1;
-</Display>
-and
-<Display>
-f_b(x_1,\ldots,x_n)= 0 \quad \textrm{if} \quad x_i=0,\quad
-</Display>
-<Display>
-f_b(x_1,\ldots,x_n)=f(x_1,\ldots,x_{i-1},1,x_{i+1},\ldots,x_n) \quad \textrm{if} \quad x_i=1.
-</Display>
-
-If are intended to use conjunction, we can apply the same equations with 1 for undetermined outputs instead of 0.<P/>
-
-For the Boolean function <C>Func</C>, a positive integer <C>Var</C> (the number of variable), Boolean variable <C>Bool</C>
-(<C>true</C> for disjunction and <C>false</C> for conjunction) the function
-<C>SplitBooleanFunction</C>  returns a list with two entries: the truth vectors of the resulting functions.
-
-<Example>
-<![CDATA[
-gap> f:=[0*Z(2),Z(2)^0,Z(2)^0,0*Z(2)];;
-gap> out:=SplitBooleanFunction(f,1,false);;
-gap> List(out[1],Order);
-[ 0, 1, 1, 1 ]
-gap> List(out[2],Order);
-[ 1, 1, 1, 0 ]
-gap> f:="0110";;
-gap> out:=SplitBooleanFunction(f,1,true);;
-gap> List(out[1],Order);
-[ 0, 1, 0, 0 ]
-gap> List(out[2],Order);
-[ 0, 0, 1, 0 ]
-gap> f:=x+y;;
-gap> out:=SplitBooleanFunction(f,1,true);
-Enter the number of variables (n>=2):
-2
-[ [ 0*Z(2), Z(2)^0, 0*Z(2), 0*Z(2) ], [ 0*Z(2), 0*Z(2), Z(2)^0, 0*Z(2) ] ]
-]]>
-</Example>
-</Description> </ManSection>
-
-
-<ManSection>
-<Func Name="KernelOfBooleanFunction" Arg="Func"/>
-<Description>
-<!-- The names chosen for the arguments describe their meaning.-->
-For a Boolean function <M>f(x_1,\ldots,x_n)</M> we define the following two sets (see <Cite Key="GecheBovdi80"/>):
-<Alt Only="LaTeX">
-<Display>
-f^{-1}(1)=\{ \; \mathbf{x} \in \mathbb{Z}_2^n \; \mid \; f(\mathbf{x})=1 \; \}, \quad \textrm{and} \quad f^{-1}(0)=\{ \; \mathbf{x} \in \mathbb{Z}_2^n \; \mid \; f(\mathbf{x})=0 \; \}.
-</Display>
-</Alt>
-
-The kernel <M>K(f)</M> of the Boolean function <M>f</M> is defined as
-
-<Display>
-K(f)=f^{-1}(1), \quad \textrm{ if } \quad |f^{-1}(1)| \geq |f^{-1}(0)|;
-</Display>
-<Display>
-K(f)=f^{-1}(0), \quad \textrm{otherwise,}
-</Display>
-
-where <M>|f^{-1}(i)|</M> is the cardinality of the set <M>f^{-1}(i)</M> with <M>i \in \{0,1\}</M>. <P/>
-
-
-For the Boolean function <C>Func</C> the function <C>KernelOfBooleanFunction</C> returns a list in which
- the first element of the output list represents the kernel, and the second element equals either <M>1</M> or <M>0</M>.
-
-<Example>
-<![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
-gap> k:=KernelOfBooleanFunction(f);
-[ [ [ Z(2)^0, Z(2)^0 ] ], 1 ]
-gap> f:="0111";;
-gap> k:=KernelOfBooleanFunction(f);
-[ [ [ 0*Z(2), 0*Z(2) ] ], 0 ]
-gap> z:=Indeterminate(GF(2),"z");
-z
-gap> f:=x*y+z;;
-gap> k:=KernelOfBooleanFunction(f);
-Enter the number of variables n (n>=3):
-3
-gap> k:=KernelOfBooleanFunction(f);
-[ [ [ 0*Z(2), 0*Z(2), Z(2)^0 ], [ 0*Z(2), Z(2)^0, Z(2)^0 ],
-      [ Z(2)^0, 0*Z(2), Z(2)^0 ], [ Z(2)^0, Z(2)^0, 0*Z(2) ] ], 1 ]
-gap> Display(k[1]);
- . . 1
- . 1 1
- 1 . 1
- 1 1 .
-]]>
-</Example>
-</Description> </ManSection>
-
-<ManSection>
-<Func Name="ReducedKernelOfBooleanFunction" Arg="Ker"/>
-<Description>
-<!-- The names chosen for the arguments describe their meaning.-->
-Let <M>f(x_1,\ldots,x_n)</M> be a Boolean function with the kernel <M>K(f)=\{\;a_1,\ldots,a_m\;\}</M>, where <M>m \leq 2^{n-1}</M>.
-The reduced kernel <M>K(f)_i</M> of the function <M>f</M> relative to the element <M>a_i \in K(f)</M> is the following set (see <Cite Key="GecheBovdi80"/>):
-<Display>
-K(f)_i=\big\{\;a_1 \oplus a_i, \; a_2 \oplus a_i,\; \ldots,\; a_m \oplus a_i \; \big\},
-</Display>
-where <M>\oplus</M> is a component-wise addition of vectors from <M>K(f)</M> over <M>GF(2)</M>. <P/>
-
-The reduced kernel <M>T(f)</M> of <M>f</M> is the following set:
-
-<Display>
-T(f)=\big\{ \;K(f)_i \;\mid\; i=1,2,\ldots,m  \;\big\}.
-</Display>
-
-For the <M>m \times n</M> matrix <C>Ker</C>, which represents the kernel of some Boolean function <M>f</M>,
-the function <C>ReducedKernelOfBooleanFunction</C> returns the reduced kernel <M>T(f)</M> of <M>f</M>.
-
-<Example>
-<![CDATA[
-gap> ## Continuation of Example 2.2.4
-gap> rk:=ReducedKernelOfBooleanFunction(k[1]);;
-gap> j:=1;;
-gap> for i in rk do Print(j,".\n"); Display(i); Print("\n"); j:=j+1; od;
-1.
- . . .
- . 1 .
- 1 . .
- 1 1 1
-
-2.
- . 1 .
- . . .
- 1 1 .
- 1 . 1
-
-3.
- 1 . .
- 1 1 .
- . . .
- . 1 1
-
-4.
- 1 1 1
- 1 . 1
- . 1 1
- . . .
-
 ]]>
 </Example>
 </Description> </ManSection>
@@ -602,18 +261,14 @@ A vector <M>b \in \mathbb{Z}_2^n</M> is called an additive inverse to <M>a \in \
 
 <Example>
 <![CDATA[
-gap> f:=x*y+z;;
+gap> f:=LogicFunction(3,2,[0,1,0,1,0,1,1,0]);;
 gap> k:=KernelOfBooleanFunction(f);;
-Enter the number of variables n (n>=3):
-3
 gap> Display(k[1]);
  . . 1
  . 1 1
  1 . 1
  1 1 .
 gap> IsInverseInKernel(f);
-Enter the number of variables n (n>=3):
-3
 true
 ]]>
 </Example>
@@ -636,10 +291,8 @@ Note that this function also accepts the kernel of the Boolean function <C>Func<
 
 <Example>
 <![CDATA[
-gap> f:=x*y+z;;
+gap> ##Continuation of the previous example
 gap> IsKernelContainingPrecedingVectors(f);
-Enter the number of variables n (n>=3):
-3
 false
 ]]>
 </Example>
@@ -674,10 +327,9 @@ the reduced kernel of the Boolean function <C>Func</C> as an input.
 
 <Example>
 <![CDATA[
-gap> f:=x+y;;
+gap> f:=LogicFunction(2,2,[0,1,1,0]);
+< Boolean function of 2 variables >
 gap> IsRKernelBiggerOfCombSum(f);
-Enter the number of variables n (n>=2):
-2
 false
 ]]>
 </Example>
@@ -696,15 +348,14 @@ The realization of the function <C>BooleanFunctionBySTE</C> is based on algorith
 
 <Example>
 <![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
-gap> te:=BooleanFunctionBySTE(f);
-< threshold element with weight vector [ 1, 2 ] and threshold 3 >
-gap> f:="11001000";;
+gap> f:=LogicFunction(3,2,[1,1,0,0,1,0,0,0]);
+< Boolean function of 3 variables >
 gap> te:=BooleanFunctionBySTE(f);
 < threshold element with weight vector [ -1, -4, -2 ] and threshold -2 >
-gap> Display(last);
+gap> Display(te);
 Weight vector = [ -1, -4, -2 ], Threshold = -2.
 Threshold Element realizes the function f :
+Boolean function of 3 variables.
 [ 0, 0, 0 ] || 1
 [ 0, 0, 1 ] || 1
 [ 0, 1, 0 ] || 0
@@ -714,10 +365,9 @@ Threshold Element realizes the function f :
 [ 1, 1, 0 ] || 0
 [ 1, 1, 1 ] || 0
 Sum of Products:[ 0, 1, 4 ]
-gap> f:=x+y;;
+gap> f:=LogicFunction(2,2,[0,1,1,0]);
+< Boolean function of 2 variables >
 gap> te:=BooleanFunctionBySTE(f);
-Enter the number of variables n (n>=2):
-2
 [  ]
 ]]>
 </Example>
@@ -752,8 +402,19 @@ gap> f:="1x001x0x";
 "1x001x0x"
 gap> te:=PDBooleanFunctionBySTE(f);
 < threshold element with weight vector [ -1, -2, -3 ] and threshold -1 >
-gap> List(OutputOfThresholdElement(te),Order);
-[ 1, 0, 0, 0, 1, 0, 0, 0 ]
+gap> Display(te);
+Weight vector = [ -1, -2, -3 ], Threshold = -1.
+Threshold Element realizes the function f :
+Boolean function of 3 variables.
+[ 0, 0, 0 ] || 1
+[ 0, 0, 1 ] || 0
+[ 0, 1, 0 ] || 0
+[ 0, 1, 1 ] || 0
+[ 1, 0, 0 ] || 1
+[ 1, 0, 1 ] || 0
+[ 1, 1, 0 ] || 0
+[ 1, 1, 1 ] || 0
+Sum of Products:[ 0, 4 ]
 ]]>
 </Example>
 </Description> </ManSection>
@@ -781,15 +442,24 @@ the maximal number of iterations, the function <C>ThresholdElementTraining</C> r
 
 <Example>
 <![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
+gap> f:=LogicFunction(2,2,[0,0,0,1]);
+< Boolean function of 2 variables >
 gap> te1:=RandomThresholdElement(2,-2,2);
 < threshold element with weight vector [ 0, -1 ] and threshold 0 >
-gap> List(OutputOfThresholdElement(te1),Order);
-[ 1, 0, 1, 0 ]
+gap> Display(OutputOfThresholdElement(te1));
+Boolean function of 2 variables.
+[ 0, 0 ] || 1
+[ 0, 1 ] || 0
+[ 1, 0 ] || 1
+[ 1, 1 ] || 0
 gap> te2:=ThresholdElementTraining(te1,1,f,100);
 < threshold element with weight vector [ 2, 1 ] and threshold 3 >
-gap> List(OutputOfThresholdElement(te2),Order);
-[ 0, 0, 0, 1 ]
+gap> Display(OutputOfThresholdElement(te2));
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 0
+[ 1, 0 ] || 0
+[ 1, 1 ] || 1
 ]]>
 </Example>
 </Description> </ManSection>
@@ -807,15 +477,24 @@ the function <C>ThresholdElementTraining</C> returns a threshold element, realiz
 
 <Example>
 <![CDATA[
-gap> f:=[0*Z(2),0*Z(2),0*Z(2),Z(2)^0];;
+gap> f:=LogicFunction(2,2,[0,0,0,1]);
+< Boolean function of 2 variables >
 gap> te1:=RandomThresholdElement(2,-2,2);
 < threshold element with weight vector [ 0, 2 ] and threshold 2 >
-gap> List(OutputOfThresholdElement(te1),Order);
-[ 0, 1, 0, 1 ]
+gap> Display(OutputOfThresholdElement(te1));
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 1
+[ 1, 0 ] || 0
+[ 1, 1 ] || 1
 gap> te2:=ThresholdElementBatchTraining(te1,1,f,100);
 < threshold element with weight vector [ 2, 2 ] and threshold 3 >
-gap> List(OutputOfThresholdElement(te2));
-[ 0, 0, 0, 1 ]
+gap> Display(OutputOfThresholdElement(te2));
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 0
+[ 1, 0 ] || 0
+[ 1, 1 ] || 1
 ]]>
 </Example>
 </Description> </ManSection>
@@ -840,13 +519,25 @@ while running the algorithm and the positive integer <C>Max_Iter</C> defines the
 
 <Example>
 <![CDATA[
-gap> f:=x*y+x+y;;
+gap> x:=Indeterminate(GF(2),"x");;
+gap> y:=Indeterminate(GF(2),"y");;
+gap> pol:=x*y+x+y;;
+gap> f:=PolynomialToBooleanFunction(pol,2);
+< Boolean function of 2 variables >
+gap> Display(f);
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 1
+[ 1, 0 ] || 1
+[ 1, 1 ] || 1
 gap> te:=WinnowAlgorithm(f,2,100);
-Enter the number of variables (n>=2):
-2
 < threshold element with weight vector [ 1, 1 ] and threshold 1 >
-gap> List(OutputOfThresholdElement(te),Order);
-[ 0, 1, 1, 1 ]
+gap> Display(OutputOfThresholdElement(te));
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 1
+[ 1, 0 ] || 1
+[ 1, 1 ] || 1
 ]]>
 </Example>
 </Description> </ManSection>
@@ -880,19 +571,26 @@ defines the value on which we change parameters while running the algorithm.
 
 <Example>
 <![CDATA[
-gap> ## Conjunction can not be trained by Winnow algorithm.
-gap> f:=x*y;;
+gap> ##Conjunction can not be trained by Winnow algorithm.
+gap> x:=Indeterminate(GF(2),"x");;
+gap> y:=Indeterminate(GF(2),"y");;
+gap> pol:=x*y;;
+gap> f:=PolynomialToBooleanFunction(pol,2);
+< Boolean function of 2 variables >
 gap> te:=WinnowAlgorithm(f,2,100);
-Enter the number of variables (n>=2):
-2
 [  ]
 gap> ## But in the case of Winnow2 we can obtain the desirable result.
 gap> te:=Winnow2Algorithm(f,2,100);
-Enter the number of variables (n>=2):
-2
 < threshold element with weight vector [ 1/2, 1/2 ] and threshold 1 >
-gap> List(OutputOfThresholdElement(te),Order);
-[ 0, 0, 0, 1 ]
+gap> Display(te);
+Weight vector = [ 1/2, 1/2 ], Threshold = 1.
+Threshold Element realizes the function f :
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 0
+[ 1, 0 ] || 0
+[ 1, 1 ] || 1
+Sum of Products:[ 3 ]
 ]]>
 </Example>
 </Description> </ManSection>
@@ -918,13 +616,16 @@ For the Boolean function <C>Func</C> the function <C>STESynthesis</C> returns a 
 <Example>
 <![CDATA[
 gap> f:=x*y+x+y;;
+gap> x:=Indeterminate(GF(2),"x");;
+gap> y:=Indeterminate(GF(2),"y");;
+gap> pol:=x*y+x+y;;
+gap> f:=PolynomialToBooleanFunction(pol,2);;
 gap> te:=STESynthesis(f);
-Enter the number of variables (n>=2):
-2
 < threshold element with weight vector [ 2, 2 ] and threshold 1 >
-gap> Display(last);
+gap> Display(te);
 Weight vector = [ 2, 2 ], Threshold = 1.
 Threshold Element realizes the function f :
+Boolean function of 2 variables.
 [ 0, 0 ] || 0
 [ 0, 1 ] || 1
 [ 1, 0 ] || 1

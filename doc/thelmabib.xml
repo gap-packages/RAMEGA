@@ -5,9 +5,9 @@
 
 <entry id="McCulloch43a"><article>
   <author>
-    <name><first>Warren</first><last>Mcculloch</last></name>
-    <name><first>Walter</first><last>Pitts</last></name>
-  </author>  
+    <name><first>W.</first><last>Mcculloch</last></name>
+    <name><first>W.</first><last>Pitts</last></name>
+  </author>
   <title>A Logical Calculus of Ideas Immanent in Nervous Activity</title>
   <journal>Bulletin of Mathematical Biophysics</journal>
   <year>1943</year>
@@ -17,8 +17,8 @@
 
 <entry id="Rosenblatt58"><article>
   <author>
-    <name><first>Frank</first><last>Rosenblatt</last></name>
-  </author>  
+    <name><first>F.</first><last>Rosenblatt</last></name>
+  </author>
   <title>The Perceptron: A Probabilistic Model for Information Storage and Organization in The Brain</title>
   <journal>Psychological Review</journal>
   <year>1958</year>
@@ -29,8 +29,8 @@
 
 <entry id="Littlestone88"><article>
   <author>
-    <name><first>Nick</first><last>Littlestone</last></name>
-  </author>  
+    <name><first>N.</first><last>Littlestone</last></name>
+  </author>
   <title>Learning Quickly When Irrelevant Attributes Abound: A New Linear-Threshold Algorithm</title>
   <journal>Machine Learning</journal>
   <year>1988</year>
@@ -45,7 +45,7 @@
     <name><first>A.</first><last>Bovdi</last></name>
     <name><first>E.</first><last>Gergo</last></name>
     <name><first>F.</first><last>Geche</last></name>
-  </author>  
+  </author>
   <title>Algebraic aspects of threshold logic</title>
   <journal>Cybernetics</journal>
   <year>1980</year>
@@ -60,7 +60,7 @@
     <name><first>F.</first><last>Geche</last></name>
     <name><first>V.</first><last>Polivko</last></name>
     <name><first>V.</first><last>Robotishin</last></name>
-  </author>  
+  </author>
   <title>Realization of boolean functions using threshold elements</title>
   <journal>Kibernetika (Kiev)</journal>
   <year>1983</year>
@@ -74,7 +74,7 @@
     <name><first>F.</first><last>Geche</last></name>
     <name><first>O.</first><last>Mulesa</last></name>
     <name><first>V.</first><last>Buchok</last></name>
-  </author>  
+  </author>
   <title>Verification of realizability of boolean functions by a neural element with a threshold activation function</title>
   <journal>Eastern European Journal of Enterprise Technologies</journal>
   <year>2017</year>
@@ -86,7 +86,7 @@
 <entry id="Geche2010"><book>
   <author>
     <name><first>F.</first><last>Geche</last></name>
-  </author>  
+  </author>
   <title>Analysis of Discrete Functions and Logical Schemes Synthesis in Neurobasis (in Ukrainian)</title>
   <publisher>Uzhhorod National University</publisher>
   <year>2010</year>
@@ -95,7 +95,7 @@
 <entry id="Dertouzos65"><book>
   <author>
     <name><first>M.L.</first><last>Dertouzos</last></name>
-  </author>  
+  </author>
   <title>Threshold Logic: A Synthesis Approach</title>
   <publisher>M.I.T. Press</publisher>
   <year>1965</year>
@@ -106,7 +106,7 @@
     <name><first>M.J.</first><last>Avedillo</last></name>
     <name><first>J.M.</first><last>Quintana</last></name>
     <name><first>A.</first><last>Rueda</last></name>
-  </author>  
+  </author>
   <title>Threshold Logic</title>
   <booktitle>Wiley Encyclopedia of Electrical and Electronics Engineering</booktitle>
   <publisher>American Cancer Society</publisher>
@@ -119,7 +119,7 @@
     <name><first>E.</first><last>Horvath</last></name>
     <name><first>B.</first><last>Seselja</last></name>
     <name><first>A.</first><last>Tepavcevic</last></name>
-  </author>  
+  </author>
   <title>A note on lattice variant of thresholdness of Boolean functions</title>
   <journal>Miskolc Mathematical Notes</journal>
   <year>2016</year>
@@ -134,7 +134,7 @@
     <name><first>S.</first><last>Vrudhula</last></name>
     <name><first>N.</first><last>Kulkarni</last></name>
     <name><first>K.</first><last>Berezowski</last></name>
-  </author>  
+  </author>
   <title>Identification of Threshold Functions and Synthesis of Threshold Networks</title>
   <journal>IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems</journal>
   <year>2011</year>
@@ -148,7 +148,7 @@
     <name><first>J.</first><last>Yang</last></name>
     <name><first>J.S.</first><last>Seo</last></name>
     <name><first>S.</first><last>Vrudhula</last></name>
-  </author>  
+  </author>
   <title>Reducing Power, Leakage, and Area of Standard-Cell ASICs Using Threshold Logic Flip-Flops</title>
   <journal>IEEE Transactions on Very Large Scale Integration (VLSI) Systems</journal>
   <year>2016</year>
@@ -163,7 +163,7 @@
     <name><first>J.L.</first><last>Subirats</last></name>
     <name><first>M.</first><last>Anthony</last></name>
     <name><first>J.M.</first><last>Jerez</last></name>
-  </author>  
+  </author>
   <title>A New Constructive Approach for Creating All Linearly Separable (Threshold) Functions</title>
   <booktitle>The 2006 IEEE International Joint Conference on Neural Network Proceedings</booktitle>
   <year>2006</year>
@@ -175,7 +175,7 @@
     <name><first>J.L.</first><last>Subirats</last></name>
     <name><first>J.M.</first><last>Jerez</last></name>
     <name><first>L.</first><last>Franco</last></name>
-  </author>  
+  </author>
   <title>A New Decomposition Algorithm for Threshold Synthesis and Generalization of Boolean Functions</title>
   <journal>IEEE Transactions on Circuits and Systems I: Regular Papers</journal>
   <year>2008</year>
@@ -187,7 +187,7 @@
 <entry id="Horvath1994"><article>
   <author>
     <name><first>E.</first><last>Horvath</last></name>
-  </author>  
+  </author>
   <title>Invariance groups of threshold functions</title>
   <journal>Acta Cybernetica</journal>
   <year>1994</year>

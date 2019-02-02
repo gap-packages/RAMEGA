@@ -47,6 +47,7 @@ Inner Layer:
 [ [[ 1, 1 ], 1], [[ -1, -2 ], -2] ]
 Outer Layer: conjunction
 Neural Network realizes the function f :
+Boolean function of 2 variables.
 [ 0, 0 ] || 0
 [ 0, 1 ] || 1
 [ 1, 0 ] || 1
@@ -76,13 +77,18 @@ true
 <Func Name="OutputOfNeuralNetwork" Arg="NNetwork"/>
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
-For the neural network <C>NNetwork</C> the function <C>OutputOfNeuralNetwork</C> returns the truth vector of the
-Boolean function, realized by <C>NNetwork</C>.
+For the neural network <C>NNetwork</C> the function <C>OutputOfNeuralNetwork</C> returns the Boolean function, realized by <C>NNetwork</C>.
 
 <Example>
 <![CDATA[
-gap> List(OutputOfNeuralNetwork(nn),Order);
-[ 0, 1, 1, 0 ]
+gap> f:=OutputOfNeuralNetwork(nn);
+< Boolean function of 2 variables >
+gap> Display(last);
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 1
+[ 1, 0 ] || 1
+[ 1, 1 ] || 0
 ]]>
 </Example>
 </Description> </ManSection>
@@ -103,10 +109,12 @@ The realization of this function is based on the algorithm proposed in <Cite Key
 
 <Example>
 <![CDATA[
-gap> f:=x*y+z;;
+gap> x:=Indeterminate(GF(2),"x");;
+gap> y:=Indeterminate(GF(2),"y");;
+gap> z:=Indeterminate(GF(2),"z");;
+gap> f:=PolynomialToBooleanFunction(x*y+z,3);
+< Boolean function of 3 variables >
 gap> nn:=BooleanFunctionByNeuralNetwork(f);
-Enter the number of variables n (n>=3):
-3
 < neural network with
 2 threshold elements on inner layer and disjunction on outer level >
 gap> Display(last);
@@ -114,6 +122,7 @@ Inner Layer:
 [ [[ -1, -2, 4 ], 2], [[ 1, 2, -3 ], 3] ]
 Outer Layer: disjunction
 Neural Network realizes the function f :
+Boolean function of 3 variables.
 [ 0, 0, 0 ] || 0
 [ 0, 0, 1 ] || 1
 [ 0, 1, 0 ] || 0
@@ -142,15 +151,16 @@ however we use a slightly modified version of this algorithm.
 
 <Example>
 <![CDATA[
-gap> f:="00000110";;
-gap> nn:=BooleanFunctionByNeuralNetworkDASG(f);;
-< neural network with
-  2 threshold elements on inner layer and conjunction on outer level >
+gap> f:=LogicFunction(3,2,[0,0,0,0,0,1,1,0]);
+< Boolean function of 3 variables >
+gap> nn:=BooleanFunctionByNeuralNetworkDASG(f);
+< neural network with 2 threshold elements on inner layer and conjunction on outer level >
 gap> Display(last);
 Inner Layer:
 [ [[ 1, 4, 2 ], 3], [[ 1, -4, -2 ], -3] ]
 Outer Layer: conjunction
 Neural Network realizes the function f :
+Boolean function of 3 variables.
 [ 0, 0, 0 ] || 0
 [ 0, 0, 1 ] || 0
 [ 0, 1, 0 ] || 0
@@ -160,7 +170,6 @@ Neural Network realizes the function f :
 [ 1, 1, 0 ] || 1
 [ 1, 1, 1 ] || 0
 Sum of Products:[ 5, 6 ]
-
 ]]>
 </Example>
 </Description> </ManSection>

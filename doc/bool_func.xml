@@ -1,0 +1,409 @@
+<!--
+
+  bool_func.xml            thelma package documentation          Victor Bovdi
+																	Vasyl Laver
+
+  Copyright (C) 2018  Victor Bovdi, Vasyl Laver, Department of Mathematical Sciences,
+  UAEU, Al Ain, United Arab Emirates
+  This file is free software, see license information at the end.
+
+  This chapter contains the operations with logic functions
+-->
+
+<Chapter Label="bool_func">
+<Heading>Boolean Functions</Heading>
+
+<Section Label="bool_basic">
+<Heading>Basic Operations</Heading>
+
+Let <M>f: \mathbb{Z}_2^n \to \mathbb{Z}_2</M> be a Boolean function.
+The vector
+<Display>
+  F=(\;f(0),\; f(1),\; \ldots,\; f(2^n-1)\;)^T,
+</Display>
+where <M>f(i)</M> for each <M>i \in \{0,1,\ldots,2^n-1\}</M>
+is the value of <M>f(x_1,\ldots,x_n)</M> of the i-th row in the truth table, is called the <A>truth vector</A>.<P/>
+
+As a generalization of Boolean logic we can consider the <M>k</M>-valued logic, thus <M>f: \mathbb{Z}_k^n \to \mathbb{Z}_k</M>. Other way to
+generalize the concept of Boolean functions is the introduction of discrete logic functions, defined in Chapter <Ref Sect="mvthr_el"/>.
+
+<ManSection>
+<Func Name="LogicFunction" Arg="NumVars, Dimension, Output"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the positive integer <C>NumVars</C> - the number of variables, a positive integer <C>Dimension</C> - the number of possible logical values and a list non-negative
+integers <C>Output</C> - the truth vector of the given <C>Dimension</C>-valued logic function of <C>NumVars</C> variables, the function <C>LogicFunction</C> returns an
+object, representing the corresponding logic function. <P/>
+Note that <C>Dimension</C> can be also a list of <C>NumVars</C> positive integer numbers if we deal with discrete logic functions.
+
+<Example>
+<![CDATA[
+gap> f:=LogicFunction(2,2,[0,0,1,1]);
+< Boolean function of 2 variables >
+gap> Display(f);
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 0
+[ 1, 0 ] || 1
+[ 1, 1 ] || 1
+gap> f:=LogicFunction(2,3,[0,0,1,1,2,1,2,0,1]);
+< 3-valued logic function of 2 variables >
+gap> Display(f);
+3-valued logic function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 0
+[ 0, 2 ] || 1
+[ 1, 0 ] || 1
+[ 1, 1 ] || 2
+[ 1, 2 ] || 1
+[ 2, 0 ] || 2
+[ 2, 1 ] || 0
+[ 2, 2 ] || 1
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="IsLogicFunction" Arg="Obj"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+
+For the object <C>Obj</C> the function <C>IsLogicFunction</C> returns <C>true</C> if
+<C>Obj</C> is a logic function (see <Ref Func="LogicFunction" />), and <C>false</C> otherwise.
+
+<Example>
+<![CDATA[
+gap> f:=LogicFunction(2,2,[0,1,1,1]);;
+gap> IsLogicFunction(f);
+true
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="PolynomialToBooleanFunction" Arg="Pol, NumVars"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+
+For the polynomial <C>Pol</C> over <M>GF(2)</M> and the number of variables <C>NumVar</C>
+the function <C>PolynomialToBooleanFunction</C> returns a Boolean logic function which is
+realized by <C>Pol</C>.
+
+<Example>
+<![CDATA[
+gap> x:=Indeterminate(GF(2),"x");;
+gap> y:=Indeterminate(GF(2),"y");;
+gap> pol:=x+y;;
+gap> f:=PolynomialToBooleanFunction(pol,2);
+< Boolean function of 2 variables >
+gap> Display(f);
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 1
+[ 1, 0 ] || 1
+[ 1, 1 ] || 0
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="IsUnateInVariable" Arg="Func, Var"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+A Boolean function <M>f(x_1,\ldots ,x_n)</M> is <A>positive unate</A> in <M>x_{i}</M> if for all possible values of
+<M>x_{j}</M> with <M>j\neq i</M> we have
+
+<Display>
+f(x_{1},\ldots ,x_{i-1},1,x_{i+1},\ldots ,x_{n})\geq f(x_{1},\ldots ,x_{i-1},0,x_{i+1},\ldots ,x_{n}).
+</Display>
+
+A Boolean function <M>f(x_1,\ldots ,x_n)</M> is <A>negative unate</A> in <M>x_{i}</M> if
+<Display>
+f(x_{1},\ldots ,x_{i-1},0,x_{i+1},\ldots ,x_{n})\geq f(x_{1},\ldots ,x_{i-1},1,x_{i+1},\ldots ,x_{n}).
+</Display>
+
+For the Boolean function <C>Func</C> and the positive integer <C>Var</C> (which represents the number of the variable)
+ the function <C>IsUnateBooleanFunction</C>  returns <C>true</C> if <C>Func</C> is unate (either positive or negative)
+ in this variable and <C>false</C> otherwise.
+
+<Example>
+<![CDATA[
+gap> f:=LogicFunction(3,2,[0,0,0,0,0,1,1,0]);
+< Boolean function of 3 variables >
+gap> Display(f);
+Boolean function of 3 variables.
+[ 0, 0, 0 ] || 0
+[ 0, 0, 1 ] || 0
+[ 0, 1, 0 ] || 0
+[ 0, 1, 1 ] || 0
+[ 1, 0, 0 ] || 0
+[ 1, 0, 1 ] || 1
+[ 1, 1, 0 ] || 1
+[ 1, 1, 1 ] || 0
+gap> IsUnateInVariable(f,1);
+true
+gap> IsUnateInVariable(f,2);
+false
+gap> IsUnateInVariable(f,3);
+false
+]]>
+</Example>
+</Description> </ManSection>
+
+
+
+<ManSection>
+<Func Name="IsUnateBooleanFunction" Arg="Func"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+If a Boolean function <M>f</M> is either positive or negative unate in each variable then it is said to be
+<A>unate</A> (note that some <M>x_{i}</M> may be positive unate and some negative unate to satisfy the definition of
+unate function). A Boolean function <M>f</M> is <A>binate</A> if it is not unate (i.e., is neither positive unate nor negative unate in at least one of its variables).<P/>
+
+All threshold functions are unate. However, the converse is not true, because there are certain unate
+functions, that can not be realized by STE <Cite Key="Avedillo1999"/>. <P/>
+
+For the Boolean function <C>Func</C> the function <C>IsUnateBooleanFunction</C>  returns <C>true</C> if <C>Func</C> is unate and <C>false</C> otherwise.
+
+
+<Example>
+<![CDATA[
+gap> f:=LogicFunction(2,2,[0,1,1,1]);;
+gap> IsUnateBooleanFunction(f);
+true
+gap> f:=LogicFunction(2,2,[0,1,1,0]);;
+gap> IsUnateBooleanFunction(f);
+false
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="InfluenceOfVariable" Arg="Func, Var"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+The influence of a variable <M>x_i</M> measures how many times out of the total existing cases
+a change on that variable produces a change on the output of the function.<P/>
+
+For the Boolean function <C>Func</C> and the positive integer <C>Var</C>
+the function <C>InfluenceOfVariable</C>  returns a positive integer -
+the weighted influence of the variable <C>Var</C> (to obtain integer values we multiply the influence
+of the variable by <M>2^n</M>, where <M>n</M> is the number of variables of <C>Func</C>).
+
+<Example>
+<![CDATA[
+gap> f:=LogicFunction(3,2,[0,0,0,0,0,1,1,0]);
+< Boolean function of 3 variables >
+gap> Display(f);
+Boolean function of 3 variables.
+[ 0, 0, 0 ] || 0
+[ 0, 0, 1 ] || 0
+[ 0, 1, 0 ] || 0
+[ 0, 1, 1 ] || 0
+[ 1, 0, 0 ] || 0
+[ 1, 0, 1 ] || 1
+[ 1, 1, 0 ] || 1
+[ 1, 1, 1 ] || 0
+gap> InfluenceOfVariable(f,2);
+2
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="SelfDualExtensionOfBooleanFunction" Arg="Func"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+The <A>self-dual extension</A> of a Boolean function <M>f^{n}:\mathbb{Z}_2^n \to \mathbb{Z}_2</M>
+of <M>n</M> variables is a Boolean function <M>f^{n+1}:\mathbb{Z}_2^{n+1} \to \mathbb{Z}_2</M>
+of <M>n+1</M> variables defined as
+<Display>
+f^{n+1}(x_1,\ldots,x_n,x_{n+1})=f^{n}(x_1,\ldots,x_n) \quad \textrm{if} \quad x_{n+1}=0,
+</Display>
+
+<Display>
+f^{n+1}(x_1,\ldots,x_n,x_{n+1})=1-f^{n}(\overline x_1,\ldots,\overline x_n) \quad \textrm{if} \quad x_{n+1}=1,
+</Display>
+where <M>\overline x_i = x_i \oplus 1</M> is the negation of the <M>i</M>-th variable. <P/>
+Every threshold function is unate. However, in <Cite Key="Franco2006" /> was shown that the unatness in the
+self-dual space of <M>n+1</M> variables is much stronger condition.<P/>
+For the Boolean function <C>Func</C> the function <C>SelfDualExtensionOfBooleanFunction</C>  returns
+the self-dual extension of <C>Func</C>.<P/>
+
+<Example>
+<![CDATA[
+gap> f:=LogicFunction(2,2,[0,0,0,1]);
+< Boolean function of 2 variables >
+gap> Display(f);
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 0
+[ 1, 0 ] || 0
+[ 1, 1 ] || 1
+gap> fsd:=SelfDualExtensionOfBooleanFunction(f);
+< Boolean function of 3 variables >
+gap> Display(fsd);
+Boolean function of 3 variables.
+[ 0, 0, 0 ] || 0
+[ 0, 0, 1 ] || 0
+[ 0, 1, 0 ] || 0
+[ 0, 1, 1 ] || 1
+[ 1, 0, 0 ] || 0
+[ 1, 0, 1 ] || 1
+[ 1, 1, 0 ] || 1
+[ 1, 1, 1 ] || 1
+]]>
+</Example>
+
+</Description> </ManSection>
+
+
+<ManSection>
+<Func Name="SplitBooleanFunction" Arg="Func, Var, Bool"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+The method of splitting a function in terms of a given variable is known as Shannon decomposition
+and it was formally introduced in 1938 by Shannon.<P/>
+Let <M>f(x_1,\ldots,x_n)</M> be a Boolean function. Decompose <M>f</M> as a disjunction of the following two Boolean
+functions <M>f_a</M> and <M>f_b</M> defined as:
+<Display>
+\textstyle f_a(x_1,\ldots,x_n)=f(x_1,\ldots,x_{i-1},0,x_{i+1},\ldots,x_n) \quad \textrm{if} \quad x_i=0,
+</Display>
+<Display>
+f_a(x_1,\ldots,x_n)=0, \quad \textrm{if} \quad x_i=1;
+</Display>
+and
+<Display>
+f_b(x_1,\ldots,x_n)= 0 \quad \textrm{if} \quad x_i=0,\quad
+</Display>
+<Display>
+f_b(x_1,\ldots,x_n)=f(x_1,\ldots,x_{i-1},1,x_{i+1},\ldots,x_n) \quad \textrm{if} \quad x_i=1.
+</Display>
+
+If we are intended to use conjunction, we can apply the same equations with 1 for undetermined outputs instead of 0.<P/>
+
+For the Boolean function <C>Func</C>, a positive integer <C>Var</C> (the number of variable), Boolean variable <C>Bool</C>
+(<C>true</C> for disjunction and <C>false</C> for conjunction) the function
+<C>SplitBooleanFunction</C>  returns a list with two entries: the resulting Boolean logic functions.
+
+<Example>
+<![CDATA[
+gap> f:=LogicFunction(2,2,[0,1,1,0]);;
+gap> Display(f);
+Boolean function of 2 variables.
+[ 0, 0 ] || 0
+[ 0, 1 ] || 1
+[ 1, 0 ] || 1
+[ 1, 1 ] || 0
+gap> out:=SplitBooleanFunction(f,1,false);;
+gap> Print(out[1]);
+[2, 2,[ 0, 1, 1, 1 ]]
+gap> Print(out[2]);
+[2, 2,[ 1, 1, 1, 0 ]]
+gap> out:=SplitBooleanFunction(f,1,true);;
+gap> Print(out[1]);
+[2, 2,[ 0, 1, 0, 0 ]]
+gap> Print(out[2]);
+[2, 2,[ 0, 0, 1, 0 ]]
+]]>
+</Example>
+</Description> </ManSection>
+
+
+<ManSection>
+<Func Name="KernelOfBooleanFunction" Arg="Func"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For a Boolean function <M>f(x_1,\ldots,x_n)</M> we define the following two sets (see <Cite Key="GecheBovdi80"/>):
+<Alt Only="LaTeX">
+<Display>
+f^{-1}(1)=\{ \; \mathbf{x} \in \mathbb{Z}_2^n \; \mid \; f(\mathbf{x})=1 \; \}, \quad \textrm{and} \quad f^{-1}(0)=\{ \; \mathbf{x} \in \mathbb{Z}_2^n \; \mid \; f(\mathbf{x})=0 \; \}.
+</Display>
+</Alt>
+
+The kernel <M>K(f)</M> of the Boolean function <M>f</M> is defined as
+
+<Display>
+K(f)=f^{-1}(1), \quad \textrm{ if } \quad |f^{-1}(1)| \geq |f^{-1}(0)|;
+</Display>
+<Display>
+K(f)=f^{-1}(0), \quad \textrm{otherwise,}
+</Display>
+
+where <M>|f^{-1}(i)|</M> is the cardinality of the set <M>f^{-1}(i)</M> with <M>i \in \{0,1\}</M>. <P/>
+
+
+For the Boolean function <C>Func</C> the function <C>KernelOfBooleanFunction</C> returns a list in which
+ the first element of the output list represents the kernel, and the second element equals either <M>1</M> or <M>0</M>.
+
+<Example>
+<![CDATA[
+gap> f:=LogicFunction(3,2,[0,1,1,0,1,0,0,0]);;
+gap> k:=KernelOfBooleanFunction(f);
+[ [ [ 0, 0, 1 ], [ 0, 1, 0 ], [ 1, 0, 0 ] ], 1 ]
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="ReducedKernelOfBooleanFunction" Arg="Ker"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+Let <M>f(x_1,\ldots,x_n)</M> be a Boolean function with the kernel <M>K(f)=\{\;a_1,\ldots,a_m\;\}</M>, where <M>m \leq 2^{n-1}</M>.
+The reduced kernel <M>K(f)_i</M> of the function <M>f</M> relative to the element <M>a_i \in K(f)</M> is the following set (see <Cite Key="GecheBovdi80"/>):
+<Display>
+K(f)_i=\big\{\;a_1 \oplus a_i, \; a_2 \oplus a_i,\; \ldots,\; a_m \oplus a_i \; \big\},
+</Display>
+where <M>\oplus</M> is a component-wise addition of vectors from <M>K(f)</M> over <M>GF(2)</M>. <P/>
+
+The reduced kernel <M>T(f)</M> of <M>f</M> is the following set:
+
+<Display>
+T(f)=\big\{ \;K(f)_i \;\mid\; i=1,2,\ldots,m  \;\big\}.
+</Display>
+
+For the <M>m \times n</M> matrix <C>Ker</C>, which represents the kernel of some Boolean function <M>f</M>,
+the function <C>ReducedKernelOfBooleanFunction</C> returns the reduced kernel <M>T(f)</M> of <M>f</M>.
+
+<Example>
+<![CDATA[
+gap> ## Continuation of Example 2.2.4
+gap> rk:=ReducedKernelOfBooleanFunction(k[1]);;
+gap> j:=1;;
+gap> for i in rk do Print(j,".\n"); Display(i); Print("\n"); j:=j+1; od;
+1.
+ . . .
+ . 1 1
+ 1 . 1
+
+2.
+ . 1 1
+ . . .
+ 1 1 .
+
+3.
+ 1 . 1
+ 1 1 .
+ . . .
+]]>
+</Example>
+</Description> </ManSection>
+</Section>
+<!-- ############################################################ -->
+
+</Chapter>
+
+<!--
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; version 2 of the License.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->

@@ -23,8 +23,10 @@
 <!--  Thrre chapters of the book  -->
 <Body>
 <#Include SYSTEM "intro.xml">
+<#Include SYSTEM "bool_func.xml">
 <#Include SYSTEM "thr_elements.xml">
 <#Include SYSTEM "thr_networks.xml">
+<#Include SYSTEM "mvthr_el.xml">
 </Body>
 
 <Bibliography Databases="thelmabib.xml"/>

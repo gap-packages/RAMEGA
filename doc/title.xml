@@ -11,7 +11,7 @@
     THreshold ELements, Modeling and Applications
   </Subtitle>
   <Version>
-    1.0.1
+    1.0.2
   </Version>
   <Author>
     Victor Bovdi<Alt Only="LaTeX"><Br/></Alt>
@@ -39,7 +39,8 @@ Al Ain, United Arab Emirates<Br/>
   <Copyright>
     &copyright; 2018 by the authors<P/>
 
-This package may be distributed under the terms and conditions of the <URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL> Version 2 or higher.
+This package may be distributed under the terms and conditions of the
+GNU Public License Version 2 or higher.
 
   </Copyright>
   </TitlePage>

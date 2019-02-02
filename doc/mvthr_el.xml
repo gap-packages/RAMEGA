@@ -1,0 +1,223 @@
+<!--
+
+  thr_elements.xml            thelma package documentation          Victor Bovdi
+																	Vasyl Laver
+
+  Copyright (C) 2018  Victor Bovdi, Vasyl Laver, Department of Mathematical Sciences,
+  UAEU, Al Ain, United Arab Emirates
+  This file is free software, see license information at the end.
+
+  This chapter contains the operations with threshold elements
+-->
+
+<Chapter Label="mvthr_el">
+<Heading>Multi-Valued Threshold Elements</Heading>
+
+<Section Label="mvthr_gf">
+<Heading>Threshold Elements over <M>GF(p^k)</M></Heading>
+
+Let <M>F=GF(p^k)</M> be a Galois field with primitive element <M>\varepsilon</M> and let <M>F^*</M> be the multiplicative group of <M>F</M>. Let us consider all proper subgroups of <M>F^*</M>:
+<Display>
+  C_{j_1}= \langle \sigma_1 \mid \sigma_1^{j_1}=1 \rangle, \ldots , C_{j_t}= \langle \sigma_t \mid \sigma_n^{j_t}=1 \rangle,
+</Display>
+where <M>\sigma_i=\epsilon^{\frac{|F^*|}{j_i}}</M> (<M>i=1,\ldots,t</M>)are the generators of the corresponding cyclic groups.
+
+Denote <M>T=\{ j_1, \ldots, j_t\} </M>. Let <M>G_n = C_{k_1}\otimes \ldots \otimes C_{k_n}</M> be a direct product of cyclic groups <M>C_{k_i}</M> (<M>k_i \in T</M>,<M>i=1,\ldots,n</M>). <P/>
+
+A <A>discrete function</A> of <M>n</M> variables over a finite field <M>F</M> is a mapping <M>f:G_n \to C_q </M>, <M>q \in T </M>, <M>C_q =  \langle \sigma \mid \sigma^{q}=1 \rangle </M>,
+<M>\sigma = \epsilon^{\frac{|F^*|}{q}}</M>. <P/>
+
+We define the function <M>FSign\xi</M> in the following way <Cite Key="Geche2010"/>:
+<Display>
+\forall \xi \in F^* : FSign \xi = \sigma^j, \;\; \textrm{if} \;\; \frac{j|F^*|}{q}\leq \textrm{deg}\xi &lt; \frac{(j+1)|F^*|}{q},
+</Display>
+in which <M>\textrm{deg} \xi</M> is obtained from the equality <M>\xi=\epsilon^{\textrm{deg} \xi}</M>, <M>j \in \{ 1, \ldots , q-1 \}</M>. <P/>
+
+Let <M>(w_1, \ldots, w_n; T) \in F^{n+1} </M>. For all <M>\overline{g} = (x_1,\ldots,x_n) \in G_n </M> (i.e. <M>x_j \in C_{k_j}</M>) we define
+<Display>
+w(\overline{g}) = \sum_{i=1}^n w_i x_i + T \in F.
+</Display>
+
+A <A>neural element</A> with structure vector <M>(w_1, \ldots, w_n; T) \in F^{n+1} </M> is a logic device that realizes the function
+<M>FSign (w(\overline{g})) </M> for all <M> \overline{g} \in G_n </M>.<P/>
+
+Discrete function <M>f</M> which is relizable by a single neural element over the field <M>F</M> is called <A>neurofunction</A>.
+<ManSection>
+<Func Name="MVThresholdElement" Arg="Structure, Dimensions, Field"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the two-element list <C>Structure</C>, in which the first element is a vector over the field <C>Field</C>,
+and the second element is an element of the <C>Field</C>, a list of positive integers <C>Dimensions</C> (or an integerm if all the dimensions are equal)
+and a Galois field <C>Field</C> the function <C>MVThresholdElement</C> returns a multi-valued threshold element with the
+number of inputs equal to the length of the first element of <C>Structure</C> list.
+
+<Example>
+<![CDATA[
+gap> F:=GF(13);;
+gap> st:=[[Z(13)^5,Z(13)^7],Z(13)^4];;
+gap> dim:=[2,3,3];;
+gap> mvte:=MVThresholdElement(st,dim,F);
+< multivalued threshold element over GF(13) with structure [[ 6, 11 ], 3] and
+  dimension vector [ 2, 3, 3 ] >
+gap> Display(mvte);
+Structure vector = [[ 6, 11 ], 3]
+Dimension vector = [[ 2, 3, 3 ]]
+Field: GF(13)
+Multi-Valued Threshold Element realizes the function f :
+[ 1, 1 ]  ||  9
+[ 1, 3 ]  ||  3
+[ 1, 9 ]  ||  1
+[ 12, 1 ]  ||  1
+[ 12, 3 ]  ||  1
+[ 12, 9 ]  ||  9
+gap> ## If all dimensions in dimension vector are equal, the user can enter
+just this number.
+gap> F:=GF(5);;
+gap> st:=[[Z(5)^0,Z(5)^0],Z(5)^2];;
+gap> dim:=2;;
+gap> mvte:=MVThresholdElement(st,dim,F);
+< multivalued threshold element over GF(5) with structure [[ 1, 1 ], 4] and
+  dimension vector [ 2, 2, 2 ] >
+gap> Display(mvte);
+Structure vector = [[ 1, 1 ], 4]
+Dimension vector = [[ 2, 2, 2 ]]
+Field: GF(5)
+Multi-Valued Threshold Element realizes the function f :
+[ 1, 1 ]  ||  1
+[ 1, 4 ]  ||  4
+[ 4, 1 ]  ||  4
+[ 4, 4 ]  ||  1
+]]>
+</Example>
+
+The function <C>Display</C> outputs the stucture of the given threshold element <C>mvte</C> and the truth table in given alphabet.
+In the previous example <C>mvte</C> realizes a three-valued function in <M>\{ 1, 3, 9 \}</M> alphabet over GF(13).
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="IsMVThresholdElement" Arg="Obj"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+
+For the object <C>Obj</C> the function <C>IsMVThresholdElement</C> returns <C>true</C> if
+<C>Obj</C> is a multi-valued threshold element (see <Ref Func="MVThresholdElement" />), and <C>false</C> otherwise.
+
+<Example>
+<![CDATA[
+gap> IsMVThresholdElement(mvte);
+true
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="OutputOfMVThresholdElement" Arg="MVThrEl"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the multi-valued threshold element <C>MVThrEl</C> the function <C>OutputOfMVThresholdElement</C> returns the truth vector of the
+multi-valued Boolean function, realized by <C>MVThrEl</C>.
+
+<Example>
+<![CDATA[
+gap> F:=GF(13);;
+gap> st:=[[Z(13)^5,Z(13)^7],Z(13)^4];;
+gap> dim:=[2,3,3];;
+gap> mvte:=MVThresholdElement(st,dim,F);
+< multivalued threshold element over GF(13) with structure [[ 6, 11 ], 3] and
+  dimension vector [ 2, 3, 3 ] >
+gap> f:=OutputOfMVThresholdElement(mvte);
+< logic function of 2 variables and dimension vector [ 2, 3, 3 ]>
+gap> Display(f);
+[ 0, 0 ] || 2
+[ 0, 1 ] || 1
+[ 0, 2 ] || 0
+[ 1, 0 ] || 0
+[ 1, 1 ] || 0
+[ 1, 2 ] || 2
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="StructureOfMVThresholdElement" Arg="MVThrEl"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+
+For the multi-valued threshold element <C>MVThrEl</C> the function <C>StructureOfMVThresholdElement</C> returns the
+structure vector of <C>MVThrEl</C> (see <Ref Func="MVThresholdElement" />).
+
+<Example>
+<![CDATA[
+gap> StructureOfMVThresholdElement(mvte);
+[ [ Z(13)^5, Z(13)^7 ], Z(13)^4 ]
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="MVBooleanFunctionBySTE" Arg="Func,Dim,F"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+
+For the given multi-valued function <C>Func</C> and the prime field <C>F</C> the function <C>MVBooleanFunctionBySTE</C>
+returns the multi-valued threshold element over <C>F</C> if <C>Func</C> is realizable and an empty list otherwise. The algorithm realizing this function
+was proposed in <Cite Key="Geche2010"/>.
+<Example>
+<![CDATA[
+gap> f:=LogicFunction(2,2,[0,1,1,0]);
+< Boolean function of 2 variables >
+gap> mvte:=MVBooleanFunctionBySTE(f,GF(3));
+[  ]
+gap> mvte:=MVBooleanFunctionBySTE(f,GF(5));
+< multivalued threshold element over GF(5) with structure [[ 1, 1 ], 4] and
+  dimension vector [ 2, 2, 2 ] >
+gap> Display(last);
+Structure vector = [[ 1, 1 ], 4]
+Dimension vector = [[ 2, 2, 2 ]]
+Field: GF(5)
+Multi-Valued Threshold Element realizes the function f :
+[ 1, 1 ]  ||  1
+[ 1, 4 ]  ||  4
+[ 4, 1 ]  ||  4
+[ 4, 4 ]  ||  1
+gap> ## Consider an example if dimensions are presented as a list.
+gap> f:=LogicFunction(2,[2,3,3],[0,0,1,1,2,2]);
+< logic function of 2 variables and dimension vector [ 2, 3, 3 ]>
+gap> mvte:=MVBooleanFunctionBySTE(f,GF(13));
+< multivalued threshold element over GF(13) with structure [[ 12, 10 ], 5]
+  and dimension vector [ 2, 3, 3 ] >
+gap> Display(last);
+Structure vector = [[ 12, 10 ], 5]
+Dimension vector = [[ 2, 3, 3 ]]
+Field: GF(13)
+Multi-Valued Threshold Element realizes the function f :
+[ 1, 1 ]  ||  1
+[ 1, 3 ]  ||  1
+[ 1, 9 ]  ||  3
+[ 12, 1 ]  ||  3
+[ 12, 3 ]  ||  9
+[ 12, 9 ]  ||  9
+
+]]>
+</Example>
+</Description> </ManSection>
+
+</Section>
+<!-- ############################################################ -->
+
+</Chapter>
+
+<!--
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; version 2 of the License.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->
