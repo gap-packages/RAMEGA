@@ -5,9 +5,9 @@ gap> START_TEST("Testing all Boolean functions for n=3");
 gap> LoadPackage("thelma",false);
 true
 gap> n:=3;;
-gap> t:=Tuples(GF(2),2^n);;
+gap> t:=Tuples([0,1],2^n);;
 gap> test:=true;;
-gap> for f in t do if OutputOfNeuralNetwork(BooleanFunctionByNeuralNetwork(f))<>f then test:=false; break; fi; od;
+gap> for f in t do if OutputOfNeuralNetwork(BooleanFunctionByNeuralNetwork(LogicFunction(n,2,f)))<>LogicFunction(n,2,f) then test:=false; break; fi; od;
 gap> test;
 true
 gap> STOP_TEST( "test-n-3.tst", 200000000000 );
