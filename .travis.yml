@@ -3,6 +3,8 @@ env:
   global:
     - GAPROOT=gaproot
     - COVDIR=coverage
+    - GAP_PKGS_TO_BUILD="gauss io profiling"
+
 
 addons:
   apt_packages:
