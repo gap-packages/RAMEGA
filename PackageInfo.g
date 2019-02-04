@@ -75,7 +75,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.4",
+  GAP := ">= 4.10",
   NeededOtherPackages := [["GAPDoc", "1.5"],["Gauss","2018.09.08"]],
   SuggestedOtherPackages := [],
   ExternalConditions := []
