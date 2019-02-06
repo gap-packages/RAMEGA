@@ -9,7 +9,7 @@ SetPackageInfo( rec(
 PackageName := "Thelma",
 Subtitle := "A package on threshold elements",
 Version := "1.02",
-Date := "02/02/2019",
+Date := "06/02/2019",
 PackageWWWHome := Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
     SourceRepository := rec(
     Type := "git",
