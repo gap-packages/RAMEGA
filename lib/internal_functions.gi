@@ -1,5 +1,3 @@
-IsPackageMarkedForLoading("Gauss",">=2018.09.08");
-
 ##############################################################
 BindGlobal("THELMA_INTERNAL_BFtoGF",function(lf)
 # Arguments: lf - boolean function;
