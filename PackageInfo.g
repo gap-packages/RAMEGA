@@ -10,6 +10,8 @@ PackageName := "Thelma",
 Subtitle := "A package on threshold elements",
 Version := "1.02",
 Date := "06/02/2019",
+License := "GPL-2.0-or-later",
+
 PackageWWWHome := Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
     SourceRepository := rec(
     Type := "git",
