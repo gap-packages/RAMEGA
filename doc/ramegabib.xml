@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE file SYSTEM "bibxmlext.dtd">
+<file>
+
+
+<entry id="Bovdi_Szakacs_I"><article>
+   <author>
+     <name><first>A.</first><last>Bovdi</last></name>
+     <name><first>A.</first><last>Sakach</last></name>
+   </author>
+   <title>Unitary subgroup of the multiplicative group of a modular group algebra of a finite abelian $p$-group</title>
+   <journal>Math. Zametki</journal>
+   <year>1989</year>
+   <number>45(6)</number>
+   <pages>23--29</pages>
+</article></entry>
+
+
+<entry id="Bovdi_Rosa_I"><article>
+   <author>
+     <name><first>V.</first><last>Bovdi</last></name>
+     <name><first>A.L.</first><last>Rosa</last></name>
+   </author>
+   <title>On the order of the unitary subgroup of a modular group algebra</title>
+   <journal>Comm. Algebra</journal>
+   <year>2000</year>
+   <number>28(4)</number>
+   <pages>1897--1905</pages>
+</article></entry>
+
+
+<entry id="Bovdi_Kovacs_I"><article>
+   <author>
+     <name><first>V.</first><last>Bovdi</last></name>
+     <name><first>L.G.</first><last>Kov\'acs</last></name>
+   </author>
+   <title>Unitary units in modular group algebras</title>
+   <journal>Manuscripta Math.</journal>
+   <year>1994</year>
+   <number>84</number>
+   <pages>57--72</pages>
+</article></entry>
+
+<entry id="Balogh_Creedon_Gildea"><article>
+   <author>
+     <name><first>Zs.</first><last>Balogh</last></name>
+     <name><first>L.</first><last>Creedon</last></name>
+     <name><first>J.</first><last>Gildea</last></name>
+   </author>
+   <title>Involutions and Unitary Subgroups in Group Algebras</title>
+   <journal>Acta Scientiarum Mathematicarum</journal>
+   <year>2013</year>
+   <number>79(3-4)</number>
+   <pages>391--400</pages>
+</article></entry>
+
+
+<entry id="Bovdi_Erdei_II"><article>
+   <author>
+     <name><first>A.</first><last>Bovdi</last></name>
+     <name><first>L.</first><last>Erdei</last></name>
+   </author>
+   <title>Unitary units in modular group algebras of groups of order 16</title>
+   <journal>Technical Reports, Universitas Debrecen, Dept. of Math., L. Kossuth Univ.</journal>
+   <year>1996</year>
+   <volume>4</volume>
+   <number>157</number>
+   <pages>1--16</pages>
+</article></entry>
+
+<entry id="Bovdi_Erdei_I"><article>
+   <author>
+     <name><first>A.</first><last>Bovdi</last></name>
+     <name><first>L.</first><last>Erdei</last></name>
+   </author>
+   <title>Unitary units in modular group algebras of $2$-groups</title>
+   <journal>Comm. Algebra</journal>
+   <year>2000</year>
+   <number>28(2)</number>
+   <pages>625--630</pages>
+</article></entry>
+
+
+<entry id="Creedon_Gildea_I"><article>
+     <author>
+       <name><first>L.</first><last>Creedon</last></name>
+       <name><first>J.</first><last>Gildea</last></name>
+     </author>
+     <title>Unitary units of the group algebra $F_{2^k}Q_8$</title>
+     <journal>Int. J. Algebra Comput.</journal>
+     <year>2009</year>
+     <number>19(2)</number>
+     <pages>283--286</pages>
+</article></entry>
+
+
+<entry id="Creedon_Gildea_II"><article>
+     <author>
+       <name><first>L.</first><last>Creedon</last></name>
+       <name><first>J.</first><last>Gildea</last></name>
+     </author>
+     <title>The structure of the unit group of the group algebra $F_{2^k}D_8$</title>
+     <journal>Canad. Math. Bull.</journal>
+     <year>2011</year>
+     <number>54(2)</number>
+     <pages>237--243</pages>
+</article></entry>
+
+
+<entry id="Gildea_I"><article>
+     <author>
+       <name><first>J.</first><last>Gildea</last></name>
+     </author>
+     <title>Units of Group Algebras of Non-Abelian Groups of Order $16$ and Exponent $4$ over $F_{2^k}$</title>
+     <journal>Results. Math.</journal>
+     <year>2012</year>
+     <volume>61</volume>
+     <number>3</number>
+     <pages>245--254</pages>
+</article></entry>
+
+
+<entry id="baginski"><article>
+   <author>
+     <name><first>C.</first><last>Bagi\'nskih</last></name>
+   </author>
+   <title>A note on the derived length of the unit group of a modular group algebra</title>
+   <journal>Comm. Algebra</journal>
+   <year>2002</year>
+   <volume>30</volume>
+   <number>10</number>
+   <pages>4905--4913</pages>
+</article></entry>
+
+
+<entry id="baljuh"><article>
+   <author>
+     <name><first>Zs.</first><last>Balogh</last></name>
+     <name><first>T.</first><last>Juh\'asz</last></name>
+   </author>
+   <title>Lie derived lengths of group algebras of groups with cyclic derived subgroup</title>
+   <journal>Comm. Algebra</journal>
+   <year>2008</year>
+   <volume>36</volume>
+   <number>2</number>
+   <pages>315--324</pages>
+</article></entry>
+
+
+<entry id="shalev"><article>
+   <author>
+     <name><first>A.A.</first><last>Bovdi</last></name>
+     <name><first>I.I.</first><last>Khripta</last></name>
+   </author>
+   <title>Group algebras of periodic groups with solvable multiplicative group</title>
+   <journal>Mat. Zametki</journal>
+   <year>1977</year>
+   <volume>22</volume>
+   <number>3</number>
+   <pages>421--432</pages>
+</article></entry>
+
+
+<entry id="shalev"><article>
+   <author>
+     <name><first>A.</first><last>Shalev</last></name>
+   </author>
+   <title>Meta-abelian unit groups of group algebras are usually abelian</title>
+   <journal>J. Pure and Appl. Algebra</journal>
+   <year>1991</year>
+   <volume>72</volume>
+   <pages>295--302</pages>
+</article></entry>
+
+
+<entry id="S1"><article>
+   <author>
+     <name><first>A.</first><last>Shalev</last></name>
+   </author>
+   <title>The derived length of Lie soluble group rings I</title>
+   <journal>Pure and Appl. Algebra</journal>
+   <year>1992</year>
+   <volume>51</volume>
+   <pages>291--300</pages>
+</article></entry>
+
+
+<entry id="S2"><article>
+   <author>
+     <name><first>A.</first><last>Shalev</last></name>
+   </author>
+   <title>The derived length of Lie soluble group rings II</title>
+   <journal>London Math. Soc.</journal>
+   <year>1994</year>
+   <volume>49</volume>
+   <pages>93--99</pages>
+</article></entry>
+
+
+<entry id="bj"><article>
+    <author>
+      <name><first>Zs.</first><last>Balogh</last></name>
+      <name><first>T.</first><last>Juh\'asz</last></name>
+    </author>
+    <title>Derived lengths of symmetric and skew symmetric elements in group algebras</title>
+    <journal>JP J. Algebra Number Theory Appl.</journal>
+    <year>2008</year>
+    <number>12(2)</number>
+    <pages>191--203</pages>
+</article></entry>
+
+
+<entry id="JR1"><article>
+   <author>
+        <name><first>E.</first><last>Jespers</last></name>
+        <name><first>M.</first><last>Ruiz Mar\'in</last></name>
+    </author>
+    <title>On symmetric elements and symmetric units in group rings</title>
+    <journal>Comm. Algebra</journal>
+    <year>2006</year>
+    <number>34</number>
+    <pages>727--726</pages>
+</article></entry>
+
+
+<entry id="JR2"><article>
+   <author>
+        <name><first>E.</first><last>Jespers</last></name>
+        <name><first>M.</first><last>Ruiz Mar\'in</last></name>
+    </author>
+    <title>Antisymmetric elements in group rings</title>
+    <journal>J. Algebra Appl.</journal>
+    <year>2005</year>
+    <number>4(4)</number>
+    <pages>341--353</pages>
+</article></entry>
+
+
+<entry id="lee1"><article>
+    <author>
+        <name><first>G.T.</first><last>Lee</last></name>
+        <name><first>S.K.</first><last>Sehgal</last></name>
+        <name><first>E.</first><last>Spinelli</last></name>
+    </author>
+    <title>Group algebras whose symmetric and skew elements are Lie solvable</title>
+    <journal>Forum Math.</journal>
+    <year>2009</year>
+    <number>21(4)</number>
+    <pages>661--671</pages>
+</article></entry>
+
+
+<entry id="Lbook"><book>
+    <author>
+        <name><first>G.T.</first><last>Lee</last></name>
+    </author>
+    <title>Group identities on units and symmetric units of group rings</title>
+  <!--  <series>Algebra and Applications, 12</series> -->
+    <publisher>Springer-Verlag London, Ltd., London</publisher>
+    <year>1973</year>
+    <number>25</number>
+    <pages>748--757</pages>
+</book></entry>
+
+
+<entry id="PPS"><article>
+    <author>
+        <name><first>I.B.S.</first><last>Passi</last></name>
+        <name><first>D.S.</first><last>Passman</last></name>
+        <name><first>S.K.</first><last>Seghal</last></name>
+    </author>
+    <title>Lie solvable group rings</title>
+    <journal>Canad. J. Math.</journal>
+    <year>1973</year>
+    <number>25</number>
+    <pages>748--757</pages>
+</article></entry>
+
+
+<entry id="shalev"><article>
+    <author>
+      <name><first>A.</first><last>Shalev</last></name>
+    </author>
+    <title>The derived length of Lie soluble group rings I</title>
+    <journal>J. Pure Appl. Algebra</journal>
+    <year>1992</year>
+    <number>78(3)</number>
+    <pages>291--300</pages>
+</article></entry>
+
+
+<entry id="kurdics"><article>
+    <author>
+      <name><first>J.</first><last>Kudrics</last></name>
+    </author>
+    <title>On group algebras with metabelian unit groups</title>
+    <journal>Periodica Mathematica Hungarica</journal>
+    <year>1996</year>
+    <number>32</number>
+    <pages>57--64</pages>
+</article></entry>
+
+<entry id="Bovdi_Rozgonyi"><article>
+  <author>
+    <name><first>V.</first><last>Bovdi</last></name>
+    <name><first>T.</first><last>Rozgonyi</last></name>
+  </author>
+  <title>Unitary units in modular group algebras</title>
+  <journal>Acta. Academ. Paedagogicae Nyiregyh\'{a}za</journal>
+  <year>1994</year>
+  <volume>84</volume>
+  <number>1</number>
+  <pages>57--72</pages>
+</article></entry>
+
+
+<entry id="Bovdi_Szakacs_II"><article>
+  <author>
+    <name><first>A.A.</first><last>Bovdi</last></name>
+    <name><first>A.</first><last>Szak\'{a}cs</last></name>
+  </author>
+  <title>A basis for the unitary subgroup of the group of units in a finite commutative group algebra</title>
+  <journal>Publicationes Mathematicae Debrecen</journal>
+  <year>1995</year>
+  <volume>46</volume>
+  <number>1-2</number>
+  <pages>97--120</pages>
+</article></entry>
+
+
+<entry id="Bovdi_Unitarity"><article>
+  <author>
+    <name><first>A.A.</first><last>Bovdi</last></name>
+  </author>
+  <title>Unitarity of the multiplicative group of an integral group ring</title>
+  <journal>Mat. Sb. (N.S.)</journal>
+  <year>1982</year>
+  <volume>119(161)</volume>
+  <pages>387--400, 448</pages>
+</article></entry>
+
+</file>

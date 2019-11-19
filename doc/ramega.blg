@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: ramega.aux
+The style file: alpha.bst
+Database file #1: ramegabib.xml.bib
+Warning--there's a number but no volume in Bovdi_Rosa_I
+You've used 1 entry,
+            2543 wiz_defined-function locations,
+            566 strings with 4585 characters,
+and the built_in function-call counts, 460 in all, are:
+= -- 46
+> -- 19
+< -- 0
++ -- 6
+- -- 6
+* -- 38
+:= -- 82
+add.period$ -- 3
+call.type$ -- 1
+change.case$ -- 6
+chr.to.int$ -- 1
+cite$ -- 2
+duplicate$ -- 14
+empty$ -- 33
+format.name$ -- 7
+if$ -- 89
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 1
+newline$ -- 8
+num.names$ -- 3
+pop$ -- 4
+preamble$ -- 1
+purify$ -- 7
+quote$ -- 0
+skip$ -- 12
+stack$ -- 0
+substring$ -- 38
+swap$ -- 1
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 8
+warning$ -- 1
+while$ -- 5
+width$ -- 2
+write$ -- 15
+(There was 1 warning)

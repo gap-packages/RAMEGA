@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (ramega) - Chapter 2: Random Methods</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapBib.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"></p>
+<p><a id="X7D7DE68778F94CA9" name="X7D7DE68778F94CA9"></a></p>
+<div class="ChapSects"><a href="chap2.html#X7D7DE68778F94CA9">2 <span class="Heading">Random Methods</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X82EB5BE77F9F686A">2.1 <span class="Heading">Basic Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X792693D382FF15B8">2.1-1 BasicGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78EF1A767A0F6FB4">2.1-2 IsLienEngel</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7A319836781AF22F">2.2 <span class="Heading">Random Methods for Obtaining Elements With Desired Properties</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X863101828410DC56">2.2-1 GetRandomUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X808375C77F186B19">2.2-2 GetRandomNormalizedUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B418FF97BADFFE4">2.2-3 GetRandomNormalizedUnitaryUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81DF8AB984260200">2.2-4 GetRandomCentralNormalizedUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78D5FB49877A050E">2.2-5 GetRandomElementFromAugmentationIdeal</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C53088F8472E3C2">2.3 <span class="Heading">Random Methods for Group Rings</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FE9D0597F72664F">2.3-1 RandomLienEngelLength</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78B198507C9F53CE">2.3-2 RandomExponent</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81106C3E808ABAB4">2.3-3 RandomExponentOfNormalizedUnitsCenter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D4AB0007DD1F690">2.3-4 RandomNilpotencyClass</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8177059281A19CB3">2.3-5 RandomDerivedLength</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8080A12D78AC57F9">2.3-6 RandomCommutatorSubgroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E3BA1487A44E09D">2.3-7 RandomCommutatorSubgroupOfNormalizedUnits</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8672D3997E1C4EFF">2.3-8 RandomCenterOfCommutatorSubgroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81D74AB97C8370B8">2.3-9 RandomNormalizedUnitGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82A6FD3384663AE8">2.3-10 RandomUnitarySubgroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D95FC4287C52C30">2.3-11 RandomCommutatorSeries</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B6147BA7D99BD63">2.3-12 RandomLowerCentralSeries</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C65940B7A332CCA">2.3-13 RandomUnitaryOrder</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X811670E4829B2291">2.3-14 RandomDihedralDepth</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Random Methods</span></h3>
+
+<p><a id="X82EB5BE77F9F686A" name="X82EB5BE77F9F686A"></a></p>
+
+<h4>2.1 <span class="Heading">Basic Operations</span></h4>
+
+<p><a id="X792693D382FF15B8" name="X792693D382FF15B8"></a></p>
+
+<h5>2.1-1 BasicGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BasicGroup</code>( <var class="Arg">KG</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> the function <code class="code">BasicGroup</code> returns the basic group of <code class="code">KG</code> as a subgroup of the normalized group of units.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=CyclicGroup(IsFpGroup,4);</span>
+&lt;fp group of size 4 on the generators [ a ]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Elements(G);</span>
+[ &lt;identity ...&gt;, a, a^2, a^3 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);</span>
+&lt;algebra-with-one over GF(2), with 1 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasicGroup(KG);</span>
+&lt;group with 4 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Elements(last);</span>
+[ (Z(2)^0)*&lt;identity ...&gt;, (Z(2)^0)*a, (Z(2)^0)*a^2, (Z(2)^0)*a^3 ]
+
+</pre></div>
+
+<p><a id="X78EF1A767A0F6FB4" name="X78EF1A767A0F6FB4"></a></p>
+
+<h5>2.1-2 IsLienEngel</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLienEngel</code>( <var class="Arg">KG</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> the function <code class="code">IsLienEngel</code> returns <code class="code">true</code> if <code class="code">KG</code> is Lie-n Engel and <code class="code">false</code> otherwise.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=CyclicGroup(4);</span>
+&lt;pc group of size 4 with 2 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);</span>
+&lt;algebra-with-one over GF(2), with 2 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLienEngel(KG);</span>
+false
+gap&gt;
+gap&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(16);</span>
+&lt;pc group of size 16 with 4 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);</span>
+&lt;algebra-with-one over GF(2), with 4 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLienEngel(KG);</span>
+
+</pre></div>
+
+<p><a id="X7A319836781AF22F" name="X7A319836781AF22F"></a></p>
+
+<h4>2.2 <span class="Heading">Random Methods for Obtaining Elements With Desired Properties</span></h4>
+
+<p><a id="X863101828410DC56" name="X863101828410DC56"></a></p>
+
+<h5>2.2-1 GetRandomUnit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GetRandomUnit</code>( <var class="Arg">KG</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> the function <code class="code">GetRandomUnit</code> returns an unit (i.e. an invertible element) in a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=CyclicGroup(4);</span>
+&lt;pc group of size 4 with 2 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(7),G);</span>
+&lt;algebra-with-one over GF(7), with 2 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u:=GetRandomUnit(KG);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Augmentation(u);</span>
+Z(7)^4
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u*u^-1;</span>
+(Z(7)^0)*&lt;identity&gt; of ...
+
+</pre></div>
+
+<p><a id="X808375C77F186B19" name="X808375C77F186B19"></a></p>
+
+<h5>2.2-2 GetRandomNormalizedUnit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GetRandomNormalizedUnit</code>( <var class="Arg">KG</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> the function <code class="code">GetRandomNormalizedUnit</code> returns a normalized unit (i.e. an invertible element with augmentation 1) in a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(IsFpGroup,16);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u:=GetRandomNormalizedUnit(KG);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Augmentation(u);</span>
+Z(2)^0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u*u^-1;</span>
+(Z(2)^0)*&lt;identity ...&gt;
+
+</pre></div>
+
+<p><a id="X7B418FF97BADFFE4" name="X7B418FF97BADFFE4"></a></p>
+
+<h5>2.2-3 GetRandomNormalizedUnitaryUnit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GetRandomNormalizedUnitaryUnit</code>( <var class="Arg">KG</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> the function <code class="code">GetRandomNormalizedUnitaryUnit</code> returns a normalized unitary unit (i.e. such an invertible element with augmentation 1, that <span class="SimpleMath">u⋅ u^*=One(KG)</span>) in a random way. Also, there exists a two-parametrical version of this method, where the second parameter <span class="SimpleMath">σ</span> is an arbitrary involution.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=CyclicGroup(4);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u:=GetRandomNormalizedUnitaryUnit(KG);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u*Involution(u);</span>
+(Z(2)^0)*&lt;identity&gt; of ...
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Augmentation(u);</span>
+Z(2)^0
+
+</pre></div>
+
+<p><a id="X81DF8AB984260200" name="X81DF8AB984260200"></a></p>
+
+<h5>2.2-4 GetRandomCentralNormalizedUnit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GetRandomCentralNormalizedUnit</code>( <var class="Arg">KG</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> the function <code class="code">GetRandomCentralNormalizedUnit</code> returns a central normalized unit (i.e. such an invertible element with augmentation 1, that <span class="SimpleMath">u⋅ x=x ⋅ u</span>, <span class="SimpleMath">∀ x ∈ KG</span>) in a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=CyclicGroup(IsFpGroup,4);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u:=GetRandomCentralNormalizedUnit(KG);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Augmentation(u);</span>
+Z(2)^0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bool:=true;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for x in Elements(KG) do</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">if x*u&lt;&gt;u*x then bool:=false; break; fi;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">od;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bool;</span>
+true
+
+</pre></div>
+
+<p><a id="X78D5FB49877A050E" name="X78D5FB49877A050E"></a></p>
+
+<h5>2.2-5 GetRandomElementFromAugmentationIdeal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GetRandomElementFromAugmentationIdeal</code>( <var class="Arg">KG</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> the function <code class="code">GetRandomElementFromAugmentationIdeal</code> returns an element from augmentation ideal of <span class="SimpleMath">KG</span>.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=QuaternionGroup(16);</span>
+&lt;pc group of size 16 with 4 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);</span>
+&lt;algebra-with-one over GF(2), with 4 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u:=GetRandomElementFromAugmentationIdeal(KG);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Augmentation(u);</span>
+0*Z(2)
+
+</pre></div>
+
+<p><a id="X7C53088F8472E3C2" name="X7C53088F8472E3C2"></a></p>
+
+<h4>2.3 <span class="Heading">Random Methods for Group Rings</span></h4>
+
+<p><a id="X7FE9D0597F72664F" name="X7FE9D0597F72664F"></a></p>
+
+<h5>2.3-1 RandomLienEngelLength</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomLienEngelLength</code>( <var class="Arg">KG</var>, <var class="Arg">num</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Let <code class="code">KG</code> be a group ring and let <span class="SimpleMath">[x,y,y,...,y]=0</span> for all <span class="SimpleMath">x, y ∈ KG</span>. Then the number of <span class="SimpleMath">y</span>'s in the last equation is called the Lie n-Engel length.</p>
+
+<p>For the group ring <code class="code">KG</code> and the maximal number of iterations <code class="code">num</code> the function <code class="code">RandomLienEngelLength</code> returns the Lie n-Engel length of KG by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(16);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RandomLienEngelLength(KG,100);</span>
+4
+
+</pre></div>
+
+<p><a id="X78B198507C9F53CE" name="X78B198507C9F53CE"></a></p>
+
+<h5>2.3-2 RandomExponent</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomExponent</code>( <var class="Arg">KG</var>, <var class="Arg">num</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and the maximal number of iterations <code class="code">num</code> the function <code class="code">RandomExponent</code> returns the exponent of the group of normalized units of <code class="code">KG</code> by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(16);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RandomExponent(KG,100);</span>
+8
+
+</pre></div>
+
+<p><a id="X81106C3E808ABAB4" name="X81106C3E808ABAB4"></a></p>
+
+<h5>2.3-3 RandomExponentOfNormalizedUnitsCenter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomExponentOfNormalizedUnitsCenter</code>( <var class="Arg">KG</var>, <var class="Arg">num</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and the maximal number of iterations <code class="code">num</code> the function <code class="code">RandomExponentOfNormalizedUnitsCenter</code> returns the exponent of the center of the group of normalized units of <code class="code">KG</code> by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(16);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RandomExponentOfNormalizedUnitsCenter(KG,100);</span>
+4
+
+</pre></div>
+
+<p><a id="X7D4AB0007DD1F690" name="X7D4AB0007DD1F690"></a></p>
+
+<h5>2.3-4 RandomNilpotencyClass</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomNilpotencyClass</code>( <var class="Arg">KG</var>, <var class="Arg">num</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and the maximal number of iterations <code class="code">num</code> the function <code class="code">RandomNilpotencyClass</code> returns the nilpotency class of the group of normalized units of <code class="code">KG</code> by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(16);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RandomNilpotencyClass(KG,100);</span>
+4
+
+</pre></div>
+
+<p><a id="X8177059281A19CB3" name="X8177059281A19CB3"></a></p>
+
+<h5>2.3-5 RandomDerivedLength</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomDerivedLength</code>( <var class="Arg">KG</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p><span class="SimpleMath">FG</span> is called <var class="Arg">Lie solvable</var>, if some of the terms of the Lie derived series <span class="SimpleMath">δ^[n](FG)=[δ^[n-1](FG),δ^[n-1](FG)]</span> with <span class="SimpleMath">δ^[0](FG)=FG</span> are equal to zero.</p>
+
+<p>Denote by <span class="SimpleMath">dl_L(FG)</span> the minimal element of the set <span class="SimpleMath">{m∈ N | δ^[m](FG)=0}</span>, which is said to be the <var class="Arg">Lie derived length</var> of <span class="SimpleMath">FG</span>.</p>
+
+<p>For the group ring <code class="code">KG</code> and a positive integer <code class="code">n</code> the function <code class="code">RandomDerivedLength</code> returns the Lie derived length by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D:=DihedralGroup(IsFpGroup,8);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),D);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RandomDerivedLength(KG,100);</span>
+2
+
+</pre></div>
+
+<p><a id="X8080A12D78AC57F9" name="X8080A12D78AC57F9"></a></p>
+
+<h5>2.3-6 RandomCommutatorSubgroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomCommutatorSubgroup</code>( <var class="Arg">KG</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and a positive integer <code class="code">n</code> the function <code class="code">RandomCommutatorSubgroup</code> returns the commutator subgroup by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(IsFpGroup,8);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SG:=RandomCommutatorSubgroup(KG,100);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(SG);</span>
+"C2 x C2 x C2"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=CyclicGroup(8);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(3),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SG:=RandomCommutatorSubgroup(KG,100);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Elements(SG);</span>
+[ (Z(3)^0)*&lt;identity&gt; of ... ]
+
+</pre></div>
+
+<p><a id="X7E3BA1487A44E09D" name="X7E3BA1487A44E09D"></a></p>
+
+<h5>2.3-7 RandomCommutatorSubgroupOfNormalizedUnits</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomCommutatorSubgroupOfNormalizedUnits</code>( <var class="Arg">KG</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and a positive integer <code class="code">n</code> the function <code class="code">RandomCommutatorSubgroupOfNormalizedUnits</code> returns the commutator subgroup of normalized units by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(8);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(3),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SG:=RandomCommutatorSubgroup(KG,100);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u:=Random(Elements(SG));;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Augmentation(u);</span>
+Z(3)^0
+
+</pre></div>
+
+<p><a id="X8672D3997E1C4EFF" name="X8672D3997E1C4EFF"></a></p>
+
+<h5>2.3-8 RandomCenterOfCommutatorSubgroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomCenterOfCommutatorSubgroup</code>( <var class="Arg">KG</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and a positive integer <code class="code">n</code> the function <code class="code">RandomCenterOfCommutatorSubgroup</code> returns the center of the commutator subgroup by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(8);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(3),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SG:=RandomCenterOfCommutatorSubgroup(KG,100);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x1:=Random(Elements(SG));; x2:=Random(Elements(SG));;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x1*x2=x2*x1;</span>
+true
+
+</pre></div>
+
+<p><a id="X81D74AB97C8370B8" name="X81D74AB97C8370B8"></a></p>
+
+<h5>2.3-9 RandomNormalizedUnitGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomNormalizedUnitGroup</code>( <var class="Arg">KG</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and a positive integer <code class="code">n</code> the function <code class="code">RandomNormalizedUnitGroup</code> returns the normalized unit group by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(8);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SG:=RandomNormalizedUnitGroup(KG);</span>
+&lt;group with 4 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size(SG);</span>
+128
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u:=Random(Elements(SG));;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Augmentation(u);</span>
+Z(2)^0
+
+</pre></div>
+
+<p><a id="X82A6FD3384663AE8" name="X82A6FD3384663AE8"></a></p>
+
+<h5>2.3-10 RandomUnitarySubgroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomUnitarySubgroup</code>( <var class="Arg">KG</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and a positive integer <code class="code">n</code> the function <code class="code">RandomUnitarySubgroup</code> returns the unitary subgroup by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(8);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(3),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SG:=RandomUnitarySubgroup(KG,100);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u:=Random(Elements(SG));;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Augmentation(u);</span>
+Z(3)^0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u*u^-1;</span>
+(Z(3)^0)*&lt;identity&gt; of ...
+
+</pre></div>
+
+<p><a id="X7D95FC4287C52C30" name="X7D95FC4287C52C30"></a></p>
+
+<h5>2.3-11 RandomCommutatorSeries</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomCommutatorSeries</code>( <var class="Arg">KG</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and a positive integer <code class="code">n</code> the function <code class="code">RandomCommutatorSeries</code> returns the commutator series by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(8);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CS:=RandomCommutatorSeries(KG,100);</span>
+[ &lt;group of size 128 with 4 generators&gt;, &lt;group of size 8 with 8 generators&gt;,
+  &lt;group of size 1 with 1 generators&gt; ]
+
+</pre></div>
+
+<p><a id="X7B6147BA7D99BD63" name="X7B6147BA7D99BD63"></a></p>
+
+<h5>2.3-12 RandomLowerCentralSeries</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomLowerCentralSeries</code>( <var class="Arg">KG</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and a positive integer <code class="code">n</code> the function <code class="code">RandomLowerCentralSeries</code> returns the lower central series by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(8);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(2),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CS:=RandomLowerCentralSeries(KG,100);</span>
+[ &lt;group of size 128 with 4 generators&gt;, &lt;group of size 8 with 8 generators&gt;,
+  &lt;group of size 1 with 1 generators&gt; ]
+
+</pre></div>
+
+<p><a id="X7C65940B7A332CCA" name="X7C65940B7A332CCA"></a></p>
+
+<h5>2.3-13 RandomUnitaryOrder</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomUnitaryOrder</code>( <var class="Arg">KG</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and a positive integer <code class="code">n</code> the function <code class="code">RandomUnitaryOrder</code> returns the unitary order of <span class="SimpleMath">KG</span> by a random way. Also, there exists a three-parametrical version of this method, where the third parameter <span class="SimpleMath">σ</span> is an arbitrary involution.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(8);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KG:=GroupRing(GF(3),G);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ord:=RandomUnitaryOrder(KG,100);</span>
+243
+
+</pre></div>
+
+<p><a id="X811670E4829B2291" name="X811670E4829B2291"></a></p>
+
+<h5>2.3-14 RandomDihedralDepth</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomDihedralDepth</code>( <var class="Arg">KG</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>For the group ring <code class="code">KG</code> and a positive integer <code class="code">n</code> the function <code class="code">RandomCentralUnitaryOrder</code> returns the depth of <span class="SimpleMath">KG</span> by a random way.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=DihedralGroup(16);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UD:=PcNormalizedUnitGroup(KG);</span>
+&lt;pc group of size 32768 with 15 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DihedralDepth(UD);</span>
+3
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">time;</span>
+4211
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RandomDihedralDepth(UD,100);</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RandomDihedralDepth(UD,300);</span>
+0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RandomDihedralDepth(UD,500);</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RandomDihedralDepth(UD,1000);</span>
+0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RandomDihedralDepth(UD,1000);</span>
+
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapBib.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

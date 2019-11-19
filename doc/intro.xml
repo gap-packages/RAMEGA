@@ -1,9 +1,9 @@
 <!--
 
-  intro.xml          thelma package documentation                 Victor Bovdi
+  intro.xml          ramega package documentation                 Zsolt Adam Balogh
 																  Vasyl Laver
 
-  Copyright (C) 2018  Victor Bovdi, Vasyl Laver, Department of Mathematical Sciences,
+  Copyright (C) 2019  Zsolt Adam Balogh, Vasyl Laver, Department of Mathematical Sciences,
   UAEU, Al Ain, United Arab Emirates
   This file is free software, see license information at the end.
 
@@ -15,19 +15,13 @@
 <Chapter Label="intro">
 <Heading>Introduction</Heading>
 
-<Package>Thelma</Package> stands for ``THreshold ELements, Modelling and Applications".
-This package is dedicated to realization of Boolean functions by the means of the threshold elements and multilayered perceptrons.
-Threshold elements were introduced in <Cite Key="McCulloch43a"/>. A certain number of articles on threshold logic appeared in 60-s and 70-s, however this field is regaining a considerable interest
-nowadays as well (see <Cite Key="Horvath16"/>,<Cite Key="Horvath1994"/>, <Cite Key="Gowda11"/>, <Cite Key="Kulkarni16"/>, e.t.c). <P/>
-
-We mostly refer to the methods proposed in <Cite Key="GecheBovdi80"/>, <Cite Key="GecheRobotyshyn83"/>, <Cite Key="GecheMulesa2017"/>, and <Cite Key="Dertouzos65"/>.
-
+<Package>RAMEGA</Package> stands for ``RAndom MEthods in Group ALgebras".
+This package is dedicated to realization of some standard functions for group rings by the means of the random methods. This approach allows to compute the needed function
+in a reasonable time and with minimal memory use even for the large group rings <Cite Key="Bovdi_Rosa_I"/>.
 
 <Section Label="overview">
 <Heading>Overview over this manual</Heading>
-Chapter <Ref Chap="thr_elements"/> describes the functions operating with the threshold elements.
-They include the basic operations, the functions that verify the realizability of a given Boolean function by a single threshold element, and some iterative methods.
-Chapter <Ref Chap="thr_networks"/> describes the functions for neural networks, built from the threshold elements.
+Chapter <Ref Chap="random"/> describes the functions for group algebras which were obtained using the random methods.
 </Section>
 
 <Section Label="instal">
@@ -35,9 +29,9 @@ Chapter <Ref Chap="thr_networks"/> describes the functions for neural networks, 
 To get the newest version of this &GAP; 4 package download the
 archive file <F>thelma-x.x.tar.gz</F> and unpack it in a directory called <Q><F>pkg</F></Q>, preferably (but not
 necessarily) in the <Q><F>pkg</F></Q> subdirectory of your &GAP; 4
-installation. It creates a subdirectory called <Q><F>thelma</F></Q>.<P/>
+installation. It creates a subdirectory called <Q><F>RAMEGA</F></Q>.<P/>
 
-As <Package>Thelma</Package> has no additional C libraries, there is no need in any additional installation steps.<P/>
+As <Package>RAMEGA</Package> has no additional C libraries, there is no need in any additional installation steps.<P/>
 
 </Section>
 
@@ -45,7 +39,7 @@ As <Package>Thelma</Package> has no additional C libraries, there is no need in 
 <Section Label="feedback">
 <Heading>Feedback</Heading>
 
-For bug reports, feature requests and suggestions, please use the github issue tracker at <URL>https://github.com/gap-packages/Thelma/issues</URL>.
+For bug reports, feature requests and suggestions, please use the github issue tracker/ <!-- at <URL>https://github.com/gap-packages/Thelma/issues</URL>. -->
 </Section>
 
 

@@ -1,0 +1,80 @@
+  
+  
+                             [1X GAP 4 Package RAMEGA [101X
+  
+  
+                       [1X RAndom MEthods in Group Algebras [101X
+  
+  
+                                     1.0.0
+  
+  
+                                      2019
+  
+  
+                               Zsolt Adam Balogh
+  
+                                  Vasyl Laver
+  
+  
+  
+  Zsolt Adam Balogh
+      Email:    [7Xmailto:baloghzsa@gmail.com[107X
+      Address:  [33X[0;14YDepartment of Mathematical Sciences[133X
+                [33X[0;14YUAEU[133X
+                [33X[0;14YAl Ain, United Arab Emirates[133X
+  
+  
+  Vasyl Laver
+      Email:    [7Xmailto:vasyl.laver@uzhnu.edu.ua[107X
+      Address:  [33X[0;14YDepartment of Mathematical Sciences[133X
+                [33X[0;14YUAEU[133X
+                [33X[0;14YAl Ain, United Arab Emirates[133X
+  
+  
+  
+  -------------------------------------------------------
+  [1XCopyright[101X
+  [33X[0;0Y© 2019 by the authors[133X
+  
+  [33X[0;0YThis  package  may  be distributed under the terms and conditions of the GNU
+  Public License Version 2 or higher.[133X
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (ramega)[101X
+  
+  1 [33X[0;0YIntroduction[133X
+    1.1 [33X[0;0YOverview over this manual[133X
+    1.2 [33X[0;0YInstallation[133X
+    1.3 [33X[0;0YFeedback[133X
+  2 [33X[0;0YRandom Methods[133X
+    2.1 [33X[0;0YBasic Operations[133X
+      2.1-1 BasicGroup
+      2.1-2 IsLienEngel
+    2.2 [33X[0;0YRandom Methods for Obtaining Elements With Desired Properties[133X
+      2.2-1 GetRandomUnit
+      2.2-2 GetRandomNormalizedUnit
+      2.2-3 GetRandomNormalizedUnitaryUnit
+      2.2-4 GetRandomCentralNormalizedUnit
+      2.2-5 GetRandomElementFromAugmentationIdeal
+    2.3 [33X[0;0YRandom Methods for Group Rings[133X
+      2.3-1 RandomLienEngelLength
+      2.3-2 RandomExponent
+      2.3-3 RandomExponentOfNormalizedUnitsCenter
+      2.3-4 RandomNilpotencyClass
+      2.3-5 RandomDerivedLength
+      2.3-6 RandomCommutatorSubgroup
+      2.3-7 RandomCommutatorSubgroupOfNormalizedUnits
+      2.3-8 RandomCenterOfCommutatorSubgroup
+      2.3-9 RandomNormalizedUnitGroup
+      2.3-10 RandomUnitarySubgroup
+      2.3-11 RandomCommutatorSeries
+      2.3-12 RandomLowerCentralSeries
+      2.3-13 RandomUnitaryOrder
+      2.3-14 RandomDihedralDepth
+  
+  
+  [32X

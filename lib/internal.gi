@@ -1,0 +1,162 @@
+#############################################################################
+##
+#W  ramega_internal.gi                         Zsolt Adam Balogh <baloghzsa@gmail.com>
+#W                                       Vasyl Laver  <vasyllaver@uzhnu.edu.ua>
+##
+##
+#H  @(#)$Id: ramega_internal.gi,v 1.00 $
+##
+#Y  Copyright (C)  2018,  UAE University, UAE
+##
+#############################################################################
+##
+##  This file contains internal functions used by RAMEGA.
+##
+#############################################################################
+##
+
+
+
+#############################################################################
+##
+##  LieComm( <x,y> )
+##
+##  Returns the Lie commutator [x,y]=xy-yx.
+##
+##
+BindGlobal("RAMEGA_LieComm",function(x,y)
+   return x*y-y*x;
+end);
+
+
+#############################################################################
+##
+##  GetDerivedDepthN( <KG> )
+##
+##  Gives an element with depth n, (x,y) has dept 2, if x,y have depth 1..
+##
+##
+BindGlobal("RAMEGA_GetDerivedDepthN", function(kg,n)
+   local e,full,tomb,er,counter,x,c,calc,elem;
+   e:=One(kg);
+   full:=[];
+   tomb:=[];
+   er:=0;
+   counter:=2^(n-1);
+   if (n=1) then
+      return GetRandomNormalizedUnit(kg);
+   fi;
+   while (er < counter) do
+     x:=GetRandomNormalizedUnit(kg);
+     Add(tomb,x);
+     er:=er+1;
+   od;
+   Add(full,tomb);
+   c:=1;
+   repeat
+      x:=full[c];
+      tomb:=[];
+      calc:=1;
+      while(calc<Number(x)) do
+         elem:=Comm(x[calc],x[calc+1]);
+         Add(tomb,elem);
+         calc:=calc+2;
+      od;
+      Add(full,tomb);
+      c:=c+1;
+   until(c=n);
+   return tomb[1];
+end);
+
+#############################################################################
+##
+##  GetRandomNormalizedUnit( <KG> )
+##
+##  Returns the nilpotency class of V by random way.
+##
+##
+BindGlobal("RAMEGA_GetRandomNormalizedUnit", function(kg)
+   local x,e;
+   e:=One(UnderlyingField(kg));
+   repeat
+      x:=Random(kg);
+   until(Augmentation(x) = e);
+   return x;
+end);
+
+
+
+BindGlobal("RAMEGA_RandomCentralUnitaryOrder_next", function(kg)
+  local x,a,b,e,ret;
+  e:=One(kg);
+  ret:=0;
+  b:=0;
+  while (b = 0) do
+    x:=GetRandomCentralNormalizedUnit(kg);
+    ret:=ret+1;
+    if (x*Involution(x) = e) then
+  	    b:=b+1;
+	fi;
+  od;
+  return ret;
+end);
+
+
+#############################################################################
+##
+##  RandomUnitaryOrder_next( <KG> )
+##
+##  Returns .
+##
+##
+BindGlobal("RAMEGA_RandomUnitaryOrder_next", function(kg)
+  local x,a,b,e,ret;
+  e:=One(kg);
+  ret:=0;
+  b:=0;
+  while (b = 0) do
+    x:=GetRandomNormalizedUnit(kg);
+    ret:=ret+1;
+    if (x*Involution(x) = e) then
+  	    b:=b+1;
+	fi;
+  od;
+  return ret;
+end);
+
+
+#############################################################################
+##
+#M  Involution( <x>, <mapping_sigma> )
+##
+##  Computes the image of the element x = \sum alpha_g g under the mapping
+##  \sum alpha_g g  -> \sum alpha_g * sigma(g)
+##
+BindGlobal("RAMEGA_InvolutionKG",function(x, sigma, KG)
+#    "LAGUNA: for a group ring element and a group endomapping of order 2",
+    local g;
+    if Order(sigma)<>1 and not(IsPrimePowerInt(Order(sigma)) and not(IsOddInt(Order(sigma)))) then
+        Error("Order of the involution should be a power of 2.");
+    fi;
+    if not(IsElementOfMagmaRingModuloRelations(x) and IsMagmaRingObjDefaultRep(x)) then
+        Error("The first entry has to be a Group Ring element");
+    fi;
+    if not(IsMapping(sigma)) then
+        Error("The first entry has to be a mapping");
+    fi;
+    if Source(sigma) <> Range(sigma) then
+        Error("Involution: Source(sigma) <> Range (sigma)");
+    else
+        if IsAbelian(UnderlyingGroup(KG)) then
+                                  return ElementOfMagmaRing( FamilyObj(x),
+                                   ZeroCoefficient(x),
+                                   CoefficientsBySupport(x),
+                                   List(Support(x), g -> (g^sigma)))  ;
+        else
+          return ElementOfMagmaRing( FamilyObj(x),
+           ZeroCoefficient(x),
+           CoefficientsBySupport(x),
+           List(Support(x), g -> (g^sigma)^(-1)))  ;
+        fi;
+    fi;
+end);

@@ -4,17 +4,17 @@
 
 <!--
 
-  thelma.xml          thelma package documentation                Victor Bovdi
-																  Vasyl Laver
+  ramega.xml          ramega package documentation               Zsolt Adam Balogh
+								 Vasyl Laver
 
-  Copyright (C) 2018  Victor Bovdi, Vasyl Laver, Department of Mathematical Sciences,
+  Copyright (C) 2018  Zsolt Adam Balogh, Vasyl Laver, Department of Mathematical Sciences,
   UAEU, Al Ain, United Arab Emirates
   This file is free software, see license information at the end.
 
 -->
 
 
-<Book Name="thelma">
+<Book Name="ramega">
 <#Include SYSTEM "title.xml">
 
 <!--  TableOfContents  . . . . . .  generate a table of contents   -->
@@ -23,13 +23,10 @@
 <!--  Thrre chapters of the book  -->
 <Body>
 <#Include SYSTEM "intro.xml">
-<#Include SYSTEM "bool_func.xml">
-<#Include SYSTEM "thr_elements.xml">
-<#Include SYSTEM "thr_networks.xml">
-<#Include SYSTEM "mvthr_el.xml">
+<#Include SYSTEM "random.xml">
 </Body>
 
-<Bibliography Databases="thelmabib.xml"/>
+<Bibliography Databases="ramegabib.xml"/>
 
 <!--  And finally an index as well   -->
 <TheIndex/>

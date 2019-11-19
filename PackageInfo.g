@@ -1,15 +1,15 @@
 #############################################################################
 ##
-##  PackageInfo.g for the package `Thelma'                     Victor Bovdi
+##  PackageInfo.g for the package `RAMEGA'                     Zsolt Adam Balogh
 ##                                                             Vasyl Laver
 ##
 ##
 
 SetPackageInfo( rec(
-PackageName := "Thelma",
-Subtitle := "A package on threshold elements",
-Version := "1.02",
-Date := "06/02/2019",
+PackageName := "RAMEGA",
+Subtitle := "A for Random Methods in Group Algebras.",
+Version := "1.000",
+Date := "04/06/2019",
 PackageWWWHome := Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
     SourceRepository := rec(
     Type := "git",
@@ -23,11 +23,11 @@ ArchiveFormats := ".tar.gz",
 
 Persons := [
   rec(
-    LastName      := "Bovdi",
-    FirstNames    := "Victor",
+    LastName      := "Balogh",
+    FirstNames    := "Zsolt Adam",
     IsAuthor      := true,
-    IsMaintainer  := false,
-    Email         := "vbovdi@gmail.com",
+    IsMaintainer  := true,
+    Email         := "baloghzsa@gmail.com",
    	Place         := "Al Ain",
     Institution   := "UAE University"
   ),
@@ -37,8 +37,8 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := true,
     Email         := "vasyl.laver@uzhnu.edu.ua",
-  	Place         := "Al Ain",
-    Institution   := "UAE University"
+  	Place         := "Uzhhorod",
+    Institution   := "Uzhhorod National University"
   ),
 ],
 
@@ -59,7 +59,7 @@ PackageInfoURL :=
   Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 
 AbstractHTML :=
-   "The <span class=\"pkgname\">Thelma</span> package is package with algorithms to deal with threshold elements.",
+   "The <span class=\"pkgname\">RAMEGA</span> package is a package with random methods for group algebras.",
 
 
 PackageDoc := rec(
@@ -76,7 +76,7 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.10",
-  NeededOtherPackages := [["GAPDoc", "1.5"],["Gauss","2018.09.08"]],
+  NeededOtherPackages := [["GAPDoc", "1.5"]],
   SuggestedOtherPackages := [],
   ExternalConditions := []
 ),
@@ -85,20 +85,20 @@ AvailabilityTest := ReturnTrue,
 
 BannerString := Concatenation(
   "----------------------------------------------------------------\n",
-  "Loading  Thelma ", ~.Version, ", a package for threshold logic\n",
-#  "by ", ~.Persons[1].FirstNames, " ", ~.Persons[1].LastName,",\n",
+  "Loading  RAMEGA ", ~.Version, ", a package with random methods for group algebras\n",
+  "by ", ~.Persons[1].FirstNames, " ", ~.Persons[1].LastName,",\n",
 #        " (", ~.Persons[1].WWWHome, ")\n",
-#  "   ", ~.Persons[2].FirstNames, " ", ~.Persons[2].LastName,".\n"
+  "   ", ~.Persons[2].FirstNames, " ", ~.Persons[2].LastName,".\n",
 #        " (", ~.Persons[2].WWWHome, ")\n",
 #  "   ", ~.Persons[3].FirstNames, " ", ~.Persons[3].LastName,"\n",
 #        " (", ~.Persons[3].WWWHome, ")\n",
-  "For help, type: ?Thelma: \n",
+  "For help, type: ?Ramega: \n",
   "----------------------------------------------------------------\n" ),
 
 Autoload := false,
 
 TestFile := "tst/testall.g",
 
-Keywords := ["threshold elements", "neural networks", "threshold logic"]
+Keywords := ["group rings", "group algebras", "random methods"]
 
 ));

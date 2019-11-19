@@ -1,19 +1,16 @@
 
-The GAP 4 package `thelma'
+The GAP 4 package `ramega'
 ==================================
 
 Introduction
 ------------
 
-This is release 1.02 of  the package `thelma'.
+This is release 1.00 of  the package `ramega'.
 
 The features of this package include
 
-         - checking the single threshold element realizability of a given boolean function;
-         - finding the threshold element representation of a boolean function;
-         - finding the boolean function from the given network of threshold elements;
-	 - realization of neural elements over finite fields;
-         
+         - random methods for froup algebras
+
 There is a manual in the sub-directory 'doc' written using the GAP package
 gapdoc which describes the available functions in detail. The pdf and html
 versions of the manual are also available there.
@@ -23,10 +20,10 @@ If you have used this package, please let us know by sending
 us an email.  If you  have found important features missing or if there is a
 bug, we would appreciate it very much if you send us an email 
 
-Victor Bovdi   <vbovdi@gmail.com>
+Zsolt Adam Balogh   <baloghzsa@gmail.com>
 Vasyl Laver     <vasyl.laver@uzhnu.edu.ua>
 
-or use the issue tracker: https://github.com/gap-packages/Thelma/issues
+or use the issue tracker: https://github.com/gap-packages/RAMEGA/issues
 
 Contents
 --------
@@ -51,6 +48,6 @@ Installation
 ------------
 
 As this package does not contain any C code, to install it just unpack the archive in the "pkg" directory of your
-GAP installation folder. Then enter command "LoadPackage( "thelma" );".
+GAP installation folder. Then enter command "LoadPackage( "ramega" );".
 
 Good luck!

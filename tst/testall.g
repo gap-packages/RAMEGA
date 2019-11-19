@@ -1,11 +1,11 @@
 ###############################################################################
 ##
-##  testall.g                   THELMA                Victor Bovdi,Vasyl Laver
+##  testall.g                   RAMEGA                Balogh Zsolt, Vasyl Laver
 ##
 ##  Copyright (C)  2018,  UAE University, UAE
 ##
-LoadPackage( "thelma" );
-TestDirectory(DirectoriesPackageLibrary( "thelma", "tst" ),
+LoadPackage( "ramega" );
+TestDirectory(DirectoriesPackageLibrary( "ramega", "tst" ),
   rec(exitGAP     := true,
       testOptions := rec(compareFunction := "uptowhitespace") ) );
 

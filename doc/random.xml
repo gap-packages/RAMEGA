@@ -1,0 +1,465 @@
+<!--
+
+  random.xml            ramega package documentation          Zsolt Adam Balogh
+																	Vasyl Laver
+
+  Copyright (C) 2018  Zsolt Adam Balogh, Vasyl Laver, Department of Mathematical Sciences,
+  UAEU, Al Ain, United Arab Emirates
+  This file is free software, see license information at the end.
+
+  This chapter contains the operations with logic functions
+-->
+
+<Chapter Label="random">
+<Heading>Random Methods</Heading>
+
+<Section Label="random_basic">
+<Heading>Basic Operations</Heading>
+
+
+<ManSection>
+<Func Name="BasicGroup" Arg="KG"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+
+For the group ring <C>KG</C> the function <C>BasicGroup</C> returns the basic group of <C>KG</C> as a subgroup of the normalized group of units.
+
+<Example>
+<![CDATA[
+gap> G:=CyclicGroup(IsFpGroup,4);
+<fp group of size 4 on the generators [ a ]>
+gap> Elements(G);
+[ <identity ...>, a, a^2, a^3 ]
+gap> KG:=GroupRing(GF(2),G);
+<algebra-with-one over GF(2), with 1 generators>
+gap> BasicGroup(KG);
+<group with 4 generators>
+gap> Elements(last);
+[ (Z(2)^0)*<identity ...>, (Z(2)^0)*a, (Z(2)^0)*a^2, (Z(2)^0)*a^3 ]
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="IsLienEngel" Arg="KG"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+
+For the group ring <C>KG</C> the function <C>IsLienEngel</C> returns <C>true</C> if <C>KG</C> is Lie-n Engel and <C>false</C> otherwise.
+
+<Example>
+<![CDATA[
+gap> G:=CyclicGroup(4);
+<pc group of size 4 with 2 generators>
+gap> KG:=GroupRing(GF(2),G);
+<algebra-with-one over GF(2), with 2 generators>
+gap> IsLienEngel(KG);
+false
+gap> G:=DihedralGroup(16);
+<pc group of size 16 with 4 generators>
+gap> KG:=GroupRing(GF(2),G);
+<algebra-with-one over GF(2), with 4 generators>
+gap> IsLienEngel(KG);
+true
+]]>
+</Example>
+</Description> </ManSection>
+</Section>
+
+<Section Label="random_methods_elements">
+<Heading>Random Methods for Obtaining Elements With Desired Properties</Heading>
+
+<ManSection>
+<Func Name="GetRandomUnit" Arg="KG"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the group ring <C>KG</C> the function <C>GetRandomUnit</C> returns an unit
+(i.e. an invertible element) in a random way.
+
+<Example>
+<![CDATA[
+gap> G:=CyclicGroup(4);
+<pc group of size 4 with 2 generators>
+gap> KG:=GroupRing(GF(7),G);
+<algebra-with-one over GF(7), with 2 generators>
+gap> u:=GetRandomUnit(KG);;
+gap> Augmentation(u);
+Z(7)^4
+gap> u*u^-1;
+(Z(7)^0)*<identity> of ...
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="GetRandomNormalizedUnit" Arg="KG"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the group ring <C>KG</C> the function <C>GetRandomNormalizedUnit</C> returns a normalized unit
+(i.e. an invertible element with augmentation 1) in a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(IsFpGroup,16);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> u:=GetRandomNormalizedUnit(KG);;
+gap> Augmentation(u);
+Z(2)^0
+gap> u*u^-1;
+(Z(2)^0)*<identity ...>
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="GetRandomNormalizedUnitaryUnit" Arg="KG"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the group ring <C>KG</C> the function <C>GetRandomNormalizedUnitaryUnit</C> returns a normalized unitary unit
+(i.e. such an invertible element with augmentation 1, that <M>u\cdot u^{*}=One(KG)</M>) in a random way. Also, there
+exists a two-parametrical version of this method, where the second parameter <M>\sigma</M> is an arbitrary involution.
+
+<Example>
+<![CDATA[
+gap> G:=CyclicGroup(4);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> u:=GetRandomNormalizedUnitaryUnit(KG);;
+gap> u*Involution(u);
+(Z(2)^0)*<identity> of ...
+gap> Augmentation(u);
+Z(2)^0
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="GetRandomCentralNormalizedUnit" Arg="KG"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the group ring <C>KG</C> the function <C>GetRandomCentralNormalizedUnit</C> returns a central normalized unit
+(i.e. such an invertible element with augmentation 1, that <M>u\cdot x=x \cdot u</M>, <M>\forall x \in KG</M>) in a random way.
+
+<Example>
+<![CDATA[
+gap> G:=CyclicGroup(IsFpGroup,4);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> u:=GetRandomCentralNormalizedUnit(KG);;
+gap> Augmentation(u);
+Z(2)^0
+gap> bool:=true;
+true
+gap> for x in Elements(KG) do
+> if x*u<>u*x then bool:=false; break; fi;
+> od;
+gap> bool;
+true
+]]>
+</Example>
+</Description> </ManSection>
+
+
+<ManSection>
+<Func Name="GetRandomElementFromAugmentationIdeal" Arg="KG"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the group ring <C>KG</C> the function <C>GetRandomElementFromAugmentationIdeal</C> returns an element
+from augmentation ideal of <M>KG</M>.
+
+<Example>
+<![CDATA[
+gap> G:=QuaternionGroup(16);
+<pc group of size 16 with 4 generators>
+gap> KG:=GroupRing(GF(2),G);
+<algebra-with-one over GF(2), with 4 generators>
+gap> u:=GetRandomElementFromAugmentationIdeal(KG);;
+gap> Augmentation(u);
+0*Z(2)
+]]>
+</Example>
+</Description> </ManSection>
+</Section>
+<Section Label="random_methods_general">
+<Heading>Random Methods for Group Rings</Heading>
+
+<ManSection>
+<Func Name="RandomLienEngelLength" Arg="KG, num"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+Let <C>KG</C> be a group ring and let <M>[x,y,y,\ldots,y]=0</M> for all <M>x, y \in KG </M>. Then the number of <M>y</M>'s in the last equation is called the Lie n-Engel length. <P/>
+For the group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomLienEngelLength</C> returns the Lie n-Engel length of KG by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(16);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> RandomLienEngelLength(KG,100);
+4
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="RandomExponent" Arg="KG, num"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomExponent</C> returns the
+exponent of the group of normalized units of <C>KG</C> by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(16);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> RandomExponent(KG,100);
+8
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="RandomExponentOfNormalizedUnitsCenter" Arg="KG, num"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomExponentOfNormalizedUnitsCenter</C> returns the
+exponent of the center of the group of normalized units of <C>KG</C> by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(16);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> RandomExponentOfNormalizedUnitsCenter(KG,100);
+4
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="RandomNilpotencyClass" Arg="KG, num"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomNilpotencyClass</C> returns the
+nilpotency class of the group of normalized units of <C>KG</C> by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(16);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> RandomNilpotencyClass(KG,100);
+4
+]]>
+</Example>
+</Description> </ManSection>
+
+
+
+<ManSection>
+<Func Name="RandomDerivedLength" Arg="KG, n"/>
+<Description>
+<M>FG</M> is called <A>Lie solvable</A>, if some of the terms of the Lie derived series <M>\delta^{[n]}(FG)=[\delta^{[n-1]}(FG),\delta^{[n-1]}(FG)]</M>
+with <M>\delta^{[0]}(FG)=FG</M> are equal to zero. <P/>
+Denote by <M>\dl_L(FG)</M> the minimal element of the set <M>\{m\in\mathbb N\;\vert\;
+\delta^{[m]}(FG)=0\}</M>, which is said to be the <A>Lie derived length</A> of <M>FG</M>. <P/>
+
+
+For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomDerivedLength</C> returns the Lie derived length by a random way.
+
+<Example>
+<![CDATA[
+gap> D:=DihedralGroup(IsFpGroup,8);;
+gap> KG:=GroupRing(GF(2),D);;
+gap> RandomDerivedLength(KG,100);
+2
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="RandomCommutatorSubgroup" Arg="KG, n"/>
+<Description>
+For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomCommutatorSubgroup</C> returns the commutator subgroup by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(IsFpGroup,8);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> SG:=RandomCommutatorSubgroup(KG,100);
+gap> StructureDescription(SG);
+"C2 x C2 x C2"
+gap> G:=CyclicGroup(8);;
+gap> KG:=GroupRing(GF(3),G);;
+gap> SG:=RandomCommutatorSubgroup(KG,100);;
+gap> Elements(SG);
+[ (Z(3)^0)*<identity> of ... ]
+]]>
+</Example>
+</Description> </ManSection>
+
+
+<ManSection>
+<Func Name="RandomCommutatorSubgroupOfNormalizedUnits" Arg="KG, n"/>
+<Description>
+For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomCommutatorSubgroupOfNormalizedUnits</C>
+returns the commutator subgroup of normalized units by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(8);;
+gap> KG:=GroupRing(GF(3),G);;
+gap> SG:=RandomCommutatorSubgroup(KG,100);;
+gap> u:=Random(Elements(SG));;
+gap> Augmentation(u);
+Z(3)^0
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="RandomCenterOfCommutatorSubgroup" Arg="KG, n"/>
+<Description>
+For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomCenterOfCommutatorSubgroup</C>
+returns the center of the commutator subgroup by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(8);;
+gap> KG:=GroupRing(GF(3),G);;
+gap> SG:=RandomCenterOfCommutatorSubgroup(KG,100);;
+gap> x1:=Random(Elements(SG));; x2:=Random(Elements(SG));;
+gap> x1*x2=x2*x1;
+true
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="RandomNormalizedUnitGroup" Arg="KG, n"/>
+<Description>
+For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomNormalizedUnitGroup</C>
+returns the normalized unit group by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(8);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> SG:=RandomNormalizedUnitGroup(KG);
+<group with 4 generators>
+gap> Size(SG);
+128
+gap> u:=Random(Elements(SG));;
+gap> Augmentation(u);
+Z(2)^0
+]]>
+</Example>
+</Description> </ManSection>
+
+
+<ManSection>
+<Func Name="RandomUnitarySubgroup" Arg="KG, n"/>
+<Description>
+For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomUnitarySubgroup</C>
+returns the unitary subgroup by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(8);;
+gap> KG:=GroupRing(GF(3),G);;
+gap> SG:=RandomUnitarySubgroup(KG,100);;
+gap> u:=Random(Elements(SG));;
+gap> Augmentation(u);
+Z(3)^0
+gap> u*u^-1;
+(Z(3)^0)*<identity> of ...
+]]>
+</Example>
+</Description> </ManSection>
+
+
+<ManSection>
+<Func Name="RandomCommutatorSeries" Arg="KG, n"/>
+<Description>
+For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomCommutatorSeries</C>
+returns the commutator series by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(8);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> CS:=RandomCommutatorSeries(KG,100);
+[ <group of size 128 with 4 generators>, <group of size 8 with 8 generators>,
+  <group of size 1 with 1 generators> ]
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="RandomLowerCentralSeries" Arg="KG, n"/>
+<Description>
+For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomLowerCentralSeries</C>
+returns the lower central series by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(8);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> CS:=RandomLowerCentralSeries(KG,100);
+[ <group of size 128 with 4 generators>, <group of size 8 with 8 generators>,
+  <group of size 1 with 1 generators> ]
+]]>
+</Example>
+</Description> </ManSection>
+
+
+<ManSection>
+<Func Name="RandomUnitaryOrder" Arg="KG, n"/>
+<Description>
+For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomUnitaryOrder</C>
+returns the unitary order of <M>KG</M> by a random way. Also, there exists a three-parametrical version of this method,
+where the third parameter <M>\sigma</M> is an arbitrary involution.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(8);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> ord:=RandomUnitaryOrder(KG,100);
+64
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="RandomDihedralDepth" Arg="KG, n"/>
+<Description>
+For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomCentralUnitaryOrder</C>
+returns the depth of <M>KG</M> by a random way.
+
+<Example>
+<![CDATA[
+gap> G:=DihedralGroup(16);;
+gap> UD:=PcNormalizedUnitGroup(KG);
+<pc group of size 32768 with 15 generators>
+gap> DihedralDepth(UD);
+3
+gap> time;
+4211
+]]>
+</Example>
+</Description> </ManSection>
+
+</Section>
+
+
+</Chapter>
+
+<!--
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; version 2 of the License.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->

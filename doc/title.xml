@@ -5,22 +5,22 @@
 <TitlePage>
   <Title>
     GAP 4 Package
-	Thelma
+	RAMEGA
   </Title>
   <Subtitle>
-    THreshold ELements, Modeling and Applications
+    RAndom MEthods in Group Algebras
   </Subtitle>
   <Version>
-    1.0.2
+    1.0.0
   </Version>
   <Author>
-    Victor Bovdi<Alt Only="LaTeX"><Br/></Alt>
+    Zsolt Adam Balogh<Alt Only="LaTeX"><Br/></Alt>
 <Address>
 Department of Mathematical Sciences<Br/>
 UAEU<Br/>
 Al Ain, United Arab Emirates<Br/>
 </Address>
-<Email>vbovdi@gmail.com</Email>
+<Email>baloghzsa@gmail.com</Email>
 
   </Author>
   <Author>
@@ -34,10 +34,10 @@ Al Ain, United Arab Emirates<Br/>
 
   </Author>
   <Date>
-   2018
+   2019
   </Date>
   <Copyright>
-    &copyright; 2018 by the authors<P/>
+    &copyright; 2019 by the authors<P/>
 
 This package may be distributed under the terms and conditions of the
 GNU Public License Version 2 or higher.
