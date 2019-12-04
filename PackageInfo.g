@@ -10,6 +10,8 @@ PackageName := "RAMEGA",
 Subtitle := "A for Random Methods in Group Algebras.",
 Version := "1.000",
 Date := "04/06/2019",
+License := "GPL-2.0-or-later",
+
 PackageWWWHome := Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
     SourceRepository := rec(
     Type := "git",
