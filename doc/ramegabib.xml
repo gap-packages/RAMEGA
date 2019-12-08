@@ -339,4 +339,52 @@
   <pages>387--400, 448</pages>
 </article></entry>
 
+<entry id="Balogh_Juhasz07"><article>
+    <author>
+      <name><first>Zsolt</first><last>Balogh</last></name>
+      <name><first>Tibor</first><last>Juh\'{a}sz</last></name>
+    </author>
+    <title>Remarks on the {L}ie derived lengths of group algebras of groups with cyclic derived subgroup</title>
+    <journal>Ann. Math. Inform.</journal>
+    <year>2007</year>
+    <volume>34</volume>
+    <pages>9--16</pages>
+</article></entry>
+
+<entry id="Lee2000"><article>
+    <author>
+      <name><first>Gregory T.</first><last>Lee</last></name>
+    </author>
+    <title>The Lie <M>n</M>-Engel property in group rings</title>
+    <journal>Comm. Algebra</journal>
+    <year>2000</year>
+    <volume>28</volume>
+    <number>2</number>
+    <pages>867--881</pages>
+</article></entry>
+
+<entry id="BovdiSzakacs2006"><article>
+    <author>
+      <name><first>A.</first><last>Bovdi</last></name>
+      <name><first>A.</first><last>Szak\'{a}cs</last></name>
+    </author>
+    <title>Units of commutative group algebra with involution</title>
+    <journal>Publ. Math. Debrecen</journal>
+    <year>2006</year>
+    <number>3</number>
+    <pages>291--296</pages>
+</article></entry>
+
+<entry id="BaloghJuhasz2011"><article>
+    <author>
+      <name><first>Zs.</first><last>Balogh</last></name>
+      <name><first>T.</first><last>Juh\'{a}sz</last></name>
+    </author>
+    <title>Nilpotency class of symmetric units of group algebras</title>
+    <journal>Publ. Math. Debrecen</journal>
+    <year>2011</year>
+    <volume>79</volume>
+    <pages>171--180</pages>
+</article></entry>
+
 </file>

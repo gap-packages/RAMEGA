@@ -1,439 +1,0 @@
-  
-  [1X2 [33X[0;0YRandom Methods[133X[101X
-  
-  
-  [1X2.1 [33X[0;0YBasic Operations[133X[101X
-  
-  [1X2.1-1 BasicGroup[101X
-  
-  [33X[1;0Y[29X[2XBasicGroup[102X( [3XKG[103X ) [32X function[133X
-  
-  [33X[0;0YFor  the group ring [10XKG[110X the function [10XBasicGroup[110X returns the basic group of [10XKG[110X
-  as a subgroup of the normalized group of units.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=CyclicGroup(IsFpGroup,4);[127X[104X
-    [4X[28X<fp group of size 4 on the generators [ a ]>[128X[104X
-    [4X[25Xgap>[125X [27XElements(G);[127X[104X
-    [4X[28X[ <identity ...>, a, a^2, a^3 ][128X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);[127X[104X
-    [4X[28X<algebra-with-one over GF(2), with 1 generators>[128X[104X
-    [4X[25Xgap>[125X [27XBasicGroup(KG);[127X[104X
-    [4X[28X<group with 4 generators>[128X[104X
-    [4X[25Xgap>[125X [27XElements(last);[127X[104X
-    [4X[28X[ (Z(2)^0)*<identity ...>, (Z(2)^0)*a, (Z(2)^0)*a^2, (Z(2)^0)*a^3 ][128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.1-2 IsLienEngel[101X
-  
-  [33X[1;0Y[29X[2XIsLienEngel[102X( [3XKG[103X ) [32X function[133X
-  
-  [33X[0;0YFor  the  group ring [10XKG[110X the function [10XIsLienEngel[110X returns [10Xtrue[110X if [10XKG[110X is Lie-n
-  Engel and [10Xfalse[110X otherwise.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=CyclicGroup(4);[127X[104X
-    [4X[28X<pc group of size 4 with 2 generators>[128X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);[127X[104X
-    [4X[28X<algebra-with-one over GF(2), with 2 generators>[128X[104X
-    [4X[25Xgap>[125X [27XIsLienEngel(KG);[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[28Xgap>[128X[104X
-    [4X[28Xgap>[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(16);[127X[104X
-    [4X[28X<pc group of size 16 with 4 generators>[128X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);[127X[104X
-    [4X[28X<algebra-with-one over GF(2), with 4 generators>[128X[104X
-    [4X[25Xgap>[125X [27XIsLienEngel(KG);[127X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X2.2 [33X[0;0YRandom Methods for Obtaining Elements With Desired Properties[133X[101X
-  
-  [1X2.2-1 GetRandomUnit[101X
-  
-  [33X[1;0Y[29X[2XGetRandomUnit[102X( [3XKG[103X ) [32X function[133X
-  
-  [33X[0;0YFor  the  group  ring [10XKG[110X the function [10XGetRandomUnit[110X returns an unit (i.e. an
-  invertible element) in a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=CyclicGroup(4);[127X[104X
-    [4X[28X<pc group of size 4 with 2 generators>[128X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(7),G);[127X[104X
-    [4X[28X<algebra-with-one over GF(7), with 2 generators>[128X[104X
-    [4X[25Xgap>[125X [27Xu:=GetRandomUnit(KG);;[127X[104X
-    [4X[25Xgap>[125X [27XAugmentation(u);[127X[104X
-    [4X[28XZ(7)^4[128X[104X
-    [4X[25Xgap>[125X [27Xu*u^-1;[127X[104X
-    [4X[28X(Z(7)^0)*<identity> of ...[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.2-2 GetRandomNormalizedUnit[101X
-  
-  [33X[1;0Y[29X[2XGetRandomNormalizedUnit[102X( [3XKG[103X ) [32X function[133X
-  
-  [33X[0;0YFor  the  group  ring  [10XKG[110X  the  function  [10XGetRandomNormalizedUnit[110X  returns a
-  normalized unit (i.e. an invertible element with augmentation 1) in a random
-  way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(IsFpGroup,16);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
-    [4X[25Xgap>[125X [27Xu:=GetRandomNormalizedUnit(KG);;[127X[104X
-    [4X[25Xgap>[125X [27XAugmentation(u);[127X[104X
-    [4X[28XZ(2)^0[128X[104X
-    [4X[25Xgap>[125X [27Xu*u^-1;[127X[104X
-    [4X[28X(Z(2)^0)*<identity ...>[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.2-3 GetRandomNormalizedUnitaryUnit[101X
-  
-  [33X[1;0Y[29X[2XGetRandomNormalizedUnitaryUnit[102X( [3XKG[103X ) [32X function[133X
-  
-  [33X[0;0YFor  the group ring [10XKG[110X the function [10XGetRandomNormalizedUnitaryUnit[110X returns a
-  normalized  unitary  unit (i.e. such an invertible element with augmentation
-  1,   that   [22Xu⋅   u^*=One(KG)[122X)   in  a  random  way.  Also,  there  exists  a
-  two-parametrical  version of this method, where the second parameter [22Xσ[122X is an
-  arbitrary involution.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=CyclicGroup(4);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
-    [4X[25Xgap>[125X [27Xu:=GetRandomNormalizedUnitaryUnit(KG);;[127X[104X
-    [4X[25Xgap>[125X [27Xu*Involution(u);[127X[104X
-    [4X[28X(Z(2)^0)*<identity> of ...[128X[104X
-    [4X[25Xgap>[125X [27XAugmentation(u);[127X[104X
-    [4X[28XZ(2)^0[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.2-4 GetRandomCentralNormalizedUnit[101X
-  
-  [33X[1;0Y[29X[2XGetRandomCentralNormalizedUnit[102X( [3XKG[103X ) [32X function[133X
-  
-  [33X[0;0YFor  the group ring [10XKG[110X the function [10XGetRandomCentralNormalizedUnit[110X returns a
-  central  normalized  unit (i.e. such an invertible element with augmentation
-  1, that [22Xu⋅ x=x ⋅ u[122X, [22X∀ x ∈ KG[122X) in a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=CyclicGroup(IsFpGroup,4);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
-    [4X[25Xgap>[125X [27Xu:=GetRandomCentralNormalizedUnit(KG);;[127X[104X
-    [4X[25Xgap>[125X [27XAugmentation(u);[127X[104X
-    [4X[28XZ(2)^0[128X[104X
-    [4X[25Xgap>[125X [27Xbool:=true;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xfor x in Elements(KG) do[127X[104X
-    [4X[25X>[125X [27Xif x*u<>u*x then bool:=false; break; fi;[127X[104X
-    [4X[25X>[125X [27Xod;[127X[104X
-    [4X[25Xgap>[125X [27Xbool;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.2-5 GetRandomElementFromAugmentationIdeal[101X
-  
-  [33X[1;0Y[29X[2XGetRandomElementFromAugmentationIdeal[102X( [3XKG[103X ) [32X function[133X
-  
-  [33X[0;0YFor  the  group  ring  [10XKG[110X the function [10XGetRandomElementFromAugmentationIdeal[110X
-  returns an element from augmentation ideal of [22XKG[122X.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=QuaternionGroup(16);[127X[104X
-    [4X[28X<pc group of size 16 with 4 generators>[128X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);[127X[104X
-    [4X[28X<algebra-with-one over GF(2), with 4 generators>[128X[104X
-    [4X[25Xgap>[125X [27Xu:=GetRandomElementFromAugmentationIdeal(KG);;[127X[104X
-    [4X[25Xgap>[125X [27XAugmentation(u);[127X[104X
-    [4X[28X0*Z(2)[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X2.3 [33X[0;0YRandom Methods for Group Rings[133X[101X
-  
-  [1X2.3-1 RandomLienEngelLength[101X
-  
-  [33X[1;0Y[29X[2XRandomLienEngelLength[102X( [3XKG[103X, [3Xnum[103X ) [32X function[133X
-  
-  [33X[0;0YLet  [10XKG[110X  be a group ring and let [22X[x,y,y,...,y]=0[122X for all [22Xx, y ∈ KG[122X. Then the
-  number of [22Xy[122X's in the last equation is called the Lie n-Engel length.[133X
-  
-  [33X[0;0YFor  the group ring [10XKG[110X and the maximal number of iterations [10Xnum[110X the function
-  [10XRandomLienEngelLength[110X returns the Lie n-Engel length of KG by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(16);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
-    [4X[25Xgap>[125X [27XRandomLienEngelLength(KG,100);[127X[104X
-    [4X[28X4[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-2 RandomExponent[101X
-  
-  [33X[1;0Y[29X[2XRandomExponent[102X( [3XKG[103X, [3Xnum[103X ) [32X function[133X
-  
-  [33X[0;0YFor  the group ring [10XKG[110X and the maximal number of iterations [10Xnum[110X the function
-  [10XRandomExponent[110X  returns  the exponent of the group of normalized units of [10XKG[110X
-  by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(16);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
-    [4X[25Xgap>[125X [27XRandomExponent(KG,100);[127X[104X
-    [4X[28X8[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-3 RandomExponentOfNormalizedUnitsCenter[101X
-  
-  [33X[1;0Y[29X[2XRandomExponentOfNormalizedUnitsCenter[102X( [3XKG[103X, [3Xnum[103X ) [32X function[133X
-  
-  [33X[0;0YFor  the group ring [10XKG[110X and the maximal number of iterations [10Xnum[110X the function
-  [10XRandomExponentOfNormalizedUnitsCenter[110X  returns the exponent of the center of
-  the group of normalized units of [10XKG[110X by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(16);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
-    [4X[25Xgap>[125X [27XRandomExponentOfNormalizedUnitsCenter(KG,100);[127X[104X
-    [4X[28X4[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-4 RandomNilpotencyClass[101X
-  
-  [33X[1;0Y[29X[2XRandomNilpotencyClass[102X( [3XKG[103X, [3Xnum[103X ) [32X function[133X
-  
-  [33X[0;0YFor  the group ring [10XKG[110X and the maximal number of iterations [10Xnum[110X the function
-  [10XRandomNilpotencyClass[110X   returns   the  nilpotency  class  of  the  group  of
-  normalized units of [10XKG[110X by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(16);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
-    [4X[25Xgap>[125X [27XRandomNilpotencyClass(KG,100);[127X[104X
-    [4X[28X4[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-5 RandomDerivedLength[101X
-  
-  [33X[1;0Y[29X[2XRandomDerivedLength[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
-  
-  [33X[0;0Y[22XFG[122X  is  called  [3XLie solvable[103X, if some of the terms of the Lie derived series
-  [22Xδ^[n](FG)=[δ^[n-1](FG),δ^[n-1](FG)][122X with [22Xδ^[0](FG)=FG[122X are equal to zero.[133X
-  
-  [33X[0;0YDenote  by  [22Xdl_L(FG)[122X  the  minimal  element of the set [22X{m∈ N | δ^[m](FG)=0}[122X,
-  which is said to be the [3XLie derived length[103X of [22XFG[122X.[133X
-  
-  [33X[0;0YFor   the   group   ring   [10XKG[110X   and   a  positive  integer  [10Xn[110X  the  function
-  [10XRandomDerivedLength[110X returns the Lie derived length by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XD:=DihedralGroup(IsFpGroup,8);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),D);;[127X[104X
-    [4X[25Xgap>[125X [27XRandomDerivedLength(KG,100);[127X[104X
-    [4X[28X2[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-6 RandomCommutatorSubgroup[101X
-  
-  [33X[1;0Y[29X[2XRandomCommutatorSubgroup[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
-  
-  [33X[0;0YFor   the   group   ring   [10XKG[110X   and   a  positive  integer  [10Xn[110X  the  function
-  [10XRandomCommutatorSubgroup[110X returns the commutator subgroup by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(IsFpGroup,8);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
-    [4X[25Xgap>[125X [27XSG:=RandomCommutatorSubgroup(KG,100);[127X[104X
-    [4X[25Xgap>[125X [27XStructureDescription(SG);[127X[104X
-    [4X[28X"C2 x C2 x C2"[128X[104X
-    [4X[25Xgap>[125X [27XG:=CyclicGroup(8);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(3),G);;[127X[104X
-    [4X[25Xgap>[125X [27XSG:=RandomCommutatorSubgroup(KG,100);;[127X[104X
-    [4X[25Xgap>[125X [27XElements(SG);[127X[104X
-    [4X[28X[ (Z(3)^0)*<identity> of ... ][128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-7 RandomCommutatorSubgroupOfNormalizedUnits[101X
-  
-  [33X[1;0Y[29X[2XRandomCommutatorSubgroupOfNormalizedUnits[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
-  
-  [33X[0;0YFor   the   group   ring   [10XKG[110X   and   a  positive  integer  [10Xn[110X  the  function
-  [10XRandomCommutatorSubgroupOfNormalizedUnits[110X returns the commutator subgroup of
-  normalized units by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(8);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(3),G);;[127X[104X
-    [4X[25Xgap>[125X [27XSG:=RandomCommutatorSubgroup(KG,100);;[127X[104X
-    [4X[25Xgap>[125X [27Xu:=Random(Elements(SG));;[127X[104X
-    [4X[25Xgap>[125X [27XAugmentation(u);[127X[104X
-    [4X[28XZ(3)^0[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-8 RandomCenterOfCommutatorSubgroup[101X
-  
-  [33X[1;0Y[29X[2XRandomCenterOfCommutatorSubgroup[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
-  
-  [33X[0;0YFor   the   group   ring   [10XKG[110X   and   a  positive  integer  [10Xn[110X  the  function
-  [10XRandomCenterOfCommutatorSubgroup[110X   returns  the  center  of  the  commutator
-  subgroup by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(8);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(3),G);;[127X[104X
-    [4X[25Xgap>[125X [27XSG:=RandomCenterOfCommutatorSubgroup(KG,100);;[127X[104X
-    [4X[25Xgap>[125X [27Xx1:=Random(Elements(SG));; x2:=Random(Elements(SG));;[127X[104X
-    [4X[25Xgap>[125X [27Xx1*x2=x2*x1;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-9 RandomNormalizedUnitGroup[101X
-  
-  [33X[1;0Y[29X[2XRandomNormalizedUnitGroup[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
-  
-  [33X[0;0YFor   the   group   ring   [10XKG[110X   and   a  positive  integer  [10Xn[110X  the  function
-  [10XRandomNormalizedUnitGroup[110X returns the normalized unit group by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(8);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
-    [4X[25Xgap>[125X [27XSG:=RandomNormalizedUnitGroup(KG);[127X[104X
-    [4X[28X<group with 4 generators>[128X[104X
-    [4X[25Xgap>[125X [27XSize(SG);[127X[104X
-    [4X[28X128[128X[104X
-    [4X[25Xgap>[125X [27Xu:=Random(Elements(SG));;[127X[104X
-    [4X[25Xgap>[125X [27XAugmentation(u);[127X[104X
-    [4X[28XZ(2)^0[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-10 RandomUnitarySubgroup[101X
-  
-  [33X[1;0Y[29X[2XRandomUnitarySubgroup[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
-  
-  [33X[0;0YFor   the   group   ring   [10XKG[110X   and   a  positive  integer  [10Xn[110X  the  function
-  [10XRandomUnitarySubgroup[110X returns the unitary subgroup by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(8);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(3),G);;[127X[104X
-    [4X[25Xgap>[125X [27XSG:=RandomUnitarySubgroup(KG,100);;[127X[104X
-    [4X[25Xgap>[125X [27Xu:=Random(Elements(SG));;[127X[104X
-    [4X[25Xgap>[125X [27XAugmentation(u);[127X[104X
-    [4X[28XZ(3)^0[128X[104X
-    [4X[25Xgap>[125X [27Xu*u^-1;[127X[104X
-    [4X[28X(Z(3)^0)*<identity> of ...[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-11 RandomCommutatorSeries[101X
-  
-  [33X[1;0Y[29X[2XRandomCommutatorSeries[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
-  
-  [33X[0;0YFor   the   group   ring   [10XKG[110X   and   a  positive  integer  [10Xn[110X  the  function
-  [10XRandomCommutatorSeries[110X returns the commutator series by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(8);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
-    [4X[25Xgap>[125X [27XCS:=RandomCommutatorSeries(KG,100);[127X[104X
-    [4X[28X[ <group of size 128 with 4 generators>, <group of size 8 with 8 generators>,[128X[104X
-    [4X[28X  <group of size 1 with 1 generators> ][128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-12 RandomLowerCentralSeries[101X
-  
-  [33X[1;0Y[29X[2XRandomLowerCentralSeries[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
-  
-  [33X[0;0YFor   the   group   ring   [10XKG[110X   and   a  positive  integer  [10Xn[110X  the  function
-  [10XRandomLowerCentralSeries[110X returns the lower central series by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(8);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
-    [4X[25Xgap>[125X [27XCS:=RandomLowerCentralSeries(KG,100);[127X[104X
-    [4X[28X[ <group of size 128 with 4 generators>, <group of size 8 with 8 generators>,[128X[104X
-    [4X[28X  <group of size 1 with 1 generators> ][128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-13 RandomUnitaryOrder[101X
-  
-  [33X[1;0Y[29X[2XRandomUnitaryOrder[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
-  
-  [33X[0;0YFor   the   group   ring   [10XKG[110X   and   a  positive  integer  [10Xn[110X  the  function
-  [10XRandomUnitaryOrder[110X  returns  the  unitary order of [22XKG[122X by a random way. Also,
-  there  exists  a  three-parametrical version of this method, where the third
-  parameter [22Xσ[122X is an arbitrary involution.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(8);;[127X[104X
-    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(3),G);;[127X[104X
-    [4X[25Xgap>[125X [27Xord:=RandomUnitaryOrder(KG,100);[127X[104X
-    [4X[28X243[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.3-14 RandomDihedralDepth[101X
-  
-  [33X[1;0Y[29X[2XRandomDihedralDepth[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
-  
-  [33X[0;0YFor   the   group   ring   [10XKG[110X   and   a  positive  integer  [10Xn[110X  the  function
-  [10XRandomCentralUnitaryOrder[110X returns the depth of [22XKG[122X by a random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
-    [4X[25Xgap>[125X [27XG:=DihedralGroup(16);;[127X[104X
-    [4X[25Xgap>[125X [27XUD:=PcNormalizedUnitGroup(KG);[127X[104X
-    [4X[28X<pc group of size 32768 with 15 generators>[128X[104X
-    [4X[25Xgap>[125X [27XDihedralDepth(UD);[127X[104X
-    [4X[28X3[128X[104X
-    [4X[25Xgap>[125X [27Xtime;[127X[104X
-    [4X[28X4211[128X[104X
-    [4X[25Xgap>[125X [27XRandomDihedralDepth(UD,100);[127X[104X
-    [4X[28X2[128X[104X
-    [4X[25Xgap>[125X [27XRandomDihedralDepth(UD,300);[127X[104X
-    [4X[28X0[128X[104X
-    [4X[25Xgap>[125X [27XRandomDihedralDepth(UD,500);[127X[104X
-    [4X[28X2[128X[104X
-    [4X[25Xgap>[125X [27XRandomDihedralDepth(UD,1000);[127X[104X
-    [4X[28X0[128X[104X
-    [4X[25Xgap>[125X [27XRandomDihedralDepth(UD,1000);[127X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
