@@ -800,14 +800,15 @@ end);
 ##  where G is a finite p-group by random search.
 ##
 InstallMethod( RandomOmega, "Group Algebra, Power of p, Number of iterations", true, [IsGroupRing, IsPosInt, IsPosInt],3,
-function(G,m,n)
-    local e,i,A,x,p,k,g;
+function(kg,m,n)
+    local e,i,A,x,p,k,G;
+    G:=BasicGroup(kg);
     e:=One(G);
-	A:=[];
+  	A:=[];
     if ( IsPGroup(G) ) then
 	    p:=PrimePGroup(G);
         for i in [1..n] do
-           x:=Random(G);
+           x:=Random(Elements(G));
 		   if (x^(p^m) = e) then
 		       AddSet(A,x);
 		   fi;
@@ -816,6 +817,22 @@ function(G,m,n)
 	return Group(A);
 end);
 
+InstallOtherMethod( RandomOmega, "Group, Power of p, Number of iterations", true, [IsGroup, IsPosInt, IsPosInt],3,
+function(G,m,n)
+    local e,i,A,x,p,k;
+    e:=One(G);
+   	A:=[];
+    if ( IsPGroup(G) ) then
+	    p:=PrimePGroup(G);
+        for i in [1..n] do
+           x:=Random(Elements(G));
+		   if (x^(p^m) = e) then
+		       AddSet(A,x);
+		   fi;
+		od;
+    fi;
+	return Group(A);
+end);
 #############################################################################
 ##
 ##  RandomAgemo( <G,m,n> )
@@ -827,14 +844,30 @@ end);
 InstallMethod( RandomAgemo, "Group Algebra, Power of p, Number of iterations", true, [IsGroupRing, IsPosInt, IsPosInt],3,
 function(kg,m,n)
     local i,A,x,p,k,g,e,G;
-    G:=UnderlyingGroup(kg);
+    G:=BasicGroup(kg);
     e:=One(G);
 	A:=[];
     if ( IsPGroup(G) ) then
+       p:=PrimePGroup(G);
         for i in [1..n] do
-           x:=Random(kg);
-		   AddSet(A,x^(p^m));
-		od;
+           x:=Random(Elements(G));
+		       AddSet(A,x^(p^m));
+		    od;
+    fi;
+	return Group(A);
+end);
+
+InstallOtherMethod( RandomAgemo, "Group, Power of p, Number of iterations", true, [IsGroup, IsPosInt, IsPosInt],3,
+function(G,m,n)
+    local i,A,x,p,k,g,e,G;
+    e:=One(G);
+	   A:=[];
+    if ( IsPGroup(G) ) then
+       p:=PrimePGroup(G);
+        for i in [1..n] do
+           x:=Random(Elements(G));
+		       AddSet(A,x^(p^m));
+		    od;
     fi;
 	return Group(A);
 end);
