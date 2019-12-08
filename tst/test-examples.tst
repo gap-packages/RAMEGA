@@ -169,7 +169,25 @@ gap> KG:=GroupRing(GF(2),G);;
 gap> ord:=RandomUnitaryOrder(KG,100);
 64
 
-## Example 2.3.14
+## Example 2.3.15
+gap> G:=CyclicGroup(8);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> RO:=RandomOmega(KG,2,50);;
+gap> u:=Random(Elements(RO));;
+gap> (u^2)^2;
+(Z(2)^0)*<identity> of ...
+gap> ## Let h be a group.
+gap> h:=SmallGroup(16,10);;
+gap> RO:=RandomOmega(h,2,50);;
+gap> u:=Random(Elements(RO));;
+gap> (u^2)^2;
+<identity> of ...
+
+## Example 2.3.16
+gap> KG:=GroupRing(GF(2),CyclicGroup(8));;
+gap> RA:=RandomAgemo(KG,2,50);
+<group with 2 generators>
+
 
 
 gap> STOP_TEST( "test-examples.tst", 200000000000 );
