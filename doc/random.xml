@@ -45,11 +45,11 @@ gap> Elements(last);
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
 
-On any ring <M>R</M>m the Lie bracket is defined as <M>[x,y] = xy-yx.</M>. For any positive integer <M>n</M>,
+On any associative ring <M>R</M> the Lie bracket is defined as <M>[x,y] = xy-yx.</M>. For any positive integer <M>n</M>,
 a subset <M>\Lambda</M> of <M>R</M> is said to be Lie <M>n</M>-Engel if for any <M>x,y \in \Lambda</M>,
 <M>[x,y,\ldots,y]=0</M> (<M>y</M> is taken <M>n</M> times)  <Cite Key="Lee2000"/> .<P/>
 
-For the group ring <C>KG</C> the function <C>IsLienEngel</C> returns <C>true</C> if <C>KG</C> is Lie-n Engel and <C>false</C> otherwise.
+For the group ring <C>KG</C> the function <C>IsLienEngel</C> returns <C>true</C> if <C>KG</C> is Lie <M>n</M>-Engel and <C>false</C> otherwise.
 
 <Example>
 <![CDATA[
@@ -78,7 +78,7 @@ true
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
 For the group ring <C>KG</C> the function <C>GetRandomUnit</C> returns an unit
-(i.e. an invertible element) in a random way.
+(i.e. an invertible element) by a random way.
 
 <Example>
 <![CDATA[
@@ -107,7 +107,7 @@ V(KG)=\{ \sum_{g \in G} \alpha_g g \in U(KG) \mid \sum_{g \in G} \alpha_g = 1 \}
 is called the group of normalized units of the group algebra <M>KG</M> <Cite Key="Bovdi_Szakacs_I"/>. <P/>
 
 For the group ring <C>KG</C> the function <C>GetRandomNormalizedUnit</C> returns a normalized unit
-(i.e. an invertible element with augmentation 1, <M>u \in V(KG)</M>) in a random way.
+(i.e. an invertible element with augmentation 1, <M>u \in V(KG)</M>) by a random way.
 
 <Example>
 <![CDATA[
@@ -126,7 +126,7 @@ gap> u*u^-1;
 <Func Name="GetRandomNormalizedUnitaryUnit" Arg="KG"/>
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
-Let <M>p</M> be a prime, <M>K</M> the fielod of charateristic <M>p</M>, <M>G</M> a finite abelian <M>p</M>-group
+Let <M>p</M> be a prime, <M>K</M> the field of characteristic <M>p</M>, <M>G</M> a finite abelian <M>p</M>-group
 with an arbitrary automorphism <M>\eta</M> of order 2 and <M>G_{\eta}=\{g \in G \mid \eta(g)=g\}</M>. Extending
 the automorphism <M>\eta</M> to the group algebra <M>KG</M> we obtain the involution
 <Display>
@@ -142,8 +142,8 @@ V_*(KG)=\{x \in V(FG) \mid x^* = x^{-1} \}.
 
 
 <P/> For the group algebra <C>KG</C> the function <C>GetRandomNormalizedUnitaryUnit</C> returns a normalized unitary unit
-(i.e. such an invertible element with augmentation 1, that <M>u\cdot u^{*}=One(KG)</M>) in a random way. Also, there
-exists a two-parametrical version of this method, where the second parameter <M>\eta</M> is an arbitrary involution.
+(i.e. such an invertible element with augmentation 1, that <M>u\cdot u^{*}=1</M>) by a random way. Also, there
+exists a two-parametrical version of this method, where the second parameter <M>\eta</M> is an arbitrary antiautomorphism of <M>G</M>.
 
 <Example>
 <![CDATA[
@@ -163,7 +163,7 @@ Z(2)^0
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
 For the group ring <C>KG</C> the function <C>GetRandomCentralNormalizedUnit</C> returns a central normalized unit
-(i.e. such an invertible element with augmentation 1, that <M>u\cdot x=x \cdot u</M>, <M>\forall x \in KG</M>) in a random way.
+(i.e. such an invertible element with augmentation 1, that <M>u\cdot x=x \cdot u</M>, <M>\forall x \in KG</M>) by a random way.
 
 <Example>
 <![CDATA[
@@ -196,7 +196,7 @@ A(KG)=\{ \sum_{g \in G} \alpha_g g \in KG \mid \sum_{g \in G} \alpha_g = 0 \}.
 </Display>
 <P/>
 For the group ring <C>KG</C> the function <C>GetRandomElementFromAugmentationIdeal</C> returns an element
-from augmentation ideal of <M>KG</M>.
+from the augmentation ideal of <M>KG</M> by a random way.
 
 <Example>
 <![CDATA[
@@ -218,8 +218,8 @@ gap> Augmentation(u);
 <Func Name="RandomLienEngelLength" Arg="KG, num"/>
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
-Let <C>KG</C> be a group ring and let <M>[x,y,y,\ldots,y]=0</M> for all <M>x, y \in KG </M>. Then the number of <M>y</M>'s in the last equation is called the Lie n-Engel length. <P/>
-For the group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomLienEngelLength</C> returns the Lie n-Engel length of KG by a random way.
+Let <C>KG</C> be a group ring and let <M>[x,y,y,\ldots,y]=0</M> for all <M>x, y \in KG </M>. Then the number of <M>y</M>'s in the last equation is called the Lie <M>n</M>-Engel length. <P/>
+For the group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomLienEngelLength</C> returns the Lie <M>n</M>-Engel length of <M>KG</M> by a random way.
 
 <Example>
 <![CDATA[
@@ -236,7 +236,7 @@ gap> RandomLienEngelLength(KG,100);
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
 For the group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomExponent</C> returns the
-exponent of the group of normalized units of <C>KG</C> by a random way.
+exponent of <C>KG</C> by a random way.
 
 <Example>
 <![CDATA[
@@ -269,7 +269,7 @@ gap> RandomExponentOfNormalizedUnitsCenter(KG,100);
 <Func Name="RandomNilpotencyClass" Arg="KG, num"/>
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
-Let <M>G</M> be a group and let <M>g_1,\ldots,g_n \in G </M>. By the symbol <M>g_1,\ldots,g_n)</M> we denote the
+Let <M>G</M> be a group and let <M>g_1,\ldots,g_n \in G </M>. By the symbol <M>(g_1,\ldots,g_n)</M> we denote the
 commutator of the elements <M>g_1,\ldots,g_n</M> which is defined inductively as
 <Display>
 (g_1,\ldots,g_n)=((g_1,\ldots,g_{n-1}),g_n), \quad (g_1,g_2)=g_1^{-1}g_2^{-1}g_1 g_2.
@@ -301,10 +301,10 @@ gap> RandomNilpotencyClass(KG,100);
 <ManSection>
 <Func Name="RandomDerivedLength" Arg="KG, n"/>
 <Description>
-<M>FG</M> is called <A>Lie solvable</A>, if some of the terms of the Lie derived series <M>\delta^{[n]}(FG)=[\delta^{[n-1]}(FG),\delta^{[n-1]}(FG)]</M>
-with <M>\delta^{[0]}(FG)=FG</M> are equal to zero. <P/>
-Denote by <M>\dl_L(FG)</M> the minimal element of the set <M>\{m\in\mathbb N\;\vert\;
-\delta^{[m]}(FG)=0\}</M>, which is said to be the <A>Lie derived length</A> of <M>FG</M>. <P/>
+<M>KG</M> is called <A>Lie solvable</A>, if some of the terms of the Lie derived series <M>\delta^{[n]}(KG)=[\delta^{[n-1]}(KG),\delta^{[n-1]}(KG)]</M>
+with <M>\delta^{[0]}(KG)=KG</M> are equal to zero. <P/>
+Denote by <M>\dl_L(KG)</M> the minimal element of the set <M>\{m\in\mathbb N\;\vert\;
+\delta^{[m]}(KG)=0\}</M>, which is said to be the <A>Lie derived length</A> of <M>KG</M>. <P/>
 
 
 For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomDerivedLength</C> returns the Lie derived length by a random way.
