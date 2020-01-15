@@ -22,7 +22,11 @@
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
 
-For the group ring <C>KG</C> the function <C>BasicGroup</C> returns the basic group of <C>KG</C> as a subgroup of the normalized group of units.
+For the group ring <C>KG</C> the function <C>BasicGroup</C> returns the basic group of <C>KG</C> as a subgroup of the group of units of <C>KG</C>.
+
+<P/> Please note, that throughout this package it is assumed that the group <C>G</C> is finite.
+
+
 
 <Example>
 <![CDATA[
@@ -99,7 +103,7 @@ gap> u*u^-1;
 <Func Name="GetRandomNormalizedUnit" Arg="KG"/>
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
-Let <M>U(KG)</M> be the multiplicative group of the group algebra <M>KG</M> of the the <M>p</M>-group <M>G</M>
+Let <M>U(KG)</M> be the multiplicative group of the group algebra <M>KG</M> of the <M>p</M>-group <M>G</M>
 over a field <M>K</M> of characteristic <M>p</M>. The subgroup
 <Display>
 V(KG)=\{ \sum_{g \in G} \alpha_g g \in U(KG) \mid \sum_{g \in G} \alpha_g = 1 \}
@@ -132,14 +136,12 @@ the antiautomorphism <M>\eta</M> to the group algebra <M>KG</M> we obtain the in
 <Display>
   x = \sum_{g \in G} \alpha_g g \mapsto x^{*}= \sum_{g \in G} \alpha_g \eta(g)
 </Display>
-of KG which we call as <M>\eta</M>-canonical involution. If <M>\eta(g)=g^{-1}</M> for all <M>g \in G</M> then this
+of KG which is calles as <M>\eta</M>-involution. If <M>\eta(g)=g^{-1}</M> for all <M>g \in G</M> then this
 involution is called canonical. Then, if <M>V(KG)</M> is the group of normalized units of <M>KG</M>, the subgroup
 of unitary units is defined as <Cite Key="BovdiSzakacs2006"/>
 <Display>
 V_*(KG)=\{x \in V(FG) \mid x^* = x^{-1} \}.
 </Display>
-
-
 
 <P/> For the group algebra <C>KG</C> the function <C>GetRandomNormalizedUnitaryUnit</C> returns a normalized unitary unit
 (i.e. such an invertible element with augmentation 1, that <M>u\cdot u^{*}=1</M>) by a random way. Also, there
@@ -154,6 +156,30 @@ gap> u*Involution(u);
 (Z(2)^0)*<identity> of ...
 gap> Augmentation(u);
 Z(2)^0
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="GetRandomNormalizedUnitaryUnit" Arg="KG, eta"/>
+<Description>
+<!-- The names chosen for the arguments describe their meaning.-->
+For the group algebra <C>KG</C> and an arbitrary antiautomorphism <C>eta</C> of the function <C>GetRandomNormalizedUnitaryUnit</C> returns a normalized unitary unit
+(i.e. such an invertible element with augmentation 1, that <M>u\cdot u^{*}=1</M>) by a random way.
+
+<Example>
+<![CDATA[
+gap> Aut:=AutomorphismGroup(G);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> Aut2:=Filtered(Aut,i->Order(i)=2);;
+gap> Aut2;
+[ [ f1*f3 ] -> [ f1*f2*f4 ], [ f1*f3 ] -> [ f1*f3*f4 ],
+  [ f1*f3 ] -> [ f1*f2 ] ]
+gap> eta:=Aut2[2];
+[ f1*f3 ] -> [ f1*f3*f4 ]
+gap> u:=GetRandomNormalizedUnitaryUnit(KG,eta);;
+gap> u*RAMEGA_InvolutionKG(u, eta, KG);
+(Z(2)^0)*<identity> of ...
 ]]>
 </Example>
 </Description> </ManSection>
@@ -218,9 +244,9 @@ gap> Augmentation(u);
 <Func Name="RandomLienEngelLength" Arg="KG, num"/>
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
-Let <C>KG</C> be a group ring and let <M>[x,y,y,\ldots,y]=0</M> for all <M>x, y \in KG </M>. Then the number of <M>y</M>'s in the last equation is called
+Let <C>KG</C> be a Lie n-Engel group ring and let <M>[x,y,y,\ldots,y]=0</M> for all <M>x, y \in KG </M>. Then the number of <M>y</M>'s in the last equation is called
  the Lie <M>n</M>-Engel length. <P/>
-For the group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomLienEngelLength</C> returns the Lie <M>n</M>-Engel length of <M>KG</M> by a random way.
+For the Lie n-Engel group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomLienEngelLength</C> returns the Lie <M>n</M>-Engel length of <M>KG</M> by a random way.
 
 <Example>
 <![CDATA[
@@ -236,8 +262,9 @@ gap> RandomLienEngelLength(KG,100);
 <Func Name="RandomExponent" Arg="KG, num"/>
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
-For the group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomExponent</C> returns the
-exponent of <C>KG</C> by a random way.
+For the group ring <C>KG</C> (where <M>G</M> is a finite <M>p</M>-group and the characteristic of <M>K</M> is <M>p</M>) and the maximal number of
+iterations <C>num</C> the function <C>RandomExponent</C> returns the
+exponent of <C>V(KG)</C> by a random way.
 
 <Example>
 <![CDATA[
@@ -253,7 +280,7 @@ gap> RandomExponent(KG,100);
 <Func Name="RandomExponentOfNormalizedUnitsCenter" Arg="KG, num"/>
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
-For the group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomExponentOfNormalizedUnitsCenter</C> returns the
+For the group ring <C>KG</C> (where <M>G</M> is a finite <M>p</M>-group and the characteristic of <M>K</M> is <M>p</M>) and the maximal number of iterations <C>num</C> the function <C>RandomExponentOfNormalizedUnitsCenter</C> returns the
 exponent of the center of the group of normalized units of <C>KG</C> by a random way.
 
 <Example>
@@ -284,8 +311,11 @@ This allows us to define the lower central series of a nonempty subset <M>H</M> 
   cl(H) = \min\{n \in \mathbb{N}_0: \gamma_{n+1}(H)=1\}
 </Display>
 is called the nilpotency class of <M>H</M> <Cite Key="BaloghJuhasz2011"/>.
-<P/>For the group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomNilpotencyClass</C> returns the
-nilpotency class of the group of normalized units of <C>KG</C> by a random way.
+<P/>
+  For the Lie nilpotent group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function
+  <C>RandomNilpotencyClass</C> returns the nilpotency class of the group of normalized units of <C>KG</C> by a
+  random way.
+
 
 <Example>
 <![CDATA[
@@ -308,7 +338,8 @@ Denote by <M>\dl_L(KG)</M> the minimal element of the set <M>\{m\in\mathbb N\;\v
 \delta^{[m]}(KG)=0\}</M>, which is said to be the <A>Lie derived length</A> of <M>KG</M>. <P/>
 
 
-For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomDerivedLength</C> returns the Lie derived length by a random way.
+For the modular group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomDerivedLength</C>
+returns the Lie derived length by a random way.
 
 <Example>
 <![CDATA[
@@ -326,6 +357,7 @@ gap> RandomDerivedLength(KG,100);
 For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomCommutatorSubgroup</C> returns the commutator subgroup of the unit group of
 <M>KG</M> using <M>n</M> iterations by a random way. There is also an overloaded version of this method
 for finding the commutator subgroup of an arbitrary group <M>G</M> using <M>n</M> iterations by a random way.
+
 
 
 <Example>
@@ -348,8 +380,9 @@ gap> Elements(SG);
 <ManSection>
 <Func Name="RandomCommutatorSubgroupOfNormalizedUnits" Arg="KG, n"/>
 <Description>
-For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomCommutatorSubgroupOfNormalizedUnits</C>
+For the modular group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomCommutatorSubgroupOfNormalizedUnits</C>
 returns the commutator subgroup of normalized units by a random way.
+
 <Example>
 <![CDATA[
 gap> G:=DihedralGroup(8);;
@@ -366,8 +399,9 @@ Z(3)^0
 <ManSection>
 <Func Name="RandomNormalizedUnitGroup" Arg="KG, n"/>
 <Description>
-For a modular group ring <C>KG</C> and a positive integer  <C>n</C>, where <C>n</C> is the number of iterations,  the function <C>RandomNormalizedUnitGroup</C>
-returns the normalized unit group of <C>KG</C> by a random way.
+For a group ring <C>KG</C>, where <C>G</C> is a finite <C>p</C>-group and <C>K</C> has
+characteristic <C>p</C> and a positive integer <C>n</C>, where <C>n</C> is the number of iterations, the
+function <C>RandomNormalizedUnitGroup</C> returns the normalized unit group of <C>KG</C> by a random way.
 
 <Example>
 <![CDATA[
@@ -409,7 +443,8 @@ gap> u*u^-1;
 <ManSection>
 <Func Name="RandomCommutatorSeries" Arg="KG, n"/>
 <Description>
-For a modular group ring <C>KG</C> and a positive integer  <C>n</C>, where <C>n</C> is the number of iterations, the function <C>RandomCommutatorSeries</C>
+For a modular group ring <C>KG</C>, where <C>G</C> is a <C>p</C>-group, and a positive integer  <C>n</C>, where <C>n</C> is the number of iterations, the function
+<C>RandomCommutatorSeries</C>
 returns the commutator series of the group of normalized units in <M>KG</M>by a random way.
 
 <Example>
@@ -421,7 +456,8 @@ gap> CS:=RandomCommutatorSeries(KG,100);
   <group of size 1 with 1 generators> ]
 ]]>
 </Example>
-</Description> </ManSection>
+</Description>
+</ManSection>
 
 <ManSection>
 <Func Name="RandomLowerCentralSeries" Arg="KG, n"/>
@@ -432,8 +468,9 @@ G=G_1 \trianglerighteq G_2 \trianglerighteq \ldots \trianglerighteq G_n \triangl
 </Display>
 where each <M>G_{n+1}=[G_n,G]</M>, the subgroup generated by all commutators <M>[x,y]</M> with <M>x</M> in <M>G_n</M>
 and <M>y</M> in <M>G</M>. Thus, <M>G_2=[G,G]=G^{(1)}</M>, the derived subgroup of <M>G</M>; <M>G_3=[[G,G],G]</M>, etc.
-The lower central series is often denoted <M>y_n(G)=G_n</M>.
-<P/>For a modular group ring <C>KG</C> and a positive integer  <C>n</C>, where <C>n</C> is the number of iterations, the function <C>RandomLowerCentralSeries</C>
+The lower central series is often denoted <M>y_n(G)</M>.
+<P/>For a group ring <C>KG</C>, for which <M>V(KG)</M> is nilpotent,
+ and a positive integer  <C>n</C>, where <C>n</C> is the number of iterations, the function <C>RandomLowerCentralSeries</C>
 returns the lower central series of the group of normalized units of <M>KG</M> by a random way.
 
 <Example>
@@ -451,7 +488,8 @@ gap> CS:=RandomLowerCentralSeries(KG,100);
 <ManSection>
 <Func Name="RandomUnitaryOrder" Arg="KG, n"/>
 <Description>
-For the group ring <C>KG</C> and a positive integer  <C>n</C>, where <C>n</C> is the number of iterations, the function <C>RandomUnitaryOrder</C>
+For the group ring <C>KG</C>, where <C>G</C> is a finite <C>p</C>-group and <C>K</C> has characteristic <C>p</C>,
+and a positive integer  <C>n</C>, where <C>n</C> is the number of iterations, the function <C>RandomUnitaryOrder</C>
 returns the order of the unitary subgroup of <M>KG</M> by a random way. Also, there exists a three-parametrical version of this method,
 where the third parameter <M>\sigma</M> is an arbitrary anti-automorphism of <M>G</M>.
 
@@ -466,33 +504,11 @@ gap> ord:=RandomUnitaryOrder(KG,100);
 </Description> </ManSection>
 
 <ManSection>
-<Func Name="RandomDihedralDepth" Arg="KG, n"/>
-<Description>
-For the group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomDihedralDepth</C>
-returns the Dihedral depth of the unit group of <M>KG</M> by a random way.
-
-<Example>
-<![CDATA[
-gap> G:=DihedralGroup(16);;
-gap> UD:=PcNormalizedUnitGroup(KG);
-<pc group of size 32768 with 15 generators>
-gap> DihedralDepth(UD);
-3
-gap> time;
-4211
-]]>
-</Example>
-</Description> </ManSection>
-
-
-<ManSection>
-<Func Name="RandomOmega" Arg="KG, m, n"/>
+<Func Name="RandomOmega" Arg="G, m, n"/>
 <Description>
 
-For the group ring <C>KG</C> and a positive integers <C>m</C> and <C>n</C> (number of iterations) the function <C>RandomOmega</C>
-returns the subgroup of <M>G</M>, that is generated by the elements <M>g</M> for which <M>g^{p^m}=1</M>,
-where <M>G</M> is a finite p-group by random search. There is overloaded version of this method for the case when the first argument is a
-is a finite p-group.
+For the <C>p</C> group <C>G</C> and a positive integers <C>m</C> and <C>n</C> (number of iterations) the function <C>RandomOmega</C>
+returns the subgroup of <M>G</M>, that is generated by the elements <M>g</M> for which <M>g^{p^m}=1</M>, by random search.
 
 <Example>
 <![CDATA[
@@ -513,18 +529,59 @@ gap> (u^2)^2;
 </Description> </ManSection>
 
 <ManSection>
-<Func Name="RandomAgemo" Arg="KG, m, n"/>
+<Func Name="RandomAgemo" Arg="G, m, n"/>
 <Description>
 
-For the group ring <C>KG</C> and a positive integers <C>m</C> and <C>n</C> (number of iterations) the function <C>RandomOmega</C>
-returns the subgroup of <M>G</M>, that is generated by the elements <M>g^{p^m}</M>,
-where <M>G</M> is a finite <M>p</M>-group, by random search.
+For the <C>p</C>-group <C>G</C> and a positive integers <C>m</C> and <C>n</C> (number of iterations) the function <C>RandomOmega</C>
+returns the subgroup of <M>G</M>, that is generated by the elements <M>g^{p^m}</M> by random search.
 
 <Example>
 <![CDATA[
 gap> KG:=GroupRing(GF(2),CyclicGroup(8));;
 gap> RA:=RandomAgemo(KG,2,50);
 <group with 2 generators>
+]]>
+</Example>
+</Description> </ManSection>
+
+
+<ManSection>
+<Func Name="RandomDihedralDepth" Arg="G,n"/>
+<Description>
+  For a non abelian finite 2-group <C>G</C> and a positive integer <C>n</C>, where <C>n</C>
+  is the number of iterations, the function <C>RandomDihedralDepth</C>
+   returns the dihedral depth of <C>G</C>, which is defined to be the maximal
+  number <C>d</C> such that <C>G</C> contains a subgroup isomorphic to the dihedral group of order <M>2^(d+1)</M>.
+
+<Example>
+<![CDATA[
+gap> G:=SmallGroup([64,6]);
+<pc group of size 64 with 6 generators>
+gap> StructureDescription(G);
+"(C8 x C4) : C2"
+gap> RandomDihedralDepth(G,1000);
+2
+]]>
+</Example>
+</Description> </ManSection>
+
+<ManSection>
+<Func Name="RandomQuaternionDepth" Arg="G,n"/>
+<Description>
+  For a non abelian finite 2-group <C>G</C> and a positive integer <C>n</C>, where <C>n</C>
+  is the number of iterations, the function <C>RandomQuaternionDepth</C>
+   returns the dihedral depth of <C>G</C>, which is defined to be the maximal
+  number <C>d</C> such that <C>G</C> contains a subgroup isomorphic to the
+  generalized quaternion group of order <M>2^(d+1)</M>.
+
+<Example>
+<![CDATA[
+gap> G:=SmallGroup([64,10]);
+<pc group of size 64 with 6 generators>
+gap> StructureDescription(G);
+"(C8 : C4) : C2"
+gap> RandomQuaternionDepth(G,1000);
+2
 ]]>
 </Example>
 </Description> </ManSection>
