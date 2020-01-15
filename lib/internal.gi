@@ -85,6 +85,19 @@ BindGlobal("RAMEGA_GetRandomNormalizedUnit", function(kg)
 end);
 
 
+#############################################################################
+##
+##  IsModularGroupAlgebra( <KG> )
+##
+##  Returns true if the group algebra KG is modular
+##
+##
+BindGlobal( "RAMEGA_IsModularGroupAlgebra", function(kg)
+    local k,g,ter;
+	k:=UnderlyingField(kg);
+	g:=UnderlyingGroup(kg);
+    return Number(g) mod Characteristic(k) = 0;
+end);
 
 BindGlobal("RAMEGA_RandomCentralUnitaryOrder_next", function(kg)
   local x,a,b,e,ret;
@@ -158,5 +171,29 @@ BindGlobal("RAMEGA_InvolutionKG",function(x, sigma, KG)
            CoefficientsBySupport(x),
            List(Support(x), g -> (g^sigma)^(-1)))  ;
         fi;
+    fi;
+end);
+
+
+BindGlobal("RAMEGA_IsGeneralisedQuaternionGroup", function(G)
+local p,m;
+
+    if ( IsPGroup(G) and not(IsAbelian(G)) ) then
+	    p:=PrimePGroup(G);
+		if not(PrimePGroup(G)=2) then
+		    Error("The Group should be a non abelian 2-group.");
+			return false;
+		fi;
+		if Exponent(G)=Number(G)/2 then
+		    m:=Filtered(G,x->Order(x)=2);
+			if Number(m) = 1 then
+			   return true;
+			else
+			   return false;
+			fi;
+		fi;
+	else
+	    Error("The Group should be a non abelian 2-group.");
+		return false;
     fi;
 end);

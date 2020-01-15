@@ -34,20 +34,6 @@ function(kg)
     return Group(List(g,x->x^emb));
 end);
 
-#############################################################################
-##
-##  IsModularGroupAlgebra( <KG> )
-##
-##  Returns true if the group algebra KG is modular
-##
-##
-InstallMethod( IsModularGroupAlgebra, "Group Algebra",true, [IsGroupRing],1,
-function(kg)
-    local k,g,ter;
-	k:=UnderlyingField(kg);
-	g:=UnderlyingGroup(kg);
-    return Number(g) mod Characteristic(k) = 0;
-end);
 
 #############################################################################
 ##
@@ -76,7 +62,7 @@ end);
 InstallMethod( GetRandomNormalizedUnit, "Group Algebra", true, [IsGroupRing],1,
 function(kg)
 
-   if not(IsModularGroupAlgebra(kg)) then
+   if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("Input should be a Modular Group Algebra.");
    fi;
    return RAMEGA_GetRandomNormalizedUnit(kg);
@@ -119,7 +105,7 @@ end);
 InstallMethod( GetRandomNormalizedUnitaryUnit, "Group Algebra", true, [IsGroupRing],1,
 function(kg)
    local x,e;
-   if not(IsModularGroupAlgebra(kg)) then
+   if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("Input should be a Modular Group Algebra.");
    fi;
    e:=One(kg);
@@ -132,7 +118,7 @@ end);
 InstallOtherMethod( GetRandomNormalizedUnitaryUnit, "Group Algebra, Involution", true, [IsGroupRing, IsMapping],2,
 function(kg, sigma)
    local x,e;
-   if not(IsModularGroupAlgebra(kg)) then
+   if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("Input should be a Modular Group Algebra.");
    fi;
    e:=One(kg);
@@ -225,7 +211,7 @@ end);
 InstallMethod( GetRandomElementFromAugmentationIdeal, "Group Algebra", true, [IsGroupRing],1,
 function(kg)
    local x,o;
-   if not(IsModularGroupAlgebra(kg)) then
+   if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("Input should be a Modular Group Algebra.");
    fi;
    o:=Zero(UnderlyingField(kg));
@@ -245,7 +231,7 @@ end);
 InstallMethod( RandomExponent, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
 function(kg,m)
    local order,x,er,max;
-   if not(IsModularGroupAlgebra(kg)) then
+   if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("Input should be a Modular Group Algebra.");
    fi;
    if not( IsPGroup(UnderlyingGroup(kg))) then
@@ -275,7 +261,7 @@ end);
 InstallMethod( RandomExponentOfNormalizedUnitsCenter, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
 function(kg,m)
    local x,e,er,order,max,c;
-   if not(IsModularGroupAlgebra(kg)) then
+   if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("Input should be a Modular Group Algebra.");
    fi;
    if not( IsPGroup(UnderlyingGroup(kg))) then
@@ -340,7 +326,7 @@ end);
 InstallMethod( RandomDerivedLength, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
 function(kg,m)
    local e,n,x,depth,bol;
-   if not(IsModularGroupAlgebra(kg)) then
+   if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("The Group Algebra should be modular.");
    fi;
    e:=One(kg);
@@ -407,7 +393,7 @@ end);
 InstallMethod( RandomCommutatorSubgroupOfNormalizedUnits, "Group Ring, Number of Iterations", true, [IsGroupRing,IsPosInt],2,
 function(kg,n)
     local i,x1,x2,A;
-	if not(IsModularGroupAlgebra(kg)) then
+	if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("The Group Algebra should be modular.");
     fi;
 	A:=[];
@@ -429,11 +415,16 @@ end);
 InstallMethod( RandomNormalizedUnitGroup, "Group Ring", true, [IsGroupRing],1,
 function(kg)
     local x,A,g,f,h;
-	if not(IsModularGroupAlgebra(kg)) then
+	if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("The Group Algebra should be modular.");
     fi;
 	A:=[];
 	g:=UnderlyingGroup(kg);
+
+  if not(IsPGroup(g)) then
+    Error("The underlying group should be a p-group.");
+  fi;
+
 	f:=UnderlyingField(kg);
 	repeat
        x:=GetRandomNormalizedUnit(kg);
@@ -453,9 +444,16 @@ end);
 InstallMethod( RandomCommutatorSeries, "Group Ring, Number of Iterations", true, [IsGroupRing,IsPosInt],2,
 function(kg,n)
     local series,g;
-	if not(IsModularGroupAlgebra(kg)) then
+	if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("The Group Algebra should be modular.");
     fi;
+
+    g:=UnderlyingGroup(kg);
+
+    if not(IsPGroup(g)) then
+      Error("The underlying group should be a p-group.");
+    fi;
+
 	series:=[RandomNormalizedUnitGroup(kg)];
 	g:=RandomCommutatorSubgroupOfNormalizedUnits(kg,n);
 	AddSet(series,g);
@@ -588,7 +586,7 @@ end);
 InstallMethod( GetRandomCentralNormalizedUnit, "Group Ring", true, [IsGroupRing],1,
 function(kg)
    local x,e,c;
-   	if not(IsModularGroupAlgebra(kg)) then
+   	if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("The Group Algebra should be modular.");
     fi;
    c:=Center(kg);
@@ -599,88 +597,6 @@ function(kg)
    return x;
 end);
 
-#############################################################################
-##
-##  RandomCentralUnitaryOrder( <kg,n> )
-##
-##  Returns the order of center of unitary subgroup of normalized group of units
-##  where p=char(k) and g is a finite p-group by random way. The default involution is the canonical involution.
-##
-InstallMethod( RandomCentralUnitaryOrder, "Group Ring, Number of Iterations", true, [IsGroupRing,IsPosInt],2,
-function(kg,n)
-
-  local c,x,a,b,e,k,g,order,ret,p;
-  k:=UnderlyingField(kg);
-  g:=UnderlyingGroup(kg);
-  p:=Characteristic(k);
-  c:=Center(kg);
-  if ( 1 < Characteristic(k) and  IsPGroup(g) ) then
-		order:=Number(c)/Number(k);
-		e:=One(kg);
-		a:=0;
-		b:=0;
-		while (not a = n) do
-			x:=GetRandomCentralNormalizedUnit(kg);
-			a:=a+1;
-			if (x*Involution(x) = e) then
-				b:=b+1;
-			fi;
-		od;
-  if (b=0) then
-     return 0;
-  fi;
-  ret:=0;
-  order:=order*b/a;
-  while not(p^ret < order and order < p^(ret+1)) do
-    ret:=ret+1;
-  od;
-  if (order - p^ret > p^(ret+1)-order ) then
-     ret:=ret+1;
-  fi;
-  return p^ret;
-  else
-      Error("The characteristic of Group Ring is a prime and g is a finite p-group");
-      return 0;
-  fi;
-end);
-
-InstallOtherMethod( RandomCentralUnitaryOrder, "Group Ring, Involution, Number of Iterations", true, [IsGroupRing,IsMapping,IsPosInt],3,
-function(kg,sigma,n)
-
-  local c,x,a,b,e,k,g,order,ret,p;
-  k:=UnderlyingField(kg);
-  g:=UnderlyingGroup(kg);
-  p:=Characteristic(k);
-  c:=Center(kg);
-  if ( 1 < Characteristic(k) and  IsPGroup(g) ) then
-		order:=Number(c)/Number(k);
-		e:=One(kg);
-		a:=0;
-		b:=0;
-		while (not a = n) do
-			x:=GetRandomCentralNormalizedUnit(kg);
-			a:=a+1;
-			if (x*RAMEGA_InvolutionKG(x,sigma,kg) = e) then
-				b:=b+1;
-			fi;
-		od;
-  if (b=0) then
-     return 0;
-  fi;
-  ret:=0;
-  order:=order*b/a;
-  while not(p^ret < order and order < p^(ret+1)) do
-    ret:=ret+1;
-  od;
-  if (order - p^ret > p^(ret+1)-order ) then
-     ret:=ret+1;
-  fi;
-  return p^ret;
-  else
-      Error("The characteristic of Group Ring is a prime and g is a finite p-group");
-      return 0;
-  fi;
-end);
 
 #############################################################################
 ##
@@ -692,7 +608,7 @@ end);
 InstallMethod( RandomUnitarySubgroup, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
 function(kg,n)
     local A,i,x;
-   	if not(IsModularGroupAlgebra(kg)) then
+   	if not(RAMEGA_IsModularGroupAlgebra(kg)) then
 	   Error("The Group Algebra should be modular.");
     fi;
     A:=[];
@@ -710,6 +626,7 @@ end);
 ##  Returns the dihedral depth of a group or a group algebra in a random way.
 ##
 ##
+
 InstallMethod( RandomDihedralDepth, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
 function(KG,n)
 local a,b,dd,g,s,k,i,j;
@@ -729,23 +646,30 @@ local a,b,dd,g,s,k,i,j;
     if k<>0 then return LogInt(k,2)-1; else return 0; fi;
 end);
 
+#############################################################################
+##
+##  RandomDihedralDepth( <G,n> )
+##
+##  Returns the dihedral depth of a group or a group algebra in a random way.
+##
+##
 InstallOtherMethod( RandomDihedralDepth, "Group, Number of iterations", true, [IsGroup, IsPosInt],2,
 function(G,n)
-local a,b,dd,g,s,k,i,j;
+local a,b,k,s,g,i;
 
     k:=0;
+   	if IsAbelian(G) then
+	   Error("The Group should be a non abelian p-group.");
+    fi;
     for i in [1..n] do
-      a:=Random(G); b:=Random(G);
-      if Order(a)>=2 and Order(b)>=2 and a*b<>b*a then
-        g:=Group(a,b); s:=Size(g);
-    #    Print(s,"  ",Exponent(g),"\n");
-        if s/Exponent(g)=2 then
-          if Size(Filtered(Elements(g),j->Order(j)<=2))>=s/2+2 and s>k then k:=s; fi;
-        fi;
-      fi;
+       a:=Random(G); b:=Random(G);
+       g:=Group(a,b);
+	   s:=Number(g);
+       if IsDihedralGroup(g) and s>k then
+           k:=s;
+       fi;
     od;
-
-    if k<>0 then return LogInt(k,2)-1; else return 0; fi;
+    if k>0 then return LogInt(k,2)-1; else return 0; fi;
 end);
 
 #############################################################################
@@ -773,22 +697,30 @@ function(KG,n)
     if k<>0 then return LogInt(k,2)-1; else return 0; fi;
 end);
 
+#############################################################################
+##
+##  RandomQuaternionDepth( <G,n> )
+##
+##  Returns the quaternion depth of a group or a group algebra in a random way.
+##
+##
 InstallOtherMethod( RandomQuaternionDepth, "Group, Number of iterations", true, [IsGroup, IsPosInt],2,
 function(G,n)
-    local a,b,dd,g,s,k,i;
+local a,b,k,s,g,i;
 
     k:=0;
+   	if IsAbelian(G) then
+	   Error("The Group should be a non abelian p-group.");
+    fi;
     for i in [1..n] do
-      a:=Random(G); b:=Random(G);
-      if Order(a)>=2 and Order(b)>=2 and a*b<>b*a then
-        g:=Group(a,b); s:=Size(g);
-        if s/Exponent(g)=2 then
-          if Size(Filtered(Elements(g),j->Order(j)<=2))=2 and s>k then k:=s; fi;
-        fi;
-      fi;
+       a:=Random(G); b:=Random(G);
+       g:=Group(a,b);
+	   s:=Number(g);
+       if IsGeneralisedQuaternionGroup(g) and s>k then
+           k:=s;
+       fi;
     od;
-
-    if k<>0 then return LogInt(k,2)-1; else return 0; fi;
+    if k>0 then return LogInt(k,2)-1; else return 0; fi;
 end);
 
 #############################################################################
@@ -859,7 +791,7 @@ end);
 
 InstallOtherMethod( RandomAgemo, "Group, Power of p, Number of iterations", true, [IsGroup, IsPosInt, IsPosInt],3,
 function(G,m,n)
-    local i,A,x,p,k,g,e,G;
+    local i,A,x,p,k,g,e;
     e:=One(G);
 	   A:=[];
     if ( IsPGroup(G) ) then
