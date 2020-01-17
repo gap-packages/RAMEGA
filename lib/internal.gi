@@ -181,7 +181,7 @@ local p,m;
     if ( IsPGroup(G) and not(IsAbelian(G)) ) then
 	    p:=PrimePGroup(G);
 		if not(PrimePGroup(G)=2) then
-		    Error("The Group should be a non abelian 2-group.");
+		   # Error("The Group should be a non abelian 2-group.");
 			return false;
 		fi;
 		if Exponent(G)=Number(G)/2 then
@@ -191,9 +191,11 @@ local p,m;
 			else
 			   return false;
 			fi;
-		fi;
+    else return false;
+    fi;
+    ## LAST ELSE LINE SHOULD BE CHECKED!!!!!!!!!!!!!!  
 	else
-	    Error("The Group should be a non abelian 2-group.");
+#	    Error("The Group should be a non abelian 2-group.");
 		return false;
     fi;
 end);

@@ -34,6 +34,42 @@ function(kg)
     return Group(List(g,x->x^emb));
 end);
 
+#############################################################################
+##
+##  IsLienEngel( <KG> )
+##
+##  Returns true if KG is Lie n-Engel.
+##  [x,y,y,...,y]=0 for all x,y where the number of y's in the Lie operator is n.
+##
+##
+InstallMethod( IsLienEngel, "Group Algebra", true, [IsGroupRing],1,
+function(kg)
+   local g,ns,er,p,h;
+
+   if not(IsGroupRing(kg)) then
+	      Error("Input should be a Group Ring.");
+   fi;
+   er:=false;
+   p:=Characteristic(kg);
+   if IsPrime(p) then
+      g:=UnderlyingGroup(kg);
+      if not(IsAbelian(g)) and IsNilpotent(g) then
+	       ns:=NormalSubgroups(g);
+	       for h in ns do
+#	  if ( IsPPrimePower(Order(g)/Order(h),p) and IsPGroup(DerivedSubgroup(h))  ) then
+#    	  if ( IsPosInt(LogInt(Order(g)/Order(h),p)) and IsPGroup(DerivedSubgroup(h))  ) then
+          if ((p^(LogInt(Order(g)/Order(h),p))=Order(g)/Order(h)) and IsPGroup(DerivedSubgroup(h))  ) then
+        	   if PrimePGroup(DerivedSubgroup(h))=p then
+			            er:=true;
+		         fi;
+	        fi;
+	       od;
+     fi;
+   else er:=true;
+   fi;
+   return er;
+end);
+
 
 #############################################################################
 ##
@@ -128,41 +164,27 @@ function(kg, sigma)
    return x;
 end);
 
+
 #############################################################################
 ##
-##  IsLienEngel( <KG> )
+##  GetRandomElementFromAugmentationIdeal( <KG> )
 ##
-##  Returns true if KG is Lie n-Engel.
-##  [x,y,y,...,y]=0 for all x,y where the number of y's in the Lie operator is n.
+##  Returns a random nilpotent element of the modular group algebra KG.
 ##
 ##
-InstallMethod( IsLienEngel, "Group Algebra", true, [IsGroupRing],1,
+InstallMethod( GetRandomElementFromAugmentationIdeal, "Group Algebra", true, [IsGroupRing],1,
 function(kg)
-   local g,ns,er,p,h;
-
-   if not(IsGroupRing(kg) or IsGroupAlgebra(kg)) then
-	      Error("Input should be a Group Ring.");
+   local x,o;
+   if not(RAMEGA_IsModularGroupAlgebra(kg)) then
+	   Error("Input should be a Modular Group Algebra.");
    fi;
-   er:=false;
-   p:=Characteristic(kg);
-   if IsPrime(p) then
-      g:=UnderlyingGroup(kg);
-      if not(IsAbelian(g)) and IsNilpotent(g) then
-	       ns:=NormalSubgroups(g);
-	       for h in ns do
-#	  if ( IsPPrimePower(Order(g)/Order(h),p) and IsPGroup(DerivedSubgroup(h))  ) then
-#    	  if ( IsPosInt(LogInt(Order(g)/Order(h),p)) and IsPGroup(DerivedSubgroup(h))  ) then
-          if ((p^(LogInt(Order(g)/Order(h),p))=Order(g)/Order(h)) and IsPGroup(DerivedSubgroup(h))  ) then
-        	   if PrimePGroup(DerivedSubgroup(h))=p then
-			            er:=true;
-		         fi;
-	        fi;
-	       od;
-     fi;
-   else er:=true;
-   fi;
-   return er;
+   o:=Zero(UnderlyingField(kg));
+   repeat
+      x:=Random(kg);
+   until(Augmentation(x) = o);
+   return x;
 end);
+
 
 #############################################################################
 ##
@@ -176,7 +198,7 @@ InstallMethod( RandomLienEngelLength, "Group Algebra, Number of iterations", tru
 function(kg,n)
 	local g,er,i,j,x,y,max;
 
-	if not(IsGroupRing(kg) or IsGroupAlgebra(kg)) then
+	if not(IsGroupRing(kg)) then
 	      Error("Input should be a Group Ring.");
 	fi;
 	if not(IsLienEngel(kg)) then
@@ -201,25 +223,6 @@ function(kg,n)
     return max;
 end);
 
-#############################################################################
-##
-##  GetRandomElementFromAugmentationIdeal( <KG> )
-##
-##  Returns a random nilpotent element of the modular group algebra KG.
-##
-##
-InstallMethod( GetRandomElementFromAugmentationIdeal, "Group Algebra", true, [IsGroupRing],1,
-function(kg)
-   local x,o;
-   if not(RAMEGA_IsModularGroupAlgebra(kg)) then
-	   Error("Input should be a Modular Group Algebra.");
-   fi;
-   o:=Zero(UnderlyingField(kg));
-   repeat
-      x:=Random(kg);
-   until(Augmentation(x) = o);
-   return x;
-end);
 
 #############################################################################
 ##
@@ -508,6 +511,14 @@ function(kg,n)
   local x,a,b,e,k,g,order,ret,p;
   k:=UnderlyingField(kg);
   g:=UnderlyingGroup(kg);
+
+  if not(RAMEGA_IsModularGroupAlgebra(kg)) then
+    Error("Input should be a Modular Group Algebra.");
+  fi;
+  if not( IsPGroup(g)) then
+      Error("G should be a p group.");
+  fi;
+
   p:=Characteristic(k);
   if ( 1 < Characteristic(k) and  IsPGroup(g) ) then
 		order:=Number(k)^(Number(g)-1);
@@ -546,6 +557,14 @@ function(kg,sigma,n)
   k:=UnderlyingField(kg);
   g:=UnderlyingGroup(kg);
   p:=Characteristic(k);
+
+  if not(RAMEGA_IsModularGroupAlgebra(kg)) then
+    Error("Input should be a Modular Group Algebra.");
+  fi;
+  if not( IsPGroup(g)) then
+      Error("G should be a p group.");
+  fi;
+
   if ( 1 < Characteristic(k) and  IsPGroup(g) ) then
 		order:=Number(k)^(Number(g)-1);
 		e:=One(kg);
@@ -630,7 +649,9 @@ end);
 InstallMethod( RandomDihedralDepth, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
 function(KG,n)
 local a,b,dd,g,s,k,i,j;
-
+if not( IsPGroup(UnderlyingGroup(KG))) then
+    Error("G should be a p group.");
+fi;
     k:=0;
     for i in [1..n] do
       a:=GetRandomUnit(KG); b:=GetRandomUnit(KG);
@@ -656,7 +677,9 @@ end);
 InstallOtherMethod( RandomDihedralDepth, "Group, Number of iterations", true, [IsGroup, IsPosInt],2,
 function(G,n)
 local a,b,k,s,g,i;
-
+if not( IsPGroup(G)) then
+    Error("G should be a p group.");
+fi;
     k:=0;
    	if IsAbelian(G) then
 	   Error("The Group should be a non abelian p-group.");
@@ -676,13 +699,15 @@ end);
 ##
 ##  RandomDihedralDepth( <KG,n> )
 ##
-##  Returns the dihedral depth of a group or a group algebra in a random way.
+##  Returns the quaternion depth of a group or a group algebra in a random way.
 ##
 ##
 InstallMethod( RandomQuaternionDepth, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
 function(KG,n)
     local a,b,dd,g,s,k,i;
-
+    if not( IsPGroup(UnderlyingGroup(KG))) then
+        Error("G should be a p group.");
+    fi;
     k:=0;
     for i in [1..n] do
       a:=GetRandomUnit(KG); b:=GetRandomUnit(KG);
@@ -707,7 +732,9 @@ end);
 InstallOtherMethod( RandomQuaternionDepth, "Group, Number of iterations", true, [IsGroup, IsPosInt],2,
 function(G,n)
 local a,b,k,s,g,i;
-
+if not( IsPGroup(G)) then
+    Error("G should be a p group.");
+fi;
     k:=0;
    	if IsAbelian(G) then
 	   Error("The Group should be a non abelian p-group.");
@@ -715,8 +742,8 @@ local a,b,k,s,g,i;
     for i in [1..n] do
        a:=Random(G); b:=Random(G);
        g:=Group(a,b);
-	   s:=Number(g);
-       if IsGeneralisedQuaternionGroup(g) and s>k then
+	     s:=Number(g);
+       if RAMEGA_IsGeneralisedQuaternionGroup(g) and s>k then
            k:=s;
        fi;
     od;
@@ -735,6 +762,9 @@ InstallMethod( RandomOmega, "Group Algebra, Power of p, Number of iterations", t
 function(kg,m,n)
     local e,i,A,x,p,k,G;
     G:=BasicGroup(kg);
+    if not( IsPrimePowerInt(Size(G))) then
+        Error("G should be a p group.");
+    fi;
     e:=One(G);
   	A:=[];
     if ( IsPGroup(G) ) then
@@ -753,7 +783,12 @@ InstallOtherMethod( RandomOmega, "Group, Power of p, Number of iterations", true
 function(G,m,n)
     local e,i,A,x,p,k;
     e:=One(G);
-   	A:=[];
+
+    if not( IsPGroup(G)) then
+        Error("G should be a p group.");
+    fi;
+
+    A:=[];
     if ( IsPGroup(G) ) then
 	    p:=PrimePGroup(G);
         for i in [1..n] do
@@ -778,6 +813,11 @@ function(kg,m,n)
     local i,A,x,p,k,g,e,G;
     G:=BasicGroup(kg);
     e:=One(G);
+
+    if not( IsPrimePowerInt(Size(G))) then
+        Error("G should be a p group.");
+    fi;
+
 	A:=[];
     if ( IsPGroup(G) ) then
        p:=PrimePGroup(G);
@@ -793,6 +833,10 @@ InstallOtherMethod( RandomAgemo, "Group, Power of p, Number of iterations", true
 function(G,m,n)
     local i,A,x,p,k,g,e;
     e:=One(G);
+    if not( IsPGroup(G)) then
+        Error("G should be a p group.");
+    fi;
+
 	   A:=[];
     if ( IsPGroup(G) ) then
        p:=PrimePGroup(G);
