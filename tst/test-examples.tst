@@ -66,6 +66,21 @@ gap> Augmentation(u);
 Z(2)^0
 
 ## Example 2.2.4
+gap> G:=CyclicGroup(16);;
+gap> Aut:=AutomorphismGroup(G);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> Aut2:=Filtered(Aut,i->Order(i)=2);;
+gap> Aut2;
+[ [ f1*f3 ] -> [ f1*f2*f4 ], [ f1*f3 ] -> [ f1*f3*f4 ],
+[ f1*f3 ] -> [ f1*f2 ] ]
+gap> eta:=Aut2[2];
+[ f1*f3 ] -> [ f1*f3*f4 ]
+gap> u:=GetRandomNormalizedUnitaryUnit(KG,eta);;
+gap> u*RAMEGA_InvolutionKG(u, eta, KG);
+(Z(2)^0)*<identity> of ...
+
+
+## Example 2.2.5
 
 gap> G:=CyclicGroup(IsFpGroup,4);;
 gap> KG:=GroupRing(GF(2),G);;
@@ -80,7 +95,7 @@ gap> for x in Elements(KG) do
 gap> bool;
 true
 
-## Example 2.2.5
+## Example 2.2.6
 
 gap> G:=QuaternionGroup(16);
 <pc group of size 16 with 4 generators>
@@ -128,31 +143,24 @@ gap> KG:=GroupRing(GF(2),G);;
 gap> SG:=RandomCommutatorSubgroup(KG,100);;
 gap> StructureDescription(SG);
 "C2 x C2 x C2"
-gap> G:=CyclicGroup(8);;
-gap> KG:=GroupRing(GF(3),G);;
-gap> SG:=RandomCommutatorSubgroup(KG,100);;
-gap> Elements(SG);
-[ (Z(3)^0)*<identity> of ... ]
 
 ## Example 2.3.7
 gap> G:=DihedralGroup(8);;
-gap> KG:=GroupRing(GF(3),G);;
-gap> SG:=RandomCommutatorSubgroup(KG,100);;
-gap> u:=Random(Elements(SG));;
-gap> Augmentation(u);
-Z(3)^0
-
-## Example 2.3.9
-gap> G:=DihedralGroup(8);;
 gap> KG:=GroupRing(GF(2),G);;
-gap> SG:=RandomNormalizedUnitGroup(KG);;
-gap> Size(SG);
-128
+gap> SG:=RandomCommutatorSubgroupOfNormalizedUnits(KG,100);;
 gap> u:=Random(Elements(SG));;
 gap> Augmentation(u);
 Z(2)^0
 
-## Example 2.3.10
+## Example 2.3.8
+gap> G:=DihedralGroup(8);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> SG:=RandomNormalizedUnitGroup(KG);;
+gap> u:=Random(Elements(SG));;
+gap> Augmentation(u);
+Z(2)^0
+
+## Example 2.3.9
 gap> G:=DihedralGroup(8);;
 gap> KG:=GroupRing(GF(2),G);;
 gap> SG:=RandomUnitarySubgroup(KG,100);;
@@ -162,14 +170,29 @@ Z(2)^0
 gap> u*u^-1;
 (Z(2)^0)*<identity> of ...
 
-
-## Example 2.3.13
+## Example 2.3.10
 gap> G:=DihedralGroup(8);;
 gap> KG:=GroupRing(GF(2),G);;
-gap> ord:=RandomUnitaryOrder(KG,100);
-64
+gap> CS:=RandomCommutatorSeries(KG,200);;
+gap> List(CS,i->Size(i));
+[ 128, 8, 1 ]
 
-## Example 2.3.15
+## Example 2.3.11
+gap> G:=DihedralGroup(8);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> CS:=RandomLowerCentralSeries(KG,200);;
+#I  LAGUNA package: Constructing Lie algebra ...
+#I  LAGUNA package: Checking Lie nilpotency ...
+gap> List(CS,i->Size(i));
+[ 128, 8, 1 ]
+
+## Example 2.3.12
+gap> G:=CyclicGroup(8);;
+gap> KG:=GroupRing(GF(2),G);;
+gap> ord:=RandomUnitaryOrder(KG,500);
+32
+
+## Example 2.3.13
 gap> G:=CyclicGroup(8);;
 gap> KG:=GroupRing(GF(2),G);;
 gap> RO:=RandomOmega(KG,2,50);;
@@ -183,12 +206,28 @@ gap> u:=Random(Elements(RO));;
 gap> (u^2)^2;
 <identity> of ...
 
-## Example 2.3.16
+## Example 2.3.14
 gap> KG:=GroupRing(GF(2),CyclicGroup(8));;
 gap> RA:=RandomAgemo(KG,2,50);
 <group with 2 generators>
+gap> StructureDescription(RA);
+"C2"
 
+## Example 2.3.15
+gap> G:=SmallGroup([64,6]);
+<pc group of size 64 with 6 generators>
+gap> StructureDescription(G);
+"(C8 x C4) : C2"
+gap> RandomDihedralDepth(G,1000);
+2
 
+## Example 2.3.16
+gap> G:=SmallGroup([64,10]);
+<pc group of size 64 with 6 generators>
+gap> StructureDescription(G);
+"(C8 : C4) : C2"
+gap> RandomQuaternionDepth(G,1000);
+2
 
 gap> STOP_TEST( "test-examples.tst", 200000000000 );
 
