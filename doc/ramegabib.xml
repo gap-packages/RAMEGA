@@ -387,4 +387,254 @@
     <pages>171--180</pages>
 </article></entry>
 
+
+<entry id="Lbook"><book>
+    <author>
+      <name><first>Gregory T.</first><last>Lee</last></name>
+    </author>
+    <title>Group identities on units and symmetric units of group rings</title>
+    <series>Algebra and Applications</series>
+    <year>2010</year>
+    <volume>12</volume>
+    <publisher>Springer-Verlag London, Ltd., London</publisher>
+    <pages>xii+194</pages>
+</book></entry>
+
+<entry id="Bovdi_survey"><article>
+    <author>
+      <name><first>A.A.</first><last>Bovdi</last></name>
+    </author>
+    <title>The group of units of a group algebra of characteristic <M>p</M></title>
+    <journal>Publ. Math. Debrecen</journal>
+    <year>1998</year>
+    <volume>52</volume>
+    <number>1-2</number>
+    <pages>193--244</pages>
+</article></entry>
+
+<entry id="Sehgal_book"><book>
+    <author>
+      <name><first>Sudarshan K.</first><last>Sehgal</last></name>
+    </author>
+    <title>Topics in group rings</title>
+    <series>Monographs and Textbooks in Pure and Applied Math.</series>
+    <year>1978</year>
+    <volume>50</volume>
+    <publisher>Marcel Dekker, Inc., New York</publisher>
+    <pages>vi+251</pages>
+</book></entry>
+
+<entry id="shalev"><incollection>
+    <author>
+      <name><first>Eliyahu</first><last>Rips</last></name>
+      <name><first>Aner</first><last>Shalev</last></name>
+    </author>
+    <title>Lie properties of modular group algebras</title>
+    <booktitle>Groups---{S}t. {A}ndrews 1989, {V}ol. 2</booktitle>
+    <series>London Math. Soc. Lecture Note Ser.</series>
+    <year>1991</year>
+    <volume>160</volume>
+    <publisher>Cambridge Univ. Press, Cambridge</publisher>
+    <pages>422--426</pages>
+</incollection></entry>
+
+<entry id="kurdics_1"><article>
+    <author>
+      <name><first>J.</first><last>Kurdics</last></name>
+    </author>
+    <title>Engel properties of group algebras. {I}</title>
+    <journal>Publ. Math. Debrecen</journal>
+    <year>1996</year>
+    <volume>49</volume>
+    <number>1-2</number>
+    <pages>183--192</pages>
+</article></entry>
+
+<entry id="kurdics_2"><article>
+    <author>
+      <name><first>J.</first><last>Kurdics</last></name>
+    </author>
+    <title>Engel properties of group algebras. {II}</title>
+    <journal>J. Pure Appl. Algebra</journal>
+    <year>1998</year>
+    <volume>133</volume>
+    <number>1-2</number>
+    <pages>179--196</pages>
+</article></entry>
+
+<entry id="bovdi_exponent"><article>
+    <author>
+      <name><first>A.</first><last>Bovdi</last></name>
+      <name><first>P.</first><last>Lakatos</last></name>
+    </author>
+    <title>On the exponent of the group of normalized units of modular
+             group algebras</title>
+    <journal>Publ. Math. Debrecen</journal>
+    <year>1993</year>
+    <volume>42</volume>
+    <number>3-4</number>
+    <pages>409--415</pages>
+</article></entry>
+
+<entry id="bovdi_salim_exponent"><article>
+    <author>
+      <name><first>Victor</first><last>Bovdi</last></name>
+      <name><first>Mohammed</first><last>Salim</last></name>
+    </author>
+    <title>Group algebras whose groups of normalized units have exponent
+             4</title>
+    <journal>Czechoslovak Math. J.</journal>
+    <year>2018</year>
+    <volume>68(143)</volume>
+    <number>1</number>
+    <pages>141--148</pages>
+</article></entry>
+
+<entry id="shalev_1"><article>
+    <author>
+      <name><first>Aner</first><last>Shalev</last></name>
+    </author>
+    <title>The nilpotency class of the unit group of a modular group
+             algebra. {III}</title>
+    <journal>Arch. Math. (Basel)</journal>
+    <year>1993</year>
+    <volume>60</volume>
+    <number>2</number>
+    <pages>136--145</pages>
+</article></entry>
+
+<entry id="shalev_2"><article>
+    <author>
+      <name><first>Aner</first><last>Shalev</last></name>
+    </author>
+    <title>Lie dimension subgroups, {L}ie nilpotency indices, and the
+             exponent of the group of normalized units</title>
+    <journal>J. London Math. Soc. (2)</journal>
+    <year>1991</year>
+    <volume>43</volume>
+    <number>1</number>
+    <pages>23--36</pages>
+</article></entry>
+
+<entry id="shalev_3"><article>
+    <author>
+      <name><first>Avinoam</first><last>Mann</last></name>
+      <name><first>Aner</first><last>Shalev</last></name>
+    </author>
+    <title>The nilpotency class of the unit group of a modular group
+             algebra. {II}</title>
+    <journal>Israel J. Math.</journal>
+    <year>1990</year>
+    <volume>70</volume>
+    <number>3</number>
+    <pages>267--277</pages>
+</article></entry>
+
+<entry id="shalev_4"><article>
+    <author>
+      <name><first>Aner</first><last>Shalev</last></name>
+    </author>
+    <title>The nilpotency class of the unit group of a modular group
+             algebra. {I}</title>
+    <journal>Israel J. Math.</journal>
+    <year>1990</year>
+    <volume>70</volume>
+    <number>3</number>
+    <pages>257--266</pages>
+</article></entry>
+
+<entry id="shalev_5"><article>
+    <author>
+      <name><first>Aner</first><last>Shalev</last></name>
+    </author>
+    <title>Dimension subgroups, nilpotency indices, and the number of
+             generators of ideals in <M>p</M>-group algebras</title>
+    <journal>J. Algebra</journal>
+    <year>1990</year>
+    <volume>129</volume>
+    <number>2</number>
+    <pages>412--438</pages>
+</article></entry>
+
+<entry id="balogh_1"><article>
+    <author>
+      <name><first>Zsolt</first><last>Balogh</last></name>
+    </author>
+    <title>Lie derived length and involutions in group algebras</title>
+    <journal>J. Pure Appl. Algebra</journal>
+    <year>2012</year>
+    <volume>216</volume>
+    <number>6</number>
+    <pages>1282--1287</pages>
+</article></entry>
+
+<entry id="balogh_2"><article>
+    <author>
+      <name><first>Zsolt</first><last>Balogh</last></name>
+      <name><first>Juh\'{a}sz</first><last>Tibor</last></name>
+    </author>
+    <title>Lie derived lengths of group algebras of groups with cyclic
+             derived subgroup</title>
+    <journal>Comm. Algebra</journal>
+    <year>2008</year>
+    <volume>36</volume>
+    <number>2</number>
+    <pages>315--324</pages>
+</article></entry>
+
+<entry id="spinelli_1"><article>
+    <author>
+      <name><first>Ernesto</first><last>Spinelli</last></name>
+    </author>
+    <title>Group algebras with minimal {L}ie derived length</title>
+    <journal>J. Algebra</journal>
+    <year>2008</year>
+    <volume>320</volume>
+    <number>5</number>
+    <pages>1908--1913</pages>
+</article></entry>
+
+<entry id="sahai_1"><article>
+    <author>
+      <name><first>Harish</first><last>Chandra</last></name>
+      <name><first>Meena</first><last>Sahai</last></name>
+    </author>
+    <title>Group algebras with unit groups of derived length three</title>
+    <journal>J. Algebra Appl.</journal>
+    <year>2010</year>
+    <volume>9</volume>
+    <number>2</number>
+    <pages>305--314</pages>
+</article></entry>
+
+<entry id="Creedon_Gildea_I"><article>
+    <author>
+      <name><first>L.</first><last>Creedon</last></name>
+      <name><first>J.</first><last>Gildea</last></name>
+    </author>
+    <title>Unitary units of the group algebra <M>F_{2^k}Q_8</M></title>
+    <journal>Internat. J. Algebra Comput.</journal>
+    <year>2009</year>
+    <volume>19</volume>
+    <number>2</number>
+    <pages>283--286</pages>
+</article></entry>
+
+<entry id="LAGUNA3.9.0"><misc>
+  <author>
+    <name><first>Victor</first><last>Bovdi</last></name>
+    <name><first>Alexander</first><last>Konovalov</last></name>
+    <name><first>Richard</first><last>Rossmanith</last></name>
+    <name><first>Csaba</first><last>Schneider</last></name>
+  </author>
+  <title><C>LAGUNA</C>, Lie AlGebras and UNits of group Algebras,
+         <C>V</C>ersion 3.9.0</title>
+  <howpublished><URL>https://gap-packages.github.io/laguna</URL></howpublished>
+  <month>Apr</month>
+  <year>2017</year>
+  <note>Refereed GAP package</note>
+  <keywords>group ring; modular group algebra; Lie algebra; unit group</keywords>
+</misc></entry>
+
+
 </file>

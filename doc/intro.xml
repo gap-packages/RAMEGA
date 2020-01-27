@@ -15,9 +15,20 @@
 <Chapter Label="intro">
 <Heading>Introduction</Heading>
 
+
 <Package>RAMEGA</Package> stands for ``RAndom MEthods in Group ALgebras".
 This package is dedicated to realization of some standard functions for group rings by the means of the random methods. This approach allows to compute the needed function
-in a reasonable time and with minimal memory use even for the large group rings <Cite Key="Bovdi_Rosa_I"/>.
+in a reasonable time and with minimal memory use even for the large group rings <Cite Key="Bovdi_Rosa_I"/>.<P/>
+
+The main purpose of <Package>RAMEGA</Package> is to deal with the group of units of group algebras, in particular,
+modular group algebras. In modular case the order of group of units is an exponenetial function
+of the order of basic group. Therefore the size of group of units can be very large even for smaller
+basic groups. This package contains random functions corresponding to the properties of
+group of units of group algebras. Most functions also can be found in <Package>LAGUNA</Package> <Cite Key="LAGUNA3.9.0"/>, but due to
+random methods, their computation time are significantly reduced in <Package>RAMEGA</Package>.<P/>
+
+<Package>RAMEGA</Package> also contains functions related to Lie properties of group alebras and there are some functions
+that work for any group structure not only for group algebras.<P/>
 
 <Section Label="overview">
 <Heading>Overview over this manual</Heading>

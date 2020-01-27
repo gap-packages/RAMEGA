@@ -16,15 +16,21 @@
 <Section Label="random_basic">
 <Heading>Basic Operations</Heading>
 
+Please note, that throughout this package it is assumed that the group <C>G</C> is finite.
 
 <ManSection>
 <Func Name="BasicGroup" Arg="KG"/>
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
 
-For the group ring <C>KG</C> the function <C>BasicGroup</C> returns the basic group of <C>KG</C> as a subgroup of the group of units of <C>KG</C>.
+Let <M>G</M> be a group and <M>F</M> a field. Then the group algebra <M>FG</M> consists of the set of formal
+linear combinations of the form
+<Display>
+\sum_{g \in G} \alpha_g g, \quad \alpha_g \in F
+</Display>
+where all but finitely many of the <M>\alpha_g</M> are zero  <Cite Key="Lbook"/><Cite Key="Bovdi_survey"/>. <P/>
 
-<P/> Please note, that throughout this package it is assumed that the group <C>G</C> is finite.
+For the group ring <C>KG</C> the function <C>BasicGroup</C> returns the basic group of <C>KG</C> as a subgroup of the group of units of <C>KG</C>.<P/>
 
 
 
@@ -51,7 +57,7 @@ gap> Elements(last);
 
 On any associative ring <M>R</M> the Lie bracket is defined as <M>[x,y] = xy-yx.</M>. For any positive integer <M>n</M>,
 a subset <M>\Lambda</M> of <M>R</M> is said to be Lie <M>n</M>-Engel if for any <M>x,y \in \Lambda</M>,
-<M>[x,y,\ldots,y]=0</M> (<M>y</M> is taken <M>n</M> times)  <Cite Key="Lee2000"/> .<P/>
+<M>[x,y,\ldots,y]=0</M> (<M>y</M> is taken <M>n</M> times)  <Cite Key="Lee2000"/><Cite Key="Sehgal_book"/>  .<P/>
 
 For the group ring <C>KG</C> the function <C>IsLienEngel</C> returns <C>true</C> if <C>KG</C> is Lie <M>n</M>-Engel and <C>false</C> otherwise.
 
@@ -245,7 +251,7 @@ gap> Augmentation(u);
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
 Let <C>KG</C> be a Lie n-Engel group ring and let <M>[x,y,y,\ldots,y]=0</M> for all <M>x, y \in KG </M>. Then the number of <M>y</M>'s in the last equation is called
- the Lie <M>n</M>-Engel length. <P/>
+ the Lie <M>n</M>-Engel length <Cite Key="shalev"/><Cite Key="kurdics_1"/><Cite Key="kurdics_2"/>. <P/>
 For the Lie n-Engel group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function <C>RandomLienEngelLength</C> returns the Lie <M>n</M>-Engel length of <M>KG</M> by a random way.
 
 <Example>
@@ -264,7 +270,7 @@ gap> RandomLienEngelLength(KG,100);
 <!-- The names chosen for the arguments describe their meaning.-->
 For the group ring <C>KG</C> (where <M>G</M> is a finite <M>p</M>-group and the characteristic of <M>K</M> is <M>p</M>) and the maximal number of
 iterations <C>num</C> the function <C>RandomExponent</C> returns the
-exponent of <C>V(KG)</C> by a random way.
+exponent of <C>V(KG)</C> <Cite Key="bovdi_exponent"/> <Cite Key="bovdi_salim_exponent"/> <Cite Key="shalev_2"/> by a random way.
 
 <Example>
 <![CDATA[
@@ -310,7 +316,8 @@ This allows us to define the lower central series of a nonempty subset <M>H</M> 
 <Display>
   cl(H) = \min\{n \in \mathbb{N}_0: \gamma_{n+1}(H)=1\}
 </Display>
-is called the nilpotency class of <M>H</M> <Cite Key="BaloghJuhasz2011"/>.
+is called the nilpotency class of <M>H</M> <Cite Key="BaloghJuhasz2011"/><Cite Key="shalev_1"/><Cite Key="shalev_2"/><Cite Key="shalev_3"/>
+<Cite Key="shalev_4"/><Cite Key="shalev_5"/>.
 <P/>
   For the Lie nilpotent group ring <C>KG</C> and the maximal number of iterations <C>num</C> the function
   <C>RandomNilpotencyClass</C> returns the nilpotency class of the group of normalized units of <C>KG</C> by a
@@ -335,7 +342,8 @@ gap> RandomNilpotencyClass(KG,100);
 <M>KG</M> is called <A>Lie solvable</A>, if some of the terms of the Lie derived series <M>\delta^{[n]}(KG)=[\delta^{[n-1]}(KG),\delta^{[n-1]}(KG)]</M>
 with <M>\delta^{[0]}(KG)=KG</M> are equal to zero. <P/>
 Denote by <M>\dl_L(KG)</M> the minimal element of the set <M>\{m\in\mathbb N\;\vert\;
-\delta^{[m]}(KG)=0\}</M>, which is said to be the <A>Lie derived length</A> of <M>KG</M>. <P/>
+\delta^{[m]}(KG)=0\}</M>, which is said to be the <A>Lie derived length</A> of <M>KG</M> <Cite Key="balogh_1"/>
+<Cite Key="balogh_2"/><Cite Key="spinelli_1"/><Cite Key="sahai_1"/>. <P/>
 
 
 For the modular group ring <C>KG</C> and a positive integer  <C>n</C> the function <C>RandomDerivedLength</C>
@@ -485,7 +493,7 @@ gap> CS:=RandomLowerCentralSeries(KG,100);
 <Description>
 For the group ring <C>KG</C>, where <C>G</C> is a finite <C>p</C>-group and <C>K</C> has characteristic <C>p</C>,
 and a positive integer  <C>n</C>, where <C>n</C> is the number of iterations, the function <C>RandomUnitaryOrder</C>
-returns the order of the unitary subgroup of <M>KG</M> by a random way. Also, there exists a three-parametrical version of this method,
+returns the order of the unitary subgroup of <M>KG</M> <Cite Key="Creedon_Gildea_I"/> by a random way. Also, there exists a three-parametrical version of this method,
 where the third parameter <M>\sigma</M> is an arbitrary anti-automorphism of <M>G</M>.
 
 <Example>
