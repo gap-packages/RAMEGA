@@ -521,23 +521,23 @@ function(kg,n)
 
   p:=Characteristic(k);
   if ( 1 < Characteristic(k) and  IsPGroup(g) ) then
-		order:=Number(k)^(Number(g)-1);
-		e:=One(kg);
-		a:=0;
-		b:=0;
-		while (not a = n) do
-			x:=GetRandomNormalizedUnit(kg);
-			a:=a+1;
-			if (x*Involution(x) = e) then
-				b:=b+1;
-			fi;
-		od;
+order:=Number(k)^(Number(g)-1);
+e:=One(kg);
+a:=0;
+b:=0;
+while (not a = n) do
+x:=GetRandomNormalizedUnit(kg);
+a:=a+1;
+if (x*Involution(x) = e) then
+b:=b+1;
+fi;
+od;
   if (b=0) then
      return 0;
   fi;
   ret:=0;
   order:=order*b/a;
-  while not(p^ret < order and order < p^(ret+1)) do
+  while not(p^ret < order and order <= p^(ret+1)) do
     ret:=ret+1;
   od;
   if (order - p^ret > p^(ret+1)-order ) then
@@ -552,47 +552,47 @@ end);
 
 InstallOtherMethod(RandomUnitaryOrder, "Group Ring, Involution, Number of Iterations", true, [IsGroupRing,IsMapping,IsPosInt],3,
 function(kg,sigma,n)
+    local x,a,b,e,k,g,order,ret,p;
+    k:=UnderlyingField(kg);
+    g:=UnderlyingGroup(kg);
 
-  local x,a,b,e,k,g,order,ret,p;
-  k:=UnderlyingField(kg);
-  g:=UnderlyingGroup(kg);
-  p:=Characteristic(k);
+    if not(RAMEGA_IsModularGroupAlgebra(kg)) then
+      Error("Input should be a Modular Group Algebra.");
+    fi;
+    if not( IsPGroup(g)) then
+        Error("G should be a p group.");
+    fi;
 
-  if not(RAMEGA_IsModularGroupAlgebra(kg)) then
-    Error("Input should be a Modular Group Algebra.");
+    p:=Characteristic(k);
+    if ( 1 < Characteristic(k) and  IsPGroup(g) ) then
+  order:=Number(k)^(Number(g)-1);
+  e:=One(kg);
+  a:=0;
+  b:=0;
+  while (not a = n) do
+  x:=GetRandomNormalizedUnit(kg);
+  a:=a+1;
+  if (x*RAMEGA_InvolutionKG(x,sigma,kg) = e) then
+  b:=b+1;
   fi;
-  if not( IsPGroup(g)) then
-      Error("G should be a p group.");
-  fi;
-
-  if ( 1 < Characteristic(k) and  IsPGroup(g) ) then
-		order:=Number(k)^(Number(g)-1);
-		e:=One(kg);
-		a:=0;
-		b:=0;
-		while (not a = n) do
-			x:=GetRandomNormalizedUnit(kg);
-			a:=a+1;
-			if (x*RAMEGA_InvolutionKG(x,sigma,kg) = e) then
-				b:=b+1;
-			fi;
-		od;
-  if (b=0) then
-     return 0;
-  fi;
-  ret:=0;
-  order:=order*b/a;
-  while not(p^ret < order and order < p^(ret+1)) do
-    ret:=ret+1;
   od;
-  if (order - p^ret > p^(ret+1)-order ) then
-     ret:=ret+1;
-  fi;
-  return p^ret;
-  else
-      Error("The characteristic of Group Ring is a prime and g is a finite p-group");
-      return 0;
-  fi;
+    if (b=0) then
+       return 0;
+    fi;
+    ret:=0;
+    order:=order*b/a;
+    while not(p^ret < order and order <= p^(ret+1)) do
+      ret:=ret+1;
+    od;
+    if (order - p^ret > p^(ret+1)-order ) then
+       ret:=ret+1;
+    fi;
+    return p^ret;
+    else
+        Error("The characteristic of Group Ring is a prime and g is a finite p-group");
+        return 0;
+    fi;
+
 end);
 
 #############################################################################
