@@ -3,7 +3,7 @@
   intro.xml          ramega package documentation                 Zsolt Adam Balogh
 																  Vasyl Laver
 
-  Copyright (C) 2019  Zsolt Adam Balogh, Vasyl Laver, Department of Mathematical Sciences,
+  Copyright (C) 2020  Zsolt Adam Balogh, Vasyl Laver, Department of Mathematical Sciences,
   UAEU, Al Ain, United Arab Emirates
   This file is free software, see license information at the end.
 
@@ -32,13 +32,16 @@ that work for any group structure not only for group algebras.<P/>
 
 <Section Label="overview">
 <Heading>Overview over this manual</Heading>
-Chapter <Ref Chap="random"/> describes the functions for group algebras which were obtained using the random methods.
+Chapter <Ref Chap="random"/> describes the functions for group algebras which were obtained using the random methods. There are three subchapters in it.
+The first one, <Ref Chap="random_basic"/>, describes some basic operations for group algebras, which don't involve randomness. Chapter <Ref Chap="random_methods_elements"/>
+describes the methods, which return the elements with some desired property by a random way. Chapter <Ref Chap="random_methods_general"/> describes some general methods for
+group algebras. All the methods in this section also return the result by a random way.  
 </Section>
 
 <Section Label="instal">
 <Heading>Installation</Heading>
 To get the newest version of this &GAP; 4 package download the
-archive file <F>thelma-x.x.tar.gz</F> and unpack it in a directory called <Q><F>pkg</F></Q>, preferably (but not
+archive file <F>ramega-x.x.tar.gz</F> and unpack it in a directory called <Q><F>pkg</F></Q>, preferably (but not
 necessarily) in the <Q><F>pkg</F></Q> subdirectory of your &GAP; 4
 installation. It creates a subdirectory called <Q><F>RAMEGA</F></Q>.<P/>
 
@@ -50,7 +53,7 @@ As <Package>RAMEGA</Package> has no additional C libraries, there is no need in 
 <Section Label="feedback">
 <Heading>Feedback</Heading>
 
-For bug reports, feature requests and suggestions, please use the github issue tracker/ <!-- at <URL>https://github.com/gap-packages/Thelma/issues</URL>. -->
+For bug reports, feature requests and suggestions, please use the github issue tracker at <URL>https://github.com/vlaver/RAMEGA/issues</URL>.
 </Section>
 
 
