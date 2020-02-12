@@ -193,9 +193,7 @@ local p,m;
 			fi;
     else return false;
     fi;
-    ## LAST ELSE LINE SHOULD BE CHECKED!!!!!!!!!!!!!!
 	else
-#	    Error("The Group should be a non abelian 2-group.");
 		return false;
     fi;
 end);
