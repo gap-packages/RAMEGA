@@ -6,7 +6,7 @@
 ##
 #H  @(#)$Id: random.gi,v 1.00 $
 ##
-#Y  Copyright (C)  2018,  UAE University, UAE
+#Y  Copyright (C)  2020,  UAE University, UAE
 ##
 #############################################################################
 ##
@@ -648,7 +648,7 @@ end);
 
 InstallMethod( RandomDihedralDepth, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
 function(KG,n)
-local a,b,dd,g,s,k,i,j;
+local a,b,dd,g,s,k,i,j,exp;
 if not( IsPGroup(UnderlyingGroup(KG))) then
     Error("G should be a p group.");
 fi;
@@ -658,7 +658,8 @@ fi;
       if Order(a)>=2 and Order(b)>=2 and a*b<>b*a then
         g:=Group(a,b); s:=Size(g);
     #    Print(s,"  ",Exponent(g),"\n");
-        if s/Exponent(g)=2 then
+        exp:= Lcm(Set(List(Elements(g),j->Order(j))));
+        if s/exp=2 then
           if Size(Filtered(Elements(g),j->Order(j)<=2))>=s/2+2 and s>k then k:=s; fi;
         fi;
       fi;
@@ -704,7 +705,7 @@ end);
 ##
 InstallMethod( RandomQuaternionDepth, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
 function(KG,n)
-    local a,b,dd,g,s,k,i;
+    local a,b,dd,g,s,k,i,j,exp;
     if not( IsPGroup(UnderlyingGroup(KG))) then
         Error("G should be a p group.");
     fi;
@@ -713,7 +714,9 @@ function(KG,n)
       a:=GetRandomUnit(KG); b:=GetRandomUnit(KG);
       if Order(a)>=2 and Order(b)>=2 and a*b<>b*a then
         g:=Group(a,b); s:=Size(g);
-        if s/Exponent(g)=2 then
+        exp:= Lcm(Set(List(Elements(g),j->Order(j))));
+
+        if s/exp=2 then
           if Size(Filtered(Elements(g),j->Order(j)<=2))=2 and s>k then k:=s; fi;
         fi;
       fi;
