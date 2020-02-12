@@ -5,9 +5,9 @@
 ##
 ##
 ##
-#H  @(#)$Id: init.g,v 1.00 $
+#H  @(#)$Id: read.g,v 1.00 $
 ##
-#Y  Copyright (C)  2018,  UAEU, Al Ain, United Arab Emirates
+#Y  Copyright (C)  2020,  UAEU, Al Ain, United Arab Emirates
 ##
 #############################################################################
 ##
