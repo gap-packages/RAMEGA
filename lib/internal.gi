@@ -6,7 +6,7 @@
 ##
 #H  @(#)$Id: ramega_internal.gi,v 1.00 $
 ##
-#Y  Copyright (C)  2018,  UAE University, UAE
+#Y  Copyright (C)  2020,  UAE University, UAE
 ##
 #############################################################################
 ##
@@ -193,7 +193,7 @@ local p,m;
 			fi;
     else return false;
     fi;
-    ## LAST ELSE LINE SHOULD BE CHECKED!!!!!!!!!!!!!!  
+    ## LAST ELSE LINE SHOULD BE CHECKED!!!!!!!!!!!!!!
 	else
 #	    Error("The Group should be a non abelian 2-group.");
 		return false;
