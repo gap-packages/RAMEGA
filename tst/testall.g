@@ -2,7 +2,7 @@
 ##
 ##  testall.g                   RAMEGA                Balogh Zsolt, Vasyl Laver
 ##
-##  Copyright (C)  2018,  UAE University, UAE
+##  Copyright (C)  2020,  UAE University, UAE
 ##
 LoadPackage( "ramega" );
 TestDirectory(DirectoriesPackageLibrary( "ramega", "tst" ),
