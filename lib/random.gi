@@ -648,25 +648,46 @@ end);
 
 InstallMethod( RandomDihedralDepth, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
 function(KG,n)
-local a,b,dd,g,s,k,i,j,exp;
-if not( IsPGroup(UnderlyingGroup(KG))) then
-    Error("G should be a p group.");
-fi;
+    local a,b,dd,g,s,k,i,j,exp;
+    if not( IsPGroup(UnderlyingGroup(KG))) then
+        Error("G should be a p group.");
+    fi;
+
     k:=0;
     for i in [1..n] do
       a:=GetRandomUnit(KG); b:=GetRandomUnit(KG);
       if Order(a)>=2 and Order(b)>=2 and a*b<>b*a then
         g:=Group(a,b); s:=Size(g);
-    #    Print(s,"  ",Exponent(g),"\n");
-        exp:= Lcm(Set(List(Elements(g),j->Order(j))));
-        if s/exp=2 then
-          if Size(Filtered(Elements(g),j->Order(j)<=2))>=s/2+2 and s>k then k:=s; fi;
-        fi;
+       if RAMEGA_IsDihedralGroup(g) and s>k then
+           k:=s;
+       fi;
       fi;
     od;
 
     if k<>0 then return LogInt(k,2)-1; else return 0; fi;
 end);
+
+#InstallMethod( RandomDihedralDepth, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
+#function(KG,n)
+#local a,b,dd,g,s,k,i,j,exp;
+#if not( IsPGroup(UnderlyingGroup(KG))) then
+#    Error("G should be a p group.");
+#fi;
+#    k:=0;
+#    for i in [1..n] do
+#      a:=GetRandomUnit(KG); b:=GetRandomUnit(KG);
+#      if Order(a)>=2 and Order(b)>=2 and a*b<>b*a then
+#        g:=Group(a,b); s:=Size(g);
+    #    Print(s,"  ",Exponent(g),"\n");
+#        exp:= Lcm(Set(List(Elements(g),j->Order(j))));
+#        if s/exp=2 then
+#          if Size(Filtered(Elements(g),j->Order(j)<=2))>=s/2+2 and s>k then k:=s; fi;
+#        fi;
+#      fi;
+#    od;
+
+#    if k<>0 then return LogInt(k,2)-1; else return 0; fi;
+#end);
 
 #############################################################################
 ##
@@ -682,23 +703,24 @@ if not( IsPGroup(G)) then
     Error("G should be a p group.");
 fi;
     k:=0;
-   	if IsAbelian(G) then
-	   Error("The Group should be a non abelian p-group.");
+    if IsAbelian(G) then
+  Error("The Group should be a non abelian p-group.");
     fi;
     for i in [1..n] do
-       a:=Random(G); b:=Random(G);
+       a:=Random(Elements(G)); b:=Random(Elements(G));
        g:=Group(a,b);
-	   s:=Number(g);
-       if IsDihedralGroup(g) and s>k then
+  s:=Number(g);
+       if RAMEGA_IsDihedralGroup(g) and s>k then
            k:=s;
        fi;
     od;
     if k>0 then return LogInt(k,2)-1; else return 0; fi;
 end);
 
+
 #############################################################################
 ##
-##  RandomDihedralDepth( <KG,n> )
+##  RandomQuaternionDepth( <KG,n> )
 ##
 ##  Returns the quaternion depth of a group or a group algebra in a random way.
 ##

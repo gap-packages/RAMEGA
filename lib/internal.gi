@@ -175,8 +175,34 @@ BindGlobal("RAMEGA_InvolutionKG",function(x, sigma, KG)
 end);
 
 
+BindGlobal("RAMEGA_IsDihedralGroup", function(G)
+local p,m,exponent;
+
+    if ( IsPGroup(G) and not(IsAbelian(G)) ) then
+      p:=PrimePGroup(G);
+      if p<>2 then
+        # Error("The Group should be a non abelian 2-group.");
+        return false;
+      fi;
+      exponent:=Lcm(Set((List(Elements(G),j->Order(j)))));
+      if exponent=Number(G)/2 then
+        if Size(Filtered(Elements(G),j->Order(j)<=2))=exponent+2 then
+          return true;
+        else
+          return false;
+        fi;
+      else return false;
+      fi;
+    else
+      return false;
+    fi;
+end);
+
+
+
+
 BindGlobal("RAMEGA_IsGeneralisedQuaternionGroup", function(G)
-local p,m;
+local p,m,exponent,x;
 
     if ( IsPGroup(G) and not(IsAbelian(G)) ) then
 	    p:=PrimePGroup(G);
@@ -184,6 +210,7 @@ local p,m;
 		   # Error("The Group should be a non abelian 2-group.");
 			return false;
 		fi;
+    #exponent:=Lcm(Set(List(Elements(G),j->Order(j))));  
 		if Exponent(G)=Number(G)/2 then
 		    m:=Filtered(G,x->Order(x)=2);
 			if Number(m) = 1 then
