@@ -1,7 +1,7 @@
 name: RAMEGA
 version: "1.000"
 license: "GPL-2.0-or-later"
-date: 2019-06-04
+date: 2020-04-04
 description: |
     A for Random Methods in Group Algebras.
 
@@ -42,10 +42,10 @@ keywords: |
     group rings, group algebras, random methods.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BL19</span>]   <b class='BibAuthor'>Balogh, Z. A. and Laver, V.</b>,
+    [<span class='BibKey'>BL20</span>]   <b class='BibAuthor'>Balogh, Z. A. and Laver, V.</b>,
      <i class='BibTitle'>RAMEGA, A for Random Methods in Group Algebras.,
              Version 1.000</i>
-     (<span class='BibYear'>2019</span>)<br />
+     (<span class='BibYear'>2020</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://vlaver.github.io/RAMEGA">https://vlaver.github.io/RAMEGA</a></span>.
     </p>
@@ -56,13 +56,13 @@ bibtex: |
       author =           {Balogh, Z. A. and Laver, V.},
       title =            {{RAMEGA},  A  for  Random  Methods in Group Algebras.,
                           {V}ersion 1.000},
-      month =            {Jun},
-      year =             {2019},
+      month =            {Apr},
+      year =             {2020},
       note =             {GAP package},
       howpublished =     {\href                {https://vlaver.github.io/RAMEGA}
                           {\texttt{https://vlaver.github.io/}\discretionary
                           {}{}{}\texttt{RAMEGA}}},
       keywords =         {group rings; group algebras; random methods},
-      printedkey =       {BL19}
+      printedkey =       {BL20}
     }
 
