@@ -1,0 +1,50 @@
+  
+  [1X1 [33X[0;0YIntroduction[133X[101X
+  
+  [33X[0;0Y[5XRAMEGA[105X  stands  for  ``RAndom  MEthods  in  Group ALgebras". This package is
+  dedicated  to  realization of some standard functions for group rings by the
+  means  of  the  random  methods.  This approach allows to compute the needed
+  function in a reasonable time and with minimal memory use even for the large
+  group rings [BR00].[133X
+  
+  [33X[0;0YThe  main  purpose  of  [5XRAMEGA[105X  is  to deal with the group of units of group
+  algebras,  in  particular, modular group algebras. In modular case the order
+  of  group  of units is an exponenetial function of the order of basic group.
+  Therefore  the  size  of  group  of units can be very large even for smaller
+  basic  groups.  This  package contains random functions corresponding to the
+  properties  of  group of units of group algebras. Most functions also can be
+  found  in [5XLAGUNA[105X [BKRS17], but due to random methods, their computation time
+  are significantly reduced in [5XRAMEGA[105X.[133X
+  
+  [33X[0;0Y[5XRAMEGA[105X  also  contains  functions related to Lie properties of group alebras
+  and  there are some functions that work for any group structure not only for
+  group algebras.[133X
+  
+  
+  [1X1.1 [33X[0;0YOverview over this manual[133X[101X
+  
+  [33X[0;0YChapter  [14X2[114X  describes  the  functions for group algebras which were obtained
+  using  the random methods. There are three subchapters in it. The first one,
+  [14X2.1[114X, describes some basic operations for group algebras, which don't involve
+  randomness.  Chapter  [14X2.2[114X  describes  the methods, which return the elements
+  with  some  desired  property  by  a  random way. Chapter [14X2.3[114X describes some
+  general  methods  for  group  algebras. All the methods in this section also
+  return the result by a random way.[133X
+  
+  
+  [1X1.2 [33X[0;0YInstallation[133X[101X
+  
+  [33X[0;0YTo  get  the  newest version of this [5XGAP[105X 4 package download the archive file
+  [11Xramega-x.x.tar.gz[111X  and  unpack it in a directory called [21X[11Xpkg[111X[121X, preferably (but
+  not  necessarily)  in  the  [21X[11Xpkg[111X[121X  subdirectory of your [5XGAP[105X 4 installation. It
+  creates a subdirectory called [21X[11XRAMEGA[111X[121X.[133X
+  
+  [33X[0;0YAs  [5XRAMEGA[105X has no additional C libraries, there is no need in any additional
+  installation steps.[133X
+  
+  
+  [1X1.3 [33X[0;0YFeedback[133X[101X
+  
+  [33X[0;0YFor  bug  reports,  feature  requests and suggestions, please use the github
+  issue tracker at [7Xhttps://github.com/vlaver/RAMEGA/issues[107X.[133X
+  

@@ -1,102 +1,106 @@
 #############################################################################
-##  
-##  Demo PackageInfo.g for the GitHubPagesForGAP
+##
+##  PackageInfo.g for the package `RAMEGA'                     Zsolt Adam Balogh
+##                                                             Vasyl Laver
+##
 ##
 
 SetPackageInfo( rec(
+PackageName := "RAMEGA",
+Subtitle := "A for Random Methods in Group Algebras.",
+Version := "1.000",
+Date := "04/06/2019",
+License := "GPL-2.0-or-later",
 
-PackageName := "GitHubPagesForGAP",
-
-Subtitle := "A GitHub Pages generator for GAP packages",
-Version := "0.3",
-Date := "10/11/2019", # dd/mm/yyyy format
-License := "0BSD",
+PackageWWWHome := Concatenation( "https://vlaver.github.io/", ~.PackageName ),
+    SourceRepository := rec(
+    Type := "git",
+    URL := Concatenation( "https://github.com/vlaver/", ~.PackageName ),
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+ArchiveURL := Concatenation( ~.SourceRepository.URL,
+                                 "/releases/download/v", ~.Version,
+                                 "/", ~.PackageName, "-", ~.Version ),
+ArchiveFormats := ".tar.gz",
 
 Persons := [
   rec(
-    LastName      := "Horn",
-    FirstNames    := "Max",
+    LastName      := "Balogh",
+    FirstNames    := "Zsolt Adam",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "max.horn@uni-siegen.de",
-    WWWHome       := "https://www.quendi.de/math",
-    PostalAddress := Concatenation(
-                       "Department Mathematik\n",
-                       "Universität Siegen\n",
-                       "Walter-Flex-Straße 3\n",
-                       "57072 Siegen\n",
-                       "Germany" ),
-    Place         := "Siegen",
-    Institution   := "Universität Siegen"
+    Email         := "baloghzsa@gmail.com",
+   	Place         := "Al Ain",
+    Institution   := "UAE University"
   ),
-
   rec(
-    LastName      := "Thor",
-    FirstNames    := "A. U.",
+    LastName      := "Laver",
+    FirstNames    := "Vasyl",
     IsAuthor      := true,
-    IsMaintainer  := false,
-    #Email         := "author@example.com",
-  ),
-
-  rec(
-    LastName      := "Itor",
-    FirstNames    := "Jan",
-    IsAuthor      := false,
     IsMaintainer  := true,
-    #Email         := "janitor@example.com",
+    Email         := "vasyl.laver@uzhnu.edu.ua",
+  	Place         := "Uzhhorod",
+    Institution   := "Uzhhorod National University"
   ),
 ],
 
-Status := "other",
+Status := "dev",
 
-# The following are not strictly necessary in your own PackageInfo.g
-# (in the sense that update.g only looks at the usual fields
-# like PackageWWWHome, ArchiveURL etc.). But they are convenient
-# if you use exactly the scheme for your package website that we propose.
-GithubUser := "gap-system",
-GithubRepository := ~.PackageName,
-GithubWWW := Concatenation("https://github.com/", ~.GithubUser, "/", ~.GithubRepository),
+##  You must provide the next two entries if and only if the status is
+##  "accepted" because is was successfully refereed:
+# format: 'name (place)'
+# CommunicatedBy := "Mike Atkinson (St. Andrews)",
+#CommunicatedBy := "Edmund Robertson (St. Andrews)",
+# format: mm/yyyy
+# AcceptDate := "08/1999",
+#AcceptDate := "09/2004",
 
-PackageWWWHome := Concatenation("https://", ~.GithubUser, ".github.io/", ~.GithubRepository, "/"),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-# The following assumes you are using the Github releases system. If not, adjust
-# it accordingly.
-ArchiveURL     := Concatenation(~.GithubWWW,
-                    "/releases/download/v", ~.Version, "/",
-                    ~.GithubRepository, "-", ~.Version),
+README_URL :=
+  Concatenation( ~.PackageWWWHome, "/README.md" ),
+PackageInfoURL :=
+  Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 
-ArchiveFormats := ".tar.gz .tar.bz2",
+AbstractHTML :=
+   "The <span class=\"pkgname\">RAMEGA</span> package is a package with random methods for group algebras.",
 
-AbstractHTML := 
-  "This is a pseudo package that contains no actual\
-  <span class=\"pkgname\">GAP</span> code. Instead, it is a template for other\
-  GAP packages that allows to quickly setup GitHub Pages.",
 
 PackageDoc := rec(
-  BookName  := "GitHubPagesForGAP",
+  BookName  := ~.PackageName,
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
+  # the path to the .six file used by GAP's help system
   SixFile   := "doc/manual.six",
-  LongTitle := "A GitHub Pages generator for GAP packages",
+  # a longer title of the book, this together with the book name should
+  # fit on a single text line (appears with the '?books' command in GAP)
+  LongTitle := ~.Subtitle,
 ),
 
-# The following dependencies are fake and for testing / demo purposes
 Dependencies := rec(
-  GAP := ">=4.8.1",
-  NeededOtherPackages := [
-    ["GAPDoc", ">= 1.2"],
-    ["IO", ">= 4.1"],
-  ],
-  SuggestedOtherPackages := [["orb", ">= 4.2"]],
+  GAP := ">= 4.10",
+  NeededOtherPackages := [["GAPDoc", "1.5"]],
+  SuggestedOtherPackages := [],
   ExternalConditions := []
 ),
 
 AvailabilityTest := ReturnTrue,
 
-Keywords := ["GitHub Pages", "GAP"]
+BannerString := Concatenation(
+  "----------------------------------------------------------------\n",
+  "Loading  RAMEGA ", ~.Version, ", a package with random methods for group algebras\n",
+  "by ", ~.Persons[1].FirstNames, " ", ~.Persons[1].LastName,",\n",
+#        " (", ~.Persons[1].WWWHome, ")\n",
+  "   ", ~.Persons[2].FirstNames, " ", ~.Persons[2].LastName,".\n",
+#        " (", ~.Persons[2].WWWHome, ")\n",
+#  "   ", ~.Persons[3].FirstNames, " ", ~.Persons[3].LastName,"\n",
+#        " (", ~.Persons[3].WWWHome, ")\n",
+  "For help, type: ?Ramega: \n",
+  "----------------------------------------------------------------\n" ),
+
+Autoload := false,
+
+TestFile := "tst/testall.g",
+
+Keywords := ["group rings", "group algebras", "random methods"]
 
 ));
-
-

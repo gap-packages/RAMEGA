@@ -1,0 +1,84 @@
+  
+  
+  [1XReferences[101X
+  
+  [[20XBal12[120X] [16XBalogh, Z.[116X, [17XLie derived length and involutions in group algebras[117X, [18XJ.
+  Pure Appl. Algebra[118X, [19X216[119X, 6 (2012), 1282--1287.
+  
+  [[20XBJ11[120X] [16XBalogh, Z. and Juh\'{a}sz, T.[116X, [17XNilpotency class of symmetric units of
+  group algebras[117X, [18XPubl. Math. Debrecen[118X, [19X79[119X (2011), 171--180.
+  
+  [[20XBK77[120X]  [16XBovdi,  A.  and  Khripta, I.[116X, [17XGroup algebras of periodic groups with
+  solvable multiplicative group[117X, [18XMat. Zametki[118X, [19X22[119X, 3 (1977), 421--432.
+  
+  [[20XBKRS17[120X] [16XBovdi, V., Konovalov, A., Rossmanith, R. and Schneider, C.[116X, [17XLAGUNA,
+  Lie  AlGebras  and UNits of group Algebras, Version 3.9.0[117X (2017), ((Refereed
+  GAP package)), https://gap-packages.github.io/laguna.
+  
+  [[20XBL93[120X] [16XBovdi, A. and Lakatos, P.[116X, [17XOn the exponent of the group of normalized
+  units  of  modular  group  algebras[117X,  [18XPubl.  Math. Debrecen[118X, [19X42[119X, 3-4 (1993),
+  409--415.
+  
+  [[20XBov98[120X]  [16XBovdi,  A.[116X, [17XThe group of units of a group algebra of characteristic
+  p[117X, [18XPubl. Math. Debrecen[118X, [19X52[119X, 1-2 (1998), 193--244.
+  
+  [[20XBR00[120X]  [16XBovdi,  V.  and  Rosa, A.[116X, [17XOn the order of the unitary subgroup of a
+  modular group algebra[117X, [18XComm. Algebra[118X, 28(4) (2000), 1897--1905.
+  
+  [[20XBS89[120X]  [16XBovdi,  A.  and  Sakach,  A.[116X, [17XUnitary subgroup of the multiplicative
+  group  of  a  modular  group  algebra  of  a finite abelian $p$-group[117X, [18XMath.
+  Zametki[118X, 45(6) (1989), 23--29.
+  
+  [[20XBS06[120X]  [16XBovdi,  A.  and  Szak\'{a}cs, A.[116X, [17XUnits of commutative group algebra
+  with involution[117X, [18XPubl. Math. Debrecen[118X, 3 (2006), 291--296.
+  
+  [[20XBS18[120X]  [16XBovdi,  V.  and Salim, M.[116X, [17XGroup algebras whose groups of normalized
+  units have exponent 4[117X, [18XCzechoslovak Math. J.[118X, [19X68(143)[119X, 1 (2018), 141--148.
+  
+  [[20XBT08[120X]  [16XBalogh,  Z.  and Tibor, J.[116X, [17XLie derived lengths of group algebras of
+  groups with cyclic derived subgroup[117X, [18XComm. Algebra[118X, [19X36[119X, 2 (2008), 315--324.
+  
+  [[20XCG09[120X]  [16XCreedon,  L.  and  Gildea,  J.[116X,  [17XUnitary  units of the group algebra
+  $F_{2^k}Q_8$[117X, [18XInt. J. Algebra Comput.[118X, 19(2) (2009), 283--286.
+  
+  [[20XCS10[120X] [16XChandra, H. and Sahai, M.[116X, [17XGroup algebras with unit groups of derived
+  length three[117X, [18XJ. Algebra Appl.[118X, [19X9[119X, 2 (2010), 305--314.
+  
+  [[20XKur96[120X]  [16XKurdics,  J.[116X,  [17XEngel properties of group algebras. {I}[117X, [18XPubl. Math.
+  Debrecen[118X, [19X49[119X, 1-2 (1996), 183--192.
+  
+  [[20XKur98[120X] [16XKurdics, J.[116X, [17XEngel properties of group algebras. {II}[117X, [18XJ. Pure Appl.
+  Algebra[118X, [19X133[119X, 1-2 (1998), 179--196.
+  
+  [[20XLee73[120X]  [16XLee,  G.[116X,  [17XGroup  identities  on units and symmetric units of group
+  rings[117X, Springer-Verlag London, Ltd., London, 25 (1973), 748--757 pages.
+  
+  [[20XLee00[120X]  [16XLee, G. T.[116X, [17XThe Lie n-Engel property in group rings[117X, [18XComm. Algebra[118X,
+  [19X28[119X, 2 (2000), 867--881.
+  
+  [[20XMS90[120X]  [16XMann, A. and Shalev, A.[116X, [17XThe nilpotency class of the unit group of a
+  modular group algebra. {II}[117X, [18XIsrael J. Math.[118X, [19X70[119X, 3 (1990), 267--277.
+  
+  [[20XSeh78[120X] [16XSehgal, S. K.[116X, [17XTopics in group rings[117X, Marcel Dekker, Inc., New York,
+  Monographs and Textbooks in Pure and Applied Math., [19X50[119X (1978), vi+251 pages.
+  
+  [[20XSha90a[120X] [16XShalev, A.[116X, [17XDimension subgroups, nilpotency indices, and the number
+  of  generators  of  ideals  in  p-group algebras[117X, [18XJ. Algebra[118X, [19X129[119X, 2 (1990),
+  412--438.
+  
+  [[20XSha90b[120X]  [16XShalev,  A.[116X,  [17XThe  nilpotency class of the unit group of a modular
+  group algebra. {I}[117X, [18XIsrael J. Math.[118X, [19X70[119X, 3 (1990), 257--266.
+  
+  [[20XSha91[120X]  [16XShalev,  A.[116X, [17XLie dimension subgroups, {L}ie nilpotency indices, and
+  the exponent of the group of normalized units[117X, [18XJ. London Math. Soc. (2)[118X, [19X43[119X,
+  1 (1991), 23--36.
+  
+  [[20XSha93[120X]  [16XShalev,  A.[116X,  [17XThe  nilpotency  class of the unit group of a modular
+  group algebra. {III}[117X, [18XArch. Math. (Basel)[118X, [19X60[119X, 2 (1993), 136--145.
+  
+  [[20XSpi08[120X]  [16XSpinelli,  E.[116X, [17XGroup algebras with minimal {L}ie derived length[117X, [18XJ.
+  Algebra[118X, [19X320[119X, 5 (2008), 1908--1913.
+  
+  
+  
+  [32X
