@@ -8,7 +8,7 @@
 SetPackageInfo( rec(
 PackageName := "RAMEGA",
 Subtitle := "A for Random Methods in Group Algebras.",
-Version := "1.00",
+Version := "1.000",
 Date := "04/04/2020",
 License := "GPL-2.0-or-later",
 
