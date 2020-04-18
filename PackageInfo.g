@@ -12,10 +12,10 @@ Version := "1.000",
 Date := "04/04/2020",
 License := "GPL-2.0-or-later",
 
-PackageWWWHome := Concatenation( "https://vlaver.github.io/", ~.PackageName ),
+PackageWWWHome := Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
     SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/vlaver/", ~.PackageName ),
+    URL := Concatenation( "https://github.com/gap-packages/", ~.PackageName ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 ArchiveURL := Concatenation( ~.SourceRepository.URL,
