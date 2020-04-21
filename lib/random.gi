@@ -433,7 +433,7 @@ function(kg)
        x:=GetRandomNormalizedUnit(kg);
 	   AddSet(A,x);
 	   h:=Group(A);
-	until (Number(h) = Number(f)^(Number(g)-1));
+	until (Size(h) = Size(f)^(Size(g)-1));
 	return h;
 end);
 
@@ -521,7 +521,7 @@ function(kg,n)
 
   p:=Characteristic(k);
   if ( 1 < Characteristic(k) and  IsPGroup(g) ) then
-order:=Number(k)^(Number(g)-1);
+order:=Size(k)^(Size(g)-1);
 e:=One(kg);
 a:=0;
 b:=0;
@@ -565,7 +565,7 @@ function(kg,sigma,n)
 
     p:=Characteristic(k);
     if ( 1 < Characteristic(k) and  IsPGroup(g) ) then
-  order:=Number(k)^(Number(g)-1);
+  order:=Size(k)^(Size(g)-1);
   e:=One(kg);
   a:=0;
   b:=0;
@@ -709,7 +709,7 @@ fi;
     for i in [1..n] do
        a:=Random(Elements(G)); b:=Random(Elements(G));
        g:=Group(a,b);
-  s:=Number(g);
+  s:=Size(g);
        if RAMEGA_IsDihedralGroup(g) and s>k then
            k:=s;
        fi;
@@ -767,7 +767,7 @@ fi;
     for i in [1..n] do
        a:=Random(G); b:=Random(G);
        g:=Group(a,b);
-	     s:=Number(g);
+	     s:=Size(g);
        if RAMEGA_IsGeneralisedQuaternionGroup(g) and s>k then
            k:=s;
        fi;

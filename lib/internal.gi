@@ -57,7 +57,7 @@ BindGlobal("RAMEGA_GetDerivedDepthN", function(kg,n)
       x:=full[c];
       tomb:=[];
       calc:=1;
-      while(calc<Number(x)) do
+      while(calc<Size(x)) do
          elem:=Comm(x[calc],x[calc+1]);
          Add(tomb,elem);
          calc:=calc+2;
@@ -96,7 +96,7 @@ BindGlobal( "RAMEGA_IsModularGroupAlgebra", function(kg)
     local k,g,ter;
 	k:=UnderlyingField(kg);
 	g:=UnderlyingGroup(kg);
-    return Number(g) mod Characteristic(k) = 0;
+    return Size(g) mod Characteristic(k) = 0;
 end);
 
 BindGlobal("RAMEGA_RandomCentralUnitaryOrder_next", function(kg)
@@ -185,7 +185,7 @@ local p,m,exponent;
         return false;
       fi;
       exponent:=Lcm(Set((List(Elements(G),j->Order(j)))));
-      if exponent=Number(G)/2 then
+      if exponent=Size(G)/2 then
         if Size(Filtered(Elements(G),j->Order(j)<=2))=exponent+2 then
           return true;
         else
@@ -211,9 +211,9 @@ local p,m,exponent,x;
 			return false;
 		fi;
     #exponent:=Lcm(Set(List(Elements(G),j->Order(j))));  
-		if Exponent(G)=Number(G)/2 then
+		if Exponent(G)=Size(G)/2 then
 		    m:=Filtered(G,x->Order(x)=2);
-			if Number(m) = 1 then
+			if Size(m) = 1 then
 			   return true;
 			else
 			   return false;
