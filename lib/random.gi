@@ -26,12 +26,10 @@ InstallMethod( BasicGroup,"Group Ring" ,true, [IsGroupRing],1,
 function(kg)
     local emb,g;
 
-    if not(IsGroupRing(kg) or IsGroupAlgebra(kg)) then
-	Error("Input should be a Group Ring.");
-    fi;
     g:=UnderlyingGroup(kg);
     emb:=Embedding(g,kg);
-    return Group(List(g,x->x^emb));
+
+    return Image(emb);
 end);
 
 #############################################################################
