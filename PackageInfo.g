@@ -7,7 +7,7 @@
 
 SetPackageInfo( rec(
 PackageName := "RAMEGA",
-Subtitle := "A for Random Methods in Group Algebras.",
+Subtitle := "A package for Random Methods in Group Algebras",
 Version := "1.000",
 Date := "04/04/2020",
 License := "GPL-2.0-or-later",
@@ -84,20 +84,6 @@ Dependencies := rec(
 ),
 
 AvailabilityTest := ReturnTrue,
-
-BannerString := Concatenation(
-  "----------------------------------------------------------------\n",
-  "Loading  RAMEGA ", ~.Version, ", a package with random methods for group algebras\n",
-  "by ", ~.Persons[1].FirstNames, " ", ~.Persons[1].LastName,",\n",
-#        " (", ~.Persons[1].WWWHome, ")\n",
-  "   ", ~.Persons[2].FirstNames, " ", ~.Persons[2].LastName,".\n",
-#        " (", ~.Persons[2].WWWHome, ")\n",
-#  "   ", ~.Persons[3].FirstNames, " ", ~.Persons[3].LastName,"\n",
-#        " (", ~.Persons[3].WWWHome, ")\n",
-  "For help, type: ?Ramega: \n",
-  "----------------------------------------------------------------\n" ),
-
-Autoload := false,
 
 TestFile := "tst/testall.g",
 
