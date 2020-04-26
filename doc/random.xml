@@ -133,7 +133,7 @@ gap> u*u^-1;
 </Description> </ManSection>
 
 <ManSection>
-<Func Name="GetRandomNormalizedUnitaryUnit" Arg="KG"/>
+<Func Name="GetRandomNormalizedUnitaryUnit" Arg="KG [,eta]"/>
 <Description>
 <!-- The names chosen for the arguments describe their meaning.-->
 Let <M>p</M> be a prime, <M>K</M> the field of characteristic <M>p</M>, <M>G</M> a finite abelian <M>p</M>-group
@@ -142,7 +142,7 @@ the antiautomorphism <M>\eta</M> to the group algebra <M>KG</M> we obtain the in
 <Display>
   x = \sum_{g \in G} \alpha_g g \mapsto x^{*}= \sum_{g \in G} \alpha_g \eta(g)
 </Display>
-of KG which is calles as <M>\eta</M>-involution. If <M>\eta(g)=g^{-1}</M> for all <M>g \in G</M> then this
+of KG which is called as <M>\eta</M>-involution. If <M>\eta(g)=g^{-1}</M> for all <M>g \in G</M> then this
 involution is called canonical. Then, if <M>V(KG)</M> is the group of normalized units of <M>KG</M>, the subgroup
 of unitary units is defined as <Cite Key="BovdiSzakacs2006"/>
 <Display>
@@ -152,6 +152,10 @@ V_*(KG)=\{x \in V(FG) \mid x^* = x^{-1} \}.
 <P/> For the group algebra <C>KG</C> the function <C>GetRandomNormalizedUnitaryUnit</C> returns a normalized unitary unit
 (i.e. such an invertible element with augmentation 1, that <M>u\cdot u^{*}=1</M>) by a random way. Also, there
 exists a two-parametrical version of this method, where the second parameter <M>\eta</M> is an arbitrary antiautomorphism of <M>G</M>.
+In this case, the function <C>GetRandomNormalizedUnitaryUnit</C> returns a normalized unitary unit
+(i.e. such an invertible element with augmentation 1, that <M>u\cdot u^{*}=1</M>) by a random way
+for the group algebra <C>KG</C> and an arbitrary antiautomorphism <C>eta</C>.
+
 
 <Example>
 <![CDATA[
@@ -162,19 +166,6 @@ gap> u*Involution(u);
 (Z(2)^0)*<identity> of ...
 gap> Augmentation(u);
 Z(2)^0
-]]>
-</Example>
-</Description> </ManSection>
-
-<ManSection>
-<Func Name="GetRandomNormalizedUnitaryUnit" Arg="KG, eta"/>
-<Description>
-<!-- The names chosen for the arguments describe their meaning.-->
-For the group algebra <C>KG</C> and an arbitrary antiautomorphism <C>eta</C> of the function <C>GetRandomNormalizedUnitaryUnit</C> returns a normalized unitary unit
-(i.e. such an invertible element with augmentation 1, that <M>u\cdot u^{*}=1</M>) by a random way.
-
-<Example>
-<![CDATA[
 gap> Aut:=AutomorphismGroup(G);;
 gap> KG:=GroupRing(GF(2),G);;
 gap> Aut2:=Filtered(Aut,i->Order(i)=2);;
@@ -448,7 +439,7 @@ gap> u*u^-1;
 <Description>
 For a modular group ring <C>KG</C>, where <C>G</C> is a <C>p</C>-group, and a positive integer  <C>n</C>, where <C>n</C> is the number of iterations, the function
 <C>RandomCommutatorSeries</C>
-returns the commutator series of the group of normalized units in <M>KG</M>by a random way.
+returns the commutator series of the group of normalized units in <M>KG</M> by a random way.
 
 <Example>
 <![CDATA[
@@ -489,12 +480,12 @@ gap> CS:=RandomLowerCentralSeries(KG,100);
 
 
 <ManSection>
-<Func Name="RandomUnitaryOrder" Arg="KG, n"/>
+<Func Name="RandomUnitaryOrder" Arg="KG, n [,sigma]"/>
 <Description>
 For the group ring <C>KG</C>, where <C>G</C> is a finite <C>p</C>-group and <C>K</C> has characteristic <C>p</C>,
 and a positive integer  <C>n</C>, where <C>n</C> is the number of iterations, the function <C>RandomUnitaryOrder</C>
 returns the order of the unitary subgroup of <M>KG</M> <Cite Key="Creedon_Gildea_I"/> by a random way. Also, there exists a three-parametrical version of this method,
-where the third parameter <M>\sigma</M> is an arbitrary anti-automorphism of <M>G</M>.
+where the third parameter <C>sigma</C> is an arbitrary anti-automorphism of <M>G</M>.
 
 <Example>
 <![CDATA[
