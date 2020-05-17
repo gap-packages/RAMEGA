@@ -2,13 +2,8 @@
 The GAP 4 package `ramega'
 ==================================
 
-[![Build Status](https://travis-ci.org/gap-infra/gap-docker-pkg-tests-master-devel.svg?branch=master)](https://travis-ci.org/gap-infra/gap-docker-pkg-tests-master-devel)
-
-
-
+[![Build Status](https://travis-ci.org/gap-packages/RAMEGA.svg?branch=master)](https://travis-ci.org/gap-packages/RAMEGA)
 [![codecov](https://codecov.io/gh/gap-packages/RAMEGA/branch/master/graph/badge.svg)](https://codecov.io/gh/gap-packages/RAMEGA)
-
-
 
 Introduction
 ------------
