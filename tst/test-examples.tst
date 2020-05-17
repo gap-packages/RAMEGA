@@ -11,7 +11,7 @@ gap> Elements(G);
 gap> KG:=GroupRing(GF(2),G);
 <algebra-with-one over GF(2), with 1 generators>
 gap> BasicGroup(KG);
-<group with 4 generators>
+<group of size 4 with 1 generators>
 gap> Elements(last);
 [ (Z(2)^0)*<identity ...>, (Z(2)^0)*a, (Z(2)^0)*a^2, (Z(2)^0)*a^3 ]
 
