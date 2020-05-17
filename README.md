@@ -2,6 +2,14 @@
 The GAP 4 package `ramega'
 ==================================
 
+[![Build Status](https://travis-ci.org/gap-infra/gap-docker-pkg-tests-master-devel.svg?branch=master)](https://travis-ci.org/gap-infra/gap-docker-pkg-tests-master-devel)
+
+
+
+[![codecov](https://codecov.io/gh/gap-packages/RAMEGA/branch/master/graph/badge.svg)](https://codecov.io/gh/gap-packages/RAMEGA)
+
+
+
 Introduction
 ------------
 
@@ -53,3 +61,6 @@ As this package does not contain any C code, to install it just unpack the archi
 GAP installation folder. Then enter command "LoadPackage( "ramega" );".
 
 Good luck!
+
+
+
