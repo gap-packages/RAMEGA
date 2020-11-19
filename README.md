@@ -3,7 +3,6 @@
 The GAP 4 package `ramega'
 ==================================
 
-[![Build Status](https://travis-ci.org/gap-packages/RAMEGA.svg?branch=master)](https://travis-ci.org/gap-packages/RAMEGA)
 [![codecov](https://codecov.io/gh/gap-packages/RAMEGA/branch/master/graph/badge.svg)](https://codecov.io/gh/gap-packages/RAMEGA)
 
 Introduction
