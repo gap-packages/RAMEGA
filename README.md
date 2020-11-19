@@ -1,3 +1,4 @@
+![CI](https://github.com/gap-packages/RAMEGA/workflows/CI/badge.svg)
 
 The GAP 4 package `ramega'
 ==================================
