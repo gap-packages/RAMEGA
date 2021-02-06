@@ -3,7 +3,7 @@ gap> LoadPackage("ramega",false);
 true
 
 ## Example 2.1.1
-
+gap> RANDOM_SEED(1);
 gap> G:=CyclicGroup(IsFpGroup,4);
 <fp group of size 4 on the generators [ a ]>
 gap> Elements(G);
@@ -228,6 +228,64 @@ gap> StructureDescription(G);
 "(C8 : C4) : C2"
 gap> RandomQuaternionDepth(G,1000);
 2
+
+## Example 2.3.17
+gap> KG:=GroupRing(GF(2),DihedralGroup(8));;
+gap> G:=GetRandomSubgroupOfNormalizedUnitGroup(KG,2);;
+gap> el:= Elements(G)[1];;
+gap> Augmentation(el);
+Z(2)^0
+
+## Example 2.3.18
+gap> KG:=GroupRing(GF(2),DihedralGroup(8));;
+gap> cc:=RandomConjugacyClass(KG,4);;
+gap> cc[1]*cc[2]*cc[1]^-1 = cc[2];
+true
+
+## Example 2.3.19
+gap> KG:=GroupRing(GF(2),SmallGroup(8,3));;
+gap> cc:=RandomConjugacyClasses(KG,100);;
+gap> Size(Union(cc));
+128
+gap> Collected(List(cc,x->Number(x)));
+[ [ 1, 16 ], [ 4, 28 ] ]
+gap> vkg:=RandomNormalizedUnitGroup(KG);;
+gap> Size(vkg);
+128
+
+
+## Example 2.3.20
+gap> KG:=GroupRing(GF(2),CyclicGroup(16));;
+gap> u:=Random(Elements(KG));;
+gap> RandomIsCentralElement(KG,u,100);
+true
+
+## Example 2.3.21
+gap> KG:=GroupRing(GF(2),CyclicGroup(4));;
+gap> u:=Elements(KG)[16];
+(Z(2)^0)*f1*f2
+gap> G:=Group(u);;
+gap> StructureDescription(G);
+"C4"
+gap> RandomIsNormal(KG,G,100);
+true
+
+## Example 2.3.22
+gap> KG:=GroupRing(GF(2),DihedralGroup(8));;
+gap> cc:=RandomCenterOfCommutatorSubgroup(KG,100);
+<group with 8 generators>
+gap> StructureDescription(cc);
+"C2 x C2 x C2"
+
+## Example 2.3.23
+gap> KG:=GroupRing(GF(2),DihedralGroup(8));;
+gap> u:=Random(Elements(KG));;
+gap> rcc:= RandomConjugacyClassByElement(KG,u,100);;
+gap> rcc[1]*u*rcc[1]^-1 = u;
+true
+
+
+
 
 gap> STOP_TEST( "test-examples.tst", 200000000000 );
 
