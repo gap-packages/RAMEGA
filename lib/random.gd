@@ -9,7 +9,7 @@
 #Y  Copyright (C)  2020,  UAE University, UAE
 ##
 
-DeclareOperation( "BasicGroup", [IsGroupRing]); 
+DeclareOperation( "BasicGroup", [IsGroupRing]);
 DeclareOperation( "GetRandomUnit", [IsGroupRing]);
 DeclareOperation( "GetRandomNormalizedUnit", [IsGroupRing]);
 DeclareOperation( "GetRandomUnitaryUnit", [IsGroupRing]);
@@ -33,6 +33,16 @@ DeclareOperation( "RandomDihedralDepth", [IsGroupRing, IsPosInt]);
 DeclareOperation( "RandomQuaternionDepth", [IsGroupRing, IsPosInt]);
 DeclareOperation( "RandomOmega", [IsGroupRing, IsPosInt, IsPosInt]);
 DeclareOperation( "RandomAgemo", [IsGroupRing, IsPosInt, IsPosInt]);
+#========================================================================
+DeclareOperation( "GetRandomSubgroupOfNormalizedUnitGroup", [IsGroupRing, IsPosInt]);
+DeclareOperation( "RandomConjugacyClass", [IsGroupRing, IsPosInt]);
+DeclareOperation( "RandomConjugacyClasses", [IsGroupRing, IsPosInt]);
+DeclareOperation( "RandomIsCentralElement", [IsGroupRing, IsElementOfFreeMagmaRing, IsPosInt]);
+DeclareOperation( "RandomIsNormal", [IsGroupRing, IsGroup, IsPosInt]);
+#DeclareOperation( "RandomCommutatorSubgroup", [IsGroupRing, IsPosInt]);
+DeclareOperation( "RandomCenterOfCommutatorSubgroup", [IsGroupRing, IsPosInt]);
+#DeclareOperation( "RandomLowerCentralSeries", [IsGroupRing, IsPosInt]);
+DeclareOperation( "RandomConjugacyClassByElement", [IsGroupRing, IsElementOfFreeMagmaRing, IsPosInt]);
 
 #E
 ##
