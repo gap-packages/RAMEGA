@@ -224,3 +224,16 @@ local p,m,exponent,x;
 		return false;
     fi;
 end);
+
+BindGlobal("RAMEGA_IsLieNilpotent",function(L)
+      local p,G;
+      Info(LAGInfo, 1, "LAGUNA package: Checking Lie nilpotency ..." );
+      p:=Characteristic(L);
+      G:=UnderlyingGroup(L);
+      if p=0 or IsAbelian(G) then
+        return IsLieAbelian(L);
+      fi;
+      return
+        [p]=Set(Factors(Size(DerivedSubgroup(G))))
+        and IsNilpotent(G);
+    end);

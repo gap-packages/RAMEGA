@@ -295,7 +295,7 @@ end);
 InstallMethod( RandomNilpotencyClass, "Group Algebra, Number of iterations", true, [IsGroupRing, IsPosInt],2,
 function(kg,m)
    local cl,x,y,e,er,class;
-   if not(IsLieNilpotent(LieAlgebra(kg))) then
+   if not(RAMEGA_IsLieNilpotent(LieAlgebra(kg))) then
 	   Error("The Group Algebra is not nilpotent.");
    fi;
    e:=One(kg);
@@ -475,7 +475,7 @@ end);
 InstallMethod( RandomLowerCentralSeries, "Group Ring, Number of Iterations", true, [IsGroupRing,IsPosInt],2,
 function(kg,n)
     local series,g,m,x1,x2,A,i;
-	if not(IsLieNilpotent(LieAlgebra(kg))) then
+	if not(RAMEGA_IsLieNilpotent(LieAlgebra(kg))) then
 	   Error("The Group Algebra is not nilpotent.");
     fi;
 	series:=[RandomNormalizedUnitGroup(kg)];
