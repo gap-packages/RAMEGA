@@ -11,7 +11,7 @@
     RAndom MEthods in Group Algebras
   </Subtitle>
   <Version>
-    1.0.0
+    1.2.0
   </Version>
   <Author>
     Zsolt Adam Balogh<Alt Only="LaTeX"><Br/></Alt>
@@ -34,10 +34,10 @@ Uzhhorod, Ukraine<Br/>
 
   </Author>
   <Date>
-   2020
+   2021
   </Date>
   <Copyright>
-    &copyright; 2020 by the authors<P/>
+    &copyright; 2021 by the authors<P/>
 
 This package may be distributed under the terms and conditions of the
 GNU Public License Version 2 or higher.
