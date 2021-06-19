@@ -8,7 +8,7 @@ The GAP 4 package `ramega'
 Introduction
 ------------
 
-This is release 1.00 of  the package `ramega'.
+This is release 1.2.0 of  the package `ramega'.
 
 The features of this package include
 
