@@ -1,9 +1,9 @@
 name: RAMEGA
-version: "1.000"
+version: "1.2.0"
 license: "GPL-2.0-or-later"
-date: 2020-04-04
+date: 2021-06-19
 description: |
-    A for Random Methods in Group Algebras.
+    A package for Random Methods in Group Algebras
 
 authors:
     - name: Zsolt Adam Balogh
@@ -23,14 +23,16 @@ needed-pkgs:
     - name: "GAPDoc"
       version: "1.5"
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "LAGUNA"
+      version: "3.9"
 
-www: https://vlaver.github.io/RAMEGA
+www: https://gap-packages.github.io/RAMEGA
 readme: README.md
-packageinfo: https://vlaver.github.io/RAMEGA/PackageInfo.g
+packageinfo: https://gap-packages.github.io/RAMEGA/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/vlaver/RAMEGA/releases/download/v1.000/RAMEGA-1.000.tar.gz
+      url: https://github.com/gap-packages/RAMEGA/releases/download/v1.2.0/RAMEGA-1.2.0.tar.gz
 
 abstract: |
     The <span class="pkgname">RAMEGA</span> package is a package with random methods for group algebras.
@@ -42,27 +44,27 @@ keywords: |
     group rings, group algebras, random methods.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BL20</span>]   <b class='BibAuthor'>Balogh, Z. A. and Laver, V.</b>,
-     <i class='BibTitle'>RAMEGA, A for Random Methods in Group Algebras.,
-             Version 1.000</i>
-     (<span class='BibYear'>2020</span>)<br />
+    [<span class='BibKey'>BL21</span>]   <b class='BibAuthor'>Balogh, Z. A. and Laver, V.</b>,
+     <i class='BibTitle'>RAMEGA, A package for Random Methods in Group Algebras,
+             Version 1.2.0</i>
+     (<span class='BibYear'>2021</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="https://vlaver.github.io/RAMEGA">https://vlaver.github.io/RAMEGA</a></span>.
+    <span class='BibHowpublished'><a href="https://gap-packages.github.io/RAMEGA">https://gap-packages.github.io/RAMEGA</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ RAMEGA1.000,
+    @misc{ RAMEGA1.2.0,
       author =           {Balogh, Z. A. and Laver, V.},
-      title =            {{RAMEGA},  A  for  Random  Methods in Group Algebras.,
-                          {V}ersion 1.000},
-      month =            {Apr},
-      year =             {2020},
+      title =            {{RAMEGA},  A  package  for  Random  Methods  in  Group
+                          Algebras, {V}ersion 1.2.0},
+      month =            {Jun},
+      year =             {2021},
       note =             {GAP package},
-      howpublished =     {\href                {https://vlaver.github.io/RAMEGA}
-                          {\texttt{https://vlaver.github.io/}\discretionary
+      howpublished =     {\href          {https://gap-packages.github.io/RAMEGA}
+                          {\texttt{https://gap-packages.github.io/}\discretionary
                           {}{}{}\texttt{RAMEGA}}},
       keywords =         {group rings; group algebras; random methods},
-      printedkey =       {BL20}
+      printedkey =       {BL21}
     }
 

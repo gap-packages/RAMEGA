@@ -6,10 +6,10 @@
                        [1X RAndom MEthods in Group Algebras [101X
   
   
-                                     1.0.0
+                                     1.2.0
   
   
-                                      2020
+                                      2021
   
   
                                Zsolt Adam Balogh
@@ -29,14 +29,14 @@
       Email:    [7Xmailto:vasyl.laver@uzhnu.edu.ua[107X
       Address:  [33X[0;14YDepartment   of   Informative   and   Operating   Systems  and
                 Technologies[133X
-                [33X[0;14YUzhhorod Nationl University[133X
+                [33X[0;14YUzhhorod National University[133X
                 [33X[0;14YUzhhorod, Ukraine[133X
   
   
   
   -------------------------------------------------------
   [1XCopyright[101X
-  [33X[0;0Y© 2020 by the authors[133X
+  [33X[0;0Y© 2021 by the authors[133X
   
   [33X[0;0YThis  package  may  be distributed under the terms and conditions of the GNU
   Public License Version 2 or higher.[133X
@@ -59,9 +59,8 @@
       2.2-1 GetRandomUnit
       2.2-2 GetRandomNormalizedUnit
       2.2-3 GetRandomNormalizedUnitaryUnit
-      2.2-4 GetRandomNormalizedUnitaryUnit
-      2.2-5 GetRandomCentralNormalizedUnit
-      2.2-6 GetRandomElementFromAugmentationIdeal
+      2.2-4 GetRandomCentralNormalizedUnit
+      2.2-5 GetRandomElementFromAugmentationIdeal
     2.3 [33X[0;0YRandom Methods for Group Rings[133X
       2.3-1 RandomLienEngelLength
       2.3-2 RandomExponent
@@ -79,6 +78,13 @@
       2.3-14 RandomAgemo
       2.3-15 RandomDihedralDepth
       2.3-16 RandomQuaternionDepth
+      2.3-17 GetRandomSubgroupOfNormalizedUnitGroup
+      2.3-18 RandomConjugacyClass
+      2.3-19 RandomConjugacyClasses
+      2.3-20 RandomIsCentralElement
+      2.3-21 RandomIsNormal
+      2.3-22 RandomCenterOfCommutatorSubgroup
+      2.3-23 RandomConjugacyClassByElement
   
   
   [32X

@@ -124,7 +124,7 @@
   
   [1X2.2-3 GetRandomNormalizedUnitaryUnit[101X
   
-  [33X[1;0Y[29X[2XGetRandomNormalizedUnitaryUnit[102X( [3XKG[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XGetRandomNormalizedUnitaryUnit[102X( [3XKG[103X[, [3Xeta[103X] ) [32X function[133X
   
   [33X[0;0YLet  [22Xp[122X  be  a  prime,  [22XK[122X  the  field of characteristic [22Xp[122X, [22XG[122X a finite abelian
   [22Xp[122X-group  with  an  arbitrary  antiautomorphism [22Xη[122X of order 2 and [22XG_η={g ∈ G ∣
@@ -136,7 +136,7 @@
   
   [124X
   
-  [33X[0;0Yof  KG which is calles as [22Xη[122X-involution. If [22Xη(g)=g^-1[122X for all [22Xg ∈ G[122X then this
+  [33X[0;0Yof  KG which is called as [22Xη[122X-involution. If [22Xη(g)=g^-1[122X for all [22Xg ∈ G[122X then this
   involution  is  called  canonical. Then, if [22XV(KG)[122X is the group of normalized
   units of [22XKG[122X, the subgroup of unitary units is defined as [BS06][133X
   
@@ -149,7 +149,10 @@
   a normalized unitary unit (i.e. such an invertible element with augmentation
   1,  that  [22Xu⋅  u^*=1[122X)  by a random way. Also, there exists a two-parametrical
   version  of  this  method,  where  the  second  parameter  [22Xη[122X is an arbitrary
-  antiautomorphism of [22XG[122X.[133X
+  antiautomorphism     of     [22XG[122X.     In     this     case,     the    function
+  [10XGetRandomNormalizedUnitaryUnit[110X  returns a normalized unitary unit (i.e. such
+  an  invertible  element  with augmentation 1, that [22Xu⋅ u^*=1[122X) by a random way
+  for the group algebra [10XKG[110X and an arbitrary antiautomorphism [10Xeta[110X.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[28X[128X[104X
@@ -160,20 +163,6 @@
     [4X[28X(Z(2)^0)*<identity> of ...[128X[104X
     [4X[25Xgap>[125X [27XAugmentation(u);[127X[104X
     [4X[28XZ(2)^0[128X[104X
-    [4X[28X[128X[104X
-  [4X[32X[104X
-  
-  [1X2.2-4 GetRandomNormalizedUnitaryUnit[101X
-  
-  [33X[1;0Y[29X[2XGetRandomNormalizedUnitaryUnit[102X( [3XKG[103X, [3Xeta[103X ) [32X function[133X
-  
-  [33X[0;0YFor  the  group  algebra  [10XKG[110X  and  an  arbitrary antiautomorphism [10Xeta[110X of the
-  function  [10XGetRandomNormalizedUnitaryUnit[110X  returns  a normalized unitary unit
-  (i.e.  such  an  invertible element with augmentation 1, that [22Xu⋅ u^*=1[122X) by a
-  random way.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X[128X[104X
     [4X[25Xgap>[125X [27XAut:=AutomorphismGroup(G);;[127X[104X
     [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),G);;[127X[104X
     [4X[25Xgap>[125X [27XAut2:=Filtered(Aut,i->Order(i)=2);;[127X[104X
@@ -188,7 +177,7 @@
     [4X[28X[128X[104X
   [4X[32X[104X
   
-  [1X2.2-5 GetRandomCentralNormalizedUnit[101X
+  [1X2.2-4 GetRandomCentralNormalizedUnit[101X
   
   [33X[1;0Y[29X[2XGetRandomCentralNormalizedUnit[102X( [3XKG[103X ) [32X function[133X
   
@@ -213,7 +202,7 @@
     [4X[28X[128X[104X
   [4X[32X[104X
   
-  [1X2.2-6 GetRandomElementFromAugmentationIdeal[101X
+  [1X2.2-5 GetRandomElementFromAugmentationIdeal[101X
   
   [33X[1;0Y[29X[2XGetRandomElementFromAugmentationIdeal[102X( [3XKG[103X ) [32X function[133X
   
@@ -436,7 +425,7 @@
   [33X[0;0YFor  a modular group ring [10XKG[110X and a positive integer [10Xn[110X, where [10Xn[110X is the number
   of  iterations,  the  function  [10XRandomUnitarySubgroup[110X  returns  the subgroup
   generated      by      the      normalized      unitary      units      (see
-  [2XGetRandomNormalizedUnitaryUnit[102X ([14X2.2-4[114X)) by a random way.[133X
+  [2XGetRandomNormalizedUnitaryUnit[102X ([14X2.2-3[114X)) by a random way.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[28X[128X[104X
@@ -457,7 +446,7 @@
   
   [33X[0;0YFor a modular group ring [10XKG[110X, where [10XG[110X is a [10Xp[110X-group, and a positive integer [10Xn[110X,
   where  [10Xn[110X  is  the  number of iterations, the function [10XRandomCommutatorSeries[110X
-  returns  the  commutator  series  of the group of normalized units in [22XKG[122Xby a
+  returns  the  commutator  series of the group of normalized units in [22XKG[122X by a
   random way.[133X
   
   [4X[32X  Example  [32X[104X
@@ -503,14 +492,14 @@
   
   [1X2.3-12 RandomUnitaryOrder[101X
   
-  [33X[1;0Y[29X[2XRandomUnitaryOrder[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XRandomUnitaryOrder[102X( [3XKG[103X, [3Xn[103X[, [3Xsigma[103X] ) [32X function[133X
   
   [33X[0;0YFor  the group ring [10XKG[110X, where [10XG[110X is a finite [10Xp[110X-group and [10XK[110X has characteristic
   [10Xp[110X,  and  a  positive  integer  [10Xn[110X,  where  [10Xn[110X is the number of iterations, the
   function  [10XRandomUnitaryOrder[110X returns the order of the unitary subgroup of [22XKG[122X
   [CG09]  by  a random way. Also, there exists a three-parametrical version of
-  this  method,  where the third parameter [22Xσ[122X is an arbitrary anti-automorphism
-  of [22XG[122X.[133X
+  this   method,   where   the   third   parameter   [10Xsigma[110X   is  an  arbitrary
+  anti-automorphism of [22XG[122X.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[28X[128X[104X
@@ -610,6 +599,138 @@
     [4X[28X"(C8 : C4) : C2"[128X[104X
     [4X[25Xgap>[125X [27XRandomQuaternionDepth(G,1000);[127X[104X
     [4X[28X2[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-17 GetRandomSubgroupOfNormalizedUnitGroup[101X
+  
+  [33X[1;0Y[29X[2XGetRandomSubgroupOfNormalizedUnitGroup[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
+  
+  [33X[0;0YFor   a   group   ring   [10XKG[110X   and   a   positive  integer  [10Xn[110X,  the  function
+  [10XGetRandomSubgroupOfNormalizedUnitGroup[110X  returns a subgroup of the normalized
+  group of units generated by n random normalized units.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),DihedralGroup(8));;[127X[104X
+    [4X[25Xgap>[125X [27XG:=GetRandomSubgroupOfNormalizedUnitGroup(KG,2);[127X[104X
+    [4X[28X<group with 2 generators>[128X[104X
+    [4X[25Xgap>[125X [27XStructureDescription(G);[127X[104X
+    [4X[28X"(C4 x C2) : C2"[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-18 RandomConjugacyClass[101X
+  
+  [33X[1;0Y[29X[2XRandomConjugacyClass[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
+  
+  [33X[0;0YFor  a  group  ring  [10XKG[110X and a positive integer [10Xn[110X (number of iterations), the
+  function [10XRandomConjugacyClass[110X returns the random conjugacy class of a random
+  element of the group of normalized units.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),DihedralGroup(8));;[127X[104X
+    [4X[25Xgap>[125X [27Xcc:=RandomConjugacyClass(KG,4);;[127X[104X
+    [4X[25Xgap>[125X [27XList(cc,i->Order(i));[127X[104X
+    [4X[28X[ 4, 4, 4 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-19 RandomConjugacyClasses[101X
+  
+  [33X[1;0Y[29X[2XRandomConjugacyClasses[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
+  
+  [33X[0;0YFor  a  modular  group  algebra  [10XKG[110X  and  a  positive  integer  [10Xn[110X (number of
+  iterations),  the  function  [10XRandomConjugacyClasses[110X  returns  the  conjugacy
+  classes of the group of normalized units.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),SmallGroup(8,3));;[127X[104X
+    [4X[25Xgap>[125X [27Xcc:=RandomConjugacyClasses(KG,100);;[127X[104X
+    [4X[25Xgap>[125X [27XSize(Union(cc));[127X[104X
+    [4X[28X128[128X[104X
+    [4X[25Xgap>[125X [27XCollected(List(cc,x->Number(x)));[127X[104X
+    [4X[28X[ [ 1, 16 ], [ 4, 28 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xvkg:=RandomNormalizedUnitGroup(KG);;[127X[104X
+    [4X[25Xgap>[125X [27XSize(vkg);[127X[104X
+    [4X[28X128[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-20 RandomIsCentralElement[101X
+  
+  [33X[1;0Y[29X[2XRandomIsCentralElement[102X( [3XKG[103X, [3Xu[103X, [3Xn[103X ) [32X function[133X
+  
+  [33X[0;0YFor  a  group  ring  [10XKG[110X, element [22Xu ∈ KG[122X, and a positive integer [10Xn[110X (number of
+  iterations),  the  function  [10XRandomIsCentralElement[110X  returns  true if u is a
+  central element by random way.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),CyclicGroup(16));;[127X[104X
+    [4X[25Xgap>[125X [27Xu:=Random(Elements(KG));;[127X[104X
+    [4X[25Xgap>[125X [27XRandomIsCentralElement(KG,u,100);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-21 RandomIsNormal[101X
+  
+  [33X[1;0Y[29X[2XRandomIsNormal[102X( [3XKG[103X, [3XN[103X, [3Xn[103X ) [32X function[133X
+  
+  [33X[0;0YFor  a  group  ring  [10XKG[110X,  subgroup  [10XN[110X,  and  a positive integer [10Xn[110X (number of
+  iterations),  the function [10XRandomIsNormal[110X returns true if N is normal in the
+  normalized group of units by random way.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),CyclicGroup(4));;[127X[104X
+    [4X[25Xgap>[125X [27Xu:=Elements(KG)[16];[127X[104X
+    [4X[28X(Z(2)^0)*f1*f2[128X[104X
+    [4X[25Xgap>[125X [27XG:=Group(u);;[127X[104X
+    [4X[25Xgap>[125X [27XStructureDescription(G);[127X[104X
+    [4X[28X"C4"[128X[104X
+    [4X[25Xgap>[125X [27XRandomIsNormal(KG,G,100);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-22 RandomCenterOfCommutatorSubgroup[101X
+  
+  [33X[1;0Y[29X[2XRandomCenterOfCommutatorSubgroup[102X( [3XKG[103X, [3Xn[103X ) [32X function[133X
+  
+  [33X[0;0YFor  a  group  ring [10XKG[110X, and a positive integer [10Xn[110X (number of iterations), the
+  function   [10XRandomCenterOfCommutatorSubgroup[110X   returns   the  center  of  the
+  commutator subgroup of the normalized unit group using random method.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XRANDOM_SEED(1);[127X[104X
+    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),DihedralGroup(8));;[127X[104X
+    [4X[25Xgap>[125X [27Xcc:=RandomCenterOfCommutatorSubgroup(KG,100);[127X[104X
+    [4X[28X<group with 8 generators>[128X[104X
+    [4X[25Xgap>[125X [27XStructureDescription(cc);[127X[104X
+    [4X[28X"C2 x C2 x C2"[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-23 RandomConjugacyClassByElement[101X
+  
+  [33X[1;0Y[29X[2XRandomConjugacyClassByElement[102X( [3XKG[103X, [3Xu[103X, [3Xn[103X ) [32X function[133X
+  
+  [33X[0;0YFor  a  group  ring  [10XKG[110X,  normalized  unit  [22Xu ∈ KG[122X, and a positive integer [10Xn[110X
+  (number  of  iterations), the function [10XRandomConjugacyClassByElement[110X returns
+  the random conjugacy class of the normalized unit [10Xu[110X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XKG:=GroupRing(GF(2),DihedralGroup(8));;[127X[104X
+    [4X[25Xgap>[125X [27Xu:=Random(Elements(KG));;[127X[104X
+    [4X[25Xgap>[125X [27Xrcc: = RandomConjugacyClassByElement(KG,u,100);[127X[104X
+    [4X[25Xgap>[125X [27Xrcc[1]*u*rcc[1]^-1;[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[28X[128X[104X
   [4X[32X[104X
   

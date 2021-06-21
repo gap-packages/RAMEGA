@@ -7,15 +7,15 @@
 
 SetPackageInfo( rec(
 PackageName := "RAMEGA",
-Subtitle := "A for Random Methods in Group Algebras.",
-Version := "1.000",
-Date := "04/04/2020",
+Subtitle := "A package for Random Methods in Group Algebras",
+Version := "1.2.0",
+Date := "19/06/2021",
 License := "GPL-2.0-or-later",
 
-PackageWWWHome := Concatenation( "https://vlaver.github.io/", ~.PackageName ),
+PackageWWWHome := Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
     SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/vlaver/", ~.PackageName ),
+    URL := Concatenation( "https://github.com/gap-packages/", ~.PackageName ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 ArchiveURL := Concatenation( ~.SourceRepository.URL,
@@ -78,26 +78,12 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.10",
-  NeededOtherPackages := [["GAPDoc", "1.5"]],
+  NeededOtherPackages := [["GAPDoc", "1.5"], ["LAGUNA", "3.9"]],
   SuggestedOtherPackages := [],
   ExternalConditions := []
 ),
 
 AvailabilityTest := ReturnTrue,
-
-BannerString := Concatenation(
-  "----------------------------------------------------------------\n",
-  "Loading  RAMEGA ", ~.Version, ", a package with random methods for group algebras\n",
-  "by ", ~.Persons[1].FirstNames, " ", ~.Persons[1].LastName,",\n",
-#        " (", ~.Persons[1].WWWHome, ")\n",
-  "   ", ~.Persons[2].FirstNames, " ", ~.Persons[2].LastName,".\n",
-#        " (", ~.Persons[2].WWWHome, ")\n",
-#  "   ", ~.Persons[3].FirstNames, " ", ~.Persons[3].LastName,"\n",
-#        " (", ~.Persons[3].WWWHome, ")\n",
-  "For help, type: ?Ramega: \n",
-  "----------------------------------------------------------------\n" ),
-
-Autoload := false,
 
 TestFile := "tst/testall.g",
 

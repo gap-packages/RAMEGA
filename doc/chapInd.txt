@@ -3,20 +3,27 @@
   [1XIndex[101X
   
   [2XBasicGroup[102X 2.1-1 
-  [2XGetRandomCentralNormalizedUnit[102X 2.2-5 
-  [2XGetRandomElementFromAugmentationIdeal[102X 2.2-6 
+  [2XGetRandomCentralNormalizedUnit[102X 2.2-4 
+  [2XGetRandomElementFromAugmentationIdeal[102X 2.2-5 
   [2XGetRandomNormalizedUnit[102X 2.2-2 
-  [2XGetRandomNormalizedUnitaryUnit[102X 2.2-3  2.2-4 
+  [2XGetRandomNormalizedUnitaryUnit[102X 2.2-3 
+  [2XGetRandomSubgroupOfNormalizedUnitGroup[102X 2.3-17 
   [2XGetRandomUnit[102X 2.2-1 
   [2XIsLienEngel[102X 2.1-2 
   [2XRandomAgemo[102X 2.3-14 
+  [2XRandomCenterOfCommutatorSubgroup[102X 2.3-22 
   [2XRandomCommutatorSeries[102X 2.3-10 
   [2XRandomCommutatorSubgroup[102X 2.3-6 
   [2XRandomCommutatorSubgroupOfNormalizedUnits[102X 2.3-7 
+  [2XRandomConjugacyClass[102X 2.3-18 
+  [2XRandomConjugacyClassByElement[102X 2.3-23 
+  [2XRandomConjugacyClasses[102X 2.3-19 
   [2XRandomDerivedLength[102X 2.3-5 
   [2XRandomDihedralDepth[102X 2.3-15 
   [2XRandomExponent[102X 2.3-2 
   [2XRandomExponentOfNormalizedUnitsCenter[102X 2.3-3 
+  [2XRandomIsCentralElement[102X 2.3-20 
+  [2XRandomIsNormal[102X 2.3-21 
   [2XRandomLienEngelLength[102X 2.3-1 
   [2XRandomLowerCentralSeries[102X 2.3-11 
   [2XRandomNilpotencyClass[102X 2.3-4 
