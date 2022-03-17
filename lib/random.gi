@@ -501,95 +501,102 @@ end);
 ##  RandomUnitaryOrder( <kg,n> )
 ##
 ##  Returns the order of unitary subgroup of normalized group of units
-##  where p=char(k) and g is a finite p-group by random search. The default involution is the canonical involution.
+##  where p=char(k) and g is a finite p-group by random search. The number of trials is n.
 ##
 InstallMethod( RandomUnitaryOrder, "Group Ring, Number of Iterations", true, [IsGroupRing,IsPosInt],2,
-function(kg,trials)
-   local x,e,i,n,nb,test,p,min,mini,m,k,char,g;
-   e:=One(kg);
+function(kg,n)
+   local k,g,p,mean,trials,m,x,counter,i,position,min,index;
+
    k:=UnderlyingField(kg);
    g:=UnderlyingGroup(kg);
+   p:=Characteristic(k);
    if not(RAMEGA_IsModularGroupAlgebra(kg)) then
      Error("Input should be a Modular Group Algebra.");
    fi;
    if not( IsPGroup(g)) then
        Error("G should be a p group.");
    fi;
+   if not(0 < p) then
+       Error("The characteristif of k should be positive.");
+   fi;
 
-
-   char:=Characteristic(k);
-   #trials:=10;
-   nb:=0;
-   for i in [1..trials] do
-     n:=0;
+   mean:=0;
+   trials:=[];
+   counter:=0;
+   repeat
+     m:=0;
      repeat
         x:=GetRandomNormalizedUnit(kg);
-	    n:=n+1;
-     until(x*Involution(x)=e);
-	 nb:=nb+n;
-   od;
-   if (nb=trials) then
-      return char^(LogInt(Number(k),char)*(Number(UnderlyingGroup(kg))-1));
-   fi;
-   p:=1/char;
-   mini:=1;
-   min:=AbsoluteValue((p*nb-trials)^2/(trials*(1-p)));
-   m:=LogInt(Number(UnderlyingField(kg)),char)*(Number(UnderlyingGroup(kg))-1);
-   for i in [2..m] do
-     p:=1/(char^i);
-     test:=AbsoluteValue((p*nb-trials)^2/(trials*(1-p)));
-	 if (test < min) then
-	   min:=test;
-	   mini:=i;
-	 fi;
-     #Print(1/p," - ", test, "\n");
-   od;
-   return char^(m-mini);
+	    m:=m+1;
+     until(x*Involution(x)=One(kg));
+	 Add(trials,m);
+	 counter:=counter+1;
+   until (counter=n);
+   mean:=Sum(trials)/Number(trials);
+   position:=0;
+   min:=(n*(mean-p)^2)/p;   
+   if (1 < mean) then
+	 for i in [1..LogInt(Number(k),p)*(Number(g)-1)] do
+	    index:=(n*(mean-p^i)^2)/(p^i*(p^i-1));
+	    if (index < min) then
+		  min:=index;
+		  position:=i;
+		fi;
+	 od;
+   fi;	 
+   return Number(k)^(Number(g)-1)/p^position;
 end);
 
+#############################################################################
+##
+##  RandomUnitaryOrder( <kg,sigma,n> )
+##
+##  Returns the order of unitary subgroup with respect to the involution sigma of normalized group of units
+##  where p=char(k) and g is a finite p-group by random search. The default involution is the canonical involution.
+##  The number of trials is n.
+##
 InstallOtherMethod( RandomUnitaryOrder, "Group Ring, Involution, Number of Iterations", true, [IsGroupRing,IsMapping,IsPosInt],3,
-function(kg,sigma,trials)
-   local x,e,i,n,nb,test,p,min,mini,m,k,char, g;
+function(kg,sigma,n)
+   local k,g,p,mean,trials,m,x,counter,i,position,min,index;
 
-   e:=One(kg);
    k:=UnderlyingField(kg);
    g:=UnderlyingGroup(kg);
+   p:=Characteristic(k);
    if not(RAMEGA_IsModularGroupAlgebra(kg)) then
      Error("Input should be a Modular Group Algebra.");
    fi;
    if not( IsPGroup(g)) then
        Error("G should be a p group.");
    fi;
+   if not(0 < p) then
+       Error("The characteristif of k should be positive.");
+   fi;
 
-
-   char:=Characteristic(k);
-   #trials:=10;
-   nb:=0;
-   for i in [1..trials] do
-     n:=0;
+   mean:=0;
+   trials:=[];
+   counter:=0;
+   repeat
+     m:=0;
      repeat
         x:=GetRandomNormalizedUnit(kg);
-	    n:=n+1;
-     until(x*RAMEGA_InvolutionKG(x,sigma,kg) = e);
-	 nb:=nb+n;
-   od;
-   if (nb=trials) then
-      return char^(LogInt(Number(k),char)*(Number(UnderlyingGroup(kg))-1));
-   fi;
-   p:=1/char;
-   mini:=1;
-   min:=AbsoluteValue((p*nb-trials)^2/(trials*(1-p)));
-   m:=LogInt(Number(UnderlyingField(kg)),char)*(Number(UnderlyingGroup(kg))-1);
-   for i in [2..m] do
-     p:=1/(char^i);
-     test:=AbsoluteValue((p*nb-trials)^2/(trials*(1-p)));
-	 if (test < min) then
-	   min:=test;
-	   mini:=i;
-	 fi;
-     #Print(1/p," - ", test, "\n");
-   od;
-   return char^(m-mini);
+	    m:=m+1;
+     until(x*RAMEGA_InvolutionKG(x,sigma,kg)=One(kg));
+	 Add(trials,m);
+	 counter:=counter+1;
+   until (counter=n);
+   mean:=Sum(trials)/Number(trials);
+   position:=0;
+   min:=(n*(mean-p)^2)/p;   
+   if (1 < mean) then
+	 for i in [1..LogInt(Number(k),p)*(Number(g)-1)] do
+	    index:=(n*(mean-p^i)^2)/(p^i*(p^i-1));
+	    if (index < min) then
+		  min:=index;
+		  position:=i;
+		fi;
+	 od;
+   fi;	 
+   return Number(k)^(Number(g)-1)/p^position;
 end);
 
 #############################################################################
