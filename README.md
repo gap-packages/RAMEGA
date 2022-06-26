@@ -2,8 +2,8 @@
 The GAP 4 package `ramega'
 ==================================
 
-[![Build Status](https://travis-ci.org/gap-packages/RAMEGA.svg?branch=master)](https://travis-ci.org/gap-packages/RAMEGA)
-[![codecov](https://codecov.io/gh/gap-packages/RAMEGA/branch/master/graph/badge.svg)](https://codecov.io/gh/gap-packages/RAMEGA)
+[![Build Status](https://github.com/gap-packages/RAMEGA/workflows/CI/badge.svg?branch=master)](https://github.com/gap-packages/RAMEGA/actions?query=workflow%3ACI+branch%3Amaster)
+[![Code Coverage](https://codecov.io/github/gap-packages/RAMEGA/coverage.svg?branch=master&token=)](https://codecov.io/gh/gap-packages/RAMEGA)
 
 Introduction
 ------------
