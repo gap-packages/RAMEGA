@@ -5,8 +5,6 @@
 ##
 ##
 ##
-#H  @(#)$Id: init.g,v 1.00 $
-##
 #Y  Copyright (C)  2020,  UAEU, Al Ain, United Arab Emirates
 ##
 #############################################################################
@@ -15,4 +13,3 @@
 ##
 
 ReadPackage( "ramega", "lib/random.gd" );
-#E  init.g  . . . . . . . . . . . . . . . . . . . . . . . . . . .  ends here
