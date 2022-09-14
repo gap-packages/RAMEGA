@@ -4,8 +4,6 @@
 #W                                       Vasyl Laver  <vasyllaver@uzhnu.edu.ua>
 ##
 ##
-#H  @(#)$Id: random.gd,v 1.00 $
-##
 #Y  Copyright (C)  2020,  UAE University, UAE
 ##
 
@@ -43,6 +41,3 @@ DeclareOperation( "RandomIsNormal", [IsGroupRing, IsGroup, IsPosInt]);
 DeclareOperation( "RandomCenterOfCommutatorSubgroup", [IsGroupRing, IsPosInt]);
 #DeclareOperation( "RandomLowerCentralSeries", [IsGroupRing, IsPosInt]);
 DeclareOperation( "RandomConjugacyClassByElement", [IsGroupRing, IsElementOfFreeMagmaRing, IsPosInt]);
-
-#E
-##
