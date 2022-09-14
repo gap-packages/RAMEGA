@@ -8,10 +8,8 @@ gap> G:=CyclicGroup(IsFpGroup,4);
 <fp group of size 4 on the generators [ a ]>
 gap> Elements(G);
 [ <identity ...>, a, a^2, a^3 ]
-gap> KG:=GroupRing(GF(2),G);
-<algebra-with-one over GF(2), with 1 generators>
-gap> BasicGroup(KG);
-<group of size 4 with 1 generators>
+gap> KG:=GroupRing(GF(2),G);;
+gap> BasicGroup(KG);;
 gap> Elements(last);
 [ (Z(2)^0)*<identity ...>, (Z(2)^0)*a, (Z(2)^0)*a^2, (Z(2)^0)*a^3 ]
 
