@@ -13,4 +13,3 @@
 ##
 
 ReadPackage( "ramega", "lib/random.gd" );
-#E  init.g  . . . . . . . . . . . . . . . . . . . . . . . . . . .  ends here

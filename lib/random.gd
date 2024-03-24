@@ -41,6 +41,3 @@ DeclareOperation( "RandomIsNormal", [IsGroupRing, IsGroup, IsPosInt]);
 DeclareOperation( "RandomCenterOfCommutatorSubgroup", [IsGroupRing, IsPosInt]);
 #DeclareOperation( "RandomLowerCentralSeries", [IsGroupRing, IsPosInt]);
 DeclareOperation( "RandomConjugacyClassByElement", [IsGroupRing, IsElementOfFreeMagmaRing, IsPosInt]);
-
-#E
-##

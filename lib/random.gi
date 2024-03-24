@@ -1096,8 +1096,3 @@ for i in [1..n] do
 od;
     return AsSet(H);
 end);
-
-
-
-#E
-##

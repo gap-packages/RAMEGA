@@ -13,4 +13,3 @@
 ##
 ReadPackage( "ramega", "lib/internal.gi" );
 ReadPackage( "ramega", "lib/random.gi" );
-#E  read.g  . . . . . . . . . . . . . . . . . . . . . . . . . . .  ends here
