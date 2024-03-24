@@ -4,8 +4,6 @@
 #W                                       Vasyl Laver  <vasyllaver@uzhnu.edu.ua>
 ##
 ##
-#H  @(#)$Id: random.gd,v 1.00 $
-##
 #Y  Copyright (C)  2020,  UAE University, UAE
 ##
 
